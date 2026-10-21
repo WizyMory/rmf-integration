@@ -5,17 +5,20 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 from brin_husky_distributed.profiles import resolve_profile
+from brin_husky_distributed.web_runtime import validate_server_uri
 
 
 def setup(context):
     profile = resolve_profile(LaunchConfiguration('traffic_profile').perform(context))
+    server_uri = validate_server_uri(LaunchConfiguration('server_uri').perform(context))
     return [
         Node(package='rmf_traffic_ros2', executable='rmf_traffic_schedule',
              name='rmf_traffic_schedule_primary',
              parameters=[{'use_sim_time': False}], output='screen'),
         Node(package='rmf_task_ros2', executable='rmf_task_dispatcher',
              name='rmf_task_dispatcher',
-             parameters=[{'use_sim_time': False, 'bidding_time_window': 2.0}],
+             parameters=[{'use_sim_time': False, 'bidding_time_window': 2.0,
+                          'server_uri': server_uri}],
              output='screen'),
         Node(package='rmf_building_map_tools', executable='building_map_server',
              name='building_map_server', arguments=[str(profile['building'])],
@@ -29,5 +32,7 @@ def setup(context):
 def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument('traffic_profile', default_value='banyak_simpangan'),
+        DeclareLaunchArgument('server_uri', default_value='',
+                              description='Optional local RMF Web internal WebSocket URI'),
         OpaqueFunction(function=setup),
     ])

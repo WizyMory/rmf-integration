@@ -13,10 +13,12 @@ from launch_ros.actions import Node
 import yaml
 
 from brin_husky_distributed.profiles import resolve_profile
+from brin_husky_distributed.web_runtime import validate_server_uri
 
 
 def setup(context):
     value = lambda name: LaunchConfiguration(name).perform(context)
+    server_uri = validate_server_uri(value('server_uri'), remote=True)
     profile = resolve_profile(value('traffic_profile'))
     local_share = Path(get_package_share_directory('brin_husky_distributed'))
     config_path = Path(value('hardware_config'))
@@ -66,7 +68,7 @@ def setup(context):
         name='brin_husky_fleet_adapter',
         parameters=[{'use_sim_time': False, 'fleet_config': str(fleet_config),
                      'nav_graph': str(profile['graph']), 'robots': ['husky_0'],
-                     'server_uri': value('server_uri')}],
+                     'server_uri': server_uri}],
         remappings=remaps, output='screen')
 
     def after_preflight(event, _context):

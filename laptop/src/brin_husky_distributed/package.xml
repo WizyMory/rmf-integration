@@ -9,6 +9,7 @@
   <exec_depend>brin_husky_hardware</exec_depend>
   <exec_depend>brin_husky_fleet_adapter</exec_depend>
   <exec_depend>brin_rmf_maps</exec_depend>
+  <exec_depend>git</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
   <exec_depend>python3-yaml</exec_depend>

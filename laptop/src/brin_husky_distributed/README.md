@@ -10,7 +10,8 @@ isi file simulasi. Untuk Husky fisik `a200_1060`, nama RMF-nya `husky_0`.
 | Husky | Driver Clearpath dan lidar, satu AMCL/Nav2/map server, jembatan TF fisik, preflight, serta satu fleet adapter. |
 
 Tidak ada Gazebo atau `/clock` simulasi. `server_uri` tetap kosong kecuali
-operator secara terpisah mengaktifkan RMF Web. **Jangan** menjalankan
+operator secara terpisah mengaktifkan RMF Web. Jalur API waktu nyata dan
+koneksi LAN adapter onboard dijelaskan di [WEB.md](WEB.md). **Jangan** menjalankan
 `brin_husky_hardware hardware.launch.py` bersamaan: launch lama memulai RMF
 core dan adapter pada satu mesin, sehingga akan menggandakan proses.
 Putusnya koneksi laptop/DDS **tidak menjamin** goal Nav2 yang sudah diterima
@@ -18,74 +19,29 @@ berhenti; operator tetap harus siap menggunakan kendali manual/E-stop fisik.
 
 ## Siapkan kedua mesin
 
-Keduanya harus memakai Humble, domain 0, RMW Cyclone DDS, LAN dua arah, dan
-jam tersinkron (preflight membatasi usia data/TF menjadi 2 detik). Jangan
-memakai konfigurasi CycloneDDS localhost dari simulasi. Pada tiap terminal:
+Gunakan [panduan deployment repository](../../../docs/DEPLOYMENT.md) sebagai
+alur utama: clone commit yang sama, build `laptop/src` pada laptop dan
+`husky/src` pada Husky, tanpa menimpa workspace lama atau menyalin artefak
+build antar mesin. Skrip `tools/integration.bash` menyiapkan overlay dan
+environment proses integrasi saja.
 
-```bash
-export ROS_DOMAIN_ID=0 RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ROS_LOCALHOST_ONLY=0
-printenv ROS_DISTRO ROS_DOMAIN_ID RMW_IMPLEMENTATION ROS_LOCALHOST_ONLY CYCLONEDDS_URI
-```
+Kedua sisi memakai Humble, domain 0, waktu nyata dan LAN dua arah. Jam harus
+sinkron; preflight membatasi usia data/TF menjadi 2 detik. Default skrip adalah
+Cyclone DDS dengan profil Wi-Fi/peer eksplisit per target. Native adapter
+diagnostik lulus tiga kali berturut-turut dan uji DDS pulang-pergi lulus;
+lihat status repository untuk batas hasil. Middleware service Clearpath tidak
+diubah. Jangan gunakan konfigurasi localhost simulasi.
 
-Pastikan `/a200_1060/scan`, `/a200_1060/map`,
-`/a200_1060/navigate_to_pose`, dan layanan controller manager terlihat dari
-laptop. Bila topik terlihat tetapi pesan/action tidak sampai, periksa
-discovery DDS, firewall, antarmuka LAN, dan sinkronisasi jam. Jangan menanam
-IP atau path mesin lain dalam source.
+Laptop membutuhkan RMF core dan empat paket integrasi; Husky membutuhkan
+paket integrasi serta runtime Python `rmf_adapter`. Nav2 saja tidak cukup.
+Driver Hokuyo/UM7 dan konfigurasi Nav2 berasal dari robot, bukan simulasi.
+API/protokol/IP/port/parameter Hokuyo yang sudah bekerja tidak boleh diubah.
 
-Gunakan overlay Clearpath dan Open-RMF Humble yang benar pada masing-masing
-mesin. Laptop membutuhkan `brin_rmf_maps`, `brin_husky_fleet_adapter`,
-`brin_husky_hardware`, `brin_husky_distributed`, dan RMF core. Husky
-membutuhkan keempat paket BRIN tersebut untuk peta/graph dan kode adapter,
-serta runtime Python `rmf_adapter`; Nav2 saja tidak cukup. Arsip operator
-menyertakan `husky_nav2` dan `hokuyo_bringup` pada workspace robot. Paket
-tersebut tidak disalin ke source simulasi di laptop. Jika belum terpasang di
-Husky, instal/build dari source robot yang telah diuji operator; jangan
-menyalakan driver Hokuyo kedua bila `/a200_1060/scan` sudah ada.
-
-Contoh pada **laptop** (sesuaikan path overlay yang nyata):
-
-```bash
-source /opt/ros/humble/setup.bash
-source /mnt/UbuntuData/clearpath_ws/install/local_setup.bash
-source /mnt/UbuntuData/BRIN_ws/install/local_setup.bash
-cd /mnt/UbuntuData/rmf_ws
-export COLCON_HOME="$PWD/.colcon" ROS_LOG_DIR="$PWD/log/ros"
-export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-export COLCON_EXTENSION_BLOCKLIST=colcon_core.shell.ros_domain_id
-colcon build --symlink-install --packages-select brin_husky_hardware brin_husky_distributed
-source install/local_setup.bash
-```
-
-Pada **Husky**, source `/etc/clearpath/setup.bash`, overlay ROS/Nav2 dan
-Open-RMF yang terpasang, kemudian build kedua paket hardware/distributed di
-`/home/husky/rmf_ws`. `brin_rmf_maps` yang berisi aset profil harus sudah
-terpasang di kedua mesin. Paket map asli di repo laptop masih membutuhkan
-Ignition saat dibangun; jangan mengubah CMake simulasi hanya agar robot bisa
-build. Gunakan hasil build map dari workspace Husky pada arsip, atau instal
-dependensi build yang dibutuhkan di robot. Pastikan `ros2 pkg prefix
-brin_rmf_maps` berhasil di kedua mesin.
-
-Setelah menyalin **paket baru** `src/brin_husky_distributed/` dan versi terbaru
-`src/brin_husky_hardware/` dari laptop ke direktori `src/` workspace Husky
-(misalnya dengan `rsync`/USB), jalankan pada **terminal Husky**:
-
-```bash
-source /etc/clearpath/setup.bash
-source /home/husky/ros2_ws/install/setup.bash
-cd /home/husky/rmf_ws
-source install/setup.bash
-export ROS_DOMAIN_ID=0 RMW_IMPLEMENTATION=rmw_cyclonedds_cpp ROS_LOCALHOST_ONLY=0
-colcon build --symlink-install --packages-select brin_husky_hardware brin_husky_distributed
-source install/setup.bash
-ros2 pkg prefix brin_rmf_maps
-ros2 pkg prefix brin_husky_distributed
-python3 -c 'import rmf_adapter; print("RMF Python runtime tersedia")'
-```
-
-Jika overlay RMF/ROS pada Husky berada di path lain, source path yang benar
-sebelum build. Jangan menyalin `build/`, `install/`, atau `log/` dari laptop:
-ketiganya memuat path dan artefak spesifik mesin.
+Sebelum mengaktifkan adapter fisik, pastikan scan, map, NavigateToPose,
+lokalisasi, controller dan TF sesuai. Aktivasi Nav2 serta bridge harus
+disetujui operator. Jangan menyalakan driver atau controller duplikat.
+Bagian berikut menjelaskan profil dan penerimaan fisik, bukan bukti
+deployment maupun gerak sudah berhasil.
 
 ## Pilih satu profil dan periksa robot
 

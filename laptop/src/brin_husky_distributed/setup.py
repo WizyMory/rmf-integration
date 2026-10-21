@@ -9,9 +9,11 @@ setup(
     packages=find_packages(exclude=['test']),
     data_files=[
         ('share/ament_index/resource_index/packages', ['resource/' + name]),
-        ('share/' + name, ['package.xml', 'README.md']),
+        ('share/' + name, ['package.xml', 'README.md', 'WEB.md']),
         ('share/' + name + '/launch', [str(p) for p in Path('launch').glob('*.py')]),
-        ('share/' + name + '/config', [str(p) for p in Path('config').glob('*.yaml')]),
+        ('share/' + name + '/config', [str(p) for pattern in ('*.yaml', '*.xml')
+                                     for p in Path('config').glob(pattern)]),
+        ('share/' + name + '/web', ['web/api_config.py']),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -22,5 +24,6 @@ setup(
     tests_require=['pytest'],
     entry_points={'console_scripts': [
         'profile_announcer = brin_husky_distributed.announcer:main',
+        'profile_info = brin_husky_distributed.profile_info:main',
     ]},
 )

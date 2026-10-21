@@ -1,6 +1,7 @@
 **/build/
 **/install/
 **/log/
+**/.colcon/
 **/__pycache__/
 **/.pytest_cache/
 *.pyc
@@ -10,6 +11,10 @@
 *.bag
 *.db3
 *.mcap
+*.pcap
+*.pcapng
+core
+core.[0-9]*
 
 .env
 .env.*
