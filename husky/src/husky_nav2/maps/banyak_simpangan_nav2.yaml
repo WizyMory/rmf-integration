@@ -1,0 +1,9 @@
+# Metadata from src/banyak_simpangan_nav2.candidate.yaml.
+image: banyak_simpangan_nav2.png
+mode: trinary
+resolution: 0.049412520154504355
+origin: [0.0, -189.89231495376023, 0.0]
+negate: 0
+# Pixel 205 is unknown (occupancy 0.196078); pixel 254 is free.
+occupied_thresh: 0.65
+free_thresh: 0.196

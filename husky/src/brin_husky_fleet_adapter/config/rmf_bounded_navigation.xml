@@ -1,0 +1,13 @@
+<!-- RMF owns retry policy. A controller/planner abort must terminate this
+     NavigateToPose goal so the adapter can count it and request a new RMF
+     route. Keep periodic replanning while the goal is making progress. -->
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <PipelineSequence name="NavigateWithReplanning">
+      <RateController hz="1.0">
+        <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+      </RateController>
+      <FollowPath path="{path}" controller_id="FollowPath"/>
+    </PipelineSequence>
+  </BehaviorTree>
+</root>

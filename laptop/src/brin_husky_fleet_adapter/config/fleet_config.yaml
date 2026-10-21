@@ -1,0 +1,46 @@
+fleet_name: HuskyA200
+map_name: L1
+robots:
+  husky_0: {charger: husky_0}
+  husky_1: {charger: husky_1}
+  husky_2: {charger: lab_dinamika}
+  husky_3: {charger: lab_bengkel}
+  husky_4: {charger: dpn_ws1}
+  husky_5: {charger: dpn_ws2}
+  husky_6: {charger: lab_bengkel2}
+profile:
+  # Encloses the Nav2 1.10 x 0.76 m conservative collision rectangle.
+  footprint: 0.70
+  vicinity: 0.80
+limits:
+  linear: [0.4, 0.3]
+  angular: [0.5, 0.5]
+reversible: false
+update_frequency: 5.0
+initial_battery_soc: 0.95
+account_for_battery_drain: false
+battery_system: {voltage: 24.0, capacity: 20.0, charging_current: 5.0}
+mechanical_system: {mass: 60.0, moment_of_inertia: 2.5, friction_coefficient: 0.2}
+ambient_power: 20.0
+tool_power: 0.0
+recharge_threshold: 0.2
+recharge_soc: 0.95
+finishing_request: park
+max_merge_waypoint_distance: 0.2
+# RMF Humble defaults to 1.0 m. Navfn can cut a graph corner by slightly more
+# than the 0.8 m vicinity radius while still remaining collision-free.
+max_merge_lane_distance: 1.0
+tf_max_age: 2.0
+retry_delay: 5.0
+max_goal_failures: 5
+return_tolerance: 0.75
+escape_step_distance: 0.20
+escape_backup_speed: 0.05
+escape_max_steps: 3
+escape_turn_radius: 0.70
+escape_sensor_settle: 1.5
+escape_after_step_settle: 0.5
+escape_sensor_timeout: 5.0
+escape_costmap_max_age: 2.0
+escape_service_timeout: 5.0
+escape_hold_duration: 20.0

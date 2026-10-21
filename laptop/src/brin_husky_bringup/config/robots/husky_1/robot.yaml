@@ -1,0 +1,130 @@
+# Adapted from the supplied robot_setup reference. Geometry/sensors preserved.
+serial_number: a200-0001
+version: 0
+system:
+  username: administrator
+  hosts:
+  - hostname: cpr-a200-0001
+    ip: 127.0.0.1
+  ros2:
+    namespace: husky_1
+    domain_id: 0
+    middleware:
+      implementation: rmw_fastrtps_cpp
+    workspaces: []
+platform:
+  enable_ekf: true
+  controller: ps4
+  battery:
+    model: ES20_12C
+    configuration: S2P1
+  attachments:
+  - name: front_bumper
+    type: a200.bumper
+    model: default
+    parent: front_bumper_mount
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+    enabled: true
+    extension: 0.0
+  - name: rear_bumper
+    type: a200.bumper
+    model: default
+    parent: rear_bumper_mount
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+    enabled: true
+    extension: 0.0
+  - name: top_plate
+    type: a200.top_plate
+    model: pacs
+    parent: default_mount
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+    enabled: true
+  extras:
+    urdf: {}
+links:
+  box:
+  - name: user_bay_cover
+    parent: top_plate_link
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.00735
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+    size:
+    - 0.4
+    - 0.4
+    - 0.002
+  cylinder: []
+  frame: []
+  mesh: []
+  sphere: []
+mounts:
+  bracket:
+  - parent: top_plate_mount_d1
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+    model: horizontal
+  riser: []
+  sick: []
+  post: []
+  disk: []
+sensors:
+  imu:
+  - model: redshift_um7
+    urdf_enabled: true
+    launch_enabled: true
+    parent: base_link
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  camera: []
+  gps: []
+  lidar2d: []
+  lidar3d:
+  - model: ouster_os1
+    urdf_enabled: true
+    launch_enabled: true
+    parent: top_plate_link
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.1
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0

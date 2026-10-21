@@ -1,0 +1,7673 @@
+{
+  "graph_index": 1,
+  "sweep": {
+    "half_length_m": 0.5700000000000001,
+    "half_width_m": 0.4,
+    "full_length_m": 1.1400000000000001,
+    "full_width_m": 0.8
+  },
+  "wall_thickness_m": 0.05,
+  "doors": "open; door segments are not structural walls",
+  "correction_codes": {
+    "unchanged": 0,
+    "approved_area_unknown_to_free": 64,
+    "reference_unknown_to_free": 85,
+    "approved_area_occupied_to_free": 128,
+    "reference_occupied_to_free": 170,
+    "traffic_editor_wall_enforced": 255
+  },
+  "changed_cells": 68618,
+  "changed_reference_unknown_to_free": 10787,
+  "changed_reference_occupied_to_free": 310,
+  "changed_route_unknown_to_free": 10787,
+  "changed_route_occupied_to_free": 310,
+  "changed_approved_area_unknown_to_free": 0,
+  "changed_approved_area_occupied_to_free": 0,
+  "changed_traffic_editor_wall_enforced": 57521,
+  "known_areas": [],
+  "lanes": [
+    {
+      "building_lane_index": 0,
+      "building_vertices": [
+        453,
+        457
+      ],
+      "endpoint_names": [
+        "husky_0",
+        ""
+      ],
+      "image_start": [
+        432.671,
+        663.338
+      ],
+      "image_end": [
+        468.464,
+        633.738
+      ],
+      "reference_unknown_cells_cleared": 1244,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 1,
+      "building_vertices": [
+        458,
+        459
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        815.415,
+        794.027
+      ],
+      "image_end": [
+        866.53,
+        811.644
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 2,
+      "building_vertices": [
+        467,
+        468
+      ],
+      "endpoint_names": [
+        "",
+        "gd_8"
+      ],
+      "image_start": [
+        768.355,
+        2905.177
+      ],
+      "image_end": [
+        772.534,
+        3058.094
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 3,
+      "building_vertices": [
+        471,
+        472
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        474.529,
+        3653.305
+      ],
+      "image_end": [
+        700.331,
+        3648.068
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 52,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          583,
+          3642
+        ],
+        "metric_xy": [
+          28.807499250076038,
+          -179.96039840270487
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 4,
+      "building_vertices": [
+        472,
+        473
+      ],
+      "endpoint_names": [
+        "",
+        "kantin"
+      ],
+      "image_start": [
+        700.331,
+        3648.068
+      ],
+      "image_end": [
+        698.79,
+        3595.083
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 5,
+      "building_vertices": [
+        487,
+        471
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        322.467,
+        3654.514
+      ],
+      "image_end": [
+        474.529,
+        3653.305
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 6,
+      "building_vertices": [
+        482,
+        497
+      ],
+      "endpoint_names": [
+        "",
+        "otonom_blkg"
+      ],
+      "image_start": [
+        2099.629,
+        412.347
+      ],
+      "image_end": [
+        2011.742,
+        414.46
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 7,
+      "building_vertices": [
+        499,
+        500
+      ],
+      "endpoint_names": [
+        "",
+        "otonom_dpn"
+      ],
+      "image_start": [
+        1400.308,
+        420.131
+      ],
+      "image_end": [
+        1454.427,
+        432.883
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 8,
+      "building_vertices": [
+        502,
+        503
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        974.869,
+        1043.422
+      ],
+      "image_end": [
+        976.402,
+        1155.616
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 9,
+      "building_vertices": [
+        503,
+        504
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        976.402,
+        1155.616
+      ],
+      "image_end": [
+        976.048,
+        1279.64
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 10,
+      "building_vertices": [
+        505,
+        506
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        986.156,
+        1548.904
+      ],
+      "image_end": [
+        987.538,
+        1695.403
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 11,
+      "building_vertices": [
+        506,
+        464
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        987.538,
+        1695.403
+      ],
+      "image_end": [
+        993.075,
+        1838.685
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 12,
+      "building_vertices": [
+        507,
+        508
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        986.449,
+        2021.223
+      ],
+      "image_end": [
+        987.198,
+        2165.975
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 13,
+      "building_vertices": [
+        508,
+        465
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        987.198,
+        2165.975
+      ],
+      "image_end": [
+        992.224,
+        2331.555
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 14,
+      "building_vertices": [
+        465,
+        509
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        992.224,
+        2331.555
+      ],
+      "image_end": [
+        987.085,
+        2434.827
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 15,
+      "building_vertices": [
+        509,
+        510
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        987.085,
+        2434.827
+      ],
+      "image_end": [
+        991.842,
+        2584.061
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 16,
+      "building_vertices": [
+        510,
+        511
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        991.842,
+        2584.061
+      ],
+      "image_end": [
+        995.607,
+        2733.493
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 17,
+      "building_vertices": [
+        511,
+        466
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        995.607,
+        2733.493
+      ],
+      "image_end": [
+        1004.633,
+        2901.387
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 18,
+      "building_vertices": [
+        466,
+        467
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1004.633,
+        2901.387
+      ],
+      "image_end": [
+        768.355,
+        2905.177
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 19,
+      "building_vertices": [
+        512,
+        513
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        628.65,
+        2907.75
+      ],
+      "image_end": [
+        457.009,
+        2908.042
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 20,
+      "building_vertices": [
+        513,
+        469
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        457.009,
+        2908.042
+      ],
+      "image_end": [
+        268.806,
+        2917.091
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 21,
+      "building_vertices": [
+        469,
+        514
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        268.806,
+        2917.091
+      ],
+      "image_end": [
+        266.286,
+        3104.957
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 22,
+      "building_vertices": [
+        514,
+        515
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        266.286,
+        3104.957
+      ],
+      "image_end": [
+        266.044,
+        3265.543
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 23,
+      "building_vertices": [
+        515,
+        516
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        266.044,
+        3265.543
+      ],
+      "image_end": [
+        265.982,
+        3420.642
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 24,
+      "building_vertices": [
+        516,
+        517
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        265.982,
+        3420.642
+      ],
+      "image_end": [
+        267.852,
+        3559.069
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 25,
+      "building_vertices": [
+        518,
+        487
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        267.548,
+        3653.268
+      ],
+      "image_end": [
+        322.467,
+        3654.514
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 26,
+      "building_vertices": [
+        517,
+        470
+      ],
+      "endpoint_names": [
+        "",
+        "satpam_entry"
+      ],
+      "image_start": [
+        267.852,
+        3559.069
+      ],
+      "image_end": [
+        334.878,
+        3560.194
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 27,
+      "building_vertices": [
+        519,
+        474
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        733.032,
+        3648.568
+      ],
+      "image_end": [
+        1062.704,
+        3637.59
+      ],
+      "reference_unknown_cells_cleared": 1,
+      "reference_occupied_cells_cleared": 124,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          884,
+          3635
+        ],
+        "metric_xy": [
+          43.68066781658185,
+          -179.61451076162334
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 28,
+      "building_vertices": [
+        472,
+        519
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        700.331,
+        3648.068
+      ],
+      "image_end": [
+        733.032,
+        3648.568
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 18,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          736,
+          3640
+        ],
+        "metric_xy": [
+          36.36761483371521,
+          -179.86157336239586
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 29,
+      "building_vertices": [
+        474,
+        520
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1062.704,
+        3637.59
+      ],
+      "image_end": [
+        1197.927,
+        3612.342
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 30,
+      "building_vertices": [
+        520,
+        475
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1197.927,
+        3612.342
+      ],
+      "image_end": [
+        1283.402,
+        3521.253
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 31,
+      "building_vertices": [
+        475,
+        496
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1283.402,
+        3521.253
+      ],
+      "image_end": [
+        1387.53,
+        3508.239
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 32,
+      "building_vertices": [
+        476,
+        521
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1456.196,
+        3501.293
+      ],
+      "image_end": [
+        1584.018,
+        3484.81
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 33,
+      "building_vertices": [
+        521,
+        522
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1584.018,
+        3484.81
+      ],
+      "image_end": [
+        1741.03,
+        3463.517
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 34,
+      "building_vertices": [
+        522,
+        523
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1741.03,
+        3463.517
+      ],
+      "image_end": [
+        1896.559,
+        3442.403
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 35,
+      "building_vertices": [
+        523,
+        524
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1896.559,
+        3442.403
+      ],
+      "image_end": [
+        2059.678,
+        3415.769
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 36,
+      "building_vertices": [
+        524,
+        477
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2059.678,
+        3415.769
+      ],
+      "image_end": [
+        2199.738,
+        3384.698
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 37,
+      "building_vertices": [
+        477,
+        525
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2199.738,
+        3384.698
+      ],
+      "image_end": [
+        2188.847,
+        3237.306
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 38,
+      "building_vertices": [
+        525,
+        478
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2188.847,
+        3237.306
+      ],
+      "image_end": [
+        2187.878,
+        3088.208
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 39,
+      "building_vertices": [
+        478,
+        526
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2187.878,
+        3088.208
+      ],
+      "image_end": [
+        2188.018,
+        2929.366
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 40,
+      "building_vertices": [
+        526,
+        527
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2188.018,
+        2929.366
+      ],
+      "image_end": [
+        2184.621,
+        2751.473
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 41,
+      "building_vertices": [
+        527,
+        528
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2184.621,
+        2751.473
+      ],
+      "image_end": [
+        2177.538,
+        2589.893
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 42,
+      "building_vertices": [
+        528,
+        529
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2177.538,
+        2589.893
+      ],
+      "image_end": [
+        2171.751,
+        2427.561
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 43,
+      "building_vertices": [
+        529,
+        479
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2171.751,
+        2427.561
+      ],
+      "image_end": [
+        2163.514,
+        2297.553
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 44,
+      "building_vertices": [
+        479,
+        530
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2163.514,
+        2297.553
+      ],
+      "image_end": [
+        2158.999,
+        2181.02
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 45,
+      "building_vertices": [
+        530,
+        480
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2158.999,
+        2181.02
+      ],
+      "image_end": [
+        2154.899,
+        2073.753
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 46,
+      "building_vertices": [
+        480,
+        531
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2154.899,
+        2073.753
+      ],
+      "image_end": [
+        2155.61,
+        1965.151
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 47,
+      "building_vertices": [
+        531,
+        532
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2155.61,
+        1965.151
+      ],
+      "image_end": [
+        2151.66,
+        1840.828
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 48,
+      "building_vertices": [
+        532,
+        533
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2151.66,
+        1840.828
+      ],
+      "image_end": [
+        2145.453,
+        1675.88
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 49,
+      "building_vertices": [
+        533,
+        534
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2145.453,
+        1675.88
+      ],
+      "image_end": [
+        2140.939,
+        1523.344
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 50,
+      "building_vertices": [
+        534,
+        535
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2140.939,
+        1523.344
+      ],
+      "image_end": [
+        2134.463,
+        1332.004
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 51,
+      "building_vertices": [
+        535,
+        536
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2134.463,
+        1332.004
+      ],
+      "image_end": [
+        2131.102,
+        1194.151
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 52,
+      "building_vertices": [
+        536,
+        537
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2131.102,
+        1194.151
+      ],
+      "image_end": [
+        2127.457,
+        1067.592
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 53,
+      "building_vertices": [
+        537,
+        481
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2127.457,
+        1067.592
+      ],
+      "image_end": [
+        2119.526,
+        942.936
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 54,
+      "building_vertices": [
+        481,
+        538
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2119.526,
+        942.936
+      ],
+      "image_end": [
+        2117.262,
+        793.593
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 55,
+      "building_vertices": [
+        538,
+        539
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2117.262,
+        793.593
+      ],
+      "image_end": [
+        2114.869,
+        663.726
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 56,
+      "building_vertices": [
+        539,
+        540
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2114.869,
+        663.726
+      ],
+      "image_end": [
+        2108.464,
+        531.266
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 57,
+      "building_vertices": [
+        540,
+        482
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2108.464,
+        531.266
+      ],
+      "image_end": [
+        2099.629,
+        412.347
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 58,
+      "building_vertices": [
+        541,
+        542
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1999.107,
+        245.106
+      ],
+      "image_end": [
+        1869.316,
+        247.775
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 59,
+      "building_vertices": [
+        542,
+        483
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1869.316,
+        247.775
+      ],
+      "image_end": [
+        1731.276,
+        254.415
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 60,
+      "building_vertices": [
+        483,
+        543
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1731.276,
+        254.415
+      ],
+      "image_end": [
+        1562.724,
+        260.136
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 61,
+      "building_vertices": [
+        543,
+        484
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1562.724,
+        260.136
+      ],
+      "image_end": [
+        1393.209,
+        269.507
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 62,
+      "building_vertices": [
+        484,
+        485
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1393.209,
+        269.507
+      ],
+      "image_end": [
+        1278.507,
+        272.526
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 63,
+      "building_vertices": [
+        485,
+        544
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1278.507,
+        272.526
+      ],
+      "image_end": [
+        1092.272,
+        280.967
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 64,
+      "building_vertices": [
+        544,
+        486
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1092.272,
+        280.967
+      ],
+      "image_end": [
+        946.709,
+        290.637
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 65,
+      "building_vertices": [
+        486,
+        545
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        946.709,
+        290.637
+      ],
+      "image_end": [
+        949.752,
+        368.198
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 66,
+      "building_vertices": [
+        545,
+        546
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        949.752,
+        368.198
+      ],
+      "image_end": [
+        958.134,
+        519.61
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 67,
+      "building_vertices": [
+        546,
+        547
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        958.134,
+        519.61
+      ],
+      "image_end": [
+        964.92,
+        667.58
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 68,
+      "building_vertices": [
+        547,
+        501
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        964.92,
+        667.58
+      ],
+      "image_end": [
+        969.399,
+        809.999
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 69,
+      "building_vertices": [
+        485,
+        498
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1278.507,
+        272.526
+      ],
+      "image_end": [
+        1310.731,
+        367.566
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 70,
+      "building_vertices": [
+        498,
+        499
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1310.731,
+        367.566
+      ],
+      "image_end": [
+        1400.308,
+        420.131
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 71,
+      "building_vertices": [
+        548,
+        484
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1399.036,
+        353.331
+      ],
+      "image_end": [
+        1393.209,
+        269.507
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 72,
+      "building_vertices": [
+        488,
+        489
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1411.112,
+        1616.571
+      ],
+      "image_end": [
+        1254.2,
+        1621.375
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 73,
+      "building_vertices": [
+        489,
+        491
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1254.2,
+        1621.375
+      ],
+      "image_end": [
+        1252.932,
+        1586.609
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 74,
+      "building_vertices": [
+        491,
+        549
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1252.932,
+        1586.609
+      ],
+      "image_end": [
+        1244.054,
+        1389.091
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 75,
+      "building_vertices": [
+        549,
+        550
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1244.054,
+        1389.091
+      ],
+      "image_end": [
+        1239.056,
+        1200.767
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 76,
+      "building_vertices": [
+        550,
+        490
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1239.056,
+        1200.767
+      ],
+      "image_end": [
+        1233.82,
+        1043.268
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 77,
+      "building_vertices": [
+        490,
+        551
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1233.82,
+        1043.268
+      ],
+      "image_end": [
+        1093.954,
+        1040.765
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 78,
+      "building_vertices": [
+        551,
+        502
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1093.954,
+        1040.765
+      ],
+      "image_end": [
+        974.869,
+        1043.422
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 79,
+      "building_vertices": [
+        552,
+        495
+      ],
+      "endpoint_names": [
+        "",
+        "masjid"
+      ],
+      "image_start": [
+        886.275,
+        1838.909
+      ],
+      "image_end": [
+        844.964,
+        1840.258
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 80,
+      "building_vertices": [
+        496,
+        476
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1387.53,
+        3508.239
+      ],
+      "image_end": [
+        1456.196,
+        3501.293
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 81,
+      "building_vertices": [
+        459,
+        554
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        866.53,
+        811.644
+      ],
+      "image_end": [
+        914.622,
+        811.243
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 82,
+      "building_vertices": [
+        554,
+        501
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        914.622,
+        811.243
+      ],
+      "image_end": [
+        969.399,
+        809.999
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 83,
+      "building_vertices": [
+        482,
+        555
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2099.629,
+        412.347
+      ],
+      "image_end": [
+        2096.515,
+        348.751
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 84,
+      "building_vertices": [
+        541,
+        556
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1999.107,
+        245.106
+      ],
+      "image_end": [
+        2089.551,
+        243.416
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 85,
+      "building_vertices": [
+        556,
+        555
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2089.551,
+        243.416
+      ],
+      "image_end": [
+        2096.515,
+        348.751
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 86,
+      "building_vertices": [
+        467,
+        558
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        768.355,
+        2905.177
+      ],
+      "image_end": [
+        717.942,
+        2906.039
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 87,
+      "building_vertices": [
+        558,
+        512
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        717.942,
+        2906.039
+      ],
+      "image_end": [
+        628.65,
+        2907.75
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 88,
+      "building_vertices": [
+        554,
+        559
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        914.622,
+        811.243
+      ],
+      "image_end": [
+        910.359,
+        669.832
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 89,
+      "building_vertices": [
+        559,
+        560
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        910.359,
+        669.832
+      ],
+      "image_end": [
+        902.183,
+        520.246
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 90,
+      "building_vertices": [
+        560,
+        561
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        902.183,
+        520.246
+      ],
+      "image_end": [
+        894.613,
+        368.844
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 91,
+      "building_vertices": [
+        561,
+        562
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        894.613,
+        368.844
+      ],
+      "image_end": [
+        888.557,
+        234.096
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 92,
+      "building_vertices": [
+        562,
+        563
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        888.557,
+        234.096
+      ],
+      "image_end": [
+        1088.711,
+        220.773
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 93,
+      "building_vertices": [
+        563,
+        564
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1088.711,
+        220.773
+      ],
+      "image_end": [
+        1276.752,
+        213.505
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 94,
+      "building_vertices": [
+        564,
+        565
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1276.752,
+        213.505
+      ],
+      "image_end": [
+        1394.846,
+        211.083
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 95,
+      "building_vertices": [
+        565,
+        566
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1394.846,
+        211.083
+      ],
+      "image_end": [
+        1561.691,
+        206.238
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 96,
+      "building_vertices": [
+        566,
+        567
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1561.691,
+        206.238
+      ],
+      "image_end": [
+        1728.924,
+        200.893
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 97,
+      "building_vertices": [
+        567,
+        568
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1728.924,
+        200.893
+      ],
+      "image_end": [
+        1867.581,
+        195.285
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 98,
+      "building_vertices": [
+        568,
+        569
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1867.581,
+        195.285
+      ],
+      "image_end": [
+        1998.309,
+        192.577
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 99,
+      "building_vertices": [
+        569,
+        570
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1998.309,
+        192.577
+      ],
+      "image_end": [
+        2148.57,
+        186.969
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 100,
+      "building_vertices": [
+        570,
+        571
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2148.57,
+        186.969
+      ],
+      "image_end": [
+        2161.788,
+        347.848
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 101,
+      "building_vertices": [
+        571,
+        572
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2161.788,
+        347.848
+      ],
+      "image_end": [
+        2166.482,
+        411.498
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 102,
+      "building_vertices": [
+        572,
+        573
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2166.482,
+        411.498
+      ],
+      "image_end": [
+        2175.036,
+        530.193
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 103,
+      "building_vertices": [
+        573,
+        574
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2175.036,
+        530.193
+      ],
+      "image_end": [
+        2180.001,
+        663.248
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 104,
+      "building_vertices": [
+        574,
+        575
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2180.001,
+        663.248
+      ],
+      "image_end": [
+        2179.794,
+        794.124
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 105,
+      "building_vertices": [
+        575,
+        576
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2179.794,
+        794.124
+      ],
+      "image_end": [
+        2187.109,
+        945.472
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 106,
+      "building_vertices": [
+        576,
+        577
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2187.109,
+        945.472
+      ],
+      "image_end": [
+        2192.748,
+        1068.446
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 107,
+      "building_vertices": [
+        577,
+        578
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2192.748,
+        1068.446
+      ],
+      "image_end": [
+        2197.312,
+        1195.448
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 108,
+      "building_vertices": [
+        578,
+        579
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2197.312,
+        1195.448
+      ],
+      "image_end": [
+        2199.46,
+        1333.727
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 109,
+      "building_vertices": [
+        579,
+        580
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2199.46,
+        1333.727
+      ],
+      "image_end": [
+        2206.083,
+        1523.663
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 110,
+      "building_vertices": [
+        580,
+        581
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2206.083,
+        1523.663
+      ],
+      "image_end": [
+        2207.348,
+        1676.792
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 111,
+      "building_vertices": [
+        581,
+        582
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2207.348,
+        1676.792
+      ],
+      "image_end": [
+        2212.41,
+        1840.466
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 112,
+      "building_vertices": [
+        582,
+        583
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2212.41,
+        1840.466
+      ],
+      "image_end": [
+        2217.05,
+        1966.175
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 113,
+      "building_vertices": [
+        583,
+        584
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2217.05,
+        1966.175
+      ],
+      "image_end": [
+        2217.05,
+        2074.167
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 114,
+      "building_vertices": [
+        584,
+        585
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2217.05,
+        2074.167
+      ],
+      "image_end": [
+        2222.113,
+        2184.267
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 115,
+      "building_vertices": [
+        585,
+        586
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2222.113,
+        2184.267
+      ],
+      "image_end": [
+        2226.331,
+        2298.586
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 116,
+      "building_vertices": [
+        586,
+        587
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2226.331,
+        2298.586
+      ],
+      "image_end": [
+        2231.59,
+        2427.895
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 117,
+      "building_vertices": [
+        587,
+        588
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2231.59,
+        2427.895
+      ],
+      "image_end": [
+        2239.239,
+        2590.782
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 118,
+      "building_vertices": [
+        588,
+        589
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2239.239,
+        2590.782
+      ],
+      "image_end": [
+        2246.439,
+        2754.119
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 119,
+      "building_vertices": [
+        589,
+        590
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2246.439,
+        2754.119
+      ],
+      "image_end": [
+        2251.388,
+        2930.955
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 120,
+      "building_vertices": [
+        590,
+        591
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2251.388,
+        2930.955
+      ],
+      "image_end": [
+        2251.388,
+        3090.693
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 121,
+      "building_vertices": [
+        591,
+        592
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2251.388,
+        3090.693
+      ],
+      "image_end": [
+        2257.321,
+        3241.544
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 122,
+      "building_vertices": [
+        592,
+        593
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2257.321,
+        3241.544
+      ],
+      "image_end": [
+        2266.058,
+        3434.86
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 123,
+      "building_vertices": [
+        593,
+        594
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2266.058,
+        3434.86
+      ],
+      "image_end": [
+        2073.288,
+        3482.916
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 124,
+      "building_vertices": [
+        594,
+        595
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2073.288,
+        3482.916
+      ],
+      "image_end": [
+        1904,
+        3511.858
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 125,
+      "building_vertices": [
+        595,
+        596
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1904,
+        3511.858
+      ],
+      "image_end": [
+        1745.634,
+        3533.156
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 126,
+      "building_vertices": [
+        596,
+        597
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1745.634,
+        3533.156
+      ],
+      "image_end": [
+        1591.091,
+        3548.446
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 127,
+      "building_vertices": [
+        597,
+        598
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1591.091,
+        3548.446
+      ],
+      "image_end": [
+        1462.397,
+        3559.137
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 128,
+      "building_vertices": [
+        598,
+        599
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1462.397,
+        3559.137
+      ],
+      "image_end": [
+        1391.938,
+        3559.137
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 129,
+      "building_vertices": [
+        599,
+        600
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1391.938,
+        3559.137
+      ],
+      "image_end": [
+        1297.714,
+        3574.794
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 130,
+      "building_vertices": [
+        600,
+        601
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1297.714,
+        3574.794
+      ],
+      "image_end": [
+        1212.996,
+        3666.223
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 131,
+      "building_vertices": [
+        601,
+        602
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1212.996,
+        3666.223
+      ],
+      "image_end": [
+        1067.325,
+        3689.709
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 132,
+      "building_vertices": [
+        602,
+        474
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1067.325,
+        3689.709
+      ],
+      "image_end": [
+        1062.704,
+        3637.59
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 133,
+      "building_vertices": [
+        600,
+        603
+      ],
+      "endpoint_names": [
+        "",
+        "satpam_exit"
+      ],
+      "image_start": [
+        1297.714,
+        3574.794
+      ],
+      "image_end": [
+        1320.962,
+        3626.697
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 134,
+      "building_vertices": [
+        600,
+        475
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1297.714,
+        3574.794
+      ],
+      "image_end": [
+        1283.402,
+        3521.253
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 135,
+      "building_vertices": [
+        487,
+        604
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        322.467,
+        3654.514
+      ],
+      "image_end": [
+        321.396,
+        3712.527
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 136,
+      "building_vertices": [
+        604,
+        605
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        321.396,
+        3712.527
+      ],
+      "image_end": [
+        212.678,
+        3712.527
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 137,
+      "building_vertices": [
+        606,
+        607
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        213.855,
+        3604.987
+      ],
+      "image_end": [
+        215.105,
+        3558.121
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 138,
+      "building_vertices": [
+        607,
+        608
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        215.105,
+        3558.121
+      ],
+      "image_end": [
+        215.321,
+        3418.756
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 139,
+      "building_vertices": [
+        608,
+        609
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        215.321,
+        3418.756
+      ],
+      "image_end": [
+        217.235,
+        3263.904
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 140,
+      "building_vertices": [
+        609,
+        610
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        217.235,
+        3263.904
+      ],
+      "image_end": [
+        218.842,
+        3103.657
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 141,
+      "building_vertices": [
+        610,
+        611
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        218.842,
+        3103.657
+      ],
+      "image_end": [
+        219.492,
+        2864.806
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 142,
+      "building_vertices": [
+        611,
+        612
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        219.492,
+        2864.806
+      ],
+      "image_end": [
+        457.393,
+        2859.99
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 143,
+      "building_vertices": [
+        612,
+        613
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        457.393,
+        2859.99
+      ],
+      "image_end": [
+        625.213,
+        2857.739
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 144,
+      "building_vertices": [
+        613,
+        614
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        625.213,
+        2857.739
+      ],
+      "image_end": [
+        715.784,
+        2856.941
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 145,
+      "building_vertices": [
+        614,
+        615
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        715.784,
+        2856.941
+      ],
+      "image_end": [
+        769.329,
+        2856.329
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 146,
+      "building_vertices": [
+        615,
+        616
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        769.329,
+        2856.329
+      ],
+      "image_end": [
+        943.838,
+        2851.561
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 147,
+      "building_vertices": [
+        616,
+        617
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        943.838,
+        2851.561
+      ],
+      "image_end": [
+        937.844,
+        2732.38
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 148,
+      "building_vertices": [
+        617,
+        618
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        937.844,
+        2732.38
+      ],
+      "image_end": [
+        936.434,
+        2583.229
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 149,
+      "building_vertices": [
+        618,
+        619
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        936.434,
+        2583.229
+      ],
+      "image_end": [
+        931.85,
+        2432.667
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 150,
+      "building_vertices": [
+        619,
+        620
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        931.85,
+        2432.667
+      ],
+      "image_end": [
+        930.45,
+        2330.289
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 151,
+      "building_vertices": [
+        620,
+        621
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        930.45,
+        2330.289
+      ],
+      "image_end": [
+        928.053,
+        2165.279
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 152,
+      "building_vertices": [
+        621,
+        622
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        928.053,
+        2165.279
+      ],
+      "image_end": [
+        925.657,
+        2020.125
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 153,
+      "building_vertices": [
+        464,
+        624
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        993.075,
+        1838.685
+      ],
+      "image_end": [
+        994.724,
+        1900.83
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 154,
+      "building_vertices": [
+        624,
+        507
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        994.724,
+        1900.83
+      ],
+      "image_end": [
+        986.449,
+        2021.223
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 155,
+      "building_vertices": [
+        622,
+        625
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        925.657,
+        2020.125
+      ],
+      "image_end": [
+        929.004,
+        1900.993
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 156,
+      "building_vertices": [
+        625,
+        623
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        929.004,
+        1900.993
+      ],
+      "image_end": [
+        927.711,
+        1838.408
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 157,
+      "building_vertices": [
+        623,
+        626
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        927.711,
+        1838.408
+      ],
+      "image_end": [
+        924.094,
+        1694.39
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 158,
+      "building_vertices": [
+        626,
+        627
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        924.094,
+        1694.39
+      ],
+      "image_end": [
+        919.227,
+        1550.075
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 159,
+      "building_vertices": [
+        504,
+        628
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        976.048,
+        1279.64
+      ],
+      "image_end": [
+        979.83,
+        1395.016
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 160,
+      "building_vertices": [
+        628,
+        629
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        979.83,
+        1395.016
+      ],
+      "image_end": [
+        979.83,
+        1436.366
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 161,
+      "building_vertices": [
+        629,
+        630
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        979.83,
+        1436.366
+      ],
+      "image_end": [
+        980.538,
+        1482.441
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 162,
+      "building_vertices": [
+        630,
+        505
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        980.538,
+        1482.441
+      ],
+      "image_end": [
+        986.156,
+        1548.904
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 163,
+      "building_vertices": [
+        627,
+        631
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        919.227,
+        1550.075
+      ],
+      "image_end": [
+        921.231,
+        1485.04
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 164,
+      "building_vertices": [
+        631,
+        632
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        921.231,
+        1485.04
+      ],
+      "image_end": [
+        920.286,
+        1437.783
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 165,
+      "building_vertices": [
+        632,
+        633
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        920.286,
+        1437.783
+      ],
+      "image_end": [
+        919.577,
+        1393.834
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 166,
+      "building_vertices": [
+        633,
+        634
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        919.577,
+        1393.834
+      ],
+      "image_end": [
+        919.341,
+        1279
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 167,
+      "building_vertices": [
+        634,
+        635
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        919.341,
+        1279
+      ],
+      "image_end": [
+        918.396,
+        1154.951
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 168,
+      "building_vertices": [
+        635,
+        636
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        918.396,
+        1154.951
+      ],
+      "image_end": [
+        916.581,
+        1045.938
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 169,
+      "building_vertices": [
+        636,
+        637
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        916.581,
+        1045.938
+      ],
+      "image_end": [
+        915.721,
+        1003.612
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 170,
+      "building_vertices": [
+        637,
+        638
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        915.721,
+        1003.612
+      ],
+      "image_end": [
+        915.052,
+        927.161
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 171,
+      "building_vertices": [
+        553,
+        639
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        973.065,
+        925.741
+      ],
+      "image_end": [
+        973.569,
+        999.563
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 172,
+      "building_vertices": [
+        639,
+        502
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        973.569,
+        999.563
+      ],
+      "image_end": [
+        974.869,
+        1043.422
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 173,
+      "building_vertices": [
+        639,
+        640
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        973.569,
+        999.563
+      ],
+      "image_end": [
+        1010.039,
+        1006.567
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 174,
+      "building_vertices": [
+        640,
+        641
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1010.039,
+        1006.567
+      ],
+      "image_end": [
+        1094.09,
+        1002.703
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 175,
+      "building_vertices": [
+        641,
+        642
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1094.09,
+        1002.703
+      ],
+      "image_end": [
+        1207.122,
+        1017.677
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 176,
+      "building_vertices": [
+        642,
+        643
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1207.122,
+        1017.677
+      ],
+      "image_end": [
+        1234.173,
+        1004.393
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 177,
+      "building_vertices": [
+        643,
+        644
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1234.173,
+        1004.393
+      ],
+      "image_end": [
+        1275.956,
+        1003.186
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 178,
+      "building_vertices": [
+        645,
+        646
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1281.738,
+        1201.079
+      ],
+      "image_end": [
+        1285.768,
+        1387.942
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 179,
+      "building_vertices": [
+        646,
+        647
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1285.768,
+        1387.942
+      ],
+      "image_end": [
+        1293.096,
+        1578.837
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 180,
+      "building_vertices": [
+        647,
+        648
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1293.096,
+        1578.837
+      ],
+      "image_end": [
+        1409.245,
+        1575.905
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 181,
+      "building_vertices": [
+        648,
+        488
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1409.245,
+        1575.905
+      ],
+      "image_end": [
+        1411.112,
+        1616.571
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 182,
+      "building_vertices": [
+        648,
+        493
+      ],
+      "endpoint_names": [
+        "",
+        "gd_2"
+      ],
+      "image_start": [
+        1409.245,
+        1575.905
+      ],
+      "image_end": [
+        1477.616,
+        1581.889
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 183,
+      "building_vertices": [
+        644,
+        492
+      ],
+      "endpoint_names": [
+        "",
+        "gd_1"
+      ],
+      "image_start": [
+        1275.956,
+        1003.186
+      ],
+      "image_end": [
+        1310.341,
+        1019.268
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 184,
+      "building_vertices": [
+        548,
+        499
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1399.036,
+        353.331
+      ],
+      "image_end": [
+        1400.308,
+        420.131
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 185,
+      "building_vertices": [
+        644,
+        649
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1275.956,
+        1003.186
+      ],
+      "image_end": [
+        1279.08,
+        1043.394
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 186,
+      "building_vertices": [
+        649,
+        645
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1279.08,
+        1043.394
+      ],
+      "image_end": [
+        1281.738,
+        1201.079
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 187,
+      "building_vertices": [
+        629,
+        632
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        979.83,
+        1436.366
+      ],
+      "image_end": [
+        920.286,
+        1437.783
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 188,
+      "building_vertices": [
+        632,
+        494
+      ],
+      "endpoint_names": [
+        "",
+        "gd_10"
+      ],
+      "image_start": [
+        920.286,
+        1437.783
+      ],
+      "image_end": [
+        887.494,
+        1437.112
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 189,
+      "building_vertices": [
+        559,
+        547
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        910.359,
+        669.832
+      ],
+      "image_end": [
+        964.92,
+        667.58
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 190,
+      "building_vertices": [
+        560,
+        546
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        902.183,
+        520.246
+      ],
+      "image_end": [
+        958.134,
+        519.61
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 191,
+      "building_vertices": [
+        561,
+        545
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        894.613,
+        368.844
+      ],
+      "image_end": [
+        949.752,
+        368.198
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 192,
+      "building_vertices": [
+        562,
+        486
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        888.557,
+        234.096
+      ],
+      "image_end": [
+        946.709,
+        290.637
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 193,
+      "building_vertices": [
+        563,
+        544
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1088.711,
+        220.773
+      ],
+      "image_end": [
+        1092.272,
+        280.967
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 194,
+      "building_vertices": [
+        564,
+        485
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1276.752,
+        213.505
+      ],
+      "image_end": [
+        1278.507,
+        272.526
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 195,
+      "building_vertices": [
+        565,
+        484
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1394.846,
+        211.083
+      ],
+      "image_end": [
+        1393.209,
+        269.507
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 196,
+      "building_vertices": [
+        566,
+        543
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1561.691,
+        206.238
+      ],
+      "image_end": [
+        1562.724,
+        260.136
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 197,
+      "building_vertices": [
+        567,
+        483
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1728.924,
+        200.893
+      ],
+      "image_end": [
+        1731.276,
+        254.415
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 198,
+      "building_vertices": [
+        568,
+        542
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1867.581,
+        195.285
+      ],
+      "image_end": [
+        1869.316,
+        247.775
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 199,
+      "building_vertices": [
+        569,
+        541
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1998.309,
+        192.577
+      ],
+      "image_end": [
+        1999.107,
+        245.106
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 200,
+      "building_vertices": [
+        570,
+        556
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2148.57,
+        186.969
+      ],
+      "image_end": [
+        2089.551,
+        243.416
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 201,
+      "building_vertices": [
+        571,
+        555
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2161.788,
+        347.848
+      ],
+      "image_end": [
+        2096.515,
+        348.751
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 202,
+      "building_vertices": [
+        572,
+        482
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2166.482,
+        411.498
+      ],
+      "image_end": [
+        2099.629,
+        412.347
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 203,
+      "building_vertices": [
+        573,
+        540
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2175.036,
+        530.193
+      ],
+      "image_end": [
+        2108.464,
+        531.266
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 204,
+      "building_vertices": [
+        574,
+        539
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2180.001,
+        663.248
+      ],
+      "image_end": [
+        2114.869,
+        663.726
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 205,
+      "building_vertices": [
+        575,
+        538
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2179.794,
+        794.124
+      ],
+      "image_end": [
+        2117.262,
+        793.593
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 206,
+      "building_vertices": [
+        576,
+        481
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2187.109,
+        945.472
+      ],
+      "image_end": [
+        2119.526,
+        942.936
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 207,
+      "building_vertices": [
+        577,
+        537
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2192.748,
+        1068.446
+      ],
+      "image_end": [
+        2127.457,
+        1067.592
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 208,
+      "building_vertices": [
+        578,
+        536
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2197.312,
+        1195.448
+      ],
+      "image_end": [
+        2131.102,
+        1194.151
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 209,
+      "building_vertices": [
+        579,
+        535
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2199.46,
+        1333.727
+      ],
+      "image_end": [
+        2134.463,
+        1332.004
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 210,
+      "building_vertices": [
+        580,
+        534
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2206.083,
+        1523.663
+      ],
+      "image_end": [
+        2140.939,
+        1523.344
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 211,
+      "building_vertices": [
+        581,
+        533
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2207.348,
+        1676.792
+      ],
+      "image_end": [
+        2145.453,
+        1675.88
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 212,
+      "building_vertices": [
+        582,
+        532
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2212.41,
+        1840.466
+      ],
+      "image_end": [
+        2151.66,
+        1840.828
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 213,
+      "building_vertices": [
+        583,
+        531
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2217.05,
+        1966.175
+      ],
+      "image_end": [
+        2155.61,
+        1965.151
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 214,
+      "building_vertices": [
+        584,
+        480
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2217.05,
+        2074.167
+      ],
+      "image_end": [
+        2154.899,
+        2073.753
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 215,
+      "building_vertices": [
+        585,
+        530
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2222.113,
+        2184.267
+      ],
+      "image_end": [
+        2158.999,
+        2181.02
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 216,
+      "building_vertices": [
+        586,
+        479
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2226.331,
+        2298.586
+      ],
+      "image_end": [
+        2163.514,
+        2297.553
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 217,
+      "building_vertices": [
+        587,
+        529
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2231.59,
+        2427.895
+      ],
+      "image_end": [
+        2171.751,
+        2427.561
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 218,
+      "building_vertices": [
+        588,
+        528
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2239.239,
+        2590.782
+      ],
+      "image_end": [
+        2177.538,
+        2589.893
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 219,
+      "building_vertices": [
+        589,
+        527
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2246.439,
+        2754.119
+      ],
+      "image_end": [
+        2184.621,
+        2751.473
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 220,
+      "building_vertices": [
+        590,
+        526
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2251.388,
+        2930.955
+      ],
+      "image_end": [
+        2188.018,
+        2929.366
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 221,
+      "building_vertices": [
+        591,
+        478
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2251.388,
+        3090.693
+      ],
+      "image_end": [
+        2187.878,
+        3088.208
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 222,
+      "building_vertices": [
+        592,
+        525
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2257.321,
+        3241.544
+      ],
+      "image_end": [
+        2188.847,
+        3237.306
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 223,
+      "building_vertices": [
+        593,
+        477
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2266.058,
+        3434.86
+      ],
+      "image_end": [
+        2199.738,
+        3384.698
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 224,
+      "building_vertices": [
+        594,
+        524
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        2073.288,
+        3482.916
+      ],
+      "image_end": [
+        2059.678,
+        3415.769
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 225,
+      "building_vertices": [
+        595,
+        523
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1904,
+        3511.858
+      ],
+      "image_end": [
+        1896.559,
+        3442.403
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 226,
+      "building_vertices": [
+        596,
+        522
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1745.634,
+        3533.156
+      ],
+      "image_end": [
+        1741.03,
+        3463.517
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 227,
+      "building_vertices": [
+        597,
+        521
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1591.091,
+        3548.446
+      ],
+      "image_end": [
+        1584.018,
+        3484.81
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 228,
+      "building_vertices": [
+        598,
+        476
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1462.397,
+        3559.137
+      ],
+      "image_end": [
+        1456.196,
+        3501.293
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 229,
+      "building_vertices": [
+        599,
+        496
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1391.938,
+        3559.137
+      ],
+      "image_end": [
+        1387.53,
+        3508.239
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 230,
+      "building_vertices": [
+        601,
+        520
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1212.996,
+        3666.223
+      ],
+      "image_end": [
+        1197.927,
+        3612.342
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 231,
+      "building_vertices": [
+        605,
+        606
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        212.678,
+        3712.527
+      ],
+      "image_end": [
+        213.855,
+        3604.987
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 232,
+      "building_vertices": [
+        517,
+        557
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        267.852,
+        3559.069
+      ],
+      "image_end": [
+        267.093,
+        3604.224
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 233,
+      "building_vertices": [
+        557,
+        518
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        267.093,
+        3604.224
+      ],
+      "image_end": [
+        267.548,
+        3653.268
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 234,
+      "building_vertices": [
+        607,
+        517
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        215.105,
+        3558.121
+      ],
+      "image_end": [
+        267.852,
+        3559.069
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 235,
+      "building_vertices": [
+        608,
+        516
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        215.321,
+        3418.756
+      ],
+      "image_end": [
+        265.982,
+        3420.642
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 236,
+      "building_vertices": [
+        609,
+        515
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        217.235,
+        3263.904
+      ],
+      "image_end": [
+        266.044,
+        3265.543
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 237,
+      "building_vertices": [
+        610,
+        514
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        218.842,
+        3103.657
+      ],
+      "image_end": [
+        266.286,
+        3104.957
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 238,
+      "building_vertices": [
+        611,
+        469
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        219.492,
+        2864.806
+      ],
+      "image_end": [
+        268.806,
+        2917.091
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 239,
+      "building_vertices": [
+        612,
+        513
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        457.393,
+        2859.99
+      ],
+      "image_end": [
+        457.009,
+        2908.042
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 240,
+      "building_vertices": [
+        613,
+        512
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        625.213,
+        2857.739
+      ],
+      "image_end": [
+        628.65,
+        2907.75
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 241,
+      "building_vertices": [
+        615,
+        467
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        769.329,
+        2856.329
+      ],
+      "image_end": [
+        768.355,
+        2905.177
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 242,
+      "building_vertices": [
+        616,
+        466
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        943.838,
+        2851.561
+      ],
+      "image_end": [
+        1004.633,
+        2901.387
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 243,
+      "building_vertices": [
+        617,
+        511
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        937.844,
+        2732.38
+      ],
+      "image_end": [
+        995.607,
+        2733.493
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 244,
+      "building_vertices": [
+        618,
+        510
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        936.434,
+        2583.229
+      ],
+      "image_end": [
+        991.842,
+        2584.061
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 245,
+      "building_vertices": [
+        619,
+        509
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        931.85,
+        2432.667
+      ],
+      "image_end": [
+        987.085,
+        2434.827
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 246,
+      "building_vertices": [
+        620,
+        465
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        930.45,
+        2330.289
+      ],
+      "image_end": [
+        992.224,
+        2331.555
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 247,
+      "building_vertices": [
+        621,
+        508
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        928.053,
+        2165.279
+      ],
+      "image_end": [
+        987.198,
+        2165.975
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 248,
+      "building_vertices": [
+        622,
+        507
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        925.657,
+        2020.125
+      ],
+      "image_end": [
+        986.449,
+        2021.223
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 249,
+      "building_vertices": [
+        464,
+        623
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        993.075,
+        1838.685
+      ],
+      "image_end": [
+        927.711,
+        1838.408
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 250,
+      "building_vertices": [
+        623,
+        552
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        927.711,
+        1838.408
+      ],
+      "image_end": [
+        886.275,
+        1838.909
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 251,
+      "building_vertices": [
+        626,
+        506
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        924.094,
+        1694.39
+      ],
+      "image_end": [
+        987.538,
+        1695.403
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 252,
+      "building_vertices": [
+        627,
+        505
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        919.227,
+        1550.075
+      ],
+      "image_end": [
+        986.156,
+        1548.904
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 253,
+      "building_vertices": [
+        634,
+        504
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        919.341,
+        1279
+      ],
+      "image_end": [
+        976.048,
+        1279.64
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 254,
+      "building_vertices": [
+        635,
+        503
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        918.396,
+        1154.951
+      ],
+      "image_end": [
+        976.402,
+        1155.616
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 255,
+      "building_vertices": [
+        636,
+        502
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        916.581,
+        1045.938
+      ],
+      "image_end": [
+        974.869,
+        1043.422
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 256,
+      "building_vertices": [
+        637,
+        639
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        915.721,
+        1003.612
+      ],
+      "image_end": [
+        973.569,
+        999.563
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 257,
+      "building_vertices": [
+        638,
+        553
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        915.052,
+        927.161
+      ],
+      "image_end": [
+        973.065,
+        925.741
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 258,
+      "building_vertices": [
+        638,
+        650
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        915.052,
+        927.161
+      ],
+      "image_end": [
+        914.649,
+        863.925
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 259,
+      "building_vertices": [
+        650,
+        554
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        914.649,
+        863.925
+      ],
+      "image_end": [
+        914.622,
+        811.243
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 260,
+      "building_vertices": [
+        501,
+        651
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        969.399,
+        809.999
+      ],
+      "image_end": [
+        969.834,
+        861.748
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 261,
+      "building_vertices": [
+        651,
+        553
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        969.834,
+        861.748
+      ],
+      "image_end": [
+        973.065,
+        925.741
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 262,
+      "building_vertices": [
+        460,
+        650
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        812.438,
+        817.847
+      ],
+      "image_end": [
+        914.649,
+        863.925
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 263,
+      "building_vertices": [
+        650,
+        651
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        914.649,
+        863.925
+      ],
+      "image_end": [
+        969.834,
+        861.748
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 264,
+      "building_vertices": [
+        489,
+        647
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1254.2,
+        1621.375
+      ],
+      "image_end": [
+        1293.096,
+        1578.837
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 265,
+      "building_vertices": [
+        549,
+        646
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1244.054,
+        1389.091
+      ],
+      "image_end": [
+        1285.768,
+        1387.942
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 266,
+      "building_vertices": [
+        550,
+        645
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1239.056,
+        1200.767
+      ],
+      "image_end": [
+        1281.738,
+        1201.079
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 267,
+      "building_vertices": [
+        490,
+        649
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1233.82,
+        1043.268
+      ],
+      "image_end": [
+        1279.08,
+        1043.394
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 268,
+      "building_vertices": [
+        490,
+        643
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        1233.82,
+        1043.268
+      ],
+      "image_end": [
+        1234.173,
+        1004.393
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 269,
+      "building_vertices": [
+        452,
+        652
+      ],
+      "endpoint_names": [
+        "ws_p0",
+        ""
+      ],
+      "image_start": [
+        439.763,
+        393.846
+      ],
+      "image_end": [
+        456.308,
+        552.085
+      ],
+      "reference_unknown_cells_cleared": 3233,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 270,
+      "building_vertices": [
+        652,
+        457
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        456.308,
+        552.085
+      ],
+      "image_end": [
+        468.464,
+        633.738
+      ],
+      "reference_unknown_cells_cleared": 1878,
+      "reference_occupied_cells_cleared": 1,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          466,
+          570
+        ],
+        "metric_xy": [
+          23.02623439199903,
+          -28.165136488067482
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 271,
+      "building_vertices": [
+        457,
+        653
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        468.464,
+        633.738
+      ],
+      "image_end": [
+        507.501,
+        633.646
+      ],
+      "reference_unknown_cells_cleared": 1121,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 272,
+      "building_vertices": [
+        652,
+        654
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        456.308,
+        552.085
+      ],
+      "image_end": [
+        505.187,
+        551.796
+      ],
+      "reference_unknown_cells_cleared": 1254,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 273,
+      "building_vertices": [
+        654,
+        653
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        505.187,
+        551.796
+      ],
+      "image_end": [
+        507.501,
+        633.646
+      ],
+      "reference_unknown_cells_cleared": 1835,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 274,
+      "building_vertices": [
+        656,
+        657
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        573.18,
+        344.203
+      ],
+      "image_end": [
+        578.303,
+        537.485
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 275,
+      "building_vertices": [
+        658,
+        659
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        585.37,
+        692.584
+      ],
+      "image_end": [
+        591.172,
+        797.899
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 276,
+      "building_vertices": [
+        659,
+        660
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        591.172,
+        797.899
+      ],
+      "image_end": [
+        591.39,
+        819.229
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 277,
+      "building_vertices": [
+        660,
+        661
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        591.39,
+        819.229
+      ],
+      "image_end": [
+        592.043,
+        842.3
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 278,
+      "building_vertices": [
+        661,
+        463
+      ],
+      "endpoint_names": [
+        "",
+        "lab_0"
+      ],
+      "image_start": [
+        592.043,
+        842.3
+      ],
+      "image_end": [
+        590.671,
+        878.434
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 279,
+      "building_vertices": [
+        657,
+        662
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        578.303,
+        537.485
+      ],
+      "image_end": [
+        581.459,
+        629.793
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 280,
+      "building_vertices": [
+        662,
+        658
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        581.459,
+        629.793
+      ],
+      "image_end": [
+        585.37,
+        692.584
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 281,
+      "building_vertices": [
+        450,
+        660
+      ],
+      "endpoint_names": [
+        "lab_bengkel2",
+        ""
+      ],
+      "image_start": [
+        522.377,
+        818.992
+      ],
+      "image_end": [
+        591.39,
+        819.229
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 7,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          563,
+          813
+        ],
+        "metric_xy": [
+          27.819248846985953,
+          -40.17237888561204
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 282,
+      "building_vertices": [
+        658,
+        449
+      ],
+      "endpoint_names": [
+        "",
+        "husky_1"
+      ],
+      "image_start": [
+        585.37,
+        692.584
+      ],
+      "image_end": [
+        663.154,
+        690.208
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 283,
+      "building_vertices": [
+        662,
+        653
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        581.459,
+        629.793
+      ],
+      "image_end": [
+        507.501,
+        633.646
+      ],
+      "reference_unknown_cells_cleared": 870,
+      "reference_occupied_cells_cleared": 37,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          551,
+          623
+        ],
+        "metric_xy": [
+          27.2262986051319,
+          -30.784000056256215
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 284,
+      "building_vertices": [
+        657,
+        447
+      ],
+      "endpoint_names": [
+        "",
+        "lab_dinamika"
+      ],
+      "image_start": [
+        578.303,
+        537.485
+      ],
+      "image_end": [
+        653.761,
+        537.44
+      ],
+      "reference_unknown_cells_cleared": 998,
+      "reference_occupied_cells_cleared": 35,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          609,
+          529
+        ],
+        "metric_xy": [
+          30.092224774093154,
+          -26.139223161732804
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 285,
+      "building_vertices": [
+        656,
+        448
+      ],
+      "endpoint_names": [
+        "",
+        "lab_bengkel"
+      ],
+      "image_start": [
+        573.18,
+        344.203
+      ],
+      "image_end": [
+        643.444,
+        340.722
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 27,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          604,
+          334
+        ],
+        "metric_xy": [
+          29.84516217332063,
+          -16.503781731604455
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 286,
+      "building_vertices": [
+        445,
+        655
+      ],
+      "endpoint_names": [
+        "pantry",
+        ""
+      ],
+      "image_start": [
+        499.49,
+        209.883
+      ],
+      "image_end": [
+        567.664,
+        208.847
+      ],
+      "reference_unknown_cells_cleared": 859,
+      "reference_occupied_cells_cleared": 27,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          538,
+          201
+        ],
+        "metric_xy": [
+          26.583935843123342,
+          -9.931916551055375
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 287,
+      "building_vertices": [
+        655,
+        656
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        567.664,
+        208.847
+      ],
+      "image_end": [
+        573.18,
+        344.203
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 288,
+      "building_vertices": [
+        660,
+        663
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        591.39,
+        819.229
+      ],
+      "image_end": [
+        700.27,
+        812.425
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 289,
+      "building_vertices": [
+        663,
+        664
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        700.27,
+        812.425
+      ],
+      "image_end": [
+        740.867,
+        810.656
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 290,
+      "building_vertices": [
+        664,
+        458
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        740.867,
+        810.656
+      ],
+      "image_end": [
+        815.415,
+        794.027
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 291,
+      "building_vertices": [
+        664,
+        460
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        740.867,
+        810.656
+      ],
+      "image_end": [
+        812.438,
+        817.847
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 292,
+      "building_vertices": [
+        663,
+        461
+      ],
+      "endpoint_names": [
+        "",
+        "dpn_ws1"
+      ],
+      "image_start": [
+        700.27,
+        812.425
+      ],
+      "image_end": [
+        699.805,
+        775.982
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 293,
+      "building_vertices": [
+        663,
+        462
+      ],
+      "endpoint_names": [
+        "",
+        "dpn_ws2"
+      ],
+      "image_start": [
+        700.27,
+        812.425
+      ],
+      "image_end": [
+        701.975,
+        845.125
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    }
+  ],
+  "required_waypoints": {
+    "husky_0": {
+      "building_vertex_index": 453,
+      "pixel_xy": [
+        432.671,
+        663.338
+      ],
+      "metric_xy": [
+        21.379364507769555,
+        -32.77720229424861
+      ],
+      "incident_lane_indexes": [
+        0
+      ],
+      "accepted": true
+    },
+    "husky_1": {
+      "building_vertex_index": 449,
+      "pixel_xy": [
+        663.154,
+        690.208
+      ],
+      "metric_xy": [
+        32.76811039054018,
+        -34.10491671080014
+      ],
+      "incident_lane_indexes": [
+        282
+      ],
+      "accepted": true
+    },
+    "pantry": {
+      "building_vertex_index": 445,
+      "pixel_xy": [
+        499.49,
+        209.883
+      ],
+      "metric_xy": [
+        24.68105969197338,
+        -10.370847967587839
+      ],
+      "incident_lane_indexes": [
+        286
+      ],
+      "accepted": true
+    },
+    "lab_bengkel": {
+      "building_vertex_index": 448,
+      "pixel_xy": [
+        643.444,
+        340.722
+      ],
+      "metric_xy": [
+        31.794189618294897,
+        -16.83593269208303
+      ],
+      "incident_lane_indexes": [
+        285
+      ],
+      "accepted": true
+    },
+    "lab_bengkel2": {
+      "building_vertex_index": 450,
+      "pixel_xy": [
+        522.377,
+        818.992
+      ],
+      "metric_xy": [
+        25.81196404074952,
+        -40.46845870637783
+      ],
+      "incident_lane_indexes": [
+        281
+      ],
+      "accepted": true
+    },
+    "lab_dinamika": {
+      "building_vertex_index": 447,
+      "pixel_xy": [
+        653.761,
+        537.44
+      ],
+      "metric_xy": [
+        32.30397858872892,
+        -26.556264831836824
+      ],
+      "incident_lane_indexes": [
+        284
+      ],
+      "accepted": true
+    }
+  },
+  "missing_waypoints": [],
+  "reachability": {
+    "reachable_required_waypoints": {
+      "lab_dinamika": [
+        "husky_0",
+        "husky_1",
+        "pantry",
+        "lab_bengkel",
+        "lab_bengkel2",
+        "lab_dinamika"
+      ],
+      "lab_bengkel": [
+        "husky_0",
+        "husky_1",
+        "pantry",
+        "lab_bengkel",
+        "lab_bengkel2",
+        "lab_dinamika"
+      ],
+      "husky_1": [
+        "husky_0",
+        "husky_1",
+        "pantry",
+        "lab_bengkel",
+        "lab_bengkel2",
+        "lab_dinamika"
+      ],
+      "lab_bengkel2": [
+        "husky_0",
+        "husky_1",
+        "pantry",
+        "lab_bengkel",
+        "lab_bengkel2",
+        "lab_dinamika"
+      ],
+      "husky_0": [
+        "husky_0",
+        "husky_1",
+        "pantry",
+        "lab_bengkel",
+        "lab_bengkel2",
+        "lab_dinamika"
+      ],
+      "dpn_ws1": [
+        "husky_0",
+        "husky_1",
+        "pantry",
+        "lab_bengkel",
+        "lab_bengkel2",
+        "lab_dinamika"
+      ],
+      "dpn_ws2": [
+        "husky_0",
+        "husky_1",
+        "pantry",
+        "lab_bengkel",
+        "lab_bengkel2",
+        "lab_dinamika"
+      ]
+    },
+    "accepted": true
+  },
+  "accepted": true,
+  "policy_file": "nav2_occupancy_policy.yaml",
+  "policy_sha256": "652d1b2622d149b66aaaf076165463618f0125a62dae6e6e5ff305b2162711b8",
+  "authority": {
+    "reference_image": "visual_reference",
+    "traffic_editor_walls": "structural_obstacles",
+    "traffic_editor_doors": "traversable_when_open"
+  },
+  "source_sha256": "c4c34396901f8830d79c363f65248ed427a307a4535f0556a21da338257f6c32",
+  "building_sha256": "a10488640c8e4b1b702baf09e0ad71e36ca1f628e515797c4f8dc89f377fa0dc",
+  "dimensions": [
+    2357,
+    3843
+  ],
+  "resolution": 0.049412520154504355,
+  "footprint": [
+    [
+      -0.55,
+      -0.38
+    ],
+    [
+      -0.55,
+      0.38
+    ],
+    [
+      0.55,
+      0.38
+    ],
+    [
+      0.55,
+      -0.38
+    ]
+  ],
+  "footprint_padding_m": 0.02,
+  "additional_margin_m": 0.0,
+  "source_image": "brin_0.png",
+  "derived_image": "brin_0_nav2.png",
+  "correction_mask": "brin_0_nav2_corrections.png",
+  "promoted": true,
+  "derived_sha256": "aea9ef30fe8622bc5c6f89fafff6b97f331ca36c4362defcf628f959fa03cb3c",
+  "correction_mask_sha256": "c73927fcee5d42f754b267ae841e0c638bbd1b3125f9cafdb32e2a3fee9b1183",
+  "alignment_errors_m": {
+    "husky_0": 2.842170943040401e-14,
+    "husky_1": 1.4210854715202004e-14,
+    "pantry": 1.7763568394002505e-14,
+    "lab_bengkel": 1.0658141036401503e-14,
+    "lab_bengkel2": 1.4210854715202004e-14,
+    "lab_dinamika": 1.0658141036401503e-14
+  }
+}

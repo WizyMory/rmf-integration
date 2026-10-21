@@ -1,0 +1,18 @@
+version: 1
+authority:
+  reference_image: visual_reference
+  traffic_editor_walls: structural_obstacles
+  traffic_editor_doors: traversable_when_open
+fleet_graph_index: 1
+clearance:
+  # The Nav2 footprint itself is 1.10 x 0.76 m. footprint_padding from the
+  # Nav2 configuration is added independently by the generator.
+  additional_margin_m: 0.0
+  wall_thickness_m: 0.05
+known_areas:
+  # User-approved free-space override for the real husky_0 deployment area.
+  # The polygon and waypoint positions come directly from Traffic Editor.
+  - name: husky_0_ws_p0
+    building: banyak_simpangan.building.yaml
+    floor_polygon_index: 29
+    required_waypoints: [husky_0, ws_p0]

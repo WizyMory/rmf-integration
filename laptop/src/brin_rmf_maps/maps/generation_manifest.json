@@ -1,0 +1,34 @@
+{
+  "graph": "1.yaml",
+  "world": "brin",
+  "level": "L1",
+  "doors": "open; door events removed only in simulation.yaml",
+  "simulation_models": {
+    "source": "banyak_simpangan.building.yaml",
+    "count": 7,
+    "names": [
+      "OpenRobotics/CGMClassic",
+      "OpenRobotics/CGMClassic",
+      "OpenRobotics/Chair",
+      "OpenRobotics/Chair",
+      "OpenRobotics/Chair",
+      "OpenRobotics/Chair",
+      "OpenRobotics/Chair"
+    ]
+  },
+  "alignment_errors_m": {
+    "husky_0": 2.842170943040401e-14,
+    "husky_1": 1.4210854715202004e-14,
+    "pantry": 1.7763568394002505e-14,
+    "lab_bengkel": 1.0658141036401503e-14,
+    "lab_bengkel2": 1.4210854715202004e-14,
+    "lab_dinamika": 1.0658141036401503e-14
+  },
+  "sources": {
+    "brin_0.building.yaml": "a10488640c8e4b1b702baf09e0ad71e36ca1f628e515797c4f8dc89f377fa0dc",
+    "brin_0.png": "c4c34396901f8830d79c363f65248ed427a307a4535f0556a21da338257f6c32",
+    "banyak_simpangan.building.yaml": "723e24aa3dd6dad79bb9aa416a39f4c1535151bebc7d8bed5341e4d1b4b11503",
+    "CGMClassic/model.sdf": "653cd2b358fdaad78d2cb46b9755812252c3e440625b8bfc31f78c134ce90ae1",
+    "Chair/model.sdf": "c55514703c400326b3d08cc29e3a33fc87b7f443ad640731e883a23093e78fc4"
+  }
+}

@@ -1,0 +1,2507 @@
+building_name: brin_0
+levels:
+  L1:
+    lanes:
+    - - 0
+      - 1
+      - speed_limit: 0
+    - - 1
+      - 0
+      - speed_limit: 0
+    - - 2
+      - 3
+      - speed_limit: 0
+    - - 3
+      - 2
+      - speed_limit: 0
+    - - 4
+      - 5
+      - speed_limit: 0
+    - - 5
+      - 4
+      - speed_limit: 0
+    - - 6
+      - 7
+      - speed_limit: 0
+    - - 7
+      - 6
+      - speed_limit: 0
+    - - 7
+      - 8
+      - speed_limit: 0
+    - - 8
+      - 7
+      - speed_limit: 0
+    - - 9
+      - 6
+      - speed_limit: 0
+    - - 6
+      - 9
+      - speed_limit: 0
+    - - 10
+      - 11
+      - speed_limit: 0
+    - - 11
+      - 10
+      - speed_limit: 0
+    - - 12
+      - 13
+      - speed_limit: 0
+    - - 13
+      - 12
+      - speed_limit: 0
+    - - 14
+      - 15
+      - speed_limit: 0
+    - - 15
+      - 14
+      - speed_limit: 0
+    - - 15
+      - 16
+      - speed_limit: 0
+    - - 16
+      - 15
+      - speed_limit: 0
+    - - 17
+      - 18
+      - speed_limit: 0
+    - - 18
+      - 17
+      - speed_limit: 0
+    - - 18
+      - 19
+      - speed_limit: 0
+    - - 19
+      - 18
+      - speed_limit: 0
+    - - 20
+      - 21
+      - speed_limit: 0
+    - - 21
+      - 20
+      - speed_limit: 0
+    - - 21
+      - 22
+      - speed_limit: 0
+    - - 22
+      - 21
+      - speed_limit: 0
+    - - 22
+      - 23
+      - speed_limit: 0
+    - - 23
+      - 22
+      - speed_limit: 0
+    - - 23
+      - 24
+      - speed_limit: 0
+    - - 24
+      - 23
+      - speed_limit: 0
+    - - 24
+      - 25
+      - speed_limit: 0
+    - - 25
+      - 24
+      - speed_limit: 0
+    - - 25
+      - 26
+      - speed_limit: 0
+    - - 26
+      - 25
+      - speed_limit: 0
+    - - 26
+      - 4
+      - speed_limit: 0
+    - - 4
+      - 26
+      - speed_limit: 0
+    - - 27
+      - 28
+      - speed_limit: 0
+    - - 28
+      - 27
+      - speed_limit: 0
+    - - 28
+      - 29
+      - speed_limit: 0
+    - - 29
+      - 28
+      - speed_limit: 0
+    - - 29
+      - 30
+      - speed_limit: 0
+    - - 30
+      - 29
+      - speed_limit: 0
+    - - 30
+      - 31
+      - speed_limit: 0
+    - - 31
+      - 30
+      - speed_limit: 0
+    - - 31
+      - 32
+      - speed_limit: 0
+    - - 32
+      - 31
+      - speed_limit: 0
+    - - 32
+      - 33
+      - speed_limit: 0
+    - - 33
+      - 32
+      - speed_limit: 0
+    - - 34
+      - 9
+      - speed_limit: 0
+    - - 9
+      - 34
+      - speed_limit: 0
+    - - 33
+      - 35
+      - speed_limit: 0
+    - - 35
+      - 33
+      - speed_limit: 0
+    - - 36
+      - 37
+      - speed_limit: 0
+    - - 37
+      - 36
+      - speed_limit: 0
+    - - 7
+      - 36
+      - speed_limit: 0
+    - - 36
+      - 7
+      - speed_limit: 0
+    - - 37
+      - 38
+      - speed_limit: 0
+    - - 38
+      - 37
+      - speed_limit: 0
+    - - 38
+      - 39
+      - speed_limit: 0
+    - - 39
+      - 38
+      - speed_limit: 0
+    - - 39
+      - 40
+      - speed_limit: 0
+    - - 40
+      - 39
+      - speed_limit: 0
+    - - 41
+      - 42
+      - speed_limit: 0
+    - - 42
+      - 41
+      - speed_limit: 0
+    - - 42
+      - 43
+      - speed_limit: 0
+    - - 43
+      - 42
+      - speed_limit: 0
+    - - 43
+      - 44
+      - speed_limit: 0
+    - - 44
+      - 43
+      - speed_limit: 0
+    - - 44
+      - 45
+      - speed_limit: 0
+    - - 45
+      - 44
+      - speed_limit: 0
+    - - 45
+      - 46
+      - speed_limit: 0
+    - - 46
+      - 45
+      - speed_limit: 0
+    - - 46
+      - 47
+      - speed_limit: 0
+    - - 47
+      - 46
+      - speed_limit: 0
+    - - 47
+      - 48
+      - speed_limit: 0
+    - - 48
+      - 47
+      - speed_limit: 0
+    - - 48
+      - 49
+      - speed_limit: 0
+    - - 49
+      - 48
+      - speed_limit: 0
+    - - 49
+      - 50
+      - speed_limit: 0
+    - - 50
+      - 49
+      - speed_limit: 0
+    - - 50
+      - 51
+      - speed_limit: 0
+    - - 51
+      - 50
+      - speed_limit: 0
+    - - 51
+      - 52
+      - speed_limit: 0
+    - - 52
+      - 51
+      - speed_limit: 0
+    - - 52
+      - 53
+      - speed_limit: 0
+    - - 53
+      - 52
+      - speed_limit: 0
+    - - 53
+      - 54
+      - speed_limit: 0
+    - - 54
+      - 53
+      - speed_limit: 0
+    - - 54
+      - 55
+      - speed_limit: 0
+    - - 55
+      - 54
+      - speed_limit: 0
+    - - 55
+      - 56
+      - speed_limit: 0
+    - - 56
+      - 55
+      - speed_limit: 0
+    - - 56
+      - 57
+      - speed_limit: 0
+    - - 57
+      - 56
+      - speed_limit: 0
+    - - 57
+      - 58
+      - speed_limit: 0
+    - - 58
+      - 57
+      - speed_limit: 0
+    - - 58
+      - 59
+      - speed_limit: 0
+    - - 59
+      - 58
+      - speed_limit: 0
+    - - 59
+      - 60
+      - speed_limit: 0
+    - - 60
+      - 59
+      - speed_limit: 0
+    - - 60
+      - 61
+      - speed_limit: 0
+    - - 61
+      - 60
+      - speed_limit: 0
+    - - 61
+      - 62
+      - speed_limit: 0
+    - - 62
+      - 61
+      - speed_limit: 0
+    - - 62
+      - 63
+      - speed_limit: 0
+    - - 63
+      - 62
+      - speed_limit: 0
+    - - 63
+      - 64
+      - speed_limit: 0
+    - - 64
+      - 63
+      - speed_limit: 0
+    - - 64
+      - 65
+      - speed_limit: 0
+    - - 65
+      - 64
+      - speed_limit: 0
+    - - 65
+      - 66
+      - speed_limit: 0
+    - - 66
+      - 65
+      - speed_limit: 0
+    - - 66
+      - 10
+      - speed_limit: 0
+    - - 10
+      - 66
+      - speed_limit: 0
+    - - 67
+      - 68
+      - speed_limit: 0
+    - - 68
+      - 67
+      - speed_limit: 0
+    - - 68
+      - 69
+      - speed_limit: 0
+    - - 69
+      - 68
+      - speed_limit: 0
+    - - 69
+      - 70
+      - speed_limit: 0
+    - - 70
+      - 69
+      - speed_limit: 0
+    - - 70
+      - 71
+      - speed_limit: 0
+    - - 71
+      - 70
+      - speed_limit: 0
+    - - 71
+      - 72
+      - speed_limit: 0
+    - - 72
+      - 71
+      - speed_limit: 0
+    - - 72
+      - 73
+      - speed_limit: 0
+    - - 73
+      - 72
+      - speed_limit: 0
+    - - 73
+      - 74
+      - speed_limit: 0
+    - - 74
+      - 73
+      - speed_limit: 0
+    - - 74
+      - 75
+      - speed_limit: 0
+    - - 75
+      - 74
+      - speed_limit: 0
+    - - 75
+      - 76
+      - speed_limit: 0
+    - - 76
+      - 75
+      - speed_limit: 0
+    - - 76
+      - 77
+      - speed_limit: 0
+    - - 77
+      - 76
+      - speed_limit: 0
+    - - 77
+      - 78
+      - speed_limit: 0
+    - - 78
+      - 77
+      - speed_limit: 0
+    - - 72
+      - 79
+      - speed_limit: 0
+    - - 79
+      - 72
+      - speed_limit: 0
+    - - 79
+      - 12
+      - speed_limit: 0
+    - - 12
+      - 79
+      - speed_limit: 0
+    - - 80
+      - 71
+      - speed_limit: 0
+    - - 71
+      - 80
+      - speed_limit: 0
+    - - 81
+      - 82
+      - speed_limit: 0
+    - - 82
+      - 81
+      - speed_limit: 0
+    - - 82
+      - 83
+      - speed_limit: 0
+    - - 83
+      - 82
+      - speed_limit: 0
+    - - 83
+      - 84
+      - speed_limit: 0
+    - - 84
+      - 83
+      - speed_limit: 0
+    - - 84
+      - 85
+      - speed_limit: 0
+    - - 85
+      - 84
+      - speed_limit: 0
+    - - 85
+      - 86
+      - speed_limit: 0
+    - - 86
+      - 85
+      - speed_limit: 0
+    - - 86
+      - 87
+      - speed_limit: 0
+    - - 87
+      - 86
+      - speed_limit: 0
+    - - 87
+      - 14
+      - speed_limit: 0
+    - - 14
+      - 87
+      - speed_limit: 0
+    - - 88
+      - 89
+      - speed_limit: 0
+    - - 89
+      - 88
+      - speed_limit: 0
+    - - 40
+      - 41
+      - speed_limit: 0
+    - - 41
+      - 40
+      - speed_limit: 0
+    - - 3
+      - 90
+      - speed_limit: 0
+    - - 90
+      - 3
+      - speed_limit: 0
+    - - 90
+      - 78
+      - speed_limit: 0
+    - - 78
+      - 90
+      - speed_limit: 0
+    - - 10
+      - 91
+      - speed_limit: 0
+    - - 91
+      - 10
+      - speed_limit: 0
+    - - 67
+      - 92
+      - speed_limit: 0
+    - - 92
+      - 67
+      - speed_limit: 0
+    - - 92
+      - 91
+      - speed_limit: 0
+    - - 91
+      - 92
+      - speed_limit: 0
+    - - 4
+      - 93
+      - speed_limit: 0
+    - - 93
+      - 4
+      - speed_limit: 0
+    - - 93
+      - 27
+      - speed_limit: 0
+    - - 27
+      - 93
+      - speed_limit: 0
+    - - 90
+      - 94
+      - speed_limit: 0
+    - - 94
+      - 90
+      - speed_limit: 0
+    - - 94
+      - 95
+      - speed_limit: 0
+    - - 95
+      - 94
+      - speed_limit: 0
+    - - 95
+      - 96
+      - speed_limit: 0
+    - - 96
+      - 95
+      - speed_limit: 0
+    - - 96
+      - 97
+      - speed_limit: 0
+    - - 97
+      - 96
+      - speed_limit: 0
+    - - 97
+      - 98
+      - speed_limit: 0
+    - - 98
+      - 97
+      - speed_limit: 0
+    - - 98
+      - 99
+      - speed_limit: 0
+    - - 99
+      - 98
+      - speed_limit: 0
+    - - 99
+      - 100
+      - speed_limit: 0
+    - - 100
+      - 99
+      - speed_limit: 0
+    - - 100
+      - 101
+      - speed_limit: 0
+    - - 101
+      - 100
+      - speed_limit: 0
+    - - 101
+      - 102
+      - speed_limit: 0
+    - - 102
+      - 101
+      - speed_limit: 0
+    - - 102
+      - 103
+      - speed_limit: 0
+    - - 103
+      - 102
+      - speed_limit: 0
+    - - 103
+      - 104
+      - speed_limit: 0
+    - - 104
+      - 103
+      - speed_limit: 0
+    - - 104
+      - 105
+      - speed_limit: 0
+    - - 105
+      - 104
+      - speed_limit: 0
+    - - 105
+      - 106
+      - speed_limit: 0
+    - - 106
+      - 105
+      - speed_limit: 0
+    - - 106
+      - 107
+      - speed_limit: 0
+    - - 107
+      - 106
+      - speed_limit: 0
+    - - 107
+      - 108
+      - speed_limit: 0
+    - - 108
+      - 107
+      - speed_limit: 0
+    - - 108
+      - 109
+      - speed_limit: 0
+    - - 109
+      - 108
+      - speed_limit: 0
+    - - 109
+      - 110
+      - speed_limit: 0
+    - - 110
+      - 109
+      - speed_limit: 0
+    - - 110
+      - 111
+      - speed_limit: 0
+    - - 111
+      - 110
+      - speed_limit: 0
+    - - 111
+      - 112
+      - speed_limit: 0
+    - - 112
+      - 111
+      - speed_limit: 0
+    - - 112
+      - 113
+      - speed_limit: 0
+    - - 113
+      - 112
+      - speed_limit: 0
+    - - 113
+      - 114
+      - speed_limit: 0
+    - - 114
+      - 113
+      - speed_limit: 0
+    - - 114
+      - 115
+      - speed_limit: 0
+    - - 115
+      - 114
+      - speed_limit: 0
+    - - 115
+      - 116
+      - speed_limit: 0
+    - - 116
+      - 115
+      - speed_limit: 0
+    - - 116
+      - 117
+      - speed_limit: 0
+    - - 117
+      - 116
+      - speed_limit: 0
+    - - 117
+      - 118
+      - speed_limit: 0
+    - - 118
+      - 117
+      - speed_limit: 0
+    - - 118
+      - 119
+      - speed_limit: 0
+    - - 119
+      - 118
+      - speed_limit: 0
+    - - 119
+      - 120
+      - speed_limit: 0
+    - - 120
+      - 119
+      - speed_limit: 0
+    - - 120
+      - 121
+      - speed_limit: 0
+    - - 121
+      - 120
+      - speed_limit: 0
+    - - 121
+      - 122
+      - speed_limit: 0
+    - - 122
+      - 121
+      - speed_limit: 0
+    - - 122
+      - 123
+      - speed_limit: 0
+    - - 123
+      - 122
+      - speed_limit: 0
+    - - 123
+      - 124
+      - speed_limit: 0
+    - - 124
+      - 123
+      - speed_limit: 0
+    - - 124
+      - 125
+      - speed_limit: 0
+    - - 125
+      - 124
+      - speed_limit: 0
+    - - 125
+      - 126
+      - speed_limit: 0
+    - - 126
+      - 125
+      - speed_limit: 0
+    - - 126
+      - 127
+      - speed_limit: 0
+    - - 127
+      - 126
+      - speed_limit: 0
+    - - 127
+      - 128
+      - speed_limit: 0
+    - - 128
+      - 127
+      - speed_limit: 0
+    - - 128
+      - 129
+      - speed_limit: 0
+    - - 129
+      - 128
+      - speed_limit: 0
+    - - 129
+      - 130
+      - speed_limit: 0
+    - - 130
+      - 129
+      - speed_limit: 0
+    - - 130
+      - 131
+      - speed_limit: 0
+    - - 131
+      - 130
+      - speed_limit: 0
+    - - 131
+      - 132
+      - speed_limit: 0
+    - - 132
+      - 131
+      - speed_limit: 0
+    - - 132
+      - 133
+      - speed_limit: 0
+    - - 133
+      - 132
+      - speed_limit: 0
+    - - 133
+      - 134
+      - speed_limit: 0
+    - - 134
+      - 133
+      - speed_limit: 0
+    - - 134
+      - 135
+      - speed_limit: 0
+    - - 135
+      - 134
+      - speed_limit: 0
+    - - 135
+      - 136
+      - speed_limit: 0
+    - - 136
+      - 135
+      - speed_limit: 0
+    - - 136
+      - 137
+      - speed_limit: 0
+    - - 137
+      - 136
+      - speed_limit: 0
+    - - 137
+      - 37
+      - speed_limit: 0
+    - - 37
+      - 137
+      - speed_limit: 0
+    - - 135
+      - 138
+      - speed_limit: 0
+    - - 138
+      - 135
+      - speed_limit: 0
+    - - 135
+      - 39
+      - speed_limit: 0
+    - - 39
+      - 135
+      - speed_limit: 0
+    - - 9
+      - 139
+      - speed_limit: 0
+    - - 139
+      - 9
+      - speed_limit: 0
+    - - 139
+      - 140
+      - speed_limit: 0
+    - - 140
+      - 139
+      - speed_limit: 0
+    - - 141
+      - 142
+      - speed_limit: 0
+    - - 142
+      - 141
+      - speed_limit: 0
+    - - 142
+      - 143
+      - speed_limit: 0
+    - - 143
+      - 142
+      - speed_limit: 0
+    - - 143
+      - 144
+      - speed_limit: 0
+    - - 144
+      - 143
+      - speed_limit: 0
+    - - 144
+      - 145
+      - speed_limit: 0
+    - - 145
+      - 144
+      - speed_limit: 0
+    - - 145
+      - 146
+      - speed_limit: 0
+    - - 146
+      - 145
+      - speed_limit: 0
+    - - 146
+      - 147
+      - speed_limit: 0
+    - - 147
+      - 146
+      - speed_limit: 0
+    - - 147
+      - 148
+      - speed_limit: 0
+    - - 148
+      - 147
+      - speed_limit: 0
+    - - 148
+      - 149
+      - speed_limit: 0
+    - - 149
+      - 148
+      - speed_limit: 0
+    - - 149
+      - 150
+      - speed_limit: 0
+    - - 150
+      - 149
+      - speed_limit: 0
+    - - 150
+      - 151
+      - speed_limit: 0
+    - - 151
+      - 150
+      - speed_limit: 0
+    - - 151
+      - 152
+      - speed_limit: 0
+    - - 152
+      - 151
+      - speed_limit: 0
+    - - 152
+      - 153
+      - speed_limit: 0
+    - - 153
+      - 152
+      - speed_limit: 0
+    - - 153
+      - 154
+      - speed_limit: 0
+    - - 154
+      - 153
+      - speed_limit: 0
+    - - 154
+      - 155
+      - speed_limit: 0
+    - - 155
+      - 154
+      - speed_limit: 0
+    - - 155
+      - 156
+      - speed_limit: 0
+    - - 156
+      - 155
+      - speed_limit: 0
+    - - 156
+      - 157
+      - speed_limit: 0
+    - - 157
+      - 156
+      - speed_limit: 0
+    - - 19
+      - 158
+      - speed_limit: 0
+    - - 158
+      - 19
+      - speed_limit: 0
+    - - 158
+      - 20
+      - speed_limit: 0
+    - - 20
+      - 158
+      - speed_limit: 0
+    - - 157
+      - 159
+      - speed_limit: 0
+    - - 159
+      - 157
+      - speed_limit: 0
+    - - 159
+      - 160
+      - speed_limit: 0
+    - - 160
+      - 159
+      - speed_limit: 0
+    - - 160
+      - 161
+      - speed_limit: 0
+    - - 161
+      - 160
+      - speed_limit: 0
+    - - 161
+      - 162
+      - speed_limit: 0
+    - - 162
+      - 161
+      - speed_limit: 0
+    - - 16
+      - 163
+      - speed_limit: 0
+    - - 163
+      - 16
+      - speed_limit: 0
+    - - 163
+      - 164
+      - speed_limit: 0
+    - - 164
+      - 163
+      - speed_limit: 0
+    - - 164
+      - 165
+      - speed_limit: 0
+    - - 165
+      - 164
+      - speed_limit: 0
+    - - 165
+      - 17
+      - speed_limit: 0
+    - - 17
+      - 165
+      - speed_limit: 0
+    - - 162
+      - 166
+      - speed_limit: 0
+    - - 166
+      - 162
+      - speed_limit: 0
+    - - 166
+      - 167
+      - speed_limit: 0
+    - - 167
+      - 166
+      - speed_limit: 0
+    - - 167
+      - 168
+      - speed_limit: 0
+    - - 168
+      - 167
+      - speed_limit: 0
+    - - 168
+      - 169
+      - speed_limit: 0
+    - - 169
+      - 168
+      - speed_limit: 0
+    - - 169
+      - 170
+      - speed_limit: 0
+    - - 170
+      - 169
+      - speed_limit: 0
+    - - 170
+      - 171
+      - speed_limit: 0
+    - - 171
+      - 170
+      - speed_limit: 0
+    - - 171
+      - 172
+      - speed_limit: 0
+    - - 172
+      - 171
+      - speed_limit: 0
+    - - 172
+      - 173
+      - speed_limit: 0
+    - - 173
+      - 172
+      - speed_limit: 0
+    - - 174
+      - 175
+      - speed_limit: 0
+    - - 175
+      - 174
+      - speed_limit: 0
+    - - 175
+      - 14
+      - speed_limit: 0
+    - - 14
+      - 175
+      - speed_limit: 0
+    - - 175
+      - 176
+      - speed_limit: 0
+    - - 176
+      - 175
+      - speed_limit: 0
+    - - 176
+      - 177
+      - speed_limit: 0
+    - - 177
+      - 176
+      - speed_limit: 0
+    - - 177
+      - 178
+      - speed_limit: 0
+    - - 178
+      - 177
+      - speed_limit: 0
+    - - 178
+      - 179
+      - speed_limit: 0
+    - - 179
+      - 178
+      - speed_limit: 0
+    - - 179
+      - 180
+      - speed_limit: 0
+    - - 180
+      - 179
+      - speed_limit: 0
+    - - 181
+      - 182
+      - speed_limit: 0
+    - - 182
+      - 181
+      - speed_limit: 0
+    - - 182
+      - 183
+      - speed_limit: 0
+    - - 183
+      - 182
+      - speed_limit: 0
+    - - 183
+      - 184
+      - speed_limit: 0
+    - - 184
+      - 183
+      - speed_limit: 0
+    - - 184
+      - 81
+      - speed_limit: 0
+    - - 81
+      - 184
+      - speed_limit: 0
+    - - 184
+      - 185
+      - speed_limit: 0
+    - - 185
+      - 184
+      - speed_limit: 0
+    - - 180
+      - 186
+      - speed_limit: 0
+    - - 186
+      - 180
+      - speed_limit: 0
+    - - 80
+      - 12
+      - speed_limit: 0
+    - - 12
+      - 80
+      - speed_limit: 0
+    - - 180
+      - 187
+      - speed_limit: 0
+    - - 187
+      - 180
+      - speed_limit: 0
+    - - 187
+      - 181
+      - speed_limit: 0
+    - - 181
+      - 187
+      - speed_limit: 0
+    - - 164
+      - 167
+      - speed_limit: 0
+    - - 167
+      - 164
+      - speed_limit: 0
+    - - 167
+      - 188
+      - speed_limit: 0
+    - - 188
+      - 167
+      - speed_limit: 0
+    - - 94
+      - 77
+      - speed_limit: 0
+    - - 77
+      - 94
+      - speed_limit: 0
+    - - 95
+      - 76
+      - speed_limit: 0
+    - - 76
+      - 95
+      - speed_limit: 0
+    - - 96
+      - 75
+      - speed_limit: 0
+    - - 75
+      - 96
+      - speed_limit: 0
+    - - 97
+      - 74
+      - speed_limit: 0
+    - - 74
+      - 97
+      - speed_limit: 0
+    - - 98
+      - 73
+      - speed_limit: 0
+    - - 73
+      - 98
+      - speed_limit: 0
+    - - 99
+      - 72
+      - speed_limit: 0
+    - - 72
+      - 99
+      - speed_limit: 0
+    - - 100
+      - 71
+      - speed_limit: 0
+    - - 71
+      - 100
+      - speed_limit: 0
+    - - 101
+      - 70
+      - speed_limit: 0
+    - - 70
+      - 101
+      - speed_limit: 0
+    - - 102
+      - 69
+      - speed_limit: 0
+    - - 69
+      - 102
+      - speed_limit: 0
+    - - 103
+      - 68
+      - speed_limit: 0
+    - - 68
+      - 103
+      - speed_limit: 0
+    - - 104
+      - 67
+      - speed_limit: 0
+    - - 67
+      - 104
+      - speed_limit: 0
+    - - 105
+      - 92
+      - speed_limit: 0
+    - - 92
+      - 105
+      - speed_limit: 0
+    - - 106
+      - 91
+      - speed_limit: 0
+    - - 91
+      - 106
+      - speed_limit: 0
+    - - 107
+      - 10
+      - speed_limit: 0
+    - - 10
+      - 107
+      - speed_limit: 0
+    - - 108
+      - 66
+      - speed_limit: 0
+    - - 66
+      - 108
+      - speed_limit: 0
+    - - 109
+      - 65
+      - speed_limit: 0
+    - - 65
+      - 109
+      - speed_limit: 0
+    - - 110
+      - 64
+      - speed_limit: 0
+    - - 64
+      - 110
+      - speed_limit: 0
+    - - 111
+      - 63
+      - speed_limit: 0
+    - - 63
+      - 111
+      - speed_limit: 0
+    - - 112
+      - 62
+      - speed_limit: 0
+    - - 62
+      - 112
+      - speed_limit: 0
+    - - 113
+      - 61
+      - speed_limit: 0
+    - - 61
+      - 113
+      - speed_limit: 0
+    - - 114
+      - 60
+      - speed_limit: 0
+    - - 60
+      - 114
+      - speed_limit: 0
+    - - 115
+      - 59
+      - speed_limit: 0
+    - - 59
+      - 115
+      - speed_limit: 0
+    - - 116
+      - 58
+      - speed_limit: 0
+    - - 58
+      - 116
+      - speed_limit: 0
+    - - 117
+      - 57
+      - speed_limit: 0
+    - - 57
+      - 117
+      - speed_limit: 0
+    - - 118
+      - 56
+      - speed_limit: 0
+    - - 56
+      - 118
+      - speed_limit: 0
+    - - 119
+      - 55
+      - speed_limit: 0
+    - - 55
+      - 119
+      - speed_limit: 0
+    - - 120
+      - 54
+      - speed_limit: 0
+    - - 54
+      - 120
+      - speed_limit: 0
+    - - 121
+      - 53
+      - speed_limit: 0
+    - - 53
+      - 121
+      - speed_limit: 0
+    - - 122
+      - 52
+      - speed_limit: 0
+    - - 52
+      - 122
+      - speed_limit: 0
+    - - 123
+      - 51
+      - speed_limit: 0
+    - - 51
+      - 123
+      - speed_limit: 0
+    - - 124
+      - 50
+      - speed_limit: 0
+    - - 50
+      - 124
+      - speed_limit: 0
+    - - 125
+      - 49
+      - speed_limit: 0
+    - - 49
+      - 125
+      - speed_limit: 0
+    - - 126
+      - 48
+      - speed_limit: 0
+    - - 48
+      - 126
+      - speed_limit: 0
+    - - 127
+      - 47
+      - speed_limit: 0
+    - - 47
+      - 127
+      - speed_limit: 0
+    - - 128
+      - 46
+      - speed_limit: 0
+    - - 46
+      - 128
+      - speed_limit: 0
+    - - 129
+      - 45
+      - speed_limit: 0
+    - - 45
+      - 129
+      - speed_limit: 0
+    - - 130
+      - 44
+      - speed_limit: 0
+    - - 44
+      - 130
+      - speed_limit: 0
+    - - 131
+      - 43
+      - speed_limit: 0
+    - - 43
+      - 131
+      - speed_limit: 0
+    - - 132
+      - 42
+      - speed_limit: 0
+    - - 42
+      - 132
+      - speed_limit: 0
+    - - 133
+      - 41
+      - speed_limit: 0
+    - - 41
+      - 133
+      - speed_limit: 0
+    - - 134
+      - 40
+      - speed_limit: 0
+    - - 40
+      - 134
+      - speed_limit: 0
+    - - 136
+      - 38
+      - speed_limit: 0
+    - - 38
+      - 136
+      - speed_limit: 0
+    - - 140
+      - 141
+      - speed_limit: 0
+    - - 141
+      - 140
+      - speed_limit: 0
+    - - 33
+      - 189
+      - speed_limit: 0
+    - - 189
+      - 33
+      - speed_limit: 0
+    - - 189
+      - 34
+      - speed_limit: 0
+    - - 34
+      - 189
+      - speed_limit: 0
+    - - 142
+      - 33
+      - speed_limit: 0
+    - - 33
+      - 142
+      - speed_limit: 0
+    - - 143
+      - 32
+      - speed_limit: 0
+    - - 32
+      - 143
+      - speed_limit: 0
+    - - 144
+      - 31
+      - speed_limit: 0
+    - - 31
+      - 144
+      - speed_limit: 0
+    - - 145
+      - 30
+      - speed_limit: 0
+    - - 30
+      - 145
+      - speed_limit: 0
+    - - 146
+      - 29
+      - speed_limit: 0
+    - - 29
+      - 146
+      - speed_limit: 0
+    - - 147
+      - 28
+      - speed_limit: 0
+    - - 28
+      - 147
+      - speed_limit: 0
+    - - 148
+      - 27
+      - speed_limit: 0
+    - - 27
+      - 148
+      - speed_limit: 0
+    - - 150
+      - 4
+      - speed_limit: 0
+    - - 4
+      - 150
+      - speed_limit: 0
+    - - 151
+      - 26
+      - speed_limit: 0
+    - - 26
+      - 151
+      - speed_limit: 0
+    - - 152
+      - 25
+      - speed_limit: 0
+    - - 25
+      - 152
+      - speed_limit: 0
+    - - 153
+      - 24
+      - speed_limit: 0
+    - - 24
+      - 153
+      - speed_limit: 0
+    - - 154
+      - 23
+      - speed_limit: 0
+    - - 23
+      - 154
+      - speed_limit: 0
+    - - 155
+      - 22
+      - speed_limit: 0
+    - - 22
+      - 155
+      - speed_limit: 0
+    - - 156
+      - 21
+      - speed_limit: 0
+    - - 21
+      - 156
+      - speed_limit: 0
+    - - 157
+      - 20
+      - speed_limit: 0
+    - - 20
+      - 157
+      - speed_limit: 0
+    - - 19
+      - 160
+      - speed_limit: 0
+    - - 160
+      - 19
+      - speed_limit: 0
+    - - 160
+      - 88
+      - speed_limit: 0
+    - - 88
+      - 160
+      - speed_limit: 0
+    - - 161
+      - 18
+      - speed_limit: 0
+    - - 18
+      - 161
+      - speed_limit: 0
+    - - 162
+      - 17
+      - speed_limit: 0
+    - - 17
+      - 162
+      - speed_limit: 0
+    - - 169
+      - 16
+      - speed_limit: 0
+    - - 16
+      - 169
+      - speed_limit: 0
+    - - 170
+      - 15
+      - speed_limit: 0
+    - - 15
+      - 170
+      - speed_limit: 0
+    - - 171
+      - 14
+      - speed_limit: 0
+    - - 14
+      - 171
+      - speed_limit: 0
+    - - 172
+      - 175
+      - speed_limit: 0
+    - - 175
+      - 172
+      - speed_limit: 0
+    - - 173
+      - 174
+      - speed_limit: 0
+    - - 174
+      - 173
+      - speed_limit: 0
+    - - 173
+      - 190
+      - speed_limit: 0
+    - - 190
+      - 173
+      - speed_limit: 0
+    - - 190
+      - 90
+      - speed_limit: 0
+    - - 90
+      - 190
+      - speed_limit: 0
+    - - 78
+      - 191
+      - speed_limit: 0
+    - - 191
+      - 78
+      - speed_limit: 0
+    - - 191
+      - 174
+      - speed_limit: 0
+    - - 174
+      - 191
+      - speed_limit: 0
+    - - 192
+      - 190
+      - speed_limit: 0
+    - - 190
+      - 192
+      - speed_limit: 0
+    - - 190
+      - 191
+      - speed_limit: 0
+    - - 191
+      - 190
+      - speed_limit: 0
+    - - 82
+      - 183
+      - speed_limit: 0
+    - - 183
+      - 82
+      - speed_limit: 0
+    - - 84
+      - 182
+      - speed_limit: 0
+    - - 182
+      - 84
+      - speed_limit: 0
+    - - 85
+      - 181
+      - speed_limit: 0
+    - - 181
+      - 85
+      - speed_limit: 0
+    - - 86
+      - 187
+      - speed_limit: 0
+    - - 187
+      - 86
+      - speed_limit: 0
+    - - 86
+      - 179
+      - speed_limit: 0
+    - - 179
+      - 86
+      - speed_limit: 0
+    - - 193
+      - 194
+      - speed_limit: 0
+    - - 194
+      - 193
+      - speed_limit: 0
+    - - 194
+      - 1
+      - speed_limit: 0
+    - - 1
+      - 194
+      - speed_limit: 0
+    - - 1
+      - 195
+      - speed_limit: 0
+    - - 195
+      - 1
+      - speed_limit: 0
+    - - 194
+      - 196
+      - speed_limit: 0
+    - - 196
+      - 194
+      - speed_limit: 0
+    - - 196
+      - 195
+      - speed_limit: 0
+    - - 195
+      - 196
+      - speed_limit: 0
+    - - 197
+      - 198
+      - speed_limit: 0
+    - - 198
+      - 197
+      - speed_limit: 0
+    - - 199
+      - 200
+      - speed_limit: 0
+    - - 200
+      - 199
+      - speed_limit: 0
+    - - 200
+      - 201
+      - speed_limit: 0
+    - - 201
+      - 200
+      - speed_limit: 0
+    - - 201
+      - 202
+      - speed_limit: 0
+    - - 202
+      - 201
+      - speed_limit: 0
+    - - 202
+      - 203
+      - speed_limit: 0
+    - - 203
+      - 202
+      - speed_limit: 0
+    - - 198
+      - 204
+      - speed_limit: 0
+    - - 204
+      - 198
+      - speed_limit: 0
+    - - 204
+      - 199
+      - speed_limit: 0
+    - - 199
+      - 204
+      - speed_limit: 0
+    - - 205
+      - 201
+      - speed_limit: 0
+    - - 201
+      - 205
+      - speed_limit: 0
+    - - 199
+      - 206
+      - speed_limit: 0
+    - - 206
+      - 199
+      - speed_limit: 0
+    - - 204
+      - 195
+      - speed_limit: 0
+    - - 195
+      - 204
+      - speed_limit: 0
+    - - 198
+      - 207
+      - speed_limit: 0
+    - - 207
+      - 198
+      - speed_limit: 0
+    - - 197
+      - 208
+      - speed_limit: 0
+    - - 208
+      - 197
+      - speed_limit: 0
+    - - 209
+      - 210
+      - speed_limit: 0
+    - - 210
+      - 209
+      - speed_limit: 0
+    - - 210
+      - 197
+      - speed_limit: 0
+    - - 197
+      - 210
+      - speed_limit: 0
+    - - 201
+      - 211
+      - speed_limit: 0
+    - - 211
+      - 201
+      - speed_limit: 0
+    - - 211
+      - 212
+      - speed_limit: 0
+    - - 212
+      - 211
+      - speed_limit: 0
+    - - 212
+      - 2
+      - speed_limit: 0
+    - - 2
+      - 212
+      - speed_limit: 0
+    - - 212
+      - 192
+      - speed_limit: 0
+    - - 192
+      - 212
+      - speed_limit: 0
+    - - 211
+      - 213
+      - speed_limit: 0
+    - - 213
+      - 211
+      - speed_limit: 0
+    - - 211
+      - 214
+      - speed_limit: 0
+    - - 214
+      - 211
+      - speed_limit: 0
+    vertices:
+    - - 21.379364507769555
+      - -32.77720229424861
+      - is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: husky_0
+        spawn_robot_name: husky_0
+        spawn_robot_type: HuskyA200
+    - - 23.14798684165973
+      - -31.314591697675283
+      - is_passthrough_point: true
+        name: ''
+    - - 40.291710121785165
+      - -39.23487514072063
+      - name: ''
+    - - 42.81743108948266
+      - -40.105375508282535
+      - is_passthrough_point: true
+        name: ''
+    - - 37.966356923314194
+      - -143.55211706490252
+      - is_passthrough_point: true
+        name: ''
+    - - 38.172851845039865
+      - -151.10813140936884
+      - dropoff_ingestor: do_gd_8
+        is_holding_point: true
+        name: gd_8
+    - - 23.447673776396798
+      - -180.51900694305152
+      - name: ''
+    - - 34.60511965232419
+      - -180.26023357500242
+      - name: ''
+    - - 34.5289749587661
+      - -177.64211119461598
+      - dropoff_ingestor: do_kantin
+        is_holding_point: true
+        name: kantin
+    - - 15.933907136662555
+      - -180.57874667991834
+      - name: ''
+    - - 103.74796027948182
+      - -20.375104448149408
+      - is_passthrough_point: true
+        name: ''
+    - - 99.4052421206629
+      - -20.479513103235874
+      - dropoff_ingestor: do_otonom_blkg
+        is_holding_point: true
+        name: otonom_blkg
+    - - 69.19274727251369
+      - -20.759731505032068
+      - name: ''
+    - - 71.8669034507553
+      - -21.38983996204231
+      - dropoff_ingestor: do_otonom_dpn
+        is_holding_point: true
+        name: otonom_dpn
+    - - 48.170734110501506
+      - -51.558110604653244
+      - is_passthrough_point: true
+        name: ''
+    - - 48.24648350389836
+      - -57.1018988908677
+      - name: ''
+    - - 48.22899147176367
+      - -63.230237290509955
+      - name: ''
+    - - 48.728453225485396
+      - -76.53525011739241
+      - name: ''
+    - - 48.796741328338925
+      - -83.77413490750715
+      - name: ''
+    - - 49.07033845243441
+      - -90.85405962028484
+      - name: ''
+    - - 48.74293109389066
+      - -99.87372222424776
+      - name: ''
+    - - 48.77994107148639
+      - -107.02628334165257
+      - name: ''
+    - - 49.02828839778293
+      - -115.2080084288354
+      - name: ''
+    - - 48.774357456708934
+      - -120.31093821023138
+      - name: ''
+    - - 49.009412815083905
+      - -127.68496624296868
+      - name: ''
+    - - 49.19545095346562
+      - -135.06877795469657
+      - name: ''
+    - - 49.641448360380174
+      - -143.36484361351694
+      - name: ''
+    - - 31.063180795129163
+      - -143.67925547926004
+      - name: ''
+    - - 22.58196642328988
+      - -143.69368393514515
+      - name: ''
+    - - 13.282381892651697
+      - -144.14081783002325
+      - name: ''
+    - - 13.157862341862346
+      - -153.42375034136938
+      - name: ''
+    - - 13.145904511984956
+      - -161.35870930290062
+      - name: ''
+    - - 13.142840935735379
+      - -169.0225417663441
+      - name: ''
+    - - 13.235242348424299
+      - -175.86256869377166
+      - is_passthrough_point: true
+        name: ''
+    - - 13.220220942297331
+      - -180.51717867980582
+      - name: ''
+    - - 16.54716592430011
+      - -175.91815777894547
+      - dropoff_ingestor: do_satpam_entry
+        is_holding_point: true
+        name: satpam_entry
+    - - 36.22095847389664
+      - -180.28493983507965
+      - name: ''
+    - - 52.51088281827239
+      - -179.7424891888235
+      - name: ''
+    - - 59.19259203112493
+      - -178.4949218799626
+      - name: ''
+    - - 63.4161271913312
+      - -173.99398483160894
+      - name: ''
+    - - 68.56135408997943
+      - -173.3509302943182
+      - name: ''
+    - - 71.95431419890862
+      - -173.00771092932501
+      - name: ''
+    - - 78.27032135009767
+      - -172.19324435961832
+      - name: ''
+    - - 86.02867996459672
+      - -171.14110356796846
+      - name: ''
+    - - 93.71375981170662
+      - -170.09780761742624
+      - name: ''
+    - - 101.77388068678921
+      - -168.78175455563118
+      - name: ''
+    - - 108.69459825962909
+      - -167.24645814191058
+      - name: ''
+    - - 108.15644650262641
+      - -159.96344797129788
+      - name: ''
+    - - 108.10856577059668
+      - -152.5961400413016
+      - name: ''
+    - - 108.1154835234183
+      - -144.7473565149198
+      - name: ''
+    - - 107.94762919245346
+      - -135.95721506707457
+      - name: ''
+    - - 107.5976403121991
+      - -127.97314006050975
+      - name: ''
+    - - 107.311690058065
+      - -119.95190683878876
+      - name: ''
+    - - 106.90467912955233
+      - -113.52788391854195
+      - name: ''
+    - - 106.68158160105475
+      - -107.76969470737708
+      - name: ''
+    - - 106.47899026842127
+      - -102.46936190796387
+      - name: ''
+    - - 106.51412257025115
+      - -97.10306339414439
+      - name: ''
+    - - 106.31894311564083
+      - -90.95995065097594
+      - name: ''
+    - - 106.01223960304183
+      - -82.80945427653076
+      - name: ''
+    - - 105.78919148706439
+      - -75.27226610224328
+      - name: ''
+    - - 105.46919600654384
+      - -65.81767449588041
+      - name: ''
+    - - 105.30312052630454
+      - -59.00601035502153
+      - name: ''
+    - - 105.12301189034136
+      - -52.75241121678762
+      - name: ''
+    - - 104.73112119299599
+      - -46.59284410440772
+      - name: ''
+    - - 104.61925124736621
+      - -39.213430106973576
+      - name: ''
+    - - 104.50100708663648
+      - -32.79637435206856
+      - name: ''
+    - - 104.18451989504686
+      - -26.251191932402907
+      - name: ''
+    - - 98.78091492851074
+      - -12.111305164989945
+      - name: ''
+    - - 92.36761452513747
+      - -12.243187181282316
+      - name: ''
+    - - 85.54671024300968
+      - -12.571286315108225
+      - name: ''
+    - - 77.21813114592766
+      - -12.853975342912147
+      - name: ''
+    - - 68.84196779193687
+      - -13.317020069280005
+      - name: ''
+    - - 63.1742529051749
+      - -13.466196467626455
+      - name: ''
+    - - 53.97191221420078
+      - -13.883287550250625
+      - name: ''
+    - - 46.77927754295066
+      - -14.361106620144682
+      - name: ''
+    - - 46.92963984178082
+      - -18.193591095848195
+      - name: ''
+    - - 47.34381558571587
+      - -25.67523959748201
+      - name: ''
+    - - 47.679128947484344
+      - -32.98681020474402
+      - name: ''
+    - - 47.90044762525637
+      - -40.02409191262837
+      - is_passthrough_point: true
+        name: ''
+    - - 64.76652195463365
+      - -18.162362383110548
+      - name: ''
+    - - 69.12989454687715
+      - -17.45897515871118
+      - name: ''
+    - - 69.72660014026296
+      - -79.87884711868726
+      - name: ''
+    - - 61.973182777779364
+      - -80.1162248655095
+      - name: ''
+    - - 61.910527702223455
+      - -78.39834918981799
+      - name: ''
+    - - 61.47184334829176
+      - -68.6384870339406
+      - name: ''
+    - - 61.22487957255955
+      - -59.332923588363734
+      - name: ''
+    - - 60.96615561703056
+      - -51.55050107654945
+      - is_passthrough_point: true
+        name: ''
+    - - 54.055024073100654
+      - -51.42682153860273
+      - is_passthrough_point: true
+        name: ''
+    - - 43.79308129993335
+      - -90.86512802479946
+      - is_passthrough_point: true
+        name: ''
+    - - 41.75180067983062
+      - -90.93178551448787
+      - dropoff_ingestor: do_masjid
+        is_holding_point: true
+        name: masjid
+    - - 45.19377800875308
+      - -40.085561087700576
+      - is_passthrough_point: true
+        name: ''
+    - - 103.5940896917207
+      - -17.232665816403546
+      - name: ''
+    - - 103.24998090136472
+      - -12.027798005928831
+      - name: ''
+    - - 35.47532354476517
+      - -143.5947106572757
+      - name: ''
+    - - 44.98313243533443
+      - -33.098087200131964
+      - name: ''
+    - - 44.5791356705512
+      - -25.70666596030027
+      - name: ''
+    - - 44.20508289298161
+      - -18.225511583868006
+      - name: ''
+    - - 43.905840670925926
+      - -11.567273318088851
+      - name: ''
+    - - 53.795954229930594
+      - -10.90895031207039
+      - name: ''
+    - - 63.08753393230374
+      - -10.549820115587453
+      - name: ''
+    - - 68.92285608742978
+      - -10.430142991773243
+      - name: ''
+    - - 77.16708801260806
+      - -10.19073933162467
+      - name: ''
+    - - 85.43049199560629
+      - -9.926629411398844
+      - name: ''
+    - - 92.2818838026694
+      - -9.649523998372382
+      - name: ''
+    - - 98.74148373742744
+      - -9.515714893793985
+      - name: ''
+    - - 106.16625842836343
+      - -9.238609480767524
+      - name: ''
+    - - 106.81939311976566
+      - -17.18804631070403
+      - name: ''
+    - - 107.0513354893709
+      - -20.333153218538232
+      - name: ''
+    - - 107.47401018677253
+      - -26.198172298277125
+      - name: ''
+    - - 107.71934334933965
+      - -32.77275516743471
+      - name: ''
+    - - 107.70911495766767
+      - -39.239668155175615
+      - name: ''
+    - - 108.07056754259786
+      - -46.71815425551954
+      - name: ''
+    - - 108.34920474374911
+      - -52.79460950899956
+      - name: ''
+    - - 108.57472348573427
+      - -59.07009839366193
+      - name: ''
+    - - 108.68086157902616
+      - -65.90281226810663
+      - name: ''
+    - - 109.00812070000944
+      - -75.28802869617257
+      - name: ''
+    - - 109.07062753800487
+      - -82.85451849491166
+      - name: ''
+    - - 109.32075371502697
+      - -90.94206331868001
+      - name: ''
+    - - 109.55002780854389
+      - -97.1536618147826
+      - name: ''
+    - - 109.55002780854389
+      - -102.48981869130783
+      - name: ''
+    - - 109.80020339808613
+      - -107.93013716031875
+      - name: ''
+    - - 110.00862540809784
+      - -113.57892705186154
+      - name: ''
+    - - 110.26848585159038
+      - -119.96841062052034
+      - name: ''
+    - - 110.64644221825218
+      - -128.01706779092711
+      - name: ''
+    - - 111.0022123633646
+      - -136.0879605954034
+      - name: ''
+    - - 111.24675492560925
+      - -144.8258730094453
+      - name: ''
+    - - 111.24675492560925
+      - -152.71893015388554
+      - name: ''
+    - - 111.53991940768591
+      - -160.17285823171267
+      - name: ''
+    - - 111.97163659627583
+      - -169.72508897790084
+      - name: ''
+    - - 102.44638508609202
+      - -172.09965704644569
+      - name: ''
+    - - 94.08143837417629
+      - -173.52975420475735
+      - name: ''
+    - - 86.25617520738805
+      - -174.582142059008
+      - name: ''
+    - - 78.61981610515048
+      - -175.33765949217036
+      - name: ''
+    - - 72.2607212363867
+      - -175.86592874514218
+      - name: ''
+    - - 68.77916447882049
+      - -175.86592874514218
+      - name: ''
+    - - 64.12331917978246
+      - -176.63958057320124
+      - is_passthrough_point: true
+        name: ''
+    - - 59.93718929733317
+      - -181.1573178784074
+      - name: ''
+    - - 52.739218073906365
+      - -182.3178203267561
+      - name: ''
+    - - 65.27206144833438
+      - -179.20423860678048
+      - dropoff_ingestor: do_satpam_exit
+        is_holding_point: true
+        name: satpam_exit
+    - - 15.880986327577082
+      - -183.4453152116416
+      - name: ''
+    - - 10.508955961419677
+      - -183.4453152116416
+      - name: ''
+    - - 10.567114497641528
+      - -178.1314927942262
+      - name: ''
+    - - 10.628880147834659
+      - -175.8157256246652
+      - name: ''
+    - - 10.639553252188032
+      - -168.92934975333267
+      - name: ''
+    - - 10.734128815763754
+      - -161.27772218236737
+      - name: ''
+    - - 10.813534735652043
+      - -153.35951406516853
+      - name: ''
+    - - 10.845652873752469
+      - -141.557284213745
+      - name: ''
+    - - 22.60094083102921
+      - -141.3193135166809
+      - name: ''
+    - - 30.89334996335813
+      - -141.20808593381312
+      - name: ''
+    - - 35.368691326271744
+      - -141.1686547427298
+      - name: ''
+    - - 38.014484717944676
+      - -141.13841428039527
+      - name: ''
+    - - 46.63741419758708
+      - -140.9028153842986
+      - name: ''
+    - - 46.34123555178098
+      - -135.0137818197646
+      - name: ''
+    - - 46.27156389836313
+      - -127.64385502620013
+      - name: ''
+    - - 46.04505690597488
+      - -120.20420716669764
+      - name: ''
+    - - 45.97587937775858
+      - -115.14545217831981
+      - name: ''
+    - - 45.85743756694823
+      - -106.99189222762503
+      - name: ''
+    - - 45.73904516865804
+      - -99.81946727711811
+      - name: ''
+    - - 49.15181969816919
+      - -93.92480068528651
+      - name: ''
+    - - 45.90442887361517
+      - -93.9328549260717
+      - name: ''
+    - - 45.84053848505539
+      - -90.84037235220204
+      - is_passthrough_point: true
+        name: ''
+    - - 45.66181339965655
+      - -83.72408002459063
+      - name: ''
+    - - 45.421322664064576
+      - -76.59311217849334
+      - name: ''
+    - - 48.415869622988005
+      - -68.93125621585605
+      - name: ''
+    - - 48.415869622988005
+      - -70.9744639242448
+      - name: ''
+    - - 48.45085368725739
+      - -73.2511457903636
+      - name: ''
+    - - 45.5203453544542
+      - -73.37956893024514
+      - name: ''
+    - - 45.473650522908194
+      - -71.04448146530373
+      - is_passthrough_point: true
+        name: ''
+    - - 45.43861704611865
+      - -68.87285061703342
+      - name: ''
+    - - 45.42695569136219
+      - -63.198613277611074
+      - name: ''
+    - - 45.38026085981618
+      - -57.06903956496496
+      - name: ''
+    - - 45.29057713573576
+      - -51.68243250536198
+      - is_passthrough_point: true
+        name: ''
+    - - 45.24808236840288
+      - -49.590998177302424
+      - is_passthrough_point: true
+        name: ''
+    - - 45.21502539241952
+      - -45.81336159897041
+      - name: ''
+    - - 48.08159392414278
+      - -45.74319582035101
+      - name: ''
+    - - 48.10649783430065
+      - -49.39092688319683
+      - is_passthrough_point: true
+        name: ''
+    - - 49.90857244433543
+      - -49.73701217435899
+      - is_passthrough_point: true
+        name: ''
+    - - 54.06174417584167
+      - -49.546082196481976
+      - is_passthrough_point: true
+        name: ''
+    - - 59.64694015394561
+      - -50.28598527327553
+      - is_passthrough_point: true
+        name: ''
+    - - 60.9835982366451
+      - -49.6295893555431
+      - is_passthrough_point: true
+        name: ''
+    - - 63.04820156626075
+      - -49.569948443716605
+      - is_passthrough_point: true
+        name: ''
+    - - 63.33390475779411
+      - -59.34834029465193
+      - name: ''
+    - - 63.53303721401676
+      - -68.58171204828308
+      - name: ''
+    - - 63.895132161708965
+      - -78.0143150831772
+      - name: ''
+    - - 69.63434696513448
+      - -77.86943757408419
+      - name: ''
+    - - 73.01273038061811
+      - -78.16512209468874
+      - dropoff_ingestor: do_gd_2
+        is_holding_point: true
+        name: gd_2
+    - - 64.74725107177339
+      - -50.36460059284135
+      - dropoff_ingestor: do_gd_1
+        is_holding_point: true
+        name: gd_1
+    - - 63.202566279223426
+      - -51.55672705408892
+      - is_passthrough_point: true
+        name: ''
+    - - 43.85331516200169
+      - -71.01132566428006
+      - dropoff_ingestor: do_gd_10
+        is_holding_point: true
+        name: gd_10
+    - - 13.197738245627033
+      - -178.0937910413483
+      - name: ''
+    - - 45.19511214679726
+      - -42.68871147448017
+      - is_passthrough_point: true
+        name: ''
+    - - 47.921942071523574
+      - -42.58114041810382
+      - is_passthrough_point: true
+        name: ''
+    - - 40.14460904928521
+      - -40.41188137080092
+      - name: ''
+    - - 21.7297981007053
+      - -19.46092341277092
+      - is_holding_point: true
+        name: ws_p0
+    - - 22.54732824666157
+      - -27.27991118949954
+      - name: ''
+    - - 25.076903390931115
+      - -31.310045745821064
+      - is_passthrough_point: true
+        name: ''
+    - - 24.96256281929359
+      - -27.265630971174886
+      - is_passthrough_point: true
+        name: ''
+    - - 28.322268302158804
+      - -17.007937674740862
+      - name: ''
+    - - 28.575408642910332
+      - -26.558488395243774
+      - name: ''
+    - - 28.924606922842216
+      - -34.22232085868724
+      - name: ''
+    - - 29.21129836477865
+      - -39.42620041875887
+      - name: ''
+    - - 29.22207029417233
+      - -40.48016947365445
+      - is_passthrough_point: true
+        name: ''
+    - - 29.254336669833222
+      - -41.620165726139014
+      - name: ''
+    - - 29.186542692181245
+      - -43.405637729401874
+      - dropoff_ingestor: do_lab_0
+        is_holding_point: true
+        name: lab_0
+    - - 28.731354556517946
+      - -31.119659305665763
+      - is_passthrough_point: false
+        name: ''
+    - - 25.81196404074952
+      - -40.46845870637783
+      - dropoff_ingestor: do_bengkel2
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: lab_bengkel2
+        spawn_robot_name: husky_6
+        spawn_robot_type: HuskyA200
+    - - 32.76811039054018
+      - -34.10491671080014
+      - is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: husky_1
+        spawn_robot_name: husky_1
+        spawn_robot_type: HuskyA200
+    - - 32.30397858872892
+      - -26.556264831836824
+      - dropoff_ingestor: do_dinamika
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: lab_dinamika
+        spawn_robot_name: husky_2
+        spawn_robot_type: HuskyA200
+    - - 31.794189618294897
+      - -16.83593269208303
+      - dropoff_ingestor: do_bengkel
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: lab_bengkel
+        spawn_robot_name: husky_3
+        spawn_robot_type: HuskyA200
+    - - 24.68105969197338
+      - -10.370847967587839
+      - dropoff_ingestor: do_pantry
+        is_holding_point: true
+        name: pantry
+    - - 28.04970884098656
+      - -10.319656596707771
+      - name: ''
+    - - 34.602105488594766
+      - -40.1439666865232
+      - is_passthrough_point: true
+        name: ''
+    - - 36.60810556930718
+      - -40.05655593836988
+      - name: ''
+    - - 34.579128666722916
+      - -38.3432262145326
+      - is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: dpn_ws1
+        spawn_robot_name: husky_4
+        spawn_robot_type: HuskyA200
+    - - 34.6863538354582
+      - -41.75975609557549
+      - is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: dpn_ws2
+        spawn_robot_name: husky_5
+        spawn_robot_type: HuskyA200

@@ -1,0 +1,35 @@
+# Separate navigation EKF: wheel encoder odometry plus IMU yaw rate.
+# Its dynamic TF is remapped to /a200_1060/nav/tf, isolated from the
+# Clearpath EKF's public /a200_1060/tf publisher.
+nav_ekf_node:
+  ros__parameters:
+    use_sim_time: false
+    frequency: 20.0
+    sensor_timeout: 0.2
+    # At 20 Hz, 50 ms only covers one ideal EKF period and is too tight once
+    # scheduler/DDS jitter is included. Keep TF ahead of the 40 Hz scan stream.
+    transform_time_offset: 0.10
+    two_d_mode: true
+    publish_tf: true
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: odom
+    odom0: /a200_1060/platform/odom
+    odom0_config: [true, true, false,
+                   false, false, true,
+                   true, true, false,
+                   false, false, true,
+                   false, false, false]
+    odom0_differential: false
+    odom0_relative: false
+    odom0_queue_size: 10
+    imu0: /a200_1060/sensors/imu_0/data
+    imu0_config: [false, false, false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, true,
+                  false, false, false]
+    imu0_differential: false
+    imu0_relative: false
+    imu0_queue_size: 10

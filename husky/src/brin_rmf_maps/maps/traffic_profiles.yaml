@@ -1,0 +1,10 @@
+default_profile: brin_0
+profiles:
+  brin_0:
+    building_map: brin_0.building.yaml
+    nav_graph: simulation.yaml
+    nav2_map: brin_0.yaml
+  banyak_simpangan:
+    building_map: banyak_simpangan.building.yaml
+    nav_graph: banyak_simpangan.yaml
+    nav2_map: banyak_simpangan.yaml

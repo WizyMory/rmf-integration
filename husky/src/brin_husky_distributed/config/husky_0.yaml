@@ -1,0 +1,18 @@
+# The Nav2 stack in the supplied Husky archive uses /a200_1060/nav/tf.
+# Do not also bridge /a200_1060/tf: the platform and navigation EKFs may
+# otherwise claim the same odom -> base_link child frame.
+robot_name: husky_0
+ros_namespace: a200_1060
+map_topic: /a200_1060/map
+scan_topic: /a200_1060/scan
+odom_topic: /a200_1060/platform/odom/filtered
+imu_topic: /a200_1060/sensors/imu_0/data
+tf_topics:
+  - /a200_1060/nav/tf
+tf_static_topics:
+  - /a200_1060/tf_static
+controller_manager: /a200_1060/controller_manager
+map_frame: map
+base_frame: base_link
+max_tf_age: 2.0
+max_graph_distance: 1.0

@@ -1,0 +1,603 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Fixed Frame: map
+    Frame Rate: 15
+    Background Color: 48; 48; 48
+  Displays:
+  - Class: rviz_default_plugins/Map
+    Name: BRIN occupancy
+    Enabled: true
+    Topic:
+      Value: /map
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    Alpha: 0.7
+  - Class: rviz_default_plugins/MarkerArray
+    Name: RMF scheduled traffic
+    Enabled: true
+    Topic:
+      Value: /schedule_markers
+      Depth: 10
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+  - Class: rviz_default_plugins/MarkerArray
+    Name: RMF fleet positions
+    Enabled: true
+    Topic:
+      Value: /fleet_markers
+      Depth: 10
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+  - Class: rviz_default_plugins/TF
+    Name: Robot TF trees
+    Enabled: false
+    Show Names: false
+    Show Axes: true
+    Marker Scale: 0.3
+  - Class: rviz_default_plugins/RobotModel
+    Name: husky_0
+    Enabled: true
+    Description Source: Topic
+    Description Topic:
+      Value: /husky_0/robot_description
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    TF Prefix: husky_0
+  - Class: rviz_default_plugins/LaserScan
+    Name: husky_0 Ouster
+    Enabled: false
+    Topic:
+      Value: /husky_0/sensors/lidar3d_0/scan
+      Depth: 1
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Size (m): 0.025
+    Color: 40; 160; 255
+    Queue Size: 1
+    Decay Time: 0
+  - Class: rviz_default_plugins/PoseArray
+    Name: husky_0 AMCL particles
+    Enabled: false
+    Topic:
+      Value: /husky_0/particlecloud
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Color: 40; 160; 255
+  - Class: rviz_default_plugins/Path
+    Name: husky_0 global plan
+    Enabled: true
+    Topic:
+      Value: /husky_0/plan
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Color: 40; 160; 255
+    Line Width: 0.05
+  - Class: rviz_default_plugins/Path
+    Name: husky_0 local plan
+    Enabled: true
+    Topic:
+      Value: /husky_0/local_plan
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Color: 40; 160; 255
+    Line Width: 0.05
+  - Class: rviz_default_plugins/Map
+    Name: husky_0 global costmap
+    Enabled: false
+    Topic:
+      Value: /husky_0/global_costmap/costmap
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    Color Scheme: costmap
+    Alpha: 0.4
+  - Class: rviz_default_plugins/Map
+    Name: husky_0 local costmap
+    Enabled: false
+    Topic:
+      Value: /husky_0/local_costmap/costmap
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    Color Scheme: costmap
+    Alpha: 0.4
+  - Class: rviz_default_plugins/RobotModel
+    Name: husky_1
+    Enabled: true
+    Description Source: Topic
+    Description Topic:
+      Value: /husky_1/robot_description
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    TF Prefix: husky_1
+  - Class: rviz_default_plugins/LaserScan
+    Name: husky_1 Ouster
+    Enabled: false
+    Topic:
+      Value: /husky_1/sensors/lidar3d_0/scan
+      Depth: 1
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Size (m): 0.025
+    Color: 255; 100; 30
+    Queue Size: 1
+    Decay Time: 0
+  - Class: rviz_default_plugins/PoseArray
+    Name: husky_1 AMCL particles
+    Enabled: false
+    Topic:
+      Value: /husky_1/particlecloud
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Color: 255; 100; 30
+  - Class: rviz_default_plugins/Path
+    Name: husky_1 global plan
+    Enabled: true
+    Topic:
+      Value: /husky_1/plan
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Color: 255; 100; 30
+    Line Width: 0.05
+  - Class: rviz_default_plugins/Path
+    Name: husky_1 local plan
+    Enabled: true
+    Topic:
+      Value: /husky_1/local_plan
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Color: 255; 100; 30
+    Line Width: 0.05
+  - Class: rviz_default_plugins/Map
+    Name: husky_1 global costmap
+    Enabled: false
+    Topic:
+      Value: /husky_1/global_costmap/costmap
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    Color Scheme: costmap
+    Alpha: 0.4
+  - Class: rviz_default_plugins/Map
+    Name: husky_1 local costmap
+    Enabled: false
+    Topic:
+      Value: /husky_1/local_costmap/costmap
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    Color Scheme: costmap
+    Alpha: 0.4
+  - Class: rviz_default_plugins/RobotModel
+    Description Source: Topic
+    Description Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_2/robot_description
+    Enabled: true
+    Name: husky_2
+    TF Prefix: husky_2
+  - Class: rviz_default_plugins/LaserScan
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_2 Ouster
+    Size (m): 0.025
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /husky_2/sensors/lidar3d_0/scan
+    Queue Size: 1
+    Decay Time: 0
+  - Class: rviz_default_plugins/PoseArray
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_2 AMCL particles
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_2/particlecloud
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_2 global plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_2/plan
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_2 local plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_2/local_plan
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_2 global costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_2/global_costmap/costmap
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_2 local costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_2/local_costmap/costmap
+  - Class: rviz_default_plugins/RobotModel
+    Description Source: Topic
+    Description Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_3/robot_description
+    Enabled: true
+    Name: husky_3
+    TF Prefix: husky_3
+  - Class: rviz_default_plugins/LaserScan
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_3 Ouster
+    Size (m): 0.025
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /husky_3/sensors/lidar3d_0/scan
+    Queue Size: 1
+    Decay Time: 0
+  - Class: rviz_default_plugins/PoseArray
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_3 AMCL particles
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_3/particlecloud
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_3 global plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_3/plan
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_3 local plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_3/local_plan
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_3 global costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_3/global_costmap/costmap
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_3 local costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_3/local_costmap/costmap
+  - Class: rviz_default_plugins/RobotModel
+    Description Source: Topic
+    Description Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_4/robot_description
+    Enabled: true
+    Name: husky_4
+    TF Prefix: husky_4
+  - Class: rviz_default_plugins/LaserScan
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_4 Ouster
+    Size (m): 0.025
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /husky_4/sensors/lidar3d_0/scan
+    Queue Size: 1
+    Decay Time: 0
+  - Class: rviz_default_plugins/PoseArray
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_4 AMCL particles
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_4/particlecloud
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_4 global plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_4/plan
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_4 local plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_4/local_plan
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_4 global costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_4/global_costmap/costmap
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_4 local costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_4/local_costmap/costmap
+  - Class: rviz_default_plugins/RobotModel
+    Description Source: Topic
+    Description Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_5/robot_description
+    Enabled: true
+    Name: husky_5
+    TF Prefix: husky_5
+  - Class: rviz_default_plugins/LaserScan
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_5 Ouster
+    Size (m): 0.025
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /husky_5/sensors/lidar3d_0/scan
+    Queue Size: 1
+    Decay Time: 0
+  - Class: rviz_default_plugins/PoseArray
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_5 AMCL particles
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_5/particlecloud
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_5 global plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_5/plan
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_5 local plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_5/local_plan
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_5 global costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_5/global_costmap/costmap
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_5 local costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_5/local_costmap/costmap
+  - Class: rviz_default_plugins/RobotModel
+    Description Source: Topic
+    Description Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_6/robot_description
+    Enabled: true
+    Name: husky_6
+    TF Prefix: husky_6
+  - Class: rviz_default_plugins/LaserScan
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_6 Ouster
+    Size (m): 0.025
+    Topic:
+      Depth: 1
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Best Effort
+      Value: /husky_6/sensors/lidar3d_0/scan
+    Queue Size: 1
+    Decay Time: 0
+  - Class: rviz_default_plugins/PoseArray
+    Color: 255; 100; 30
+    Enabled: false
+    Name: husky_6 AMCL particles
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_6/particlecloud
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_6 global plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_6/plan
+  - Class: rviz_default_plugins/Path
+    Color: 255; 100; 30
+    Enabled: true
+    Line Width: 0.05
+    Name: husky_6 local plan
+    Topic:
+      Depth: 5
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_6/local_plan
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_6 global costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_6/global_costmap/costmap
+  - Alpha: 0.4
+    Class: rviz_default_plugins/Map
+    Color Scheme: costmap
+    Enabled: false
+    Name: husky_6 local costmap
+    Topic:
+      Depth: 5
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Reliability Policy: Reliable
+      Value: /husky_6/local_costmap/costmap
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: Workshop
+      Scale: 15
+      X: 28
+      Y: -25
+Window Geometry:
+  Width: 1400
+  Height: 900

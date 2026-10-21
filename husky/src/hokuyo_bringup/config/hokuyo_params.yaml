@@ -1,0 +1,18 @@
+/**:
+  ros__parameters:
+    angle_max: 2.35619449
+    angle_min: -2.35619449
+    ip_address: "192.168.0.10"
+    ip_port: 10940
+    laser_frame_id: "laser_frame"
+    calibrate_time: false
+    default_user_latency: 0.0
+    diagnostics_tolerance: 0.05
+    diagnostics_window_time: 5.0
+    # Avoid reconnect storms on a few transient missed scans under CPU load.
+    error_limit: 10
+    get_detailed_status: false
+    publish_intensity: false
+    publish_multiecho: false
+    cluster: 1
+    skip: 0
