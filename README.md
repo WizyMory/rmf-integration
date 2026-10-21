@@ -29,6 +29,9 @@ Untuk alur GitHub dan deployment per komputer, gunakan
 [panduan deployment repository](docs/DEPLOYMENT.md). Skrip
 `tools/integration.bash` membangun target terpisah tanpa menimpa workspace lama.
 Bukti runtime serta batas hasil ada di [status implementasi](IMPLEMENTATION_STATUS.md).
+Release source sudah dipush dan dibangun pada kedua komputer; lihat
+[hasil deployment](docs/DEPLOYMENT_RESULT_2026-10-21.md). Ini belum mengaktifkan
+operasi/dispatch robot.
 
 ## Build snapshot terpisah
 
@@ -45,9 +48,9 @@ source laptop/install/local_setup.bash
 Pemeriksaan snapshot Husky di laptop membuktikan kompatibilitas source,
 bukan instalasi di robot. Deployment memerlukan persetujuan terpisah; build
 di robot memakai overlay robot sendiri. Jangan menyalin `build`, `install`,
-atau `log` antar komputer. Audit SSH dan uji komunikasi sementara telah
-dilakukan atas persetujuan operator; deployment source repository ke workspace
-aktif robot dan push GitHub belum dilakukan.
+atau `log` antar komputer. Audit SSH, push GitHub dan deployment clone terpisah
+telah dilakukan atas persetujuan operator. Workspace hardware lama tetap
+dipertahankan; service autostart dan task fisik tidak diaktifkan.
 
 ## Batas verifikasi
 

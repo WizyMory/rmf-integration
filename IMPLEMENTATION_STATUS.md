@@ -1,5 +1,15 @@
 # Status integrasi fisik — 21 Oktober 2026
 
+## Pembaruan: source sudah dipush dan dideploy
+
+Release `6882ca8` sudah dipush ke GitHub dan dibangun terpisah pada laptop
+dan Husky. Keduanya berhasil empat paket; uji native adapter pascadeployment
+lulus tiga kali dan DDS pulang-pergi lulus. Robot memakai clone baru, bukan
+menimpa workspace hardware lama. Tidak ada dispatch, task, atau gerak.
+Detail lokasi, hasil, batas verifikasi dan cara memperbarui robot tanpa
+menyalin kredensial ada di [hasil deployment](docs/DEPLOYMENT_RESULT_2026-10-21.md).
+Bagian berikut merupakan riwayat verifikasi sebelum deployment tersebut.
+
 ## Hasil terbaru tahap komunikasi, sampai 15:32 WIB
 
 Profil akhir untuk proses integrasi adalah Cyclone DDS dengan interface Wi-Fi
