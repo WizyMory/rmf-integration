@@ -7652,7 +7652,7 @@
   },
   "accepted": true,
   "policy_file": "nav2_occupancy_policy.yaml",
-  "policy_sha256": "652d1b2622d149b66aaaf076165463618f0125a62dae6e6e5ff305b2162711b8",
+  "policy_sha256": "9cab7fa0bb68538b4399211a05b35fbfc34fff327eb70ba2ab01b1141087897f",
   "authority": {
     "reference_image": "visual_reference",
     "traffic_editor_walls": "structural_obstacles",

@@ -10,8 +10,12 @@ clearance:
   additional_margin_m: 0.0
   wall_thickness_m: 0.05
 known_areas:
-  # User-approved free-space override for the real husky_0 deployment area.
+  # User-approved free-space override for the upper-left husky_0 area in both profiles.
   # The polygon and waypoint positions come directly from Traffic Editor.
+  - name: brin_0_husky_0_ws_p0
+    building: brin_0.building.yaml
+    floor_polygon_index: 29
+    required_waypoints: [husky_0, ws_p0]
   - name: husky_0_ws_p0
     building: banyak_simpangan.building.yaml
     floor_polygon_index: 29

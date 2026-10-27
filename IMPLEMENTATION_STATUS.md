@@ -1,3 +1,61 @@
+# Rebuild correction map `brin_0` — 27 Oktober 2026
+
+File yang ditunjuk pengguna berada di `laptop/src/brin_rmf_maps`, sedangkan
+correction sebelumnya hanya dibuat di workspace asal `/mnt/UbuntuData/rmf_ws`.
+Snapshot repository ini masih memuat policy lama dan correction hash
+`c73927fc...`. Policy kedua snapshot lokal (`laptop` dan `husky`) sekarang
+memakai known-area polygon lantai 29 untuk `brin_0`, sama dengan
+`banyak_simpangan`. Kedua profil diregenerasi dan divalidasi pada masing-masing
+snapshot. Building YAML, reference PNG, graph, sensor dan parameter robot
+tidak diubah. Report banyak-simpangan hanya berubah pada hash shared policy.
+
+Hasil: polygon kiri atas berisi 62.120 sel, tidak menyisakan sel unknown,
+semua sel non-dinding free dan dinding Traffic Editor tetap occupied.
+Tambahan correction dari map lama adalah 50.488 unknown-to-free dan 184
+reference-occupied-to-free di area yang disetujui. Occupancy dan correction
+mask kedua snapshot byte-identik dengan hasil workspace asal dan file install
+laptop. Hash occupancy baru `798047169b11697f648975506cbfdb4e02058a65c21da0ace8a18e9358fed04e`;
+hash correction `149ee663ddfe46a8ceeb1f6175078152d7b14e4f3c408585d38c766f5002a76d`.
+Empat validasi profil/snapshot exit 0: 294 lane lolos, nol blocked lane,
+mismatch mask, unexpected pixel atau dinding tidak occupied; reachability utuh.
+
+Perintah generasi, dari root repository, untuk setiap `target=laptop|husky`
+dan `profile=brin_0|banyak_simpangan` (`graph=1.yaml` atau
+`banyak_simpangan.yaml` sesuai profil):
+
+```bash
+python3 "$target/src/brin_rmf_maps/tools/generate_nav2_occupancy.py" --package "$target/src/brin_rmf_maps" --nav2-config laptop/src/brin_husky_nav2/config/nav2.yaml --building "$profile.building.yaml" --graph "$graph" --output-prefix "$profile"
+python3 "$target/src/brin_rmf_maps/tools/validate_nav2_occupancy.py" --package "$target/src/brin_rmf_maps" --nav2-config laptop/src/brin_husky_nav2/config/nav2.yaml --building "$profile.building.yaml" --graph "$graph" --output-prefix "$profile"
+```
+
+Build/test dari `laptop/`, dengan overlay Humble, Clearpath, BRIN; environment
+`COLCON_HOME=$PWD/.colcon`, `ROS_LOG_DIR=$PWD/log/ros`,
+`PYTEST_DISABLE_PLUGIN_AUTOLOAD=1`, dan
+`COLCON_EXTENSION_BLOCKLIST=colcon_core.shell.ros_domain_id`:
+
+```bash
+colcon build --symlink-install --packages-select brin_rmf_maps --cmake-force-configure
+source install/local_setup.bash
+colcon test --packages-select brin_rmf_maps --event-handlers console_direct+
+colcon test-result --test-result-base build/brin_rmf_maps --verbose
+colcon test-result --verbose
+python3 -m pytest -q ../husky/src/brin_rmf_maps/test src/brin_husky_distributed/test/test_distributed.py --tb=short
+```
+
+Build berhasil; 21 test map laptop lolos, hasil colcon 22 test termasuk wrapper
+CTest, tanpa error/failure/skip. Tes map snapshot Husky dan resolusi profil
+distribusi pada laptop: 25 lolos. Digest `brin_0` source laptop, install laptop
+dan snapshot Husky cocok:
+`02b22edc67c190dfed1a7bcff28c87c5cfceb6306561a85570998dc6cbb5f8ab`.
+Digest banyak-simpangan tetap `20ec559a...`, sama dengan deployment sebelumnya.
+Log tersedia di `laptop/log/validation/map_correction_*`.
+
+Tidak ada SSH/deployment, restart proses aktif, goal, task atau uji gerak.
+Snapshot `husky/src` yang diperbarui belum diterapkan ke komputer robot;
+penggunaan profil `brin_0` pada kedua mesin memerlukan deployment map yang
+sama dan preflight ulang. Pembaruan ini menerima aset peta dan build lokal;
+penerimaan runtime/fisik di bawah tetap memiliki batas yang tercatat.
+
 # Status integrasi fisik — 21 Oktober 2026
 
 ## Pembaruan: source sudah dipush dan dideploy
