@@ -1,0 +1,113 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Fixed Frame: map
+    Frame Rate: 20
+    Background Color: 48; 48; 48
+  Displays:
+  - Class: rviz_default_plugins/Map
+    Name: Husky Nav2 map
+    Enabled: true
+    Topic:
+      Value: /a200_1060/map
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    Alpha: 0.7
+    Draw Behind: true
+  - Class: rviz_default_plugins/MarkerArray
+    Name: RMF lanes and waypoints
+    Enabled: true
+    Topic:
+      Value: /map_markers
+      Depth: 10
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+  - Class: rviz_default_plugins/MarkerArray
+    Name: RMF fleet positions
+    Enabled: true
+    Topic:
+      Value: /fleet_markers
+      Depth: 10
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+  - Class: rviz_default_plugins/MarkerArray
+    Name: RMF scheduled traffic
+    Enabled: true
+    Topic:
+      Value: /schedule_markers
+      Depth: 10
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+  - Class: rviz_default_plugins/RobotModel
+    Name: Physical Husky
+    Enabled: true
+    Description Source: Topic
+    Description Topic:
+      Value: /a200_1060/robot_description
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+    TF Prefix: ''
+  - Class: rviz_default_plugins/LaserScan
+    Name: Husky Hokuyo
+    Enabled: true
+    Topic:
+      Value: /a200_1060/scan
+      Depth: 5
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Color Transformer: FlatColor
+    Color: 255; 255; 0
+    Size (m): 0.035
+  - Class: rviz_default_plugins/Path
+    Name: Husky Nav2 global plan
+    Enabled: true
+    Topic:
+      Value: /a200_1060/plan
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+    Color: 40; 160; 255
+    Line Style: Lines
+    Line Width: 0.05
+  - Class: rviz_default_plugins/TF
+    Name: Husky navigation TF
+    Enabled: false
+    Show Names: false
+    Show Axes: true
+    Marker Scale: 0.3
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Select
+  - Class: rviz_default_plugins/FocusCamera
+  - Class: rviz_default_plugins/SetInitialPose
+    Topic:
+      Value: /a200_1060/initialpose
+      Depth: 5
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+  Views:
+    Current:
+      Class: rviz_default_plugins/TopDownOrtho
+      Name: BRIN traffic overview
+      Scale: 4
+      X: 61
+      Y: -96
+Window Geometry:
+  Width: 1400
+  Height: 900

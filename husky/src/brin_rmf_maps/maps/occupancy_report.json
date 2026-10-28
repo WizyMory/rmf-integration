@@ -16,15 +16,44 @@
     "reference_occupied_to_free": 170,
     "traffic_editor_wall_enforced": 255
   },
-  "changed_cells": 68618,
-  "changed_reference_unknown_to_free": 10787,
-  "changed_reference_occupied_to_free": 310,
+  "changed_cells": 119290,
+  "changed_reference_unknown_to_free": 61275,
+  "changed_reference_occupied_to_free": 494,
   "changed_route_unknown_to_free": 10787,
   "changed_route_occupied_to_free": 310,
-  "changed_approved_area_unknown_to_free": 0,
-  "changed_approved_area_occupied_to_free": 0,
+  "changed_approved_area_unknown_to_free": 50488,
+  "changed_approved_area_occupied_to_free": 184,
   "changed_traffic_editor_wall_enforced": 57521,
-  "known_areas": [],
+  "known_areas": [
+    {
+      "name": "brin_0_husky_0_ws_p0",
+      "floor_polygon_index": 29,
+      "required_waypoints": [
+        "husky_0",
+        "ws_p0"
+      ],
+      "polygon_vertex_indexes": [
+        66,
+        11,
+        12,
+        13,
+        14,
+        15,
+        454,
+        455,
+        456,
+        16,
+        17,
+        18,
+        19,
+        71,
+        72,
+        73,
+        64
+      ],
+      "raster_cells": 62120
+    }
+  ],
   "lanes": [
     {
       "building_lane_index": 0,
@@ -7623,7 +7652,7 @@
   },
   "accepted": true,
   "policy_file": "nav2_occupancy_policy.yaml",
-  "policy_sha256": "652d1b2622d149b66aaaf076165463618f0125a62dae6e6e5ff305b2162711b8",
+  "policy_sha256": "7b7b747951aa5526e0e387a85a8ed9dcabfe9f06a2a9ca0c8076e6c3a6dbf7f6",
   "authority": {
     "reference_image": "visual_reference",
     "traffic_editor_walls": "structural_obstacles",
@@ -7638,20 +7667,20 @@
   "resolution": 0.049412520154504355,
   "footprint": [
     [
-      -0.55,
-      -0.38
-    ],
-    [
-      -0.55,
-      0.38
-    ],
-    [
       0.55,
       0.38
     ],
     [
       0.55,
       -0.38
+    ],
+    [
+      -0.55,
+      -0.38
+    ],
+    [
+      -0.55,
+      0.38
     ]
   ],
   "footprint_padding_m": 0.02,
@@ -7660,8 +7689,8 @@
   "derived_image": "brin_0_nav2.png",
   "correction_mask": "brin_0_nav2_corrections.png",
   "promoted": true,
-  "derived_sha256": "aea9ef30fe8622bc5c6f89fafff6b97f331ca36c4362defcf628f959fa03cb3c",
-  "correction_mask_sha256": "c73927fcee5d42f754b267ae841e0c638bbd1b3125f9cafdb32e2a3fee9b1183",
+  "derived_sha256": "798047169b11697f648975506cbfdb4e02058a65c21da0ace8a18e9358fed04e",
+  "correction_mask_sha256": "149ee663ddfe46a8ceeb1f6175078152d7b14e4f3c408585d38c766f5002a76d",
   "alignment_errors_m": {
     "husky_0": 2.842170943040401e-14,
     "husky_1": 1.4210854715202004e-14,

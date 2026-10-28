@@ -51,6 +51,7 @@ def setup(context):
                      'nav_graph': str(profile['graph']),
                      'map_name': 'L1', 'timeout': float(value('preflight_timeout')),
                      'allow_rmf_core': True, 'require_rmf_core': True,
+                     'controller_probe_rmw': 'rmw_fastrtps_cpp',
                      'profile_digest': profile['digest']}], output='screen')
     ns = settings['ros_namespace']
     remaps = [

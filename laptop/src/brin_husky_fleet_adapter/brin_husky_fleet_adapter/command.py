@@ -23,8 +23,11 @@ class Nav2Command(rmf.RobotCommandHandle):
     def __init__(self, node, name, adapter, config):
         super().__init__()
         self.node, self.name, self.adapter, self.config = node, name, adapter, config
-        self.client = ActionClient(node, NavigateToPose, f'/{name}/navigate_to_pose')
-        self.backup_client = ActionClient(node, BackUp, f'/{name}/backup')
+        # Humble's ActionClient does not apply base-name action remaps itself.
+        self.client = ActionClient(
+            node, NavigateToPose, node.resolve_topic_name(f'/{name}/navigate_to_pose'))
+        self.backup_client = ActionClient(
+            node, BackUp, node.resolve_topic_name(f'/{name}/backup'))
         self.clear_client = node.create_client(
             ClearEntireCostmap,
             f'/{name}/local_costmap/clear_entirely_local_costmap')

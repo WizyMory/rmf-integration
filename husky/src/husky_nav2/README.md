@@ -117,6 +117,103 @@ ros2 run rviz2 rviz2 --ros-args \
   -r /goal_pose:=/a200_1060/goal_pose
 ```
 
+## Overlay jalur RMF di RViz
+
+Setelah paket versi ini dibangun dan overlay-nya di-source, perintah berikut
+otomatis menampilkan graph `brin_0` berwarna cyan pada peta Nav2:
+
+```bash
+ros2 launch husky_nav2 rviz.launch.py
+```
+
+Launch RViz memulai satu publisher marker statis pada
+`/a200_1060/rviz/rmf_graph_markers`, dengan `use_sim_time:=false` dan frame
+`map`. Koordinat meter dibaca langsung dari exported graph
+`brin_rmf_maps/nav_graphs/simulation.yaml`, sesuai entri profil `brin_0`
+di `maps/traffic_profiles.yaml`. Nama file graph ini tidak menentukan clock;
+publisher tetap memakai waktu nyata. Tidak ada offset atau
+transform tambahan. Reverse lane digambar sebagai satu garis; overlay ini
+menunjukkan geometri jalur, bukan arah, penutupan lane, atau reservasi traffic.
+
+Untuk penggunaan `brin_0`, berikan peta Nav2 yang sama secara eksplisit.
+Launch navigasi masih memiliki default peta lama `banyak_simpangan_nav2.yaml`;
+gunakan perintah berikut sebagai pasangan overlay `brin_0`:
+
+```bash
+RMF_NAV_MAP="$(ros2 pkg prefix brin_rmf_maps)/share/brin_rmf_maps/maps/brin_0.yaml"
+test -f "$RMF_NAV_MAP" && \
+ros2 launch husky_nav2 navigation.launch.py \
+  map:="$RMF_NAV_MAP" use_sim_time:=false start_hokuyo:=false
+```
+
+Perintah ini mengasumsikan scan Hokuyo sudah berjalan, seperti alur operator.
+Di terminal kedua, jalankan `ros2 launch husky_nav2 rviz.launch.py`.
+Untuk integrasi RMF, berikan `traffic_profile:=brin_0` pada
+`brin_husky_distributed laptop.launch.py` di laptop dan
+`brin_husky_distributed robot.launch.py` di Husky; default kedua launch
+integrasi tersebut masih `banyak_simpangan`. Pemilihan profil ini tidak
+mengaktifkan dispatch dengan sendirinya.
+
+Profil graph harus sama dengan peta Nav2. Jika memakai kembali peta
+`banyak_simpangan.yaml`, pilih overlay-nya secara eksplisit:
+
+```bash
+ros2 launch husky_nav2 rviz.launch.py traffic_profile:=banyak_simpangan
+```
+
+Untuk mematikan publisher dan display graph:
+
+```bash
+ros2 launch husky_nav2 rviz.launch.py show_rmf_graph:=false
+```
+
+Display `/schedule_markers` dan `/fleet_markers` juga tersedia otomatis.
+Keduanya menunggu publisher visualizer RMF; launch RViz ini tidak memulai
+RMF core, visualizer jadwal, atau fleet adapter. Graph statis tetap terlihat
+ketika RMF belum berjalan. Rute yang dijadwalkan memerlukan RMF core,
+fleet adapter, visualizer jadwal dan itinerary aktif. Launch
+`brin_husky_distributed laptop.launch.py` saat ini belum memulai visualizer;
+bila core sudah hidup, jalankan visualizer pada laptop di terminal terpisah:
+
+```bash
+ros2 run rmf_visualization_schedule schedule_visualizer_node --ros-args \
+  -p use_sim_time:=false -p initial_map_name:=L1
+ros2 run rmf_visualization_fleet_states fleetstates_visualizer_node --ros-args \
+  -p use_sim_time:=false -p initial_map_name:=L1 -p HuskyA200_radius:=0.70
+```
+
+Masing-masing perintah berjalan terus, sehingga gunakan satu terminal untuk
+setiap visualizer. Jalankan hanya visualizer yang belum hidup. Topic absolut
+tersebut harus terlihat dari mesin RViz melalui koneksi DDS yang sudah dipakai
+integrasi. Publisher graph lokal tidak memerlukan koneksi ke laptop.
+
+Publisher tambahan hanya mengirim satu `MarkerArray` dengan QoS Reliable /
+Transient Local, sehingga RViz yang terhubung belakangan tetap menerima graph.
+Ia tidak mengirim goal, kecepatan, TF, map, costmap atau obstacle simulasi.
+Kesalahan profil/file graph dilaporkan oleh proses publisher; tidak ada handler
+yang mematikan Nav2 atau RViz ketika publisher gagal. Tambahan beban berasal
+dari satu node kecil dan rendering garis di RViz. Overlay yang terlihat cocok
+belum membuktikan lokalisasi, jadwal, atau gerak robot sudah benar.
+
+Perubahan ini berada pada snapshot `husky/src/husky_nav2`; paket simulasi
+laptop tetap menggunakan visualisasinya sendiri. Build dan deployment di
+Husky dilakukan terpisah sesuai panduan repository. Skrip
+`tools/integration.bash husky build` hanya memilih empat paket integrasi dan
+belum membangun `husky_nav2`. Untuk membangun tambahan ini pada clone robot,
+gunakan underlay Humble/Clearpath yang sama seperti build Nav2 yang bekerja,
+lalu dari root repository:
+
+```bash
+colcon --log-base husky/log build --base-paths husky/src \
+  --build-base husky/build --install-base husky/install --symlink-install \
+  --packages-select brin_rmf_maps husky_nav2
+source husky/install/local_setup.bash
+ros2 pkg prefix husky_nav2
+```
+
+Prefix terakhir harus menunjuk ke `husky/install/husky_nav2` pada clone ini.
+Jangan menyalin direktori build/install dari laptop ke robot.
+
 Pemeriksaan topic yang berguna:
 
 ```bash

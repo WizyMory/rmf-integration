@@ -1,3 +1,4 @@
+from collections import deque
 import importlib.util
 from pathlib import Path
 from types import SimpleNamespace
@@ -9,13 +10,15 @@ from launch_ros.actions import Node
 from nav_msgs.msg import OccupancyGrid, Odometry
 from sensor_msgs.msg import Imu, LaserScan
 from tf2_msgs.msg import TFMessage
+import pytest
 import yaml
 
 from brin_husky_hardware.adapter import HardwareCommand
 from brin_husky_hardware.bridge import (
     PhysicalTfBridge, prefixed_frame, rewrite_transforms, valid_sources)
 from brin_husky_hardware.preflight import (
-    distance_to_graph, existing_rmf_processes, expected_map, map_geometry_errors,
+    NativeControllerProbe, distance_to_graph, existing_rmf_processes,
+    expected_map, map_geometry_errors,
     profile_match_errors, rmf_core_errors, unexpected_rmf_processes)
 from brin_husky_hardware.send_task import request_payload
 
@@ -69,6 +72,50 @@ def test_tf_bridge_detects_duplicate_frame_authority():
     assert bridge.conflict and statuses == [True]
 
 
+@pytest.mark.parametrize('children', [
+    ('laser_frame', 'imu_0_link'), ('imu_0_link', 'laser_frame')])
+def test_static_tf_burst_preserves_both_publishers(monkeypatch, children):
+    """Model queued KEEP_LAST samples arriving before the executor spins."""
+    import brin_husky_hardware.bridge as bridge_module
+
+    publishers, subscriptions = {}, {}
+
+    def publisher(self, message_type, topic, qos):
+        result = SimpleNamespace(samples=[], qos=qos)
+        result.publish = result.samples.append
+        publishers[topic] = result
+        return result
+
+    def subscription(self, message_type, topic, callback, qos):
+        result = SimpleNamespace(callback=callback, queue=deque(maxlen=qos.depth))
+        subscriptions[topic] = result
+        return result
+
+    config = ROOT / 'brin_husky_distributed/config/husky_0.yaml'
+    monkeypatch.setattr(bridge_module.Node, '__init__', lambda self, *a, **kw: None)
+    monkeypatch.setattr(bridge_module.Node, 'declare_parameter', lambda *a: None)
+    monkeypatch.setattr(bridge_module.Node, 'get_parameter',
+                        lambda *a: SimpleNamespace(value=str(config)))
+    monkeypatch.setattr(bridge_module.Node, 'create_publisher', publisher)
+    monkeypatch.setattr(bridge_module.Node, 'create_subscription', subscription)
+    monkeypatch.setattr(bridge_module.Node, 'get_logger',
+                        lambda self: SimpleNamespace(info=lambda text: None))
+    bridge = PhysicalTfBridge()
+    incoming = subscriptions['/a200_1060/tf_static']
+    for child in children:
+        transform = TransformStamped()
+        transform.header.frame_id = 'base_link'
+        transform.child_frame_id = child
+        transform.transform.rotation.w = 1.0
+        incoming.queue.append(TFMessage(transforms=[transform]))
+    while incoming.queue:
+        incoming.callback(incoming.queue.popleft())
+    retained = publishers['/tf_static']
+    assert retained.qos.depth == 1
+    assert {tf.child_frame_id for tf in retained.samples[-1].transforms} == {
+        'husky_0/laser_frame', 'husky_0/imu_0_link'}
+    assert not bridge.conflict
+
 def test_sensor_headers_are_prefixed_without_touching_physical_messages():
     outputs = []
     publisher = SimpleNamespace(publish=lambda message: outputs.append(message))
@@ -90,6 +137,47 @@ def test_sensor_headers_are_prefixed_without_touching_physical_messages():
     assert outputs[1].child_frame_id == 'husky_0/base_link'
     assert scan.header.frame_id == 'laser_frame'
     assert odom.child_frame_id == 'base_link'
+
+
+@pytest.mark.parametrize('outcome', ['sigint', 'sigterm', 'runtime_error'])
+def test_bridge_stops_executor_before_context_and_reports_runtime_errors(monkeypatch, outcome):
+    import brin_husky_hardware.bridge as bridge_module
+
+    events, handlers = [], {}
+    original_handler = object()
+
+    def install_handler(sig, handler):
+        previous = handlers.get(sig, original_handler)
+        handlers[sig] = handler
+        return previous
+
+    def initialize(**kwargs):
+        assert kwargs['signal_handler_options'] == bridge_module.SignalHandlerOptions.NO
+
+    def spin_once(node, timeout_sec):
+        assert timeout_sec <= 0.1
+        events.append('spin')
+        if outcome == 'runtime_error':
+            raise RuntimeError('subscription error')
+        sig = (bridge_module.signal.SIGINT if outcome == 'sigint'
+               else bridge_module.signal.SIGTERM)
+        handlers[sig](sig, None)
+        assert events == ['spin']  # Signal handlers must not invalidate ROS entities.
+
+    monkeypatch.setattr(bridge_module.signal, 'signal', install_handler)
+    monkeypatch.setattr(bridge_module, 'PhysicalTfBridge',
+                        lambda: SimpleNamespace(destroy_node=lambda: events.append('destroy')))
+    monkeypatch.setattr(bridge_module.rclpy, 'init', initialize)
+    monkeypatch.setattr(bridge_module.rclpy, 'spin_once', spin_once)
+    monkeypatch.setattr(bridge_module.rclpy, 'shutdown', lambda: events.append('shutdown'))
+    monkeypatch.setattr(bridge_module.rclpy, 'ok', lambda: True)
+    if outcome == 'runtime_error':
+        with pytest.raises(RuntimeError, match='subscription error'):
+            bridge_module.main()
+    else:
+        bridge_module.main()
+    assert events == ['spin', 'destroy', 'shutdown']
+    assert all(handler is original_handler for handler in handlers.values())
 
 
 def test_map_geometry_and_graph_gate():
@@ -153,6 +241,40 @@ def test_distributed_preflight_rejects_stale_mismatched_or_duplicate_profile():
                                            now=16.0)[0]
     assert 'publisher' in profile_match_errors('abc', {'abc'}, 10.0, 2,
                                                now=12.0)[0]
+
+
+def test_native_controller_probe_is_isolated_and_expires(monkeypatch):
+    import brin_husky_hardware.preflight as preflight
+
+    clock = [10.0]
+    launched = []
+
+    class CompletedProbe:
+        returncode = 0
+
+        def poll(self):
+            return self.returncode
+
+        def communicate(self):
+            return '{"platform_velocity_controller": "active"}', ''
+
+    def launch(command, **kwargs):
+        launched.append((command, kwargs))
+        return CompletedProbe()
+
+    monkeypatch.setattr(preflight.time, 'monotonic', lambda: clock[0])
+    monkeypatch.setattr(preflight.subprocess, 'Popen', launch)
+    monkeypatch.setenv('CYCLONEDDS_URI', 'file:///tmp/other.xml')
+    probe = NativeControllerProbe('/a200_1060/controller_manager/list_controllers',
+                                  'rmw_fastrtps_cpp')
+    assert probe.poll() is None
+    assert launched[0][1]['env']['RMW_IMPLEMENTATION'] == 'rmw_fastrtps_cpp'
+    assert 'CYCLONEDDS_URI' not in launched[0][1]['env']
+    clock[0] = 11.0
+    assert probe.poll() is None
+    assert probe.current() == {'platform_velocity_controller': 'active'}
+    clock[0] = 27.0
+    assert probe.current() is None
 
 
 def test_launch_only_dispatches_after_preflight(monkeypatch):

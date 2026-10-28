@@ -19,6 +19,25 @@ class HardwareCommand(Nav2Command):
         # selects its installed default rather than a path on the RMF server.
         self.behavior_tree = ''
 
+    def follow_new_path(self, waypoints, next_arrival_estimator, path_finished_callback):
+        # Registration may enqueue an idle path before responsive wait is disabled.
+        # Discard it without reporting a physical arrival that did not occur.
+        if self.task_id is None:
+            self.node.get_logger().warning(
+                f'{self.name}: blocked RMF path without an active task ID')
+            return
+        super().follow_new_path(waypoints, next_arrival_estimator, path_finished_callback)
+
+    def observe_task(self, task_id):
+        previous_task = self.task_id
+        super().observe_task(task_id)
+        if self.task_id != previous_task:
+            # Drop paths from the preceding task before asking for a fresh path.
+            # This also recovers task paths received before /fleet_states named the task.
+            self.stop()
+            if self.task_id is not None and self.update is not None:
+                self.update.replan()
+
     def _start_escape(self):
         # The simulation recovery includes an autonomous reverse maneuver.
         # Its rear sensing/clearance has not been accepted on the real Husky.
@@ -27,6 +46,12 @@ class HardwareCommand(Nav2Command):
 
 
 class HardwareFleetNode(FleetNode):
+    def registered(self, name, update):
+        update.enable_responsive_wait(False)
+        super().registered(name, update)
+        self.get_logger().info(
+            f'{name}: responsive wait disabled; Nav2 paths require an active RMF task ID')
+
     def start(self):
         if self.get_parameter('use_sim_time').value:
             raise ValueError('Physical Husky adapter requires use_sim_time:=false')
