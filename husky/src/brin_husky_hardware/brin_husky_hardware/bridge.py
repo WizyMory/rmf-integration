@@ -1,10 +1,12 @@
 """Mirror a physical robot's namespaced TF into the shared prefixed TF tree."""
 from copy import deepcopy
 from pathlib import Path
+import signal
 
 from nav_msgs.msg import Odometry
 import rclpy
 from rclpy.node import Node
+from rclpy.signals import SignalHandlerOptions
 from rclpy.qos import (DurabilityPolicy, QoSProfile, ReliabilityPolicy,
                        qos_profile_sensor_data)
 from sensor_msgs.msg import Imu, LaserScan
@@ -61,6 +63,11 @@ class PhysicalTfBridge(Node):
         static_qos = QoSProfile(
             depth=1, reliability=ReliabilityPolicy.RELIABLE,
             durability=DurabilityPolicy.TRANSIENT_LOCAL)
+        # Retain a burst of latched samples from multiple static TF writers.
+        # The output still uses depth 1 because it contains the merged tree.
+        static_source_qos = QoSProfile(
+            depth=100, reliability=ReliabilityPolicy.RELIABLE,
+            durability=DurabilityPolicy.TRANSIENT_LOCAL)
         self.tf_pub = self.create_publisher(TFMessage, '/tf', dynamic_qos)
         self.static_pub = self.create_publisher(TFMessage, '/tf_static', static_qos)
         self.status_pub = self.create_publisher(
@@ -77,25 +84,25 @@ class PhysicalTfBridge(Node):
             Imu, f'/{self.robot_name}/sensors/imu_0/data',
             qos_profile_sensor_data)
         self.static_by_child = {}
-        self.subscriptions = []
+        self._physical_subscriptions = []
         for topic in config['tf_topics']:
-            self.subscriptions.append(self.create_subscription(
+            self._physical_subscriptions.append(self.create_subscription(
                 TFMessage, topic,
                 lambda message, source=topic: self.on_dynamic(message, source),
                 source_qos))
         for topic in config['tf_static_topics']:
-            self.subscriptions.append(self.create_subscription(
+            self._physical_subscriptions.append(self.create_subscription(
                 TFMessage, topic,
                 lambda message, source=topic: self.on_static(message, source),
-                static_qos))
-        self.subscriptions.append(self.create_subscription(
+                static_source_qos))
+        self._physical_subscriptions.append(self.create_subscription(
             LaserScan, config['scan_topic'], self.on_scan, qos_profile_sensor_data))
-        self.subscriptions.append(self.create_subscription(
+        self._physical_subscriptions.append(self.create_subscription(
             Odometry, config['odom_topic'], self.on_odom, qos_profile_sensor_data))
-        self.subscriptions.append(self.create_subscription(
+        self._physical_subscriptions.append(self.create_subscription(
             Imu, config['imu_topic'], self.on_imu, qos_profile_sensor_data))
         self.get_logger().info(
-            f'{self.robot_name}: mirroring {len(self.subscriptions)} physical TF topics')
+            f'{self.robot_name}: mirroring {len(self._physical_subscriptions)} physical topics')
 
     def accepted_transforms(self, message, source):
         accepted = TFMessage()
@@ -150,13 +157,30 @@ class PhysicalTfBridge(Node):
 
 
 def main(args=None):
-    rclpy.init(args=args)
-    node = PhysicalTfBridge()
+    # Stop spinning before invalidating ROS entities. Shutting the context
+    # down from rclpy's signal thread can race with taking a pending message.
+    stop_requested = False
+
+    def request_stop(signum, frame):
+        nonlocal stop_requested
+        stop_requested = True
+
+    rclpy.init(args=args, signal_handler_options=SignalHandlerOptions.NO)
+    previous_handlers = {
+        sig: signal.signal(sig, request_stop) for sig in (signal.SIGINT, signal.SIGTERM)}
+    node = None
     try:
-        rclpy.spin(node)
+        node = PhysicalTfBridge()
+        while not stop_requested and rclpy.ok():
+            rclpy.spin_once(node, timeout_sec=0.1)
     except KeyboardInterrupt:
         pass
     finally:
-        node.destroy_node()
-        if rclpy.ok():
-            rclpy.shutdown()
+        try:
+            if node is not None:
+                node.destroy_node()
+            if rclpy.ok():
+                rclpy.shutdown()
+        finally:
+            for sig, handler in previous_handlers.items():
+                signal.signal(sig, handler)

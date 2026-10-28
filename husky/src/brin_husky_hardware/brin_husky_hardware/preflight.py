@@ -1,7 +1,10 @@
 """Read-only physical Husky gate: no velocity commands and no Nav2 goals."""
 import json
 import math
+import os
 from pathlib import Path
+import subprocess
+import sys
 import time
 
 from controller_manager_msgs.srv import ListControllers
@@ -106,8 +109,83 @@ def profile_match_errors(expected, seen, last_seen, publishers, now=None):
     if last_seen is None or current - last_seen > 5.0:
         errors.append('Laptop profile announcement unavailable or stale')
     elif seen != {expected}:
-        errors.append('Laptop and Husky map/graph profile digests differ')
+        errors.append('Laptop and Husky map/graph profile digests differ '
+                      f'(Husky expected {expected}; laptop observed {sorted(seen)})')
     return errors
+
+
+class NativeControllerProbe:
+    """Read Clearpath's service with a separate RMW, without changing this node."""
+
+    def __init__(self, service, rmw):
+        self.service = service
+        self.rmw = rmw
+        self.process = None
+        self.started_at = None
+        self.next_at = 0.0
+        self.controllers = None
+        self.last_success = None
+
+    def poll(self):
+        now = time.monotonic()
+        if self.process is not None:
+            if self.process.poll() is None and now - self.started_at > 12.0:
+                self.process.terminate()
+                try:
+                    self.process.wait(timeout=1.0)
+                except subprocess.TimeoutExpired:
+                    self.process.kill()
+                    self.process.wait()
+            if self.process.poll() is not None:
+                output, error = self.process.communicate()
+                if self.process.returncode == 0:
+                    try:
+                        controllers = json.loads(output.splitlines()[-1])
+                        if (not isinstance(controllers, dict)
+                                or not all(isinstance(name, str) and isinstance(state, str)
+                                           for name, state in controllers.items())):
+                            raise ValueError('Invalid controller probe response')
+                        self.controllers = controllers
+                        self.last_success = now
+                        error = ''
+                    except (ValueError, TypeError, IndexError) as exc:
+                        error = str(exc)
+                self.process = None
+                self.next_at = now + 5.0
+                if error:
+                    return error.strip()
+        if self.process is None and now >= self.next_at:
+            env = os.environ.copy()
+            env['RMW_IMPLEMENTATION'] = self.rmw
+            if self.rmw != 'rmw_cyclonedds_cpp':
+                env.pop('CYCLONEDDS_URI', None)
+            try:
+                self.process = subprocess.Popen(
+                    [sys.executable, '-m', 'brin_husky_hardware.controller_probe',
+                     self.service], stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                    text=True, env=env)
+                self.started_at = now
+            except OSError as exc:
+                self.next_at = now + 5.0
+                return str(exc)
+        return None
+
+    def current(self):
+        if self.last_success is None or time.monotonic() - self.last_success > 15.0:
+            return None
+        return self.controllers
+
+    def close(self):
+        if self.process is not None and self.process.poll() is None:
+            self.process.terminate()
+            try:
+                self.process.wait(timeout=1.0)
+            except subprocess.TimeoutExpired:
+                self.process.kill()
+                self.process.wait()
+        if self.process is not None:
+            self.process.communicate()
+            self.process = None
 
 
 class HardwarePreflight(Node):
@@ -117,7 +195,7 @@ class HardwarePreflight(Node):
             ('config_file', ''), ('map_yaml', ''), ('nav_graph', ''),
             ('map_name', 'L1'), ('timeout', 45.0),
             ('allow_rmf_core', False), ('require_rmf_core', False),
-            ('profile_digest', '')):
+            ('profile_digest', ''), ('controller_probe_rmw', '')):
             self.declare_parameter(name, default)
         self.config = yaml.safe_load(Path(self.get_parameter('config_file').value).read_text())
         self.map_expected = expected_map(self.get_parameter('map_yaml').value)
@@ -159,9 +237,12 @@ class HardwarePreflight(Node):
             self.on_imu, qos_profile_sensor_data)
         self.navigate = ActionClient(
             self, NavigateToPose, f'/{self.namespace}/navigate_to_pose')
-        self.controller = self.create_client(
-            ListControllers,
-            self.config['controller_manager'] + '/list_controllers')
+        controller_service = self.config['controller_manager'] + '/list_controllers'
+        probe_rmw = self.get_parameter('controller_probe_rmw').value
+        self.native_controller_probe = (NativeControllerProbe(controller_service, probe_rmw)
+                                        if probe_rmw else None)
+        self.controller = (None if self.native_controller_probe else
+                           self.create_client(ListControllers, controller_service))
         self.lifecycle = self.create_client(
             GetState, f'/{self.namespace}/bt_navigator/get_state')
         self.controller_future = self.lifecycle_future = None
@@ -187,7 +268,12 @@ class HardwarePreflight(Node):
         self.profile_last_seen = time.monotonic()
 
     def poll_services(self):
-        if self.controller_future is None and self.controller.service_is_ready():
+        if self.native_controller_probe:
+            error = self.native_controller_probe.poll()
+            if error:
+                self.get_logger().warn(f'Native controller probe: {error}')
+            self.controllers = self.native_controller_probe.current()
+        elif self.controller_future is None and self.controller.service_is_ready():
             self.controller_future = self.controller.call_async(ListControllers.Request())
         if self.lifecycle_future is None and self.lifecycle.service_is_ready():
             self.lifecycle_future = self.lifecycle.call_async(GetState.Request())
@@ -303,6 +389,8 @@ def main(args=None):
     try:
         result = node.run()
     finally:
+        if node.native_controller_probe:
+            node.native_controller_probe.close()
         node.destroy_node()
         if rclpy.ok():
             rclpy.shutdown()

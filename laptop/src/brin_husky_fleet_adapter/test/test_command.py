@@ -108,6 +108,7 @@ def robot(monkeypatch):
     from builtin_interfaces.msg import Time
     service, publisher = Service(), Publisher()
     node = SimpleNamespace(get_logger=lambda: logger,
+        resolve_topic_name=lambda name: name,
         get_clock=lambda: SimpleNamespace(now=lambda: SimpleNamespace(to_msg=lambda: Time())),
         distance_to_waypoint=lambda index, pose: 0.0,
         pose_in_frame=lambda name, frame: command.pose,
@@ -131,6 +132,19 @@ def waypoint(seconds=0, graph_index=1):
     return SimpleNamespace(position=[1.0, 2.0, 0.0],
         time=datetime(2026, 1, 1)+timedelta(seconds=seconds),
         graph_index=graph_index)
+
+
+def test_action_clients_apply_physical_remaps_and_keep_rmf_identity(robot):
+    remaps = {
+        '/husky_0/navigate_to_pose': '/a200_1060/navigate_to_pose',
+        '/husky_0/backup': '/a200_1060/backup',
+    }
+    robot.node.resolve_topic_name = lambda name: remaps.get(name, name)
+    command = module.Nav2Command(robot.node, robot.name, robot.adapter, robot.config)
+    assert command.client.topic == '/a200_1060/navigate_to_pose'
+    assert command.backup_client.topic == '/a200_1060/backup'
+    assert command.name == 'husky_0'
+    assert not command.client.requests and not command.backup_client.requests
 
 
 def test_next_graph_waypoint_skips_interpolated_points(robot):
