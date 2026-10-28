@@ -60,6 +60,23 @@ if [[ $operation != build ]]; then
     printf '%s\n' "Build the $target integration workspace on this computer first." >&2
     exit 2
   fi
+  # Colcon's .dsv hooks skip entries already in the environment. If an older
+  # workspace was sourced after this overlay, sourcing again alone will not
+  # restore priority. Remove only this target's entries before re-adding them.
+  for overlay_variable in AMENT_PREFIX_PATH COLCON_PREFIX_PATH CMAKE_PREFIX_PATH \
+                          PYTHONPATH LD_LIBRARY_PATH PATH PKG_CONFIG_PATH; do
+    IFS=: read -r -a overlay_entries <<< "${!overlay_variable-}"
+    overlay_retained=''
+    for overlay_entry in "${overlay_entries[@]}"; do
+      case "$overlay_entry" in
+        "$workspace/install"|"$workspace/install/"*|"$workspace/build/"*) continue ;;
+      esac
+      [[ -z $overlay_entry ]] && continue
+      overlay_retained+="${overlay_retained:+:}$overlay_entry"
+    done
+    printf -v "$overlay_variable" '%s' "$overlay_retained"
+    export "$overlay_variable"
+  done
   source "$workspace/install/local_setup.bash"
   integration_prefix=$(ros2 pkg prefix brin_husky_distributed)
   if [[ $integration_prefix != "$workspace/install/"* ]]; then

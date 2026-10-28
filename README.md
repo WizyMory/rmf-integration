@@ -22,6 +22,10 @@ mempertahankan driver, sensor, lokalisasi, Nav2, bridge fisik yang sudah ada,
 preflight, dan satu adapter onboard.
 
 Mulai dari [panduan dua komputer](laptop/src/brin_husky_distributed/README.md).
+Untuk uji operasional di perangkat yang sudah dideploy, baca
+[README operator laptop](laptop/readme.md) dan
+[README operator Husky](husky/readme.md). Keduanya memisahkan uji komunikasi
+tanpa gerak dari aktivasi hardware, preflight dan task fisik.
 Untuk browser gunakan [panduan Web fisik](laptop/src/brin_husky_distributed/WEB.md).
 Panduan Nav2/sensor robot ada pada [husky_nav2](husky/src/husky_nav2/README.md).
 

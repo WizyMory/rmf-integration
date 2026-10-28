@@ -6,6 +6,7 @@ from types import SimpleNamespace
 from launch import LaunchContext
 from launch.actions import EmitEvent, IncludeLaunchDescription
 from launch_ros.actions import Node
+from launch_ros.utilities import evaluate_parameters
 import yaml
 
 from brin_husky_distributed import profiles
@@ -22,7 +23,7 @@ def load(name, monkeypatch):
     spec.loader.exec_module(module)
     monkeypatch.setattr(profiles, 'get_package_share_directory',
                         lambda package: str(ROOT / package))
-    if name == 'robot':
+    if name in ('laptop', 'robot', 'visualization'):
         monkeypatch.setattr(module, 'get_package_share_directory',
                             lambda package: str(ROOT / package))
     return module
@@ -38,6 +39,8 @@ def context(profile='banyak_simpangan', dispatch='false', start_nav2='false'):
         'preflight_timeout': '180.0',
         'enable_dispatch': dispatch,
         'server_uri': '',
+        'rviz': 'false',
+        'rviz_config': str(ROOT / 'brin_husky_distributed/rviz/husky_rmf.rviz'),
     })
     return result
 
@@ -63,6 +66,64 @@ def test_laptop_runs_only_rmf_core_and_profile_announcement(monkeypatch):
             'rmf_traffic_ros2', 'rmf_task_ros2', 'rmf_building_map_tools',
             'brin_husky_distributed']
         assert actions[-1].node_executable == 'profile_announcer'
+
+
+def test_rviz_option_keeps_one_core_and_adds_only_observation(monkeypatch):
+    ctx = context()
+    ctx.launch_configurations['rviz'] = 'true'
+    laptop = load('laptop', monkeypatch)
+    actions = laptop.setup(ctx)
+    assert len(actions) == 5
+    assert sum(isinstance(action, Node) and action.node_executable ==
+               'rmf_traffic_schedule' for action in actions) == 1
+    include = actions[-1]
+    assert isinstance(include, IncludeLaunchDescription)
+    monkeypatch.setattr('ament_index_python.packages.get_package_share_directory',
+                        lambda package: str(ROOT / package))
+    included = include.launch_description_source.get_launch_description(ctx)
+    assert include.launch_description_source.location.endswith('/launch/visualization.launch.py')
+    opaque, = [action for action in included.entities
+               if type(action).__name__ == 'OpaqueFunction']
+    nodes = opaque.execute(ctx)
+    assert {node.node_package for node in nodes} == {
+        'rviz2', 'rmf_visualization_navgraphs',
+        'rmf_visualization_fleet_states', 'rmf_visualization_schedule'}
+    fleet = yaml.safe_load((ROOT / 'brin_husky_distributed/config/fleet_config.yaml').read_text())
+    for node in nodes:
+        params = evaluate_parameters(ctx, node._Node__parameters)[0]
+        assert params['use_sim_time'] is False
+        if node.node_package != 'rviz2':
+            assert params['initial_map_name'] == fleet['map_name']
+        if node.node_package == 'rmf_visualization_fleet_states':
+            assert params[fleet['fleet_name'] + '_radius'] == fleet['profile']['footprint']
+        if node.node_package == 'rviz2':
+            assert node.condition.evaluate(ctx)
+            ctx.launch_configurations['rviz'] = 'false'
+            assert not node.condition.evaluate(ctx)
+            remaps = {tuple(s.text for s in source): tuple(s.text for s in target)
+                      for source, target in node._Node__remappings}
+            assert remaps[('/tf',)] == ('/a200_1060/nav/tf',)
+            assert remaps[('/tf_static',)] == ('/a200_1060/tf_static',)
+
+
+def test_physical_rviz_loads_latched_graph_and_live_fleet_markers():
+    config = yaml.safe_load((ROOT / 'brin_husky_distributed/rviz/husky_rmf.rviz').read_text())
+    manager = config['Visualization Manager']
+    assert manager['Global Options']['Fixed Frame'] == 'map'
+    # RViz may save additional displays for the same topic. Check the named
+    # preset layers so an operator's extra panels do not hide their settings.
+    displays = {display['Name']: display for display in manager['Displays']}
+    for name, topic, durability in [
+            ('RMF lanes and waypoints', '/map_markers', 'Transient Local'),
+            ('RMF fleet positions', '/fleet_markers', 'Volatile'),
+            ('RMF scheduled traffic', '/schedule_markers', 'Volatile')]:
+        display = displays[name]
+        assert display['Enabled']
+        assert display['Class'] == 'rviz_default_plugins/MarkerArray'
+        assert display['Topic']['Value'] == topic
+        assert display['Topic']['Durability Policy'] == durability
+    assert displays['Husky Nav2 map']['Topic']['Durability Policy'] == 'Transient Local'
+    assert displays['Husky Hokuyo']['Topic']['Reliability Policy'] == 'Best Effort'
 
 
 def test_robot_requires_laptop_and_defers_adapter_until_preflight(monkeypatch):

@@ -14,6 +14,7 @@ setup(
         ('share/' + name + '/config', [str(p) for pattern in ('*.yaml', '*.xml')
                                      for p in Path('config').glob(pattern)]),
         ('share/' + name + '/web', ['web/api_config.py']),
+        ('share/' + name + '/rviz', [str(p) for p in Path('rviz').glob('*.rviz')]),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

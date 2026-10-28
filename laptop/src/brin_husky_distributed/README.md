@@ -74,6 +74,39 @@ yang belum divalidasi. Tinjau kembali nilai tersebut di lokasi.
    ros2 launch brin_husky_distributed laptop.launch.py traffic_profile:=banyak_simpangan
    ```
 
+   Untuk membuka RViz beserta visualizer RMF dengan satu perintah, gunakan
+   `rviz:=true` pada launch yang sama, atau dari root repository:
+
+   ```bash
+   bash tools/integration.bash laptop core traffic_profile:=banyak_simpangan rviz:=true
+   ```
+
+   Pilih salah satu perintah core, jangan menjalankan keduanya bersamaan.
+   RViz memuat peta `/a200_1060/map`, scan `/a200_1060/scan`, model Husky,
+   jalur Nav2, serta MarkerArray `/map_markers` (lane/waypoint),
+   `/fleet_markers` (posisi fleet), dan `/schedule_markers` (jadwal RMF).
+   Tampilan memakai frame `map`; filter lantai dan radius marker dibaca
+   dari konfigurasi fleet fisik (`L1`, `HuskyA200`, 0,70 m).
+   Lane/waypoint muncul setelah adapter memublikasikan `/nav_graphs`;
+   marker fleet membutuhkan `/fleet_states` berisi robot yang terdaftar.
+   Zoom pada peta untuk melihat nama waypoint dan pergerakan robot.
+
+   Tanpa `rviz:=true`, perilaku core lama tetap tanpa GUI. Jika core sudah
+   hidup, cukup buka satu launch visualisasi di terminal laptop dengan
+   environment ROS yang sama; launch ini tidak memulai core atau adapter:
+
+   ```bash
+   ros2 launch brin_husky_distributed visualization.launch.py
+   ```
+
+   Gunakan satu launch visualisasi saja. RViz membaca TF navigasi yang
+   sama dengan `husky_nav2 rviz.launch.py`: `/a200_1060/nav/tf` dan
+   `/a200_1060/tf_static`. Tidak menambah publisher TF, bridge, Nav2,
+   sensor, atau task. Tool `2D Pose Estimate` tetap menuju
+   `/a200_1060/initialpose`; pose awal tetap diisi operator sesuai keadaan
+   fisik. Jangan membuka RViz H3 kedua bila RViz laptop ini sudah dipakai.
+   Semua node visualisasi memakai `use_sim_time:=false`.
+
    Pada terminal laptop kedua, cek bahwa `/brin_hardware/profile_digest`
    menerbitkan nilai dan topic robot terlihat. Pengumuman ini bukan perintah
    gerak; preflight Husky akan mencocokkannya dengan aset lokal.
