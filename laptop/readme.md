@@ -4,6 +4,45 @@ Lokasi: `/mnt/UbuntuData/rmf-integration/laptop/readme.md`.
 Jalankan perintah dari root `/mnt/UbuntuData/rmf-integration`, bukan dari `laptop/src`.
 Panduan pasangan: [README Husky](../husky/readme.md).
 
+Profil map baru `gedungWS_0` memakai graph dan map Nav2 yang diselaraskan
+dengan resolusi SLAM 0.05 m/pixel. Pilih pada core:
+
+```bash
+bash tools/integration.bash laptop core traffic_profile:=gedungWS_0 rviz:=true
+```
+
+Husky harus memilih `traffic_profile:=gedungWS_0` dan map Nav2
+`gedungWS_0_rmf.yaml` pada sesi yang sama. Lihat
+[catatan profil gedungWS](../docs/GEDUNGWS_0_2026-10-30.md).
+Digest profil `gedungWS_0` yang terpasang di kedua perangkat:
+`5b0808476a773374169e0384d700d7a82275e001d64e1f229e666ca46f02b20e`.
+
+Kecepatan diperbarui pada 29 Oktober 2026: target linear **0.5 m/s** dan
+angular **0.5 rad/s**, pada Nav2 simulasi laptop dan konfigurasi robot Husky.
+Batas velocity smoother dan fleet RMF sudah diselaraskan, termasuk workspace
+lama `rmf_ws`. Konfigurasi baru dimuat pada launch berikutnya; pembaruan ini
+tidak menjalankan robot. Lihat [rincian perubahan kecepatan](../docs/SPEED_UPDATE_2026-10-29.md).
+
+## Pembaruan map `brin_0` — 29 Oktober 2026
+
+Edit `src/brin_rmf_maps/maps/brin_0.building.yaml` sudah diregenerasi menjadi
+graph RMF, occupancy Nav2, spawn dan mesh dinding, lalu dibuild pada laptop
+dan Husky, termasuk workspace lama `rmf_ws`. Masing-masing workspace lulus
+21 tes map; digest profil terpasang sama pada kedua perangkat.
+Lihat [laporan pembaruan map](../docs/MAP_UPDATE_2026-10-29.md).
+
+Untuk memakai hasil edit ini, jalankan core di L1 dengan profil eksplisit:
+
+```bash
+bash tools/integration.bash laptop core traffic_profile:=brin_0 rviz:=true
+```
+
+Pakai `traffic_profile:=brin_0` juga pada preflight dan adapter Husky, serta
+`maps/brin_0.yaml` untuk map Nav2. Contoh `banyak_simpangan` pada prosedur di
+bawah adalah profil lain; ganti nama profil/map secara konsisten untuk sesi
+`brin_0`. Saat deployment tidak ada core/Nav2/adapter aktif; runtime dan uji
+gerak tidak dijalankan oleh proses pembaruan ini.
+
 ## 1. Batas uji dan keselamatan
 
 Laptop menjalankan RMF core, RViz beserta visualizer traffic/fleet, CLI task,

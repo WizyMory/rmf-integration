@@ -23,10 +23,16 @@ def resolve_profile(name, maps_share=None):
     image = map_yaml.parent / metadata['image']
     if not image.is_file():
         raise FileNotFoundError(image)
+    fleet_config = share / 'maps' / entry['fleet_config'] if 'fleet_config' in entry else None
+    if fleet_config is not None and not fleet_config.is_file():
+        raise FileNotFoundError(fleet_config)
     digest = hashlib.sha256()
     digest.update(name.encode('utf-8'))
-    for path in (building, graph, map_yaml, image):
+    for path in (building, graph, map_yaml, image) + ((fleet_config,) if fleet_config else ()):
         digest.update(path.name.encode('utf-8'))
         digest.update(path.read_bytes())
-    return {'name': name, 'building': building, 'graph': graph,
-            'map_yaml': map_yaml, 'image': image, 'digest': digest.hexdigest()}
+    result = {'name': name, 'building': building, 'graph': graph,
+              'map_yaml': map_yaml, 'image': image, 'digest': digest.hexdigest()}
+    if fleet_config is not None:
+        result['fleet_config'] = fleet_config
+    return result

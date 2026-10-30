@@ -20,7 +20,7 @@ def test_seven_stacks_have_disjoint_frames_and_observations():
         assert controller['plugin'] == (
             'nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController'
         )
-        assert controller['desired_linear_vel'] == 0.4
+        assert controller['desired_linear_vel'] == 0.5
         assert controller['lookahead_dist'] == 0.6
         assert controller['use_collision_detection'] is True
         assert controller['allow_reversing'] is False

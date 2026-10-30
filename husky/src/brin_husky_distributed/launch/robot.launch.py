@@ -27,7 +27,7 @@ def setup(context):
         raise ValueError('Only physical /a200_1060 as logical husky_0 is supported')
     if settings['tf_topics'] != ['/a200_1060/nav/tf']:
         raise ValueError('Only /a200_1060/nav/tf is supported by this Husky Nav2 stack')
-    fleet_config = local_share / 'config/fleet_config.yaml'
+    fleet_config = profile.get('fleet_config', local_share / 'config/fleet_config.yaml')
     fleet = yaml.safe_load(fleet_config.read_text())
     if fleet['map_name'] != 'L1' or list(fleet['robots']) != ['husky_0']:
         raise ValueError('Physical fleet must contain only husky_0 on L1')

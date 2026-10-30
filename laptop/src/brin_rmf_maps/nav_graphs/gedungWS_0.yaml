@@ -1,0 +1,223 @@
+building_name: gedungWS_0
+levels:
+  L1:
+    lanes:
+    - - 0
+      - 1
+      - speed_limit: 0
+        undock_name: utara
+    - - 1
+      - 0
+      - dock_name: utara
+        speed_limit: 0
+    - - 1
+      - 2
+      - speed_limit: 0
+    - - 2
+      - 1
+      - speed_limit: 0
+    - - 2
+      - 3
+      - speed_limit: 0
+    - - 3
+      - 2
+      - speed_limit: 0
+    - - 3
+      - 4
+      - speed_limit: 0
+    - - 4
+      - 3
+      - speed_limit: 0
+    - - 4
+      - 5
+      - speed_limit: 0
+    - - 5
+      - 4
+      - speed_limit: 0
+    - - 2
+      - 6
+      - speed_limit: 0
+    - - 6
+      - 2
+      - speed_limit: 0
+    - - 7
+      - 5
+      - speed_limit: 0
+    - - 5
+      - 7
+      - speed_limit: 0
+    - - 7
+      - 8
+      - speed_limit: 0
+    - - 8
+      - 7
+      - speed_limit: 0
+    - - 8
+      - 6
+      - speed_limit: 0
+    - - 6
+      - 8
+      - speed_limit: 0
+    - - 7
+      - 9
+      - speed_limit: 0
+    - - 9
+      - 7
+      - speed_limit: 0
+    - - 8
+      - 10
+      - speed_limit: 0
+    - - 10
+      - 8
+      - speed_limit: 0
+    - - 4
+      - 11
+      - speed_limit: 0
+    - - 11
+      - 4
+      - speed_limit: 0
+    - - 3
+      - 12
+      - speed_limit: 0
+    - - 12
+      - 3
+      - speed_limit: 0
+    - - 6
+      - 13
+      - speed_limit: 0
+    - - 13
+      - 6
+      - speed_limit: 0
+    - - 13
+      - 14
+      - speed_limit: 0
+    - - 14
+      - 13
+      - speed_limit: 0
+    - - 13
+      - 15
+      - speed_limit: 0
+    - - 15
+      - 13
+      - speed_limit: 0
+    - - 15
+      - 16
+      - speed_limit: 0
+    - - 16
+      - 15
+      - speed_limit: 0
+    - - 15
+      - 17
+      - speed_limit: 0
+    - - 17
+      - 15
+      - speed_limit: 0
+    - - 15
+      - 18
+      - speed_limit: 0
+    - - 18
+      - 15
+      - speed_limit: 0
+    vertices:
+    - - 1.7381000000000002
+      - -27.2952
+      - dock_name: utara
+        dropoff_ingestor: do_utara_WS
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: utara_WS
+    - - 10.337200000000001
+      - -25.0535
+      - is_passthrough_point: true
+        name: ''
+    - - 17.9555
+      - -23.1095
+      - is_passthrough_point: true
+        name: ''
+    - - 18.866200000000003
+      - -26.2269
+      - is_passthrough_point: false
+        name: ''
+    - - 19.7594
+      - -29.60695
+      - is_passthrough_point: false
+        name: ''
+    - - 22.71915
+      - -29.291750000000004
+      - is_passthrough_point: true
+        name: ''
+    - - 23.10445
+      - -21.72595
+      - is_parking_spot: false
+        is_passthrough_point: true
+        name: ''
+    - - 25.08345
+      - -28.4686
+      - is_passthrough_point: false
+        name: ''
+    - - 24.2456
+      - -25.41075
+      - is_passthrough_point: false
+        name: ''
+    - - 27.440050000000003
+      - -28.3474
+      - dropoff_ingestor: do_ws_p0
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: ws_p0
+    - - 25.691500000000005
+      - -24.6934
+      - dropoff_ingestor: do_ws_p3
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: ws_p3
+    - - 17.968799999999998
+      - -30.925400000000003
+      - dropoff_ingestor: do_ws_p1
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: ws_p1
+    - - 17.24025
+      - -27.4171
+      - dropoff_ingestor: do_ws_p2
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: ws_p2
+    - - 32.468250000000005
+      - -19.334100000000003
+      - is_parking_spot: false
+        is_passthrough_point: true
+        name: ''
+    - - 36.102850000000004
+      - -18.2916
+      - dropoff_ingestor: do_selatan_WS
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: selatan_WS
+    - - 31.041250000000005
+      - -14.60905
+      - is_passthrough_point: true
+        name: ''
+    - - 29.862000000000002
+      - -10.65605
+      - is_passthrough_point: true
+        name: ''
+    - - 32.5294
+      - -14.22605
+      - dropoff_ingestor: do_dpn_ws2
+        is_holding_point: true
+        is_parking_spot: true
+        name: dpn_ws2
+    - - 29.27955
+      - -15.057650000000002
+      - dropoff_ingestor: do_dpn_ws1
+        is_holding_point: true
+        is_parking_spot: true
+        name: dpn_ws1
+        pickup_dispenser: pu_dpn_ws1

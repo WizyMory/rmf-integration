@@ -54,6 +54,8 @@ def test_profiles_follow_authoritative_manifest_and_hash_all_assets():
         assert result['map_yaml'].name == entry['nav2_map']
         assert len(result['digest']) == 64
         assert result['digest'] == profiles.resolve_profile(name, maps)['digest']
+    assert profiles.resolve_profile('gedungWS_0', maps)['fleet_config'].name == (
+        'gedungWS_0_fleet.yaml')
     assert profiles.resolve_profile('brin_0', maps)['digest'] != (
         profiles.resolve_profile('banyak_simpangan', maps)['digest'])
 

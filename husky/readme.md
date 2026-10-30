@@ -4,6 +4,49 @@ Lokasi robot: `/home/husky/rmf-integration/husky/readme.md`.
 Jalankan perintah integrasi dari `/home/husky/rmf-integration`.
 Panduan pasangan: [README laptop](../laptop/readme.md).
 
+Untuk uji profil `gedungWS_0`, laptop memilih
+`traffic_profile:=gedungWS_0`; Husky memakai nilai yang sama pada preflight
+dan adapter. Map Nav2 yang dipakai adalah
+`$(ros2 pkg prefix brin_rmf_maps)/share/brin_rmf_maps/maps/gedungWS_0_rmf.yaml`.
+Waypoint charger profil ini adalah `ws_p0`. Setelah map Nav2 dipilih,
+operator mengatur initial pose pada koordinat map profil baru. Lihat
+[catatan profil gedungWS](../docs/GEDUNGWS_0_2026-10-30.md).
+Digest profil `gedungWS_0` yang terpasang di kedua perangkat:
+`5b0808476a773374169e0384d700d7a82275e001d64e1f229e666ca46f02b20e`.
+
+Kecepatan diperbarui pada 29 Oktober 2026: target linear **0.5 m/s** dan
+angular **0.5 rad/s**. Nav2 runtime memakai
+`/home/husky/rmf_ws/src/husky_nav2/config/nav2_params.yaml`; velocity smoother
+serta batas fleet RMF sudah diselaraskan. Source, snapshot dan file terpasang
+sudah diverifikasi. Nilai dimuat pada launch berikutnya; robot tidak
+dijalankan oleh pembaruan ini. Lihat
+[rincian perubahan kecepatan](../docs/SPEED_UPDATE_2026-10-29.md).
+
+## Pembaruan map `brin_0` — 29 Oktober 2026
+
+Map hasil edit Traffic Editor sudah diregenerasi, disinkronkan dan dibuild
+pada workspace integrasi serta `/home/husky/rmf_ws`. Graph RMF dan occupancy
+Nav2 terpasang memiliki digest yang sama dengan laptop. Masing-masing
+workspace lulus 21 tes map. Lihat
+[laporan pembaruan map](../docs/MAP_UPDATE_2026-10-29.md).
+
+Untuk sesi `brin_0`, laptop memakai `traffic_profile:=brin_0`. Pada langkah
+H2 di bawah, gunakan map berikut setelah environment terminal disiapkan dan
+driver Hokuyo siap:
+
+```bash
+RMF_NAV_MAP="$(ros2 pkg prefix brin_rmf_maps)/share/brin_rmf_maps/maps/brin_0.yaml"
+test -f "$RMF_NAV_MAP"
+ros2 launch husky_nav2 navigation.launch.py \
+  map:="$RMF_NAV_MAP" use_sim_time:=false start_hokuyo:=false
+```
+
+Pada preflight dan adapter H4, ganti `traffic_profile:=banyak_simpangan`
+menjadi `traffic_profile:=brin_0`. Profil `banyak_simpangan` pada contoh lama
+tetap memakai map terpisah. Tidak ada Nav2/adapter aktif saat deployment;
+map baru tersedia untuk peluncuran berikutnya, tanpa aktivasi runtime atau
+pengiriman goal oleh proses pembaruan ini.
+
 ## 1. Peran, workspace dan batas keselamatan
 
 Robot fisik `/a200_1060` terdaftar di RMF sebagai `husky_0`, fleet `HuskyA200`,

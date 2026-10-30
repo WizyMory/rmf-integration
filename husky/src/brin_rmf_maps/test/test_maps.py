@@ -114,7 +114,10 @@ def test_duplicate_spawn_is_rejected(tmp_path):
     from map_geometry import graph_spawns
     graph = yaml.safe_load((ROOT/'nav_graphs/1.yaml').read_text())
     vertices = graph['levels']['L1']['vertices']
-    vertices[17][2]['spawn_robot_name'] = 'husky_0'
+    duplicate = next(vertex for vertex in vertices
+                     if vertex[2].get('spawn_robot_name')
+                     and vertex[2]['spawn_robot_name'] != 'husky_0')
+    duplicate[2]['spawn_robot_name'] = 'husky_0'
     path = tmp_path/'graph.yaml'
     path.write_text(yaml.safe_dump(graph))
     with pytest.raises(ValueError, match='duplicate'):
@@ -125,17 +128,42 @@ def test_registered_traffic_profiles_are_complete_and_accepted():
     import json
     profiles = yaml.safe_load((ROOT/'maps/traffic_profiles.yaml').read_text())
     assert profiles['default_profile'] == 'brin_0'
-    assert set(profiles['profiles']) == {'brin_0', 'banyak_simpangan'}
+    assert set(profiles['profiles']) == {'brin_0', 'banyak_simpangan', 'gedungWS_0'}
     for profile in profiles['profiles'].values():
         assert (ROOT/'maps'/profile['building_map']).is_file()
         assert (ROOT/'nav_graphs'/profile['nav_graph']).is_file()
         assert (ROOT/'maps'/profile['nav2_map']).is_file()
+        if 'fleet_config' in profile:
+            assert (ROOT/'maps'/profile['fleet_config']).is_file()
     graph = yaml.safe_load((ROOT/'nav_graphs/banyak_simpangan.yaml').read_text())
     assert all('door_name' not in lane[2]
                for level in graph['levels'].values() for lane in level['lanes'])
     report = json.loads((ROOT/'maps/banyak_simpangan_occupancy_report.json').read_text())
     assert report['accepted'] and report['promoted']
     assert not [lane for lane in report['lanes'] if not lane['accepted']]
+
+
+def test_gedungws_map_graph_and_charger_are_registered_together():
+    from PIL import Image
+    import numpy as np
+    building = yaml.safe_load((ROOT/'maps/gedungWS_0.building.yaml').read_text())
+    derived = yaml.safe_load((ROOT/'maps/gedungWS_0_rmf.building.yaml').read_text())
+    native = yaml.safe_load((ROOT/'maps/gedungWS_0.yaml').read_text())
+    active = yaml.safe_load((ROOT/'maps/gedungWS_0_rmf.yaml').read_text())
+    graph = yaml.safe_load((ROOT/'nav_graphs/gedungWS_0.yaml').read_text())
+    fleet = yaml.safe_load((ROOT/'maps/gedungWS_0_fleet.yaml').read_text())
+    report = __import__('json').loads((ROOT/'maps/gedungWS_0_report.json').read_text())
+    assert set(building['levels']) == {'gedungWS_lt1'}
+    assert set(derived['levels']) == set(graph['levels']) == {'L1'}
+    assert fleet['map_name'] == 'L1'
+    assert fleet['robots']['husky_0']['charger'] == 'ws_p0'
+    assert not report['blocked_footprint_sweeps']
+    with Image.open(ROOT/'maps'/native['image']) as source, \
+            Image.open(ROOT/'maps'/active['image']) as target:
+        assert np.array_equal(np.asarray(source), np.asarray(target))
+        assert active['origin'] == [0.0, -source.height*active['resolution'], 0.0]
+    names = {v[2].get('name') for v in graph['levels']['L1']['vertices']}
+    assert {'ws_p0', 'utara_WS', 'selatan_WS'} <= names
 
 
 def test_profile_graph_preserves_passthrough_points():

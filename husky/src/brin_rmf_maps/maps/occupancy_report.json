@@ -16,14 +16,14 @@
     "reference_occupied_to_free": 170,
     "traffic_editor_wall_enforced": 255
   },
-  "changed_cells": 119290,
-  "changed_reference_unknown_to_free": 61275,
-  "changed_reference_occupied_to_free": 494,
-  "changed_route_unknown_to_free": 10787,
-  "changed_route_occupied_to_free": 310,
-  "changed_approved_area_unknown_to_free": 50488,
-  "changed_approved_area_occupied_to_free": 184,
-  "changed_traffic_editor_wall_enforced": 57521,
+  "changed_cells": 119319,
+  "changed_reference_unknown_to_free": 61349,
+  "changed_reference_occupied_to_free": 539,
+  "changed_route_unknown_to_free": 10052,
+  "changed_route_occupied_to_free": 340,
+  "changed_approved_area_unknown_to_free": 51297,
+  "changed_approved_area_occupied_to_free": 199,
+  "changed_traffic_editor_wall_enforced": 57431,
   "known_areas": [
     {
       "name": "brin_0_husky_0_ws_p0",
@@ -58,33 +58,8 @@
     {
       "building_lane_index": 0,
       "building_vertices": [
-        453,
-        457
-      ],
-      "endpoint_names": [
-        "husky_0",
-        ""
-      ],
-      "image_start": [
-        432.671,
-        663.338
-      ],
-      "image_end": [
-        468.464,
-        633.738
-      ],
-      "reference_unknown_cells_cleared": 1244,
-      "reference_occupied_cells_cleared": 0,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": null,
-      "accepted": true
-    },
-    {
-      "building_lane_index": 1,
-      "building_vertices": [
-        458,
-        459
+        457,
+        458
       ],
       "endpoint_names": [
         "",
@@ -106,10 +81,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 2,
+      "building_lane_index": 1,
       "building_vertices": [
-        467,
-        468
+        466,
+        467
       ],
       "endpoint_names": [
         "",
@@ -131,10 +106,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 3,
+      "building_lane_index": 2,
       "building_vertices": [
-        471,
-        472
+        470,
+        471
       ],
       "endpoint_names": [
         "",
@@ -166,10 +141,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 4,
+      "building_lane_index": 3,
       "building_vertices": [
-        472,
-        473
+        471,
+        472
       ],
       "endpoint_names": [
         "",
@@ -191,10 +166,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 5,
+      "building_lane_index": 4,
       "building_vertices": [
-        487,
-        471
+        486,
+        470
       ],
       "endpoint_names": [
         "",
@@ -216,10 +191,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 6,
+      "building_lane_index": 5,
       "building_vertices": [
-        482,
-        497
+        481,
+        496
       ],
       "endpoint_names": [
         "",
@@ -241,10 +216,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 7,
+      "building_lane_index": 6,
       "building_vertices": [
-        499,
-        500
+        498,
+        499
       ],
       "endpoint_names": [
         "",
@@ -266,10 +241,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 8,
+      "building_lane_index": 7,
       "building_vertices": [
-        502,
-        503
+        501,
+        502
       ],
       "endpoint_names": [
         "",
@@ -291,10 +266,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 9,
+      "building_lane_index": 8,
       "building_vertices": [
-        503,
-        504
+        502,
+        503
       ],
       "endpoint_names": [
         "",
@@ -316,10 +291,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 10,
+      "building_lane_index": 9,
       "building_vertices": [
-        505,
-        506
+        504,
+        505
       ],
       "endpoint_names": [
         "",
@@ -341,10 +316,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 11,
+      "building_lane_index": 10,
       "building_vertices": [
-        506,
-        464
+        505,
+        463
       ],
       "endpoint_names": [
         "",
@@ -366,10 +341,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 12,
+      "building_lane_index": 11,
       "building_vertices": [
-        507,
-        508
+        506,
+        507
       ],
       "endpoint_names": [
         "",
@@ -391,10 +366,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 13,
+      "building_lane_index": 12,
       "building_vertices": [
-        508,
-        465
+        507,
+        464
       ],
       "endpoint_names": [
         "",
@@ -416,10 +391,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 14,
+      "building_lane_index": 13,
       "building_vertices": [
-        465,
-        509
+        464,
+        508
       ],
       "endpoint_names": [
         "",
@@ -441,10 +416,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 15,
+      "building_lane_index": 14,
       "building_vertices": [
-        509,
-        510
+        508,
+        509
       ],
       "endpoint_names": [
         "",
@@ -466,10 +441,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 16,
+      "building_lane_index": 15,
       "building_vertices": [
-        510,
-        511
+        509,
+        510
       ],
       "endpoint_names": [
         "",
@@ -491,10 +466,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 17,
+      "building_lane_index": 16,
       "building_vertices": [
-        511,
-        466
+        510,
+        465
       ],
       "endpoint_names": [
         "",
@@ -516,10 +491,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 18,
+      "building_lane_index": 17,
       "building_vertices": [
-        466,
-        467
+        465,
+        466
       ],
       "endpoint_names": [
         "",
@@ -541,10 +516,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 19,
+      "building_lane_index": 18,
       "building_vertices": [
-        512,
-        513
+        511,
+        512
       ],
       "endpoint_names": [
         "",
@@ -566,10 +541,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 20,
+      "building_lane_index": 19,
       "building_vertices": [
-        513,
-        469
+        512,
+        468
       ],
       "endpoint_names": [
         "",
@@ -591,10 +566,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 21,
+      "building_lane_index": 20,
       "building_vertices": [
-        469,
-        514
+        468,
+        513
       ],
       "endpoint_names": [
         "",
@@ -616,10 +591,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 22,
+      "building_lane_index": 21,
       "building_vertices": [
-        514,
-        515
+        513,
+        514
       ],
       "endpoint_names": [
         "",
@@ -641,10 +616,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 23,
+      "building_lane_index": 22,
       "building_vertices": [
-        515,
-        516
+        514,
+        515
       ],
       "endpoint_names": [
         "",
@@ -666,10 +641,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 24,
+      "building_lane_index": 23,
       "building_vertices": [
-        516,
-        517
+        515,
+        516
       ],
       "endpoint_names": [
         "",
@@ -691,10 +666,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 25,
+      "building_lane_index": 24,
       "building_vertices": [
-        518,
-        487
+        517,
+        486
       ],
       "endpoint_names": [
         "",
@@ -716,10 +691,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 26,
+      "building_lane_index": 25,
       "building_vertices": [
-        517,
-        470
+        516,
+        469
       ],
       "endpoint_names": [
         "",
@@ -741,10 +716,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 27,
+      "building_lane_index": 26,
       "building_vertices": [
-        519,
-        474
+        518,
+        473
       ],
       "endpoint_names": [
         "",
@@ -776,10 +751,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 28,
+      "building_lane_index": 27,
       "building_vertices": [
-        472,
-        519
+        471,
+        518
       ],
       "endpoint_names": [
         "",
@@ -811,10 +786,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 29,
+      "building_lane_index": 28,
       "building_vertices": [
-        474,
-        520
+        473,
+        519
       ],
       "endpoint_names": [
         "",
@@ -836,10 +811,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 30,
+      "building_lane_index": 29,
       "building_vertices": [
-        520,
-        475
+        519,
+        474
       ],
       "endpoint_names": [
         "",
@@ -861,10 +836,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 31,
+      "building_lane_index": 30,
       "building_vertices": [
-        475,
-        496
+        474,
+        495
       ],
       "endpoint_names": [
         "",
@@ -886,10 +861,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 32,
+      "building_lane_index": 31,
       "building_vertices": [
-        476,
-        521
+        475,
+        520
       ],
       "endpoint_names": [
         "",
@@ -911,10 +886,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 33,
+      "building_lane_index": 32,
       "building_vertices": [
-        521,
-        522
+        520,
+        521
       ],
       "endpoint_names": [
         "",
@@ -936,10 +911,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 34,
+      "building_lane_index": 33,
       "building_vertices": [
-        522,
-        523
+        521,
+        522
       ],
       "endpoint_names": [
         "",
@@ -961,10 +936,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 35,
+      "building_lane_index": 34,
       "building_vertices": [
-        523,
-        524
+        522,
+        523
       ],
       "endpoint_names": [
         "",
@@ -986,10 +961,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 36,
+      "building_lane_index": 35,
       "building_vertices": [
-        524,
-        477
+        523,
+        476
       ],
       "endpoint_names": [
         "",
@@ -1011,10 +986,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 37,
+      "building_lane_index": 36,
       "building_vertices": [
-        477,
-        525
+        476,
+        524
       ],
       "endpoint_names": [
         "",
@@ -1036,10 +1011,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 38,
+      "building_lane_index": 37,
       "building_vertices": [
-        525,
-        478
+        524,
+        477
       ],
       "endpoint_names": [
         "",
@@ -1061,10 +1036,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 39,
+      "building_lane_index": 38,
       "building_vertices": [
-        478,
-        526
+        477,
+        525
       ],
       "endpoint_names": [
         "",
@@ -1086,10 +1061,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 40,
+      "building_lane_index": 39,
       "building_vertices": [
-        526,
-        527
+        525,
+        526
       ],
       "endpoint_names": [
         "",
@@ -1111,10 +1086,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 41,
+      "building_lane_index": 40,
       "building_vertices": [
-        527,
-        528
+        526,
+        527
       ],
       "endpoint_names": [
         "",
@@ -1136,10 +1111,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 42,
+      "building_lane_index": 41,
       "building_vertices": [
-        528,
-        529
+        527,
+        528
       ],
       "endpoint_names": [
         "",
@@ -1161,10 +1136,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 43,
+      "building_lane_index": 42,
       "building_vertices": [
-        529,
-        479
+        528,
+        478
       ],
       "endpoint_names": [
         "",
@@ -1186,10 +1161,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 44,
+      "building_lane_index": 43,
       "building_vertices": [
-        479,
-        530
+        478,
+        529
       ],
       "endpoint_names": [
         "",
@@ -1211,10 +1186,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 45,
+      "building_lane_index": 44,
       "building_vertices": [
-        530,
-        480
+        529,
+        479
       ],
       "endpoint_names": [
         "",
@@ -1236,10 +1211,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 46,
+      "building_lane_index": 45,
       "building_vertices": [
-        480,
-        531
+        479,
+        530
       ],
       "endpoint_names": [
         "",
@@ -1261,10 +1236,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 47,
+      "building_lane_index": 46,
       "building_vertices": [
-        531,
-        532
+        530,
+        531
       ],
       "endpoint_names": [
         "",
@@ -1286,10 +1261,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 48,
+      "building_lane_index": 47,
       "building_vertices": [
-        532,
-        533
+        531,
+        532
       ],
       "endpoint_names": [
         "",
@@ -1311,10 +1286,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 49,
+      "building_lane_index": 48,
       "building_vertices": [
-        533,
-        534
+        532,
+        533
       ],
       "endpoint_names": [
         "",
@@ -1336,10 +1311,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 50,
+      "building_lane_index": 49,
       "building_vertices": [
-        534,
-        535
+        533,
+        534
       ],
       "endpoint_names": [
         "",
@@ -1361,10 +1336,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 51,
+      "building_lane_index": 50,
       "building_vertices": [
-        535,
-        536
+        534,
+        535
       ],
       "endpoint_names": [
         "",
@@ -1386,10 +1361,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 52,
+      "building_lane_index": 51,
       "building_vertices": [
-        536,
-        537
+        535,
+        536
       ],
       "endpoint_names": [
         "",
@@ -1411,10 +1386,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 53,
+      "building_lane_index": 52,
       "building_vertices": [
-        537,
-        481
+        536,
+        480
       ],
       "endpoint_names": [
         "",
@@ -1436,10 +1411,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 54,
+      "building_lane_index": 53,
       "building_vertices": [
-        481,
-        538
+        480,
+        537
       ],
       "endpoint_names": [
         "",
@@ -1461,10 +1436,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 55,
+      "building_lane_index": 54,
       "building_vertices": [
-        538,
-        539
+        537,
+        538
       ],
       "endpoint_names": [
         "",
@@ -1486,10 +1461,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 56,
+      "building_lane_index": 55,
       "building_vertices": [
-        539,
-        540
+        538,
+        539
       ],
       "endpoint_names": [
         "",
@@ -1511,10 +1486,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 57,
+      "building_lane_index": 56,
       "building_vertices": [
-        540,
-        482
+        539,
+        481
       ],
       "endpoint_names": [
         "",
@@ -1536,10 +1511,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 58,
+      "building_lane_index": 57,
       "building_vertices": [
-        541,
-        542
+        540,
+        541
       ],
       "endpoint_names": [
         "",
@@ -1561,10 +1536,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 59,
+      "building_lane_index": 58,
       "building_vertices": [
-        542,
-        483
+        541,
+        482
       ],
       "endpoint_names": [
         "",
@@ -1586,10 +1561,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 60,
+      "building_lane_index": 59,
       "building_vertices": [
-        483,
-        543
+        482,
+        542
       ],
       "endpoint_names": [
         "",
@@ -1611,10 +1586,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 61,
+      "building_lane_index": 60,
       "building_vertices": [
-        543,
-        484
+        542,
+        483
       ],
       "endpoint_names": [
         "",
@@ -1636,10 +1611,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 62,
+      "building_lane_index": 61,
       "building_vertices": [
-        484,
-        485
+        483,
+        484
       ],
       "endpoint_names": [
         "",
@@ -1661,10 +1636,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 63,
+      "building_lane_index": 62,
       "building_vertices": [
-        485,
-        544
+        484,
+        543
       ],
       "endpoint_names": [
         "",
@@ -1686,10 +1661,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 64,
+      "building_lane_index": 63,
       "building_vertices": [
-        544,
-        486
+        543,
+        485
       ],
       "endpoint_names": [
         "",
@@ -1711,10 +1686,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 65,
+      "building_lane_index": 64,
       "building_vertices": [
-        486,
-        545
+        485,
+        544
       ],
       "endpoint_names": [
         "",
@@ -1736,10 +1711,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 66,
+      "building_lane_index": 65,
       "building_vertices": [
-        545,
-        546
+        544,
+        545
       ],
       "endpoint_names": [
         "",
@@ -1761,10 +1736,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 67,
+      "building_lane_index": 66,
       "building_vertices": [
-        546,
-        547
+        545,
+        546
       ],
       "endpoint_names": [
         "",
@@ -1786,10 +1761,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 68,
+      "building_lane_index": 67,
       "building_vertices": [
-        547,
-        501
+        546,
+        500
       ],
       "endpoint_names": [
         "",
@@ -1811,10 +1786,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 69,
+      "building_lane_index": 68,
       "building_vertices": [
-        485,
-        498
+        484,
+        497
       ],
       "endpoint_names": [
         "",
@@ -1836,10 +1811,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 70,
+      "building_lane_index": 69,
       "building_vertices": [
-        498,
-        499
+        497,
+        498
       ],
       "endpoint_names": [
         "",
@@ -1861,10 +1836,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 71,
+      "building_lane_index": 70,
       "building_vertices": [
-        548,
-        484
+        547,
+        483
       ],
       "endpoint_names": [
         "",
@@ -1886,10 +1861,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 72,
+      "building_lane_index": 71,
       "building_vertices": [
-        488,
-        489
+        487,
+        488
       ],
       "endpoint_names": [
         "",
@@ -1911,10 +1886,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 73,
+      "building_lane_index": 72,
       "building_vertices": [
-        489,
-        491
+        488,
+        490
       ],
       "endpoint_names": [
         "",
@@ -1936,10 +1911,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 74,
+      "building_lane_index": 73,
       "building_vertices": [
-        491,
-        549
+        490,
+        548
       ],
       "endpoint_names": [
         "",
@@ -1961,10 +1936,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 75,
+      "building_lane_index": 74,
       "building_vertices": [
-        549,
-        550
+        548,
+        549
       ],
       "endpoint_names": [
         "",
@@ -1986,10 +1961,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 76,
+      "building_lane_index": 75,
       "building_vertices": [
-        550,
-        490
+        549,
+        489
       ],
       "endpoint_names": [
         "",
@@ -2011,10 +1986,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 77,
+      "building_lane_index": 76,
       "building_vertices": [
-        490,
-        551
+        489,
+        550
       ],
       "endpoint_names": [
         "",
@@ -2036,10 +2011,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 78,
+      "building_lane_index": 77,
       "building_vertices": [
-        551,
-        502
+        550,
+        501
       ],
       "endpoint_names": [
         "",
@@ -2061,10 +2036,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 79,
+      "building_lane_index": 78,
       "building_vertices": [
-        552,
-        495
+        551,
+        494
       ],
       "endpoint_names": [
         "",
@@ -2086,10 +2061,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 80,
+      "building_lane_index": 79,
       "building_vertices": [
-        496,
-        476
+        495,
+        475
       ],
       "endpoint_names": [
         "",
@@ -2111,10 +2086,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 81,
+      "building_lane_index": 80,
       "building_vertices": [
-        459,
-        554
+        458,
+        553
       ],
       "endpoint_names": [
         "",
@@ -2136,10 +2111,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 82,
+      "building_lane_index": 81,
       "building_vertices": [
-        554,
-        501
+        553,
+        500
       ],
       "endpoint_names": [
         "",
@@ -2161,10 +2136,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 83,
+      "building_lane_index": 82,
       "building_vertices": [
-        482,
-        555
+        481,
+        554
       ],
       "endpoint_names": [
         "",
@@ -2186,10 +2161,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 84,
+      "building_lane_index": 83,
       "building_vertices": [
-        541,
-        556
+        540,
+        555
       ],
       "endpoint_names": [
         "",
@@ -2211,10 +2186,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 85,
+      "building_lane_index": 84,
       "building_vertices": [
-        556,
-        555
+        555,
+        554
       ],
       "endpoint_names": [
         "",
@@ -2236,10 +2211,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 86,
+      "building_lane_index": 85,
       "building_vertices": [
-        467,
-        558
+        466,
+        557
       ],
       "endpoint_names": [
         "",
@@ -2261,10 +2236,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 87,
+      "building_lane_index": 86,
       "building_vertices": [
-        558,
-        512
+        557,
+        511
       ],
       "endpoint_names": [
         "",
@@ -2286,10 +2261,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 88,
+      "building_lane_index": 87,
       "building_vertices": [
-        554,
-        559
+        553,
+        558
       ],
       "endpoint_names": [
         "",
@@ -2311,10 +2286,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 89,
+      "building_lane_index": 88,
       "building_vertices": [
-        559,
-        560
+        558,
+        559
       ],
       "endpoint_names": [
         "",
@@ -2336,10 +2311,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 90,
+      "building_lane_index": 89,
       "building_vertices": [
-        560,
-        561
+        559,
+        560
       ],
       "endpoint_names": [
         "",
@@ -2361,10 +2336,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 91,
+      "building_lane_index": 90,
       "building_vertices": [
-        561,
-        562
+        560,
+        561
       ],
       "endpoint_names": [
         "",
@@ -2386,10 +2361,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 92,
+      "building_lane_index": 91,
       "building_vertices": [
-        562,
-        563
+        561,
+        562
       ],
       "endpoint_names": [
         "",
@@ -2411,10 +2386,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 93,
+      "building_lane_index": 92,
       "building_vertices": [
-        563,
-        564
+        562,
+        563
       ],
       "endpoint_names": [
         "",
@@ -2436,10 +2411,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 94,
+      "building_lane_index": 93,
       "building_vertices": [
-        564,
-        565
+        563,
+        564
       ],
       "endpoint_names": [
         "",
@@ -2461,10 +2436,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 95,
+      "building_lane_index": 94,
       "building_vertices": [
-        565,
-        566
+        564,
+        565
       ],
       "endpoint_names": [
         "",
@@ -2486,10 +2461,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 96,
+      "building_lane_index": 95,
       "building_vertices": [
-        566,
-        567
+        565,
+        566
       ],
       "endpoint_names": [
         "",
@@ -2511,10 +2486,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 97,
+      "building_lane_index": 96,
       "building_vertices": [
-        567,
-        568
+        566,
+        567
       ],
       "endpoint_names": [
         "",
@@ -2536,10 +2511,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 98,
+      "building_lane_index": 97,
       "building_vertices": [
-        568,
-        569
+        567,
+        568
       ],
       "endpoint_names": [
         "",
@@ -2561,10 +2536,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 99,
+      "building_lane_index": 98,
       "building_vertices": [
-        569,
-        570
+        568,
+        569
       ],
       "endpoint_names": [
         "",
@@ -2586,10 +2561,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 100,
+      "building_lane_index": 99,
       "building_vertices": [
-        570,
-        571
+        569,
+        570
       ],
       "endpoint_names": [
         "",
@@ -2611,10 +2586,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 101,
+      "building_lane_index": 100,
       "building_vertices": [
-        571,
-        572
+        570,
+        571
       ],
       "endpoint_names": [
         "",
@@ -2636,10 +2611,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 102,
+      "building_lane_index": 101,
       "building_vertices": [
-        572,
-        573
+        571,
+        572
       ],
       "endpoint_names": [
         "",
@@ -2661,10 +2636,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 103,
+      "building_lane_index": 102,
       "building_vertices": [
-        573,
-        574
+        572,
+        573
       ],
       "endpoint_names": [
         "",
@@ -2686,10 +2661,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 104,
+      "building_lane_index": 103,
       "building_vertices": [
-        574,
-        575
+        573,
+        574
       ],
       "endpoint_names": [
         "",
@@ -2711,10 +2686,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 105,
+      "building_lane_index": 104,
       "building_vertices": [
-        575,
-        576
+        574,
+        575
       ],
       "endpoint_names": [
         "",
@@ -2736,10 +2711,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 106,
+      "building_lane_index": 105,
       "building_vertices": [
-        576,
-        577
+        575,
+        576
       ],
       "endpoint_names": [
         "",
@@ -2761,10 +2736,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 107,
+      "building_lane_index": 106,
       "building_vertices": [
-        577,
-        578
+        576,
+        577
       ],
       "endpoint_names": [
         "",
@@ -2786,10 +2761,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 108,
+      "building_lane_index": 107,
       "building_vertices": [
-        578,
-        579
+        577,
+        578
       ],
       "endpoint_names": [
         "",
@@ -2811,10 +2786,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 109,
+      "building_lane_index": 108,
       "building_vertices": [
-        579,
-        580
+        578,
+        579
       ],
       "endpoint_names": [
         "",
@@ -2836,10 +2811,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 110,
+      "building_lane_index": 109,
       "building_vertices": [
-        580,
-        581
+        579,
+        580
       ],
       "endpoint_names": [
         "",
@@ -2861,10 +2836,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 111,
+      "building_lane_index": 110,
       "building_vertices": [
-        581,
-        582
+        580,
+        581
       ],
       "endpoint_names": [
         "",
@@ -2886,10 +2861,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 112,
+      "building_lane_index": 111,
       "building_vertices": [
-        582,
-        583
+        581,
+        582
       ],
       "endpoint_names": [
         "",
@@ -2911,10 +2886,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 113,
+      "building_lane_index": 112,
       "building_vertices": [
-        583,
-        584
+        582,
+        583
       ],
       "endpoint_names": [
         "",
@@ -2936,10 +2911,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 114,
+      "building_lane_index": 113,
       "building_vertices": [
-        584,
-        585
+        583,
+        584
       ],
       "endpoint_names": [
         "",
@@ -2961,10 +2936,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 115,
+      "building_lane_index": 114,
       "building_vertices": [
-        585,
-        586
+        584,
+        585
       ],
       "endpoint_names": [
         "",
@@ -2986,10 +2961,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 116,
+      "building_lane_index": 115,
       "building_vertices": [
-        586,
-        587
+        585,
+        586
       ],
       "endpoint_names": [
         "",
@@ -3011,10 +2986,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 117,
+      "building_lane_index": 116,
       "building_vertices": [
-        587,
-        588
+        586,
+        587
       ],
       "endpoint_names": [
         "",
@@ -3036,10 +3011,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 118,
+      "building_lane_index": 117,
       "building_vertices": [
-        588,
-        589
+        587,
+        588
       ],
       "endpoint_names": [
         "",
@@ -3061,10 +3036,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 119,
+      "building_lane_index": 118,
       "building_vertices": [
-        589,
-        590
+        588,
+        589
       ],
       "endpoint_names": [
         "",
@@ -3086,10 +3061,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 120,
+      "building_lane_index": 119,
       "building_vertices": [
-        590,
-        591
+        589,
+        590
       ],
       "endpoint_names": [
         "",
@@ -3111,10 +3086,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 121,
+      "building_lane_index": 120,
       "building_vertices": [
-        591,
-        592
+        590,
+        591
       ],
       "endpoint_names": [
         "",
@@ -3136,10 +3111,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 122,
+      "building_lane_index": 121,
       "building_vertices": [
-        592,
-        593
+        591,
+        592
       ],
       "endpoint_names": [
         "",
@@ -3161,10 +3136,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 123,
+      "building_lane_index": 122,
       "building_vertices": [
-        593,
-        594
+        592,
+        593
       ],
       "endpoint_names": [
         "",
@@ -3186,10 +3161,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 124,
+      "building_lane_index": 123,
       "building_vertices": [
-        594,
-        595
+        593,
+        594
       ],
       "endpoint_names": [
         "",
@@ -3211,10 +3186,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 125,
+      "building_lane_index": 124,
       "building_vertices": [
-        595,
-        596
+        594,
+        595
       ],
       "endpoint_names": [
         "",
@@ -3236,10 +3211,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 126,
+      "building_lane_index": 125,
       "building_vertices": [
-        596,
-        597
+        595,
+        596
       ],
       "endpoint_names": [
         "",
@@ -3261,10 +3236,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 127,
+      "building_lane_index": 126,
       "building_vertices": [
-        597,
-        598
+        596,
+        597
       ],
       "endpoint_names": [
         "",
@@ -3286,10 +3261,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 128,
+      "building_lane_index": 127,
       "building_vertices": [
-        598,
-        599
+        597,
+        598
       ],
       "endpoint_names": [
         "",
@@ -3311,10 +3286,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 129,
+      "building_lane_index": 128,
       "building_vertices": [
-        599,
-        600
+        598,
+        599
       ],
       "endpoint_names": [
         "",
@@ -3336,10 +3311,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 130,
+      "building_lane_index": 129,
       "building_vertices": [
-        600,
-        601
+        599,
+        600
       ],
       "endpoint_names": [
         "",
@@ -3361,10 +3336,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 131,
+      "building_lane_index": 130,
       "building_vertices": [
-        601,
-        602
+        600,
+        601
       ],
       "endpoint_names": [
         "",
@@ -3386,10 +3361,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 132,
+      "building_lane_index": 131,
       "building_vertices": [
-        602,
-        474
+        601,
+        473
       ],
       "endpoint_names": [
         "",
@@ -3411,10 +3386,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 133,
+      "building_lane_index": 132,
       "building_vertices": [
-        600,
-        603
+        599,
+        602
       ],
       "endpoint_names": [
         "",
@@ -3436,10 +3411,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 134,
+      "building_lane_index": 133,
       "building_vertices": [
-        600,
-        475
+        599,
+        474
       ],
       "endpoint_names": [
         "",
@@ -3461,10 +3436,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 135,
+      "building_lane_index": 134,
       "building_vertices": [
-        487,
-        604
+        486,
+        603
       ],
       "endpoint_names": [
         "",
@@ -3486,10 +3461,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 136,
+      "building_lane_index": 135,
       "building_vertices": [
-        604,
-        605
+        603,
+        604
       ],
       "endpoint_names": [
         "",
@@ -3511,10 +3486,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 137,
+      "building_lane_index": 136,
       "building_vertices": [
-        606,
-        607
+        605,
+        606
       ],
       "endpoint_names": [
         "",
@@ -3536,10 +3511,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 138,
+      "building_lane_index": 137,
       "building_vertices": [
-        607,
-        608
+        606,
+        607
       ],
       "endpoint_names": [
         "",
@@ -3561,10 +3536,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 139,
+      "building_lane_index": 138,
       "building_vertices": [
-        608,
-        609
+        607,
+        608
       ],
       "endpoint_names": [
         "",
@@ -3586,10 +3561,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 140,
+      "building_lane_index": 139,
       "building_vertices": [
-        609,
-        610
+        608,
+        609
       ],
       "endpoint_names": [
         "",
@@ -3611,10 +3586,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 141,
+      "building_lane_index": 140,
       "building_vertices": [
-        610,
-        611
+        609,
+        610
       ],
       "endpoint_names": [
         "",
@@ -3636,10 +3611,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 142,
+      "building_lane_index": 141,
       "building_vertices": [
-        611,
-        612
+        610,
+        611
       ],
       "endpoint_names": [
         "",
@@ -3661,10 +3636,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 143,
+      "building_lane_index": 142,
       "building_vertices": [
-        612,
-        613
+        611,
+        612
       ],
       "endpoint_names": [
         "",
@@ -3686,10 +3661,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 144,
+      "building_lane_index": 143,
       "building_vertices": [
-        613,
-        614
+        612,
+        613
       ],
       "endpoint_names": [
         "",
@@ -3711,10 +3686,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 145,
+      "building_lane_index": 144,
       "building_vertices": [
-        614,
-        615
+        613,
+        614
       ],
       "endpoint_names": [
         "",
@@ -3736,10 +3711,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 146,
+      "building_lane_index": 145,
       "building_vertices": [
-        615,
-        616
+        614,
+        615
       ],
       "endpoint_names": [
         "",
@@ -3761,10 +3736,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 147,
+      "building_lane_index": 146,
       "building_vertices": [
-        616,
-        617
+        615,
+        616
       ],
       "endpoint_names": [
         "",
@@ -3786,10 +3761,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 148,
+      "building_lane_index": 147,
       "building_vertices": [
-        617,
-        618
+        616,
+        617
       ],
       "endpoint_names": [
         "",
@@ -3811,10 +3786,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 149,
+      "building_lane_index": 148,
       "building_vertices": [
-        618,
-        619
+        617,
+        618
       ],
       "endpoint_names": [
         "",
@@ -3836,10 +3811,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 150,
+      "building_lane_index": 149,
       "building_vertices": [
-        619,
-        620
+        618,
+        619
       ],
       "endpoint_names": [
         "",
@@ -3861,10 +3836,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 151,
+      "building_lane_index": 150,
       "building_vertices": [
-        620,
-        621
+        619,
+        620
       ],
       "endpoint_names": [
         "",
@@ -3886,10 +3861,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 152,
+      "building_lane_index": 151,
       "building_vertices": [
-        621,
-        622
+        620,
+        621
       ],
       "endpoint_names": [
         "",
@@ -3911,10 +3886,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 153,
+      "building_lane_index": 152,
       "building_vertices": [
-        464,
-        624
+        463,
+        623
       ],
       "endpoint_names": [
         "",
@@ -3936,10 +3911,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 154,
+      "building_lane_index": 153,
       "building_vertices": [
-        624,
-        507
+        623,
+        506
       ],
       "endpoint_names": [
         "",
@@ -3961,10 +3936,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 155,
+      "building_lane_index": 154,
       "building_vertices": [
-        622,
-        625
+        621,
+        624
       ],
       "endpoint_names": [
         "",
@@ -3986,10 +3961,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 156,
+      "building_lane_index": 155,
       "building_vertices": [
-        625,
-        623
+        624,
+        622
       ],
       "endpoint_names": [
         "",
@@ -4011,10 +3986,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 157,
+      "building_lane_index": 156,
       "building_vertices": [
-        623,
-        626
+        622,
+        625
       ],
       "endpoint_names": [
         "",
@@ -4036,10 +4011,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 158,
+      "building_lane_index": 157,
       "building_vertices": [
-        626,
-        627
+        625,
+        626
       ],
       "endpoint_names": [
         "",
@@ -4061,10 +4036,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 159,
+      "building_lane_index": 158,
       "building_vertices": [
-        504,
-        628
+        503,
+        627
       ],
       "endpoint_names": [
         "",
@@ -4086,10 +4061,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 160,
+      "building_lane_index": 159,
       "building_vertices": [
-        628,
-        629
+        627,
+        628
       ],
       "endpoint_names": [
         "",
@@ -4111,10 +4086,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 161,
+      "building_lane_index": 160,
       "building_vertices": [
-        629,
-        630
+        628,
+        629
       ],
       "endpoint_names": [
         "",
@@ -4136,10 +4111,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 162,
+      "building_lane_index": 161,
       "building_vertices": [
-        630,
-        505
+        629,
+        504
       ],
       "endpoint_names": [
         "",
@@ -4161,10 +4136,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 163,
+      "building_lane_index": 162,
       "building_vertices": [
-        627,
-        631
+        626,
+        630
       ],
       "endpoint_names": [
         "",
@@ -4186,10 +4161,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 164,
+      "building_lane_index": 163,
       "building_vertices": [
-        631,
-        632
+        630,
+        631
       ],
       "endpoint_names": [
         "",
@@ -4211,10 +4186,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 165,
+      "building_lane_index": 164,
       "building_vertices": [
-        632,
-        633
+        631,
+        632
       ],
       "endpoint_names": [
         "",
@@ -4236,10 +4211,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 166,
+      "building_lane_index": 165,
       "building_vertices": [
-        633,
-        634
+        632,
+        633
       ],
       "endpoint_names": [
         "",
@@ -4261,10 +4236,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 167,
+      "building_lane_index": 166,
       "building_vertices": [
-        634,
-        635
+        633,
+        634
       ],
       "endpoint_names": [
         "",
@@ -4286,10 +4261,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 168,
+      "building_lane_index": 167,
       "building_vertices": [
-        635,
-        636
+        634,
+        635
       ],
       "endpoint_names": [
         "",
@@ -4311,10 +4286,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 169,
+      "building_lane_index": 168,
       "building_vertices": [
-        636,
-        637
+        635,
+        636
       ],
       "endpoint_names": [
         "",
@@ -4336,10 +4311,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 170,
+      "building_lane_index": 169,
       "building_vertices": [
-        637,
-        638
+        636,
+        637
       ],
       "endpoint_names": [
         "",
@@ -4361,10 +4336,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 171,
+      "building_lane_index": 170,
       "building_vertices": [
-        553,
-        639
+        552,
+        638
       ],
       "endpoint_names": [
         "",
@@ -4386,10 +4361,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 172,
+      "building_lane_index": 171,
       "building_vertices": [
-        639,
-        502
+        638,
+        501
       ],
       "endpoint_names": [
         "",
@@ -4411,10 +4386,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 173,
+      "building_lane_index": 172,
       "building_vertices": [
-        639,
-        640
+        638,
+        639
       ],
       "endpoint_names": [
         "",
@@ -4436,10 +4411,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 174,
+      "building_lane_index": 173,
       "building_vertices": [
-        640,
-        641
+        639,
+        640
       ],
       "endpoint_names": [
         "",
@@ -4461,10 +4436,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 175,
+      "building_lane_index": 174,
       "building_vertices": [
-        641,
-        642
+        640,
+        641
       ],
       "endpoint_names": [
         "",
@@ -4486,10 +4461,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 176,
+      "building_lane_index": 175,
       "building_vertices": [
-        642,
-        643
+        641,
+        642
       ],
       "endpoint_names": [
         "",
@@ -4511,10 +4486,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 177,
+      "building_lane_index": 176,
       "building_vertices": [
-        643,
-        644
+        642,
+        643
       ],
       "endpoint_names": [
         "",
@@ -4536,10 +4511,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 178,
+      "building_lane_index": 177,
       "building_vertices": [
-        645,
-        646
+        644,
+        645
       ],
       "endpoint_names": [
         "",
@@ -4561,10 +4536,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 179,
+      "building_lane_index": 178,
       "building_vertices": [
-        646,
-        647
+        645,
+        646
       ],
       "endpoint_names": [
         "",
@@ -4586,10 +4561,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 180,
+      "building_lane_index": 179,
       "building_vertices": [
-        647,
-        648
+        646,
+        647
       ],
       "endpoint_names": [
         "",
@@ -4611,10 +4586,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 181,
+      "building_lane_index": 180,
       "building_vertices": [
-        648,
-        488
+        647,
+        487
       ],
       "endpoint_names": [
         "",
@@ -4636,10 +4611,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 182,
+      "building_lane_index": 181,
       "building_vertices": [
-        648,
-        493
+        647,
+        492
       ],
       "endpoint_names": [
         "",
@@ -4661,10 +4636,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 183,
+      "building_lane_index": 182,
       "building_vertices": [
-        644,
-        492
+        643,
+        491
       ],
       "endpoint_names": [
         "",
@@ -4686,10 +4661,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 184,
+      "building_lane_index": 183,
       "building_vertices": [
-        548,
-        499
+        547,
+        498
       ],
       "endpoint_names": [
         "",
@@ -4711,10 +4686,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 185,
+      "building_lane_index": 184,
       "building_vertices": [
-        644,
-        649
+        643,
+        648
       ],
       "endpoint_names": [
         "",
@@ -4736,10 +4711,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 186,
+      "building_lane_index": 185,
       "building_vertices": [
-        649,
-        645
+        648,
+        644
       ],
       "endpoint_names": [
         "",
@@ -4761,10 +4736,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 187,
+      "building_lane_index": 186,
       "building_vertices": [
-        629,
-        632
+        628,
+        631
       ],
       "endpoint_names": [
         "",
@@ -4786,10 +4761,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 188,
+      "building_lane_index": 187,
       "building_vertices": [
-        632,
-        494
+        631,
+        493
       ],
       "endpoint_names": [
         "",
@@ -4811,10 +4786,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 189,
+      "building_lane_index": 188,
       "building_vertices": [
-        559,
-        547
+        558,
+        546
       ],
       "endpoint_names": [
         "",
@@ -4836,10 +4811,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 190,
+      "building_lane_index": 189,
       "building_vertices": [
-        560,
-        546
+        559,
+        545
       ],
       "endpoint_names": [
         "",
@@ -4861,10 +4836,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 191,
+      "building_lane_index": 190,
       "building_vertices": [
-        561,
-        545
+        560,
+        544
       ],
       "endpoint_names": [
         "",
@@ -4886,10 +4861,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 192,
+      "building_lane_index": 191,
       "building_vertices": [
-        562,
-        486
+        561,
+        485
       ],
       "endpoint_names": [
         "",
@@ -4911,10 +4886,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 193,
+      "building_lane_index": 192,
       "building_vertices": [
-        563,
-        544
+        562,
+        543
       ],
       "endpoint_names": [
         "",
@@ -4936,10 +4911,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 194,
+      "building_lane_index": 193,
       "building_vertices": [
-        564,
-        485
+        563,
+        484
       ],
       "endpoint_names": [
         "",
@@ -4961,10 +4936,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 195,
+      "building_lane_index": 194,
       "building_vertices": [
-        565,
-        484
+        564,
+        483
       ],
       "endpoint_names": [
         "",
@@ -4986,10 +4961,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 196,
+      "building_lane_index": 195,
       "building_vertices": [
-        566,
-        543
+        565,
+        542
       ],
       "endpoint_names": [
         "",
@@ -5011,10 +4986,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 197,
+      "building_lane_index": 196,
       "building_vertices": [
-        567,
-        483
+        566,
+        482
       ],
       "endpoint_names": [
         "",
@@ -5036,10 +5011,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 198,
+      "building_lane_index": 197,
       "building_vertices": [
-        568,
-        542
+        567,
+        541
       ],
       "endpoint_names": [
         "",
@@ -5061,10 +5036,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 199,
+      "building_lane_index": 198,
       "building_vertices": [
-        569,
-        541
+        568,
+        540
       ],
       "endpoint_names": [
         "",
@@ -5086,10 +5061,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 200,
+      "building_lane_index": 199,
       "building_vertices": [
-        570,
-        556
+        569,
+        555
       ],
       "endpoint_names": [
         "",
@@ -5111,10 +5086,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 201,
+      "building_lane_index": 200,
       "building_vertices": [
-        571,
-        555
+        570,
+        554
       ],
       "endpoint_names": [
         "",
@@ -5136,10 +5111,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 202,
+      "building_lane_index": 201,
       "building_vertices": [
-        572,
-        482
+        571,
+        481
       ],
       "endpoint_names": [
         "",
@@ -5161,10 +5136,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 203,
+      "building_lane_index": 202,
       "building_vertices": [
-        573,
-        540
+        572,
+        539
       ],
       "endpoint_names": [
         "",
@@ -5186,10 +5161,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 204,
+      "building_lane_index": 203,
       "building_vertices": [
-        574,
-        539
+        573,
+        538
       ],
       "endpoint_names": [
         "",
@@ -5211,10 +5186,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 205,
+      "building_lane_index": 204,
       "building_vertices": [
-        575,
-        538
+        574,
+        537
       ],
       "endpoint_names": [
         "",
@@ -5236,10 +5211,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 206,
+      "building_lane_index": 205,
       "building_vertices": [
-        576,
-        481
+        575,
+        480
       ],
       "endpoint_names": [
         "",
@@ -5261,10 +5236,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 207,
+      "building_lane_index": 206,
       "building_vertices": [
-        577,
-        537
+        576,
+        536
       ],
       "endpoint_names": [
         "",
@@ -5286,10 +5261,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 208,
+      "building_lane_index": 207,
       "building_vertices": [
-        578,
-        536
+        577,
+        535
       ],
       "endpoint_names": [
         "",
@@ -5311,10 +5286,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 209,
+      "building_lane_index": 208,
       "building_vertices": [
-        579,
-        535
+        578,
+        534
       ],
       "endpoint_names": [
         "",
@@ -5336,10 +5311,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 210,
+      "building_lane_index": 209,
       "building_vertices": [
-        580,
-        534
+        579,
+        533
       ],
       "endpoint_names": [
         "",
@@ -5361,10 +5336,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 211,
+      "building_lane_index": 210,
       "building_vertices": [
-        581,
-        533
+        580,
+        532
       ],
       "endpoint_names": [
         "",
@@ -5386,10 +5361,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 212,
+      "building_lane_index": 211,
       "building_vertices": [
-        582,
-        532
+        581,
+        531
       ],
       "endpoint_names": [
         "",
@@ -5411,10 +5386,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 213,
+      "building_lane_index": 212,
       "building_vertices": [
-        583,
-        531
+        582,
+        530
       ],
       "endpoint_names": [
         "",
@@ -5436,10 +5411,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 214,
+      "building_lane_index": 213,
       "building_vertices": [
-        584,
-        480
+        583,
+        479
       ],
       "endpoint_names": [
         "",
@@ -5461,10 +5436,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 215,
+      "building_lane_index": 214,
       "building_vertices": [
-        585,
-        530
+        584,
+        529
       ],
       "endpoint_names": [
         "",
@@ -5486,10 +5461,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 216,
+      "building_lane_index": 215,
       "building_vertices": [
-        586,
-        479
+        585,
+        478
       ],
       "endpoint_names": [
         "",
@@ -5511,10 +5486,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 217,
+      "building_lane_index": 216,
       "building_vertices": [
-        587,
-        529
+        586,
+        528
       ],
       "endpoint_names": [
         "",
@@ -5536,10 +5511,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 218,
+      "building_lane_index": 217,
       "building_vertices": [
-        588,
-        528
+        587,
+        527
       ],
       "endpoint_names": [
         "",
@@ -5561,10 +5536,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 219,
+      "building_lane_index": 218,
       "building_vertices": [
-        589,
-        527
+        588,
+        526
       ],
       "endpoint_names": [
         "",
@@ -5586,10 +5561,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 220,
+      "building_lane_index": 219,
       "building_vertices": [
-        590,
-        526
+        589,
+        525
       ],
       "endpoint_names": [
         "",
@@ -5611,10 +5586,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 221,
+      "building_lane_index": 220,
       "building_vertices": [
-        591,
-        478
+        590,
+        477
       ],
       "endpoint_names": [
         "",
@@ -5636,10 +5611,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 222,
+      "building_lane_index": 221,
       "building_vertices": [
-        592,
-        525
+        591,
+        524
       ],
       "endpoint_names": [
         "",
@@ -5661,10 +5636,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 223,
+      "building_lane_index": 222,
       "building_vertices": [
-        593,
-        477
+        592,
+        476
       ],
       "endpoint_names": [
         "",
@@ -5686,10 +5661,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 224,
+      "building_lane_index": 223,
       "building_vertices": [
-        594,
-        524
+        593,
+        523
       ],
       "endpoint_names": [
         "",
@@ -5711,10 +5686,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 225,
+      "building_lane_index": 224,
       "building_vertices": [
-        595,
-        523
+        594,
+        522
       ],
       "endpoint_names": [
         "",
@@ -5736,10 +5711,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 226,
+      "building_lane_index": 225,
       "building_vertices": [
-        596,
-        522
+        595,
+        521
       ],
       "endpoint_names": [
         "",
@@ -5761,10 +5736,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 227,
+      "building_lane_index": 226,
       "building_vertices": [
-        597,
-        521
+        596,
+        520
       ],
       "endpoint_names": [
         "",
@@ -5786,10 +5761,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 228,
+      "building_lane_index": 227,
       "building_vertices": [
-        598,
-        476
+        597,
+        475
       ],
       "endpoint_names": [
         "",
@@ -5811,10 +5786,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 229,
+      "building_lane_index": 228,
       "building_vertices": [
-        599,
-        496
+        598,
+        495
       ],
       "endpoint_names": [
         "",
@@ -5836,10 +5811,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 230,
+      "building_lane_index": 229,
       "building_vertices": [
-        601,
-        520
+        600,
+        519
       ],
       "endpoint_names": [
         "",
@@ -5861,10 +5836,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 231,
+      "building_lane_index": 230,
       "building_vertices": [
-        605,
-        606
+        604,
+        605
       ],
       "endpoint_names": [
         "",
@@ -5886,10 +5861,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 232,
+      "building_lane_index": 231,
       "building_vertices": [
-        517,
-        557
+        516,
+        556
       ],
       "endpoint_names": [
         "",
@@ -5911,10 +5886,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 233,
+      "building_lane_index": 232,
       "building_vertices": [
-        557,
-        518
+        556,
+        517
       ],
       "endpoint_names": [
         "",
@@ -5936,10 +5911,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 234,
+      "building_lane_index": 233,
       "building_vertices": [
-        607,
-        517
+        606,
+        516
       ],
       "endpoint_names": [
         "",
@@ -5961,10 +5936,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 235,
+      "building_lane_index": 234,
       "building_vertices": [
-        608,
-        516
+        607,
+        515
       ],
       "endpoint_names": [
         "",
@@ -5986,10 +5961,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 236,
+      "building_lane_index": 235,
       "building_vertices": [
-        609,
-        515
+        608,
+        514
       ],
       "endpoint_names": [
         "",
@@ -6011,10 +5986,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 237,
+      "building_lane_index": 236,
       "building_vertices": [
-        610,
-        514
+        609,
+        513
       ],
       "endpoint_names": [
         "",
@@ -6036,10 +6011,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 238,
+      "building_lane_index": 237,
       "building_vertices": [
-        611,
-        469
+        610,
+        468
       ],
       "endpoint_names": [
         "",
@@ -6061,10 +6036,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 239,
+      "building_lane_index": 238,
       "building_vertices": [
-        612,
-        513
+        611,
+        512
       ],
       "endpoint_names": [
         "",
@@ -6086,10 +6061,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 240,
+      "building_lane_index": 239,
       "building_vertices": [
-        613,
-        512
+        612,
+        511
       ],
       "endpoint_names": [
         "",
@@ -6111,10 +6086,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 241,
+      "building_lane_index": 240,
       "building_vertices": [
-        615,
-        467
+        614,
+        466
       ],
       "endpoint_names": [
         "",
@@ -6136,10 +6111,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 242,
+      "building_lane_index": 241,
       "building_vertices": [
-        616,
-        466
+        615,
+        465
       ],
       "endpoint_names": [
         "",
@@ -6161,10 +6136,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 243,
+      "building_lane_index": 242,
       "building_vertices": [
-        617,
-        511
+        616,
+        510
       ],
       "endpoint_names": [
         "",
@@ -6186,10 +6161,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 244,
+      "building_lane_index": 243,
       "building_vertices": [
-        618,
-        510
+        617,
+        509
       ],
       "endpoint_names": [
         "",
@@ -6211,10 +6186,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 245,
+      "building_lane_index": 244,
       "building_vertices": [
-        619,
-        509
+        618,
+        508
       ],
       "endpoint_names": [
         "",
@@ -6236,10 +6211,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 246,
+      "building_lane_index": 245,
       "building_vertices": [
-        620,
-        465
+        619,
+        464
       ],
       "endpoint_names": [
         "",
@@ -6261,10 +6236,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 247,
+      "building_lane_index": 246,
       "building_vertices": [
-        621,
-        508
+        620,
+        507
       ],
       "endpoint_names": [
         "",
@@ -6286,10 +6261,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 248,
+      "building_lane_index": 247,
       "building_vertices": [
-        622,
-        507
+        621,
+        506
       ],
       "endpoint_names": [
         "",
@@ -6311,10 +6286,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 249,
+      "building_lane_index": 248,
       "building_vertices": [
-        464,
-        623
+        463,
+        622
       ],
       "endpoint_names": [
         "",
@@ -6336,10 +6311,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 250,
+      "building_lane_index": 249,
       "building_vertices": [
-        623,
-        552
+        622,
+        551
       ],
       "endpoint_names": [
         "",
@@ -6361,10 +6336,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 251,
+      "building_lane_index": 250,
       "building_vertices": [
-        626,
-        506
+        625,
+        505
       ],
       "endpoint_names": [
         "",
@@ -6386,10 +6361,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 252,
+      "building_lane_index": 251,
       "building_vertices": [
-        627,
-        505
+        626,
+        504
       ],
       "endpoint_names": [
         "",
@@ -6411,10 +6386,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 253,
+      "building_lane_index": 252,
       "building_vertices": [
-        634,
-        504
+        633,
+        503
       ],
       "endpoint_names": [
         "",
@@ -6436,10 +6411,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 254,
+      "building_lane_index": 253,
       "building_vertices": [
-        635,
-        503
+        634,
+        502
       ],
       "endpoint_names": [
         "",
@@ -6461,10 +6436,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 255,
+      "building_lane_index": 254,
       "building_vertices": [
-        636,
-        502
+        635,
+        501
       ],
       "endpoint_names": [
         "",
@@ -6486,10 +6461,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 256,
+      "building_lane_index": 255,
       "building_vertices": [
-        637,
-        639
+        636,
+        638
       ],
       "endpoint_names": [
         "",
@@ -6511,10 +6486,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 257,
+      "building_lane_index": 256,
       "building_vertices": [
-        638,
-        553
+        637,
+        552
       ],
       "endpoint_names": [
         "",
@@ -6536,10 +6511,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 258,
+      "building_lane_index": 257,
       "building_vertices": [
-        638,
-        650
+        637,
+        649
       ],
       "endpoint_names": [
         "",
@@ -6561,10 +6536,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 259,
+      "building_lane_index": 258,
       "building_vertices": [
-        650,
-        554
+        649,
+        553
       ],
       "endpoint_names": [
         "",
@@ -6586,10 +6561,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 260,
+      "building_lane_index": 259,
       "building_vertices": [
-        501,
-        651
+        500,
+        650
       ],
       "endpoint_names": [
         "",
@@ -6611,10 +6586,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 261,
+      "building_lane_index": 260,
       "building_vertices": [
-        651,
-        553
+        650,
+        552
       ],
       "endpoint_names": [
         "",
@@ -6636,10 +6611,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 262,
+      "building_lane_index": 261,
       "building_vertices": [
-        460,
-        650
+        459,
+        649
       ],
       "endpoint_names": [
         "",
@@ -6661,10 +6636,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 263,
+      "building_lane_index": 262,
       "building_vertices": [
-        650,
-        651
+        649,
+        650
       ],
       "endpoint_names": [
         "",
@@ -6686,10 +6661,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 264,
+      "building_lane_index": 263,
       "building_vertices": [
-        489,
-        647
+        488,
+        646
       ],
       "endpoint_names": [
         "",
@@ -6711,10 +6686,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 265,
+      "building_lane_index": 264,
       "building_vertices": [
-        549,
-        646
+        548,
+        645
       ],
       "endpoint_names": [
         "",
@@ -6736,10 +6711,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 266,
+      "building_lane_index": 265,
       "building_vertices": [
-        550,
-        645
+        549,
+        644
       ],
       "endpoint_names": [
         "",
@@ -6761,10 +6736,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 267,
+      "building_lane_index": 266,
       "building_vertices": [
-        490,
-        649
+        489,
+        648
       ],
       "endpoint_names": [
         "",
@@ -6786,10 +6761,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 268,
+      "building_lane_index": 267,
       "building_vertices": [
-        490,
-        643
+        489,
+        642
       ],
       "endpoint_names": [
         "",
@@ -6811,170 +6786,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 269,
-      "building_vertices": [
-        452,
-        652
-      ],
-      "endpoint_names": [
-        "ws_p0",
-        ""
-      ],
-      "image_start": [
-        439.763,
-        393.846
-      ],
-      "image_end": [
-        456.308,
-        552.085
-      ],
-      "reference_unknown_cells_cleared": 3233,
-      "reference_occupied_cells_cleared": 0,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": null,
-      "accepted": true
-    },
-    {
-      "building_lane_index": 270,
-      "building_vertices": [
-        652,
-        457
-      ],
-      "endpoint_names": [
-        "",
-        ""
-      ],
-      "image_start": [
-        456.308,
-        552.085
-      ],
-      "image_end": [
-        468.464,
-        633.738
-      ],
-      "reference_unknown_cells_cleared": 1878,
-      "reference_occupied_cells_cleared": 1,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": {
-        "pixel_xy": [
-          466,
-          570
-        ],
-        "metric_xy": [
-          23.02623439199903,
-          -28.165136488067482
-        ],
-        "intensity": 0
-      },
-      "accepted": true
-    },
-    {
-      "building_lane_index": 271,
-      "building_vertices": [
-        457,
-        653
-      ],
-      "endpoint_names": [
-        "",
-        ""
-      ],
-      "image_start": [
-        468.464,
-        633.738
-      ],
-      "image_end": [
-        507.501,
-        633.646
-      ],
-      "reference_unknown_cells_cleared": 1121,
-      "reference_occupied_cells_cleared": 0,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": null,
-      "accepted": true
-    },
-    {
-      "building_lane_index": 272,
-      "building_vertices": [
-        652,
-        654
-      ],
-      "endpoint_names": [
-        "",
-        ""
-      ],
-      "image_start": [
-        456.308,
-        552.085
-      ],
-      "image_end": [
-        505.187,
-        551.796
-      ],
-      "reference_unknown_cells_cleared": 1254,
-      "reference_occupied_cells_cleared": 0,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": null,
-      "accepted": true
-    },
-    {
-      "building_lane_index": 273,
+      "building_lane_index": 268,
       "building_vertices": [
         654,
-        653
-      ],
-      "endpoint_names": [
-        "",
-        ""
-      ],
-      "image_start": [
-        505.187,
-        551.796
-      ],
-      "image_end": [
-        507.501,
-        633.646
-      ],
-      "reference_unknown_cells_cleared": 1835,
-      "reference_occupied_cells_cleared": 0,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": null,
-      "accepted": true
-    },
-    {
-      "building_lane_index": 274,
-      "building_vertices": [
-        656,
-        657
-      ],
-      "endpoint_names": [
-        "",
-        ""
-      ],
-      "image_start": [
-        573.18,
-        344.203
-      ],
-      "image_end": [
-        578.303,
-        537.485
-      ],
-      "reference_unknown_cells_cleared": 0,
-      "reference_occupied_cells_cleared": 0,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": null,
-      "accepted": true
-    },
-    {
-      "building_lane_index": 275,
-      "building_vertices": [
-        658,
-        659
+        655
       ],
       "endpoint_names": [
         "",
@@ -6996,10 +6811,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 276,
+      "building_lane_index": 269,
       "building_vertices": [
-        659,
-        660
+        655,
+        656
       ],
       "endpoint_names": [
         "",
@@ -7021,10 +6836,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 277,
+      "building_lane_index": 270,
       "building_vertices": [
-        660,
-        661
+        656,
+        657
       ],
       "endpoint_names": [
         "",
@@ -7046,10 +6861,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 278,
+      "building_lane_index": 271,
       "building_vertices": [
-        661,
-        463
+        657,
+        462
       ],
       "endpoint_names": [
         "",
@@ -7071,60 +6886,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 279,
-      "building_vertices": [
-        657,
-        662
-      ],
-      "endpoint_names": [
-        "",
-        ""
-      ],
-      "image_start": [
-        578.303,
-        537.485
-      ],
-      "image_end": [
-        581.459,
-        629.793
-      ],
-      "reference_unknown_cells_cleared": 0,
-      "reference_occupied_cells_cleared": 0,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": null,
-      "accepted": true
-    },
-    {
-      "building_lane_index": 280,
-      "building_vertices": [
-        662,
-        658
-      ],
-      "endpoint_names": [
-        "",
-        ""
-      ],
-      "image_start": [
-        581.459,
-        629.793
-      ],
-      "image_end": [
-        585.37,
-        692.584
-      ],
-      "reference_unknown_cells_cleared": 0,
-      "reference_occupied_cells_cleared": 0,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": null,
-      "accepted": true
-    },
-    {
-      "building_lane_index": 281,
+      "building_lane_index": 272,
       "building_vertices": [
         450,
-        660
+        656
       ],
       "endpoint_names": [
         "lab_bengkel2",
@@ -7156,9 +6921,9 @@
       "accepted": true
     },
     {
-      "building_lane_index": 282,
+      "building_lane_index": 273,
       "building_vertices": [
-        658,
+        654,
         449
       ],
       "endpoint_names": [
@@ -7181,44 +6946,9 @@
       "accepted": true
     },
     {
-      "building_lane_index": 283,
+      "building_lane_index": 274,
       "building_vertices": [
-        662,
-        653
-      ],
-      "endpoint_names": [
-        "",
-        ""
-      ],
-      "image_start": [
-        581.459,
-        629.793
-      ],
-      "image_end": [
-        507.501,
-        633.646
-      ],
-      "reference_unknown_cells_cleared": 870,
-      "reference_occupied_cells_cleared": 37,
-      "structural_wall_cells": 0,
-      "out_of_bounds": false,
-      "first_reference_occupied": {
-        "pixel_xy": [
-          551,
-          623
-        ],
-        "metric_xy": [
-          27.2262986051319,
-          -30.784000056256215
-        ],
-        "intensity": 0
-      },
-      "accepted": true
-    },
-    {
-      "building_lane_index": 284,
-      "building_vertices": [
-        657,
+        653,
         447
       ],
       "endpoint_names": [
@@ -7251,9 +6981,9 @@
       "accepted": true
     },
     {
-      "building_lane_index": 285,
+      "building_lane_index": 275,
       "building_vertices": [
-        656,
+        652,
         448
       ],
       "endpoint_names": [
@@ -7286,10 +7016,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 286,
+      "building_lane_index": 276,
       "building_vertices": [
         445,
-        655
+        651
       ],
       "endpoint_names": [
         "pantry",
@@ -7321,10 +7051,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 287,
+      "building_lane_index": 277,
       "building_vertices": [
-        655,
-        656
+        651,
+        652
       ],
       "endpoint_names": [
         "",
@@ -7346,10 +7076,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 288,
+      "building_lane_index": 278,
       "building_vertices": [
-        660,
-        663
+        656,
+        658
       ],
       "endpoint_names": [
         "",
@@ -7371,10 +7101,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 289,
+      "building_lane_index": 279,
       "building_vertices": [
-        663,
-        664
+        658,
+        659
       ],
       "endpoint_names": [
         "",
@@ -7396,10 +7126,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 290,
+      "building_lane_index": 280,
       "building_vertices": [
-        664,
-        458
+        659,
+        457
       ],
       "endpoint_names": [
         "",
@@ -7421,10 +7151,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 291,
+      "building_lane_index": 281,
       "building_vertices": [
-        664,
-        460
+        659,
+        459
       ],
       "endpoint_names": [
         "",
@@ -7446,10 +7176,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 292,
+      "building_lane_index": 282,
       "building_vertices": [
-        663,
-        461
+        658,
+        460
       ],
       "endpoint_names": [
         "",
@@ -7471,10 +7201,10 @@
       "accepted": true
     },
     {
-      "building_lane_index": 293,
+      "building_lane_index": 283,
       "building_vertices": [
-        663,
-        462
+        658,
+        461
       ],
       "endpoint_names": [
         "",
@@ -7487,6 +7217,261 @@
       "image_end": [
         701.975,
         845.125
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 284,
+      "building_vertices": [
+        660,
+        452
+      ],
+      "endpoint_names": [
+        "",
+        "ws_p0"
+      ],
+      "image_start": [
+        451.783,
+        483.077
+      ],
+      "image_end": [
+        439.763,
+        393.846
+      ],
+      "reference_unknown_cells_cleared": 2017,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 285,
+      "building_vertices": [
+        660,
+        661
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        451.783,
+        483.077
+      ],
+      "image_end": [
+        577.919,
+        476.542
+      ],
+      "reference_unknown_cells_cleared": 1877,
+      "reference_occupied_cells_cleared": 29,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          546,
+          470
+        ],
+        "metric_xy": [
+          26.97923600435938,
+          -23.223884472617048
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 286,
+      "building_vertices": [
+        661,
+        653
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        577.919,
+        476.542
+      ],
+      "image_end": [
+        578.303,
+        537.485
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 287,
+      "building_vertices": [
+        653,
+        662
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        578.303,
+        537.485
+      ],
+      "image_end": [
+        580.802,
+        622.66
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 288,
+      "building_vertices": [
+        662,
+        663
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        580.802,
+        622.66
+      ],
+      "image_end": [
+        461.967,
+        626.762
+      ],
+      "reference_unknown_cells_cleared": 1558,
+      "reference_occupied_cells_cleared": 38,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          551,
+          615
+        ],
+        "metric_xy": [
+          27.2262986051319,
+          -30.388699895020178
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 289,
+      "building_vertices": [
+        663,
+        453
+      ],
+      "endpoint_names": [
+        "",
+        "husky_0"
+      ],
+      "image_start": [
+        461.967,
+        626.762
+      ],
+      "image_end": [
+        432.671,
+        663.338
+      ],
+      "reference_unknown_cells_cleared": 1256,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 290,
+      "building_vertices": [
+        663,
+        660
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        461.967,
+        626.762
+      ],
+      "image_end": [
+        451.783,
+        483.077
+      ],
+      "reference_unknown_cells_cleared": 2964,
+      "reference_occupied_cells_cleared": 1,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": {
+        "pixel_xy": [
+          466,
+          570
+        ],
+        "metric_xy": [
+          23.02623439199903,
+          -28.165136488067482
+        ],
+        "intensity": 0
+      },
+      "accepted": true
+    },
+    {
+      "building_lane_index": 291,
+      "building_vertices": [
+        662,
+        654
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        580.802,
+        622.66
+      ],
+      "image_end": [
+        585.37,
+        692.584
+      ],
+      "reference_unknown_cells_cleared": 0,
+      "reference_occupied_cells_cleared": 0,
+      "structural_wall_cells": 0,
+      "out_of_bounds": false,
+      "first_reference_occupied": null,
+      "accepted": true
+    },
+    {
+      "building_lane_index": 292,
+      "building_vertices": [
+        661,
+        652
+      ],
+      "endpoint_names": [
+        "",
+        ""
+      ],
+      "image_start": [
+        577.919,
+        476.542
+      ],
+      "image_end": [
+        573.18,
+        344.203
       ],
       "reference_unknown_cells_cleared": 0,
       "reference_occupied_cells_cleared": 0,
@@ -7508,7 +7493,7 @@
         -32.77720229424861
       ],
       "incident_lane_indexes": [
-        0
+        289
       ],
       "accepted": true
     },
@@ -7523,7 +7508,7 @@
         -34.10491671080014
       ],
       "incident_lane_indexes": [
-        282
+        273
       ],
       "accepted": true
     },
@@ -7538,7 +7523,7 @@
         -10.370847967587839
       ],
       "incident_lane_indexes": [
-        286
+        276
       ],
       "accepted": true
     },
@@ -7553,7 +7538,7 @@
         -16.83593269208303
       ],
       "incident_lane_indexes": [
-        285
+        275
       ],
       "accepted": true
     },
@@ -7568,7 +7553,7 @@
         -40.46845870637783
       ],
       "incident_lane_indexes": [
-        281
+        272
       ],
       "accepted": true
     },
@@ -7583,7 +7568,7 @@
         -26.556264831836824
       ],
       "incident_lane_indexes": [
-        284
+        274
       ],
       "accepted": true
     }
@@ -7659,7 +7644,7 @@
     "traffic_editor_doors": "traversable_when_open"
   },
   "source_sha256": "c4c34396901f8830d79c363f65248ed427a307a4535f0556a21da338257f6c32",
-  "building_sha256": "a10488640c8e4b1b702baf09e0ad71e36ca1f628e515797c4f8dc89f377fa0dc",
+  "building_sha256": "9fb10da067b2b56fec597ff242d5eab4bd6292824e483de84524370d2888fcb5",
   "dimensions": [
     2357,
     3843
@@ -7667,20 +7652,20 @@
   "resolution": 0.049412520154504355,
   "footprint": [
     [
-      -0.55,
-      -0.38
-    ],
-    [
-      -0.55,
-      0.38
-    ],
-    [
       0.55,
       0.38
     ],
     [
       0.55,
       -0.38
+    ],
+    [
+      -0.55,
+      -0.38
+    ],
+    [
+      -0.55,
+      0.38
     ]
   ],
   "footprint_padding_m": 0.02,
@@ -7689,8 +7674,8 @@
   "derived_image": "brin_0_nav2.png",
   "correction_mask": "brin_0_nav2_corrections.png",
   "promoted": true,
-  "derived_sha256": "798047169b11697f648975506cbfdb4e02058a65c21da0ace8a18e9358fed04e",
-  "correction_mask_sha256": "149ee663ddfe46a8ceeb1f6175078152d7b14e4f3c408585d38c766f5002a76d",
+  "derived_sha256": "f873045234c18d982d9f1905cd008954bfb2f2f1237acdcf4298b53fa37a3f2e",
+  "correction_mask_sha256": "f87758dadf7f2dc09cf6d51b867844ed43600e41f9783a6def92c9aca90c4f99",
   "alignment_errors_m": {
     "husky_0": 2.842170943040401e-14,
     "husky_1": 1.4210854715202004e-14,

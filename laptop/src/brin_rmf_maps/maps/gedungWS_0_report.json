@@ -1,0 +1,35 @@
+{
+  "source_level": "gedungWS_lt1",
+  "runtime_level": "L1",
+  "resolution": 0.05,
+  "original_origin": [
+    -26.7,
+    -7.72,
+    0
+  ],
+  "runtime_origin": [
+    0.0,
+    -33.65,
+    0.0
+  ],
+  "footprint_sweep_m": [
+    1.1400000000000001,
+    0.8
+  ],
+  "source_sha256": "525e81c66d655fa40c5dcbc30e21e95c78cb7603a9cd0240dadad9a08acd8074",
+  "vertices": 19,
+  "directed_lanes": 38,
+  "named_waypoints": [
+    "dpn_ws1",
+    "dpn_ws2",
+    "selatan_WS",
+    "utara_WS",
+    "ws_p0",
+    "ws_p1",
+    "ws_p2",
+    "ws_p3"
+  ],
+  "blocked_footprint_sweeps": [],
+  "occupancy_pixels_changed": 0,
+  "motion_tested": false
+}

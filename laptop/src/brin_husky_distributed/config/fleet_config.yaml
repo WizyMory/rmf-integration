@@ -7,8 +7,8 @@ profile:
   footprint: 0.70
   vicinity: 0.80
 limits:
-  linear: [0.20, 0.30]
-  angular: [0.35, 0.50]
+  linear: [0.5, 0.30]
+  angular: [0.5, 0.50]
 reversible: false
 update_frequency: 5.0
 initial_battery_soc: 0.95

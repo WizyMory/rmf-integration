@@ -1,5 +1,10 @@
 default_profile: brin_0
 profiles:
+  gedungWS_0:
+    building_map: gedungWS_0_rmf.building.yaml
+    nav_graph: gedungWS_0.yaml
+    nav2_map: gedungWS_0_rmf.yaml
+    fleet_config: gedungWS_0_fleet.yaml
   brin_0:
     building_map: brin_0.building.yaml
     nav_graph: simulation.yaml

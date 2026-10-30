@@ -1,49 +1,49 @@
 husky_0:
   charger: husky_0
   level: L1
-  waypoint: 0
+  waypoint: 213
   x: 21.379364507769555
   y: -32.77720229424861
-  yaw: 0.6909754548179082
+  yaw: 0.8954688431008029
 husky_1:
   charger: husky_1
   level: L1
-  waypoint: 206
+  waypoint: 197
   x: 32.76811039054018
   y: -34.10491671080014
   yaw: -3.1110560210531433
 husky_2:
   charger: lab_dinamika
   level: L1
-  waypoint: 207
+  waypoint: 199
   x: 32.30397858872892
   y: -26.556264831836824
   yaw: -3.1409962954214703
 husky_3:
   charger: lab_bengkel
   level: L1
-  waypoint: 208
+  waypoint: 201
   x: 31.794189618294897
   y: -16.83593269208303
   yaw: -3.0920913971236494
 husky_4:
   charger: dpn_ws1
   level: L1
-  waypoint: 213
+  waypoint: 206
   x: 34.579128666722916
   y: -38.3432262145326
   yaw: -1.5580373671287535
 husky_5:
   charger: dpn_ws2
   level: L1
-  waypoint: 214
+  waypoint: 207
   x: 34.6863538354582
   y: -41.75975609557549
   yaw: 1.622889825760864
 husky_6:
   charger: lab_bengkel2
   level: L1
-  waypoint: 205
+  waypoint: 196
   x: 25.81196404074952
   y: -40.46845870637783
   yaw: -0.0034341220978208083
