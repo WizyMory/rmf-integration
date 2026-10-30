@@ -140,7 +140,7 @@ ros2 pkg prefix brin_husky_distributed
 ros2 pkg prefix husky_nav2
 ros2 pkg prefix hokuyo_bringup
 python3 -c "import rmf_adapter, rmf_fleet_msgs, rmf_task_msgs; print('RMF runtime OK')"
-bash tools/integration.bash husky profile
+bash tools/integration.bash husky profile traffic_profile:=gedungWS_0
 ip -4 route get 192.168.0.218 from 192.168.0.120
 ip -4 route get 192.168.0.10
 timeout 8s ros2 node list --no-daemon --spin-time 3

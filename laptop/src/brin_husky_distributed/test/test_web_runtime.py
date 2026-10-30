@@ -1,5 +1,6 @@
 """Physical Web endpoints, wall time and cross-host launch wiring."""
 import importlib.util
+from io import StringIO
 from pathlib import Path
 import sys
 from types import SimpleNamespace
@@ -123,3 +124,24 @@ def test_profile_info_lists_destinations_from_the_selected_graph(monkeypatch):
     assert len(result['digest']) == 64
     assert len(result['places']['L1']['ws_p0']) == 2
     assert 'husky_0' in result['places']['L1']
+
+
+def test_waypoint_picker_returns_only_a_name_from_selected_profile(monkeypatch, capsys):
+    monkeypatch.setattr(profiles, 'get_package_share_directory',
+                        lambda package: str(ROOT / package))
+    monkeypatch.setattr(sys, 'stdin', StringIO('ws_p1\n'))
+    profile_info.main(['--traffic-profile', 'gedungWS_0', '--choose-waypoint'])
+    output = capsys.readouterr()
+    assert output.out == 'ws_p1\n'
+    assert 'gedungWS_0 (L1)' in output.err
+    assert 'dpn_ws1' in output.err
+
+
+def test_waypoint_picker_rejects_name_outside_selected_profile(monkeypatch, capsys):
+    monkeypatch.setattr(profiles, 'get_package_share_directory',
+                        lambda package: str(ROOT / package))
+    monkeypatch.setattr(sys, 'stdin', StringIO('lab_0\n'))
+    with pytest.raises(SystemExit) as error:
+        profile_info.main(['--traffic-profile', 'gedungWS_0', '--choose-waypoint'])
+    assert error.value.code == 2
+    assert capsys.readouterr().out == ''

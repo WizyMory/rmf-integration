@@ -109,7 +109,7 @@ Pemeriksaan baca-saja:
 ```bash
 git rev-parse HEAD
 ros2 pkg prefix brin_husky_distributed
-bash tools/integration.bash laptop profile
+bash tools/integration.bash laptop profile traffic_profile:=gedungWS_0
 ip -4 route get 192.168.0.120
 timeout 8s ros2 node list --no-daemon --spin-time 3
 ```
@@ -286,18 +286,25 @@ operator. Catatan guard dan pemeriksaan action client ada pada README Husky.
 
 ## 6. Tahap F — uji task terminal, DAPAT MENGGERAKKAN ROBOT
 
-Lakukan hanya setelah tahap E diterima. Pilih tujuan dari `laptop profile`,
+Lakukan hanya setelah tahap E diterima. Pilih tujuan dari profil yang sama
+dengan core RMF yang sedang berjalan,
 di peta yang telah divalidasi operator. Tujuan harus aman, dapat dicapai, dan
 cukup berbeda dari posisi awal untuk membuktikan perpindahan. Jangan mengira
 waypoint bernama charger berarti docking fisik sudah tersedia.
 
 ```bash
-bash tools/integration.bash laptop profile
-read -r -p 'Waypoint aman yang sudah disetujui operator: ' RMF_TEST_PLACE
+RMF_TEST_PROFILE=gedungWS_0
+bash tools/integration.bash laptop profile traffic_profile:="$RMF_TEST_PROFILE"
+RMF_TEST_PLACE="$(bash tools/integration.bash laptop waypoint traffic_profile:="$RMF_TEST_PROFILE")"
 test -n "$RMF_TEST_PLACE"
 ```
 
-Jika nilai kosong, berhenti. Uji pertama menargetkan robot langsung:
+Pemilih menampilkan waypoint bernama dari graph profil itu, lalu menerima
+nomor atau nama yang tercantum. Jika nilai kosong atau pemilih gagal,
+berhenti. Daftar waypoint belum membuktikan lokasi aman; operator tetap
+menyetujui tujuan sebelum uji. Untuk peta lain, ubah hanya
+`RMF_TEST_PROFILE` agar sama dengan profil core. Uji pertama menargetkan robot
+langsung:
 
 ```bash
 timeout --signal=INT --kill-after=3s 40s ros2 run brin_husky_hardware send_task \

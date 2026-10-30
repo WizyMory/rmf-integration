@@ -4,8 +4,9 @@ set -eo pipefail
 
 usage() {
   printf '%s\n' \
-    'Usage: bash tools/integration.bash laptop|husky build|profile|core|preflight|adapter|web [launch arguments]' \
+    'Usage: bash tools/integration.bash laptop|husky build|profile|waypoint|core|preflight|adapter|web [arguments]' \
     'build: builds only the four integration packages for the selected computer.' \
+    'profile: inspect a selected map; waypoint: choose a named waypoint from that map.' \
     'core/web: laptop only. preflight/adapter: Husky only; Nav2/sensors must already run.' \
     'adapter additionally requires BRIN_ENABLE_DISPATCH=1 and operator acceptance.' \
     'Optional: BRIN_RMF_UNDERLAY=/absolute/path/to/local_setup.bash' \
@@ -22,7 +23,7 @@ target=$1
 operation=$2
 shift 2
 case "$target:$operation" in
-  laptop:build|husky:build|laptop:profile|husky:profile|laptop:core|laptop:web|husky:preflight) ;;
+  laptop:build|husky:build|laptop:profile|husky:profile|laptop:waypoint|husky:waypoint|laptop:core|laptop:web|husky:preflight) ;;
   husky:adapter)
     if [[ ${BRIN_ENABLE_DISPATCH:-0} != 1 ]]; then
       printf '%s\n' 'Refusing dispatch. Complete physical acceptance first; then explicitly set BRIN_ENABLE_DISPATCH=1.' >&2
@@ -30,8 +31,17 @@ case "$target:$operation" in
     fi ;;
   *) usage >&2; exit 2 ;;
 esac
-if [[ $operation == build || $operation == profile ]]; then
+if [[ $operation == build ]]; then
   [[ $# == 0 ]] || { printf '%s\n' 'This operation does not accept extra arguments.' >&2; exit 2; }
+fi
+selected_profile=banyak_simpangan
+if [[ $operation == profile || $operation == waypoint ]]; then
+  if [[ $# == 1 && $1 == traffic_profile:=* && -n ${1#traffic_profile:=} ]]; then
+    selected_profile=${1#traffic_profile:=}
+  elif [[ $# != 0 || $operation == waypoint ]]; then
+    printf '%s\n' 'Use exactly one nonempty traffic_profile:=NAME argument.' >&2
+    exit 2
+  fi
 fi
 for argument in "$@"; do
   case "$argument" in
@@ -43,6 +53,8 @@ done
 
 repo_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 workspace="$repo_dir/$target"
+message_stream=/dev/stdout
+[[ $operation == waypoint ]] && message_stream=/dev/stderr
 source /opt/ros/humble/setup.bash
 if [[ $target == laptop ]]; then
   source /mnt/UbuntuData/clearpath_ws/install/local_setup.bash
@@ -96,14 +108,14 @@ if [[ $RMW_IMPLEMENTATION == rmw_cyclonedds_cpp ]]; then
   # Do not inherit a simulation localhost profile. Only this child process
   # receives the repository profile; platform service environments are untouched.
   export CYCLONEDDS_URI="${BRIN_RMF_CYCLONEDDS_URI:-file://$workspace/src/brin_husky_distributed/config/cyclonedds_lan.xml}"
-  printf 'Integration CYCLONEDDS_URI=%s\n' "$CYCLONEDDS_URI"
+  printf 'Integration CYCLONEDDS_URI=%s\n' "$CYCLONEDDS_URI" > "$message_stream"
 fi
 export COLCON_HOME="$workspace/.colcon"
 export ROS_LOG_DIR="$workspace/log/ros"
 mkdir -p -- "$ROS_LOG_DIR"
 printf 'Integration target=%s operation=%s domain=%s RMW=%s real_time=true\n' \
-  "$target" "$operation" "$ROS_DOMAIN_ID" "$RMW_IMPLEMENTATION"
-python3 -c 'import rmf_adapter, rmf_fleet_msgs, rmf_task_msgs; print("RMF runtime import OK")'
+  "$target" "$operation" "$ROS_DOMAIN_ID" "$RMW_IMPLEMENTATION" > "$message_stream"
+python3 -c 'import rmf_adapter, rmf_fleet_msgs, rmf_task_msgs; print("RMF runtime import OK")' > "$message_stream"
 
 case "$operation" in
   build)
@@ -112,7 +124,10 @@ case "$operation" in
     exec colcon --log-base log build --base-paths src \
       --build-base build --install-base install --symlink-install \
       --packages-select brin_rmf_maps brin_husky_fleet_adapter brin_husky_hardware brin_husky_distributed ;;
-  profile) exec ros2 run brin_husky_distributed profile_info ;;
+  profile) exec ros2 run brin_husky_distributed profile_info --traffic-profile "$selected_profile" ;;
+  waypoint)
+    exec "$integration_prefix/lib/brin_husky_distributed/profile_info" \
+      --traffic-profile "$selected_profile" --choose-waypoint ;;
   core)
     cd -- "$workspace/log"
     exec ros2 launch brin_husky_distributed laptop.launch.py "$@" ;;
