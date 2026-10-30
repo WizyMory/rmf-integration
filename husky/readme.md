@@ -11,6 +11,21 @@ dan adapter. Map Nav2 yang dipakai adalah
 Waypoint charger profil ini adalah `ws_p0`. Setelah map Nav2 dipilih,
 operator mengatur initial pose pada koordinat map profil baru. Lihat
 [catatan profil gedungWS](../docs/GEDUNGWS_0_2026-10-30.md).
+Setelah environment terminal H2 di bawah disiapkan, gunakan perintah Nav2
+berikut untuk profil ini. Hentikan sesi Nav2 lama terlebih dahulu bila ada;
+jangan jalankan dua map server/Nav2 sekaligus.
+
+```bash
+RMF_NAV_MAP="$(ros2 pkg prefix brin_rmf_maps)/share/brin_rmf_maps/maps/gedungWS_0_rmf.yaml"
+test -f "$RMF_NAV_MAP"
+ros2 launch husky_nav2 navigation.launch.py \
+  map:="$RMF_NAV_MAP" use_sim_time:=false start_hokuyo:=false
+```
+
+Pakai `gedungWS_0_rmf.yaml`, bukan `gedungWS_0.yaml` asli. Jalankan core
+`traffic_profile:=gedungWS_0` pada laptop sebelum preflight Husky. Setelah
+map benar dan initial pose diperiksa, jalankan preflight tanpa dispatch;
+adapter hanya dijalankan jika preflight diterima.
 Digest profil `gedungWS_0` yang terpasang di kedua perangkat:
 `5b0808476a773374169e0384d700d7a82275e001d64e1f229e666ca46f02b20e`.
 

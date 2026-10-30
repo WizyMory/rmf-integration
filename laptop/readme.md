@@ -11,6 +11,10 @@ dengan resolusi SLAM 0.05 m/pixel. Pilih pada core:
 bash tools/integration.bash laptop core traffic_profile:=gedungWS_0 rviz:=true
 ```
 
+Biarkan core ini berjalan sebelum preflight atau adapter Husky dijalankan.
+Core menyediakan tiga node RMF dan pengumuman digest profil yang diperiksa
+oleh preflight. Jangan membuka core kedua untuk profil yang sama.
+
 Husky harus memilih `traffic_profile:=gedungWS_0` dan map Nav2
 `gedungWS_0_rmf.yaml` pada sesi yang sama. Lihat
 [catatan profil gedungWS](../docs/GEDUNGWS_0_2026-10-30.md).
