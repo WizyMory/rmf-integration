@@ -6,7 +6,7 @@ usage() {
   printf '%s\n' \
     'Usage: bash tools/integration.bash laptop|husky build|profile|waypoint|core|preflight|adapter|web [arguments]' \
     'build: builds only the four integration packages for the selected computer.' \
-    'profile: inspect a selected map; waypoint: choose a named waypoint from that map.' \
+    'profile/waypoint require traffic_profile:=NAME; waypoint chooses a named waypoint.' \
     'core/web: laptop only. preflight/adapter: Husky only; Nav2/sensors must already run.' \
     'adapter additionally requires BRIN_ENABLE_DISPATCH=1 and operator acceptance.' \
     'Optional: BRIN_RMF_UNDERLAY=/absolute/path/to/local_setup.bash' \
@@ -34,11 +34,11 @@ esac
 if [[ $operation == build ]]; then
   [[ $# == 0 ]] || { printf '%s\n' 'This operation does not accept extra arguments.' >&2; exit 2; }
 fi
-selected_profile=banyak_simpangan
+selected_profile=''
 if [[ $operation == profile || $operation == waypoint ]]; then
   if [[ $# == 1 && $1 == traffic_profile:=* && -n ${1#traffic_profile:=} ]]; then
     selected_profile=${1#traffic_profile:=}
-  elif [[ $# != 0 || $operation == waypoint ]]; then
+  else
     printf '%s\n' 'Use exactly one nonempty traffic_profile:=NAME argument.' >&2
     exit 2
   fi

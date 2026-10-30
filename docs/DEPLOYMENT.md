@@ -58,14 +58,14 @@ Laptop:
 
 ```bash
 bash tools/integration.bash laptop build
-bash tools/integration.bash laptop profile
+bash tools/integration.bash laptop profile traffic_profile:=banyak_simpangan
 ```
 
 Husky, setelah deployment disetujui:
 
 ```bash
 bash tools/integration.bash husky build
-bash tools/integration.bash husky profile
+bash tools/integration.bash husky profile traffic_profile:=banyak_simpangan
 ```
 
 Artefak berada di `<target>/build`, `<target>/install`, `<target>/log` dan

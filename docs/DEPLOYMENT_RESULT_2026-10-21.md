@@ -68,14 +68,14 @@ yang berhasil tidak sama dengan robot siap beroperasi mandiri.
 Di laptop, dari root repository:
 
 ```bash
-bash tools/integration.bash laptop profile
+bash tools/integration.bash laptop profile traffic_profile:=banyak_simpangan
 bash tools/integration.bash laptop core traffic_profile:=banyak_simpangan
 ```
 
 Di Husky, dari `/home/husky/rmf-integration`:
 
 ```bash
-bash tools/integration.bash husky profile
+bash tools/integration.bash husky profile traffic_profile:=banyak_simpangan
 ```
 
 Preflight/dispatch berikutnya mengikuti [DEPLOYMENT.md](DEPLOYMENT.md) dan
