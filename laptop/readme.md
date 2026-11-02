@@ -1,91 +1,88 @@
-# Laptop — panduan uji operasional Open-RMF dan Husky
+# Laptop — satu core Open-RMF untuk Husky dan Devi
 
-Lokasi: `/mnt/UbuntuData/rmf-integration/laptop/readme.md`.
-Jalankan perintah dari root `/mnt/UbuntuData/rmf-integration`, bukan dari `laptop/src`.
-Panduan pasangan: [README Husky](../husky/readme.md).
+Jalankan perintah laptop dari `/mnt/UbuntuData/rmf-integration`.
+Panduan robot: [Husky](../husky/readme.md) dan [Devi](../devi/README.md).
+Urutan di bawah memakai **satu profil `gedungWS_0`, satu core, dan dua fleet**.
 
-Profil map baru `gedungWS_0` memakai graph dan map Nav2 yang diselaraskan
-dengan resolusi SLAM 0.05 m/pixel. Pilih pada core:
+| Komputer | Proses | Identitas dan domain |
+| --- | --- | --- |
+| Laptop `192.168.0.218` | Satu schedule, dispatcher, building map server, pengumum profil; RViz/CLI | Cyclone DDS, domain `0`, waktu nyata |
+| Husky `192.168.0.120` | Sensor, Nav2, satu adapter onboard | Fleet `HuskyA200`, robot `husky_0`; domain `0` |
+| Devi `192.168.0.237` | Nav2 dari `devi_ws`, satu adapter onboard dan gateway lokal | Fleet `Devi`, robot `devi`; RMF Cyclone/domain `0`, Nav2 Fast DDS/domain `73` |
 
-```bash
-bash tools/integration.bash laptop core traffic_profile:=gedungWS_0 rviz:=true
+Kedua robot dilaporkan pada lantai `L1`. Konfigurasi fleet Husky tetap hanya
+berisi `husky_0`; Devi mempunyai konfigurasi fleet sendiri. Jangan menambahkan
+Devi ke daftar robot Husky atau memulai core kedua untuk Devi.
+
+**Status saat panduan ditulis:** koneksi RMF dan service Nav2 Devi telah
+diuji tanpa gerak. Dispatch Devi masih terkunci karena kalibrasi peta,
+konfirmasi footprint, dan penerimaan operasi belum selesai. Registrasi dua
+robot, navigasi/task fisik, dan traffic bersama belum dinyatakan lulus.
+Langkah komunikasi dapat dilakukan sekarang; langkah aktivasi adapter/task
+hanya dilanjutkan setelah syarat masing-masing robot terpenuhi.
+
+```mermaid
+flowchart LR
+  CLI[CLI laptop] --> Core[Satu RMF core domain 0]
+  Core <--> Husky[Fleet HuskyA200 / husky_0]
+  Core <--> Devi[Fleet Devi / devi]
+  Husky --> HNav[Nav2 Husky domain 0]
+  Devi <-->|Pipe lokal| Gateway[Gateway Fast DDS domain 73]
+  Gateway --> DNav[Nav2 Devi dari devi_ws]
 ```
 
-Biarkan core ini berjalan sebelum preflight atau adapter Husky dijalankan.
-Core menyediakan tiga node RMF dan pengumuman digest profil yang diperiksa
-oleh preflight. Jangan membuka core kedua untuk profil yang sama.
+## 1. Terminal dan urutan menjalankan sistem
 
-Husky harus memilih `traffic_profile:=gedungWS_0` dan map Nav2
-`gedungWS_0_rmf.yaml` pada sesi yang sama. Lihat
-[catatan profil gedungWS](../docs/GEDUNGWS_0_2026-10-30.md).
-Digest profil `gedungWS_0` yang terpasang di kedua perangkat:
-`ff44d7a33b01732e6c277b523c40ae5c7ef6c011dab83b259e5db44daef9f221`.
+Nama terminal menunjukkan jendela dan komputer, bukan urutan langkah.
+`L1` pada nama terminal berbeda dari lantai RMF `L1`.
 
-Konfigurasi uji 2 November 2026: radius footprint RMF `0.55 m`, footprint
-Nav2 `x=±0.45, y=±0.30 m`, dan inflation radius local/global `0.35 m`.
-Source serta instalasi kedua perangkat sudah diselaraskan; gunakan launch
-baru untuk memuat nilai ini. Lihat [laporan footprint dan inflation](../docs/FOOTPRINT_INFLATION_2026-11-02.md).
+| Terminal | Fungsi |
+| --- | --- |
+| **L1** | Satu core RMF dan opsional RViz; dibiarkan hidup sampai akhir |
+| **L2** | Pemeriksaan core/fleet, pemilihan waypoint, task dan cancel |
+| **L5** | Mengamati respons task API ketika mengirim task Devi |
+| **L3 / L4** | API / dashboard Web, opsional setelah uji CLI diterima |
+| **H0–H4** | Terminal Husky sesuai README Husky; **H4** untuk preflight lalu adapter |
+| **D0** | Pemeriksaan ROS/Nav2 Devi pada domain `73` |
+| **D1** | Bringup Devi yang sudah bekerja, jika belum berjalan |
+| **D2** | Pemeriksaan integrasi dan preflight Devi |
+| **D3** | Satu adapter Devi; dibiarkan hidup saat operasi |
 
-Kecepatan diperbarui pada 29 Oktober 2026: target linear **0.5 m/s** dan
-angular **0.5 rad/s**, pada Nav2 simulasi laptop dan konfigurasi robot Husky.
-Batas velocity smoother dan fleet RMF sudah diselaraskan, termasuk workspace
-lama `rmf_ws`. Konfigurasi baru dimuat pada launch berikutnya; pembaruan ini
-tidak menjalankan robot. Lihat [rincian perubahan kecepatan](../docs/SPEED_UPDATE_2026-10-29.md).
+Urutan bersama: **persiapan → L1 core → Nav2 kedua robot → pemeriksaan
+komunikasi → penerimaan/kalibrasi → preflight masing-masing → H4 adapter
+Husky → D3 adapter Devi → L2 verifikasi dua fleet → task satu robot dahulu**.
+Proses foreground pada tahap sebelumnya tetap berjalan.
 
-## Pembaruan map `brin_0` — 29 Oktober 2026
+Seluruh proses fisik memakai waktu nyata. Aktivasi hardware/bridge dan uji
+gerak mengikuti persetujuan operator setempat. Operator masing-masing robot
+harus siap dengan kendali manual/E-stop. Putus SSH/DDS atau timeout CLI tidak
+membuktikan goal Nav2 telah berhenti.
 
-Edit `src/brin_rmf_maps/maps/brin_0.building.yaml` sudah diregenerasi menjadi
-graph RMF, occupancy Nav2, spawn dan mesh dinding, lalu dibuild pada laptop
-dan Husky, termasuk workspace lama `rmf_ws`. Masing-masing workspace lulus
-21 tes map; digest profil terpasang sama pada kedua perangkat.
-Lihat [laporan pembaruan map](../docs/MAP_UPDATE_2026-10-29.md).
+## 2. Persiapan laptop
 
-Untuk memakai hasil edit ini, jalankan core di L1 dengan profil eksplisit:
+Pastikan source/deployment ketiga komputer memakai versi integrasi yang
+telah ditinjau. Dari root repository, periksa:
 
 ```bash
-bash tools/integration.bash laptop core traffic_profile:=brin_0 rviz:=true
+cd /mnt/UbuntuData/rmf-integration
+git status --short
+git rev-parse HEAD
 ```
 
-Pakai `traffic_profile:=brin_0` juga pada preflight dan adapter Husky, serta
-`maps/brin_0.yaml` untuk map Nav2. Contoh `banyak_simpangan` pada prosedur di
-bawah adalah profil lain; ganti nama profil/map secara konsisten untuk sesi
-`brin_0`. Saat deployment tidak ada core/Nav2/adapter aktif; runtime dan uji
-gerak tidak dijalankan oleh proses pembaruan ini.
+Bandingkan versi dengan operator robot. Snapshot `laptop/src` dan `husky/src`
+tidak otomatis terpasang di robot. Bila source integrasi laptop berubah dan
+belum dibangun, jalankan sekali, lalu tunggu build berhasil:
 
-## 1. Batas uji dan keselamatan
+```bash
+bash tools/integration.bash laptop build
+```
 
-Laptop menjalankan RMF core, RViz beserta visualizer traffic/fleet, CLI task,
-dan opsional RMF Web. Robot menjalankan sensor, Nav2 dan fleet adapter.
-Identitas: namespace `/a200_1060`, robot RMF
-`husky_0`, fleet `HuskyA200`, lantai `L1`, profil `banyak_simpangan`.
+Perubahan README saja tidak memerlukan build ulang. Jangan membangun semua
+folder snapshot dalam satu pencarian colcon atau menyalin hasil build ke robot.
 
-Komunikasi dan deployment sudah diuji; **gerak Nav2, task RMF, pembatalan saat
-bergerak dan Web end-to-end belum dinyatakan lulus**. Panduan ini adalah
-prosedur penerimaan lapangan, bukan pernyataan robot sudah aman bergerak.
-
-Pembaruan RViz 28 Oktober 2026 sudah dideploy dan dibuild di kedua perangkat:
-empat paket berhasil dibuild dan 56 tes lulus pada masing-masing perangkat.
-Opsi launch dan aset terpasang sudah diperiksa; tampilan saat robot bergerak
-belum diuji langsung. Lihat [laporan deployment RViz](../docs/RVIZ_DEPLOYMENT_2026-10-28.md).
-
-- Tahap A–B tidak mengirim goal. Tahap C mencakup uji goal Nav2 fisik;
-  tahap F dan G dapat mengirim task RMF. Semua tahap gerak memerlukan operator
-  lokal, area kosong, joystick dan E-stop fisik yang sudah diuji.
-- Jangan mengubah API/protokol/IP/port/parameter Hokuyo, UM7, controller,
-  jaringan, TF atau batas kecepatan untuk membuat pengujian terlihat lulus.
-- Jangan jalankan Gazebo, SLAM, core RMF kedua, launch hardware monolitik,
-  atau adapter kedua bersamaan dengan jalur ini.
-- Jangan gunakan `/clock` atau `use_sim_time:=true`. Seluruh sistem fisik
-  memakai waktu nyata. Jam kedua komputer harus sinkron.
-- Putusnya SSH, DDS, API, Ctrl-C, atau timeout CLI **bukan E-stop** dan tidak
-  menjamin goal yang telah diterima Nav2 berhenti.
-
-## 2. Persiapan setiap terminal laptop
-
-Buka terminal baru. Salin blok ini pada **L2 dan setiap terminal ROS manual**.
-Helper di L1/L3 menyiapkan environment anak prosesnya sendiri, tetapi tetap
-harus dijalankan dari root repository. L4 memakai environment dashboard khusus
-pada tahap G dan tidak memerlukan blok ROS ini.
+Untuk **L2, L5 dan setiap terminal ROS manual laptop**, gunakan terminal baru
+dan salin blok berikut. Ini environment terminal untuk LAN yang sudah diaudit;
+jika memakai discovery server khusus, tinjau dahulu sebelum meng-unset-nya.
 
 ```bash
 cd /mnt/UbuntuData/rmf-integration
@@ -99,137 +96,46 @@ export ROS_LOG_DIR="$PWD/laptop/log/ros"
 unset ROS_DISCOVERY_SERVER
 ```
 
-Unset discovery server berlaku untuk LAN biasa yang sudah diaudit. Jika
-memakai discovery server khusus, hentikan dan tinjau konfigurasi dahulu.
-Sourcing tidak boleh dilakukan setelah export domain karena overlay lama
-dapat mengembalikan domain `42`. Jangan mengubah `.bashrc` atau service.
-Skrip `tools/integration.bash` menyiapkan environment anak prosesnya sendiri;
-menjalankan skrip itu tidak menyiapkan shell terminal lain.
-Helper juga memulihkan prioritas overlay repository bila shell mewarisi
-workspace ROS lama. Untuk perintah ROS manual, tetap periksa prefix paket
-sebelum melanjutkan; sourcing saja belum membuktikan overlay yang dipilih benar.
-
-Pemeriksaan baca-saja:
+Export dilakukan setelah sourcing. Helper `integration.bash` hanya menyiapkan
+anak prosesnya, bukan shell terminal lain. Periksa overlay dan profil di L2:
 
 ```bash
-git rev-parse HEAD
 ros2 pkg prefix brin_husky_distributed
+ros2 pkg prefix brin_husky_hardware
 bash tools/integration.bash laptop profile traffic_profile:=gedungWS_0
-ip -4 route get 192.168.0.120
 timeout 8s ros2 node list --no-daemon --spin-time 3
 ```
 
-Prefix integrasi harus dari `.../rmf-integration/laptop/install/`. Bandingkan
-commit dan digest dengan operator Husky. Digest aset saat deployment:
-`20ec559a4457173006fece1eb435e1dc60f054b355c1c7d3c8c6fd2a8ea00fe7`.
-Kesamaan digest tidak membuktikan peta cocok dengan ruangan sebenarnya.
-Profil DDS laptop memilih `wlp9s0`, peer robot `192.168.0.120`. Jika IP atau
-interface berubah, jangan mengubah routing/driver secara coba-coba.
+Prefix kedua paket harus dari `.../rmf-integration/laptop/install/`.
+Jika core sudah ada, gunakan core itu setelah profilnya dipastikan benar;
+jangan menjalankan langkah 3 untuk membuat duplikat.
 
-## 3. Arti L1–L4, H0–H4 dan urutan A–G
-
-**Huruf dan angka terminal bukan urutan langkah.** `L` berarti terminal di
-laptop dan `H` berarti terminal di Husky. Angka hanya membedakan jendela
-terminal yang dipakai untuk proses berbeda. Khusus `L1 (terminal)`, jangan
-tertukar dengan `L1 (lantai)`: keduanya tidak berhubungan.
-
-L2 dan terminal ROS manual harus lebih dahulu menjalankan blok environment
-pada bagian 2. Terminal yang menjalankan proses foreground dibiarkan terbuka.
-Perintah pemeriksaan yang selesai sendiri dapat dijalankan berulang di L2.
-
-| Terminal | Fungsi | Kapan ditutup |
-| --- | --- | --- |
-| **L1** | Satu RMF core dan, dengan `rviz:=true`, RViz serta tiga visualizer | Paling akhir, atau sekali diganti secara terkontrol saat pindah ke Web |
-| **L2** | Terminal diagnostik dan CLI: DDS, status, task dan cancel | Setelah seluruh pengujian selesai |
-| **L3** | API RMF Web, hanya pada tahap G | Setelah sesi Web selesai |
-| **L4** | Dashboard RMF Web, hanya pada tahap G | Setelah sesi Web selesai |
-| **H0** | Terminal diagnostik Husky; perintahnya ada di README Husky | Setelah seluruh pengujian selesai |
-| **H1** | Driver Hokuyo, hanya bila belum ada driver yang berjalan | Setelah pengujian dan hanya jika driver dimulai oleh sesi ini |
-| **H2** | Nav2/AMCL/map server, bila belum berjalan | Setelah adapter berhenti dan robot aman |
-| **H3** | Peran RViz untuk initial pose dan observasi; dapat dipenuhi RViz laptop di L1 | RViz terpisah hanya jika RViz L1 tidak dipakai |
-| **H4** | Preflight, lalu satu fleet adapter | Adapter dihentikan sebelum Nav2/core |
-
-`A` sampai `G` adalah **tahap waktu yang dikerjakan dari atas ke bawah**.
-Tahap berikutnya memakai proses yang masih hidup dari tahap sebelumnya; bukan
-berarti semua terminal menjalankan perintah baru secara bersamaan.
-
-| Tahap | Laptop | Husky | Syarat untuk lanjut |
-| --- | --- | --- | --- |
-| **A — mulai** | Buka **L1**, jalankan satu RMF core dengan `rviz:=true` dan biarkan hidup. Buka **L2** untuk cek core. | Buka **H0**, siapkan environment dan lakukan pemeriksaan awal. | Tepat satu core, waktu nyata, profil/digest kedua mesin cocok. |
-| **B — komunikasi tanpa gerak** | Di **L2**, jalankan requester DDS; **L1 tetap hidup**. | Di **H0**, jalankan responder DDS lalu native adapter check. | Kedua DDS endpoint dan native check exit `0` serta menyatakan lulus. |
-| **C — siapkan robot** | **L1 tetap hidup**; gunakan RViz yang sudah terbuka untuk observasi dan initial pose. | Periksa/aktifkan berurutan **H1** sensor → **H2** Nav2; gunakan RViz laptop untuk peran **H3**, lalu uji goal Nav2 pendek tanpa adapter. | Sensor, map, lokalisasi, lifecycle/action, gerak Nav2 dan penghentian diterima operator. |
-| **D — preflight** | **L1 tetap hidup**; jangan kirim task. | Jalankan preflight di **H4**. Perintah ini selesai sendiri; **H1/H2** tetap hidup. | JSON memuat `accepted: true` dan `errors: []`. |
-| **E — daftar robot** | Di **L2**, tunggu dan periksa `/fleet_states`; **L1 tetap hidup**. | Setelah D lulus, gunakan kembali **H4** untuk satu adapter dan biarkan hidup. | `HuskyA200/husky_0` terlihat dengan pose/level yang masuk akal. |
-| **F — uji task** | Di **L2**, kirim tepat satu task, tunggu hasil, lalu lakukan uji cancel terkontrol terpisah. | **H4**, **H2**, dan bila diperlukan **H1** tetap hidup; operator mengawasi robot dan E-stop. | Gerak, status akhir dan penghentian telah diamati secara fisik. |
-| **G — Web opsional** | Setelah F selesai dan robot diam: hentikan adapter, lalu core lama. Jalankan **L3** API → **L1** core pengganti ber-URI API → **H4** adapter pengganti → **L4** dashboard. | Jalankan kembali adapter di **H4** dengan URI API laptop yang sama. | Hanya satu core dan satu adapter; CLI/cancel sudah diterima lebih dahulu. |
-
-Jadi alur minimumnya adalah `A → B → C → D → E → F`. Tahap `G` opsional
-dan merupakan **pergantian sesi**, bukan proses tambahan di samping core dan
-adapter lama. Jangan lanjut ke huruf berikutnya bila syarat pada baris saat ini
-belum lulus.
-
-Hubungan proses saat task berjalan dapat dibaca seperti ini:
+Digest `gedungWS_0` yang harus sama pada laptop, Husky dan Devi:
 
 ```text
-Tahap F (CLI):  L2 task → L1 core/dispatcher ↔ H4 adapter → H2 Nav2 → robot
-Sensor:                                             H1 lidar → H2 Nav2
-Observasi:        RViz L1 (atau H3 terpisah); L2/H0 memeriksa status
-
-Tahap G (Web):  L4 dashboard → L3 API → L1 core ↔ H4 adapter → H2 Nav2
+ff44d7a33b01732e6c277b523c40ae5c7ef6c011dab83b259e5db44daef9f221
 ```
 
-Jadi L2 atau L4 tidak mengendalikan motor secara langsung. H4 menerjemahkan
-task RMF menjadi action Nav2; H2 yang menangani navigasi robot. H1 menyediakan
-scan, sedangkan H0 terutama untuk pemeriksaan dan observasi.
+Ini identitas bundle RMF, bukan bukti bahwa dua peta Nav2 sudah mempunyai
+koordinat yang sama. Devi masih memakai peta lokal `workshop_l_1` dan
+memerlukan transformasi ke koordinat RMF di adapter.
 
-### Tahap A — L1: satu RMF core dan RViz otomatis
+## 3. L1 — mulai tepat satu core RMF
 
-Jika core dari sesi lain masih aktif, identifikasi pemiliknya; jangan memulai
-core kedua atau menghentikan proses yang tidak dikenal.
-
-Di terminal laptop L1, dari root repository:
+Di L1, hanya jika core belum berjalan:
 
 ```bash
 cd /mnt/UbuntuData/rmf-integration
-bash tools/integration.bash laptop core traffic_profile:=banyak_simpangan rviz:=true
+bash tools/integration.bash laptop core traffic_profile:=gedungWS_0 rviz:=true
 ```
 
-Tidak perlu menjalankan visualizer atau menambah display RViz satu per satu.
-Perintah ini menjalankan satu core, tiga visualizer RMF, dan RViz dengan
-preset Husky fisik. Driver, Nav2 dan adapter tetap dijalankan di Husky sesuai
-tahap berikutnya. RViz ini memenuhi peran H3; tidak perlu membuka RViz kedua
-di robot. Untuk core tanpa GUI dan tanpa visualizer, hilangkan `rviz:=true`.
+Biarkan L1 hidup untuk kedua robot. Nama paket launch masih
+`brin_husky_distributed`, tetapi schedule/dispatcher di dalamnya dipakai
+bersama oleh kedua fleet. Untuk sesi tanpa GUI, hilangkan `rviz:=true`.
+Gunakan Cyclone DDS bawaan; tidak perlu override Fast DDS atau mengubah
+profil jaringan laptop untuk Devi.
 
-| Layer RViz | Topic | Kapan tersedia |
-| --- | --- | --- |
-| Peta Nav2 | `/a200_1060/map` | Map server Nav2 aktif |
-| Scan Hokuyo | `/a200_1060/scan` | Driver lidar aktif dan TF navigasi tersedia |
-| Lane, waypoint dan nama lokasi | `/map_markers` | Adapter memublikasikan `/nav_graphs` |
-| Posisi fleet | `/fleet_markers` | Robot terdaftar dan adapter mengirim `/fleet_states` |
-| Rencana perjalanan RMF | `/schedule_markers` | Schedule memiliki itinerary pada lantai L1 |
-| Jalur Nav2 | `/a200_1060/plan` | Planner Nav2 menerbitkan jalur |
-
-Tampilan memakai **Fixed Frame `map`**, filter lantai **`L1`**, dan
-`use_sim_time:=false`. Peta/scan dapat diperiksa sebelum adapter aktif;
-lane dan fleet marker yang belum muncul pada tahap A–D tidak langsung berarti
-RViz gagal. Marker fleet mengikuti posisi yang dilaporkan adapter, sedangkan
-schedule marker menunjukkan rencana RMF. Zoom pada peta untuk melihat robot
-dan label waypoint.
-
-Jika core sudah berjalan tanpa opsi RViz, biarkan core itu hidup. Pada satu
-terminal laptop tambahan dengan environment bagian 2 dan prefix paket yang
-benar, jalankan visualisasi saja:
-
-```bash
-ros2 launch brin_husky_distributed visualization.launch.py
-```
-
-Launch tersebut tidak memulai core atau adapter kedua. Jangan menjalankannya
-bersamaan dengan visualisasi yang sudah dimulai melalui `rviz:=true` di L1.
-Panduan preset ada pada [README paket](src/brin_husky_distributed/README.md).
-
-Biarkan proses di L1 hidup. Di terminal L2 yang sudah memakai environment
-bagian 2, jalankan pemeriksaan berikut:
+Di L2, periksa:
 
 ```bash
 timeout 8s ros2 node list --no-daemon --spin-time 3
@@ -238,64 +144,143 @@ timeout 8s ros2 topic echo /brin_hardware/profile_digest std_msgs/msg/String \
 timeout 8s ros2 param get /rmf_traffic_schedule_primary use_sim_time
 ```
 
-Harus ada tepat satu `rmf_traffic_schedule_primary`, `rmf_task_dispatcher`,
-`building_map_server`, dan pengumum profil. `use_sim_time` harus `False`.
+Harus ada tepat satu dari setiap node berikut:
+`rmf_traffic_schedule_primary`, `rmf_task_dispatcher`, `building_map_server`,
+dan `brin_hardware_profile_announcer`. Digest harus cocok dengan bagian 2
+dan `use_sim_time` harus `False`. Fleet belum harus muncul pada tahap ini.
 
-## 4. Tahap B — uji komunikasi tanpa gerak
+## 4. Operator robot — Nav2 dan komunikasi tanpa gerak
 
-Mulai di L2, lalu minta operator menjalankan responder Husky dalam 30 detik:
+**Husky:** ikuti persiapan environment, sensor dan Nav2 di README Husky.
+Untuk sesi ini, gunakan bagian profil `gedungWS_0` pada awal README tersebut:
+map Nav2 `gedungWS_0_rmf.yaml`, `traffic_profile:=gedungWS_0`, waktu nyata.
+Contoh profil `banyak_simpangan`/`brin_0` pada bagian lama bukan pilihan sesi
+dua robot ini. Hindari driver, map server atau Nav2 kedua.
+
+Di H0 yang sudah memakai environment README Husky:
 
 ```bash
+cd /home/husky/rmf-integration
+bash tools/integration.bash husky profile traffic_profile:=gedungWS_0
+timeout --signal=INT --kill-after=3s 25s python3 tools/native_adapter_check.py --wait 12
+```
+
+Hasil native check harus `native_adapter_connected_to_schedule: true` dan
+exit `0`. Bila diperlukan, uji DDS pulang-pergi yang sudah tersedia dimulai
+di **L2**, lalu responder **H0** dalam 30 detik:
+
+```bash
+# Laptop L2
 timeout --signal=INT --kill-after=3s 35s python3 tools/dds_roundtrip.py \
-  --role laptop --session operasional_01 --timeout 30
+  --role laptop --session dua_robot_husky_01 --timeout 30
 ```
-
-Perintah pasangan ada di README Husky. Kedua endpoint harus exit `0` dan
-`passed: true`; laptop menerima minimal tiga balasan. Gunakan session yang
-sama untuk satu pasangan, dan session baru untuk uji berikutnya.
-
-Dengan L1 tetap berjalan, operator menjalankan `native_adapter_check.py` di
-Husky. Harus `native_adapter_connected_to_schedule: true` **dan exit 0**.
-JSON sukses lalu crash/timeout bukan lulus. Uji ini tidak mendaftarkan robot,
-tidak membuat fleet palsu, dan tidak membuktikan kesiapan Nav2.
-
-## 5. Tahap C–E — tunggu penerimaan fisik dari operator Husky
-
-Jangan kirim task sebelum operator menyatakan semua berikut lulus:
-
-- Sensor nyata segar, controller aktif, map benar dan scan selaras dengan map.
-- Lokalisasi AMCL/initial pose benar; action dan lifecycle Nav2 siap.
-- Preflight mengeluarkan `accepted: true` dan `errors: []`.
-- Uji Nav2 pendek tanpa adapter, serta penghentian, sudah diterima di lokasi.
-- Tidak ada task lama/tertunda yang tidak diketahui; operator siap jika
-  registrasi adapter membuat task yang sudah antre segera dapat dieksekusi.
-
-Tahap C dan D dikerjakan operator menurut README Husky. Setelah operator
-menyatakan keduanya lulus dan mengaktifkan **satu** adapter pada tahap E,
-jalankan di L2:
 
 ```bash
-timeout 8s ros2 topic echo /fleet_states rmf_fleet_msgs/msg/FleetState --once
-timeout 8s ros2 param get /brin_husky_fleet_adapter use_sim_time
+# Husky H0, environment robot sudah disiapkan
+timeout --signal=INT --kill-after=3s 25s python3 tools/dds_roundtrip.py \
+  --role robot --session dua_robot_husky_01 --timeout 20
 ```
 
-Harus terlihat `HuskyA200` dengan robot `husky_0`, pose dan level yang masuk
-akal; bukan daftar robot kosong. Log Husky harus mencatat
-`Registered husky_0 in HuskyA200`. Parameter waktu harus `False`.
+Kedua endpoint harus exit `0` dan `passed: true`.
 
-Pada build Husky yang sudah dideploy, adapter menonaktifkan responsive wait
-dan menahan jalur yang belum memiliki task ID. Sebelum task pertama,
-pastikan `task_id` kosong, robot tetap diam dan log Husky memuat
-`responsive wait disabled`. Task yang sudah antre tetap harus ditinjau
-operator. Catatan guard dan pemeriksaan action client ada pada README Husky.
+**Devi:** jalankan langkah D0/D1/D2 di [README Devi](../devi/README.md).
+Nav2 yang sudah aktif di `devi_ws` tetap digunakan pada domain `73`.
+Di D2, dengan L1 tetap hidup:
 
-## 6. Tahap F — uji task terminal, DAPAT MENGGERAKKAN ROBOT
+```bash
+cd /home/devi/rmf-integration
+python3 devi/verify_underlay.py
+bash tools/devi.bash profile
+bash tools/devi.bash inspect
+bash tools/devi.bash link-check
+```
 
-Lakukan hanya setelah tahap E diterima. Pilih tujuan dari profil yang sama
-dengan core RMF yang sedang berjalan,
-di peta yang telah divalidasi operator. Tujuan harus aman, dapat dicapai, dan
-cukup berbeda dari posisi awal untuk membuktikan perpindahan. Jangan mengira
-waypoint bernama charger berarti docking fisik sudah tersedia.
+`inspect` harus menunjukkan `nav2_ready: true` dan `nav2_errors: []`.
+`link-check` harus exit `0`, dengan koneksi native schedule, action Nav2,
+dan respons service untuk UUID goal yang tidak ada semuanya `true`.
+Context Nav2 `73`, context RMF `0`. Pemeriksaan ini tidak mendaftarkan
+robot atau mengirim goal. `inspect` exit `0` belum berarti dispatch diterima.
+
+## 5. Penerimaan dan preflight kedua robot
+
+Sebelum aktivasi adapter, operator memeriksa scan/peta, lokalisasi, waktu
+nyata, uji Nav2 pendek tanpa adapter, dan pembatalan/penghentian di lokasi.
+Tinjau task lama/tertunda sebelum mendaftarkan robot.
+
+Khusus Devi, selesaikan kalibrasi `workshop_l_1` → koordinat RMF
+`gedungWS_0`, verifikasi footprint fisik, dan penerimaan operasi menurut
+README Devi. Konfigurasi yang dikirim saat setup masih `confirmed: false`,
+koordinat transformasi `null`, serta dua flag commissioning `false`.
+Mengubah flag saja tidak menggantikan pengukuran dan uji fisik.
+
+**H4 — preflight Husky**, setelah aktivasi bridge integrasi disetujui operator:
+
+```bash
+cd /home/husky/rmf-integration
+bash tools/integration.bash husky preflight traffic_profile:=gedungWS_0
+```
+
+**D2 — preflight Devi**:
+
+```bash
+cd /home/devi/rmf-integration
+bash tools/devi.bash preflight
+```
+
+Masing-masing harus menghasilkan JSON **`accepted: true`, `errors: []`**.
+Perintah preflight selesai sendiri. Launch bisa berhenti dengan exit `0`
+meskipun pemeriksaan gagal; baca JSON, bukan hanya exit code launch.
+Jika Devi masih melaporkan `Devi/RMF map alignment has not been confirmed`,
+berhenti pada tahap ini untuk Devi. Husky dapat dipakai sendiri jika sudah
+diterima, tetapi sesi itu belum merupakan operasi dua robot.
+
+## 6. H4 dan D3 — aktifkan satu adapter per robot
+
+Jalankan setelah preflight dan penerimaan fisik robot bersangkutan lulus.
+L1 dan Nav2 kedua robot tetap hidup. Mulai Husky dahulu di H4:
+
+```bash
+cd /home/husky/rmf-integration
+BRIN_ENABLE_DISPATCH=1 bash tools/integration.bash husky adapter traffic_profile:=gedungWS_0
+```
+
+Tunggu registrasi `HuskyA200/husky_0`. Setelah Devi diterima, mulai D3:
+
+```bash
+cd /home/devi/rmf-integration
+BRIN_ENABLE_DISPATCH=1 bash tools/devi.bash adapter
+```
+
+Biarkan H4 dan D3 terbuka. Kedua helper mengulangi preflight sebelum adapter
+dimulai; keduanya menggunakan Nav2 yang sudah berjalan.
+
+Di L2, amati stream selama beberapa detik:
+
+```bash
+timeout 20s ros2 topic echo /fleet_states rmf_fleet_msgs/msg/FleetState
+timeout 8s ros2 param get /brin_husky_fleet_adapter use_sim_time
+timeout 8s ros2 param get /brin_devi_fleet_adapter use_sim_time
+```
+
+Harus terlihat **dua pesan fleet terpisah**: `name: HuskyA200` dengan robot
+`husky_0`, serta `name: Devi` dengan robot `devi`. Kedua robot berada di
+lantai `L1`, pose masuk akal, task awal kosong dan robot diam. Kedua parameter
+waktu harus `False`. `--once` tidak cukup untuk membuktikan dua fleet;
+exit `124` dari monitor `timeout 20s` adalah akhir durasi pengamatan.
+
+RViz laptop memakai input map/scan/TF dan tool initial pose **Husky**.
+Gunakan RViz Devi pada domain `73` untuk scan, initial pose dan peta Devi.
+Kehadiran kedua robot dikonfirmasi lewat `/fleet_states`; kemunculan marker
+Devi dengan preset RViz lama belum menjadi bukti penerimaan visualisasi.
+Topic sensor Devi domain `73` tidak harus terlihat dari terminal laptop domain `0`.
+
+## 7. L2 — uji task dengan target robot eksplisit
+
+Tahap ini dapat menggerakkan robot. Uji satu robot pada satu waktu terlebih
+dahulu; robot lain diam. Operator menyetujui tujuan dan siap menghentikan
+robot. Penerimaan satu task per robot belum membuktikan traffic bersama.
+
+Pilih waypoint dari graph core yang sedang dipakai:
 
 ```bash
 RMF_TEST_PROFILE=gedungWS_0
@@ -304,87 +289,130 @@ RMF_TEST_PLACE="$(bash tools/integration.bash laptop waypoint traffic_profile:="
 test -n "$RMF_TEST_PLACE"
 ```
 
-Pemilih menampilkan waypoint bernama dari graph profil itu, lalu menerima
-nomor atau nama yang tercantum. Jika nilai kosong atau pemilih gagal,
-berhenti. Daftar waypoint belum membuktikan lokasi aman; operator tetap
-menyetujui tujuan sebelum uji. Untuk peta lain, ubah hanya
-`RMF_TEST_PROFILE` agar sama dengan profil core. Uji pertama menargetkan robot
-langsung:
+Pemilih menerima nomor atau nama waypoint yang ditampilkan. Pilih lokasi
+aman dan berbeda dari posisi awal. `ws_p0` adalah referensi graph, bukan
+bukti docking fisik tersedia. Jika pilihan kosong/gagal, jangan kirim task.
+
+### 7.1 Task Husky
+
+CLI fisik yang sudah tersedia mendukung `husky_0`:
 
 ```bash
 timeout --signal=INT --kill-after=3s 40s ros2 run brin_husky_hardware send_task \
   --robot husky_0 --places "$RMF_TEST_PLACE" --timeout 30
 ```
 
-Catat respons lengkap dan **ID task/booking**, bukan `request_id` API. Respons
-diterima hanya berarti request dijawab; belum berarti robot bergerak/selesai.
-Amati posisi fisik, feedback/hasil Nav2 dan status akhir RMF. `task_id` kosong
-pada fleet state saja juga bukan bukti sukses: gagal/cancel dapat berakhir idle.
-SOC `0.95` saat ini nilai konfigurasi, bukan pembacaan baterai asli.
+Catat respons dan ID task/booking. Tunggu gerak, hasil action dan status akhir
+yang sesuai sebelum beralih ke robot lain.
 
-Jika CLI timeout, **jangan langsung mengirim ulang**: request mungkin sudah
-diterima robot. Periksa status dan koordinasikan dengan operator dahulu.
-Jangan menjalankan dua contoh task sekaligus.
+### 7.2 Task Devi melalui task API
 
-Setelah uji langsung selesai, uji dispatcher secara terpisah, satu task:
+CLI `brin_husky_hardware send_task` tidak menerima `--robot devi` atau
+`--fleet Devi`. Untuk Devi, gunakan request berikut yang menargetkan
+`fleet: Devi`, `robot: devi` secara eksplisit.
+
+Setelah tujuan dipilih, buka **L5**, siapkan environment bagian 2, lalu amati
+respons sebelum memublikasikan request dari L2:
 
 ```bash
-timeout --signal=INT --kill-after=3s 40s ros2 run brin_husky_hardware send_task \
-  --places "$RMF_TEST_PLACE" --timeout 30
+ros2 topic echo /task_api_responses rmf_task_msgs/msg/ApiResponse \
+  --qos-durability transient_local --qos-reliability reliable
 ```
 
-### Pembatalan terkontrol
-
-Lakukan pada task uji berikutnya yang memang disiapkan untuk pengujian cancel.
-Operator tetap siap pada E-stop; bukan percobaan kehilangan jaringan.
+Di **L2**, dengan `RMF_TEST_PLACE` masih berisi tujuan yang disetujui:
 
 ```bash
-read -r -p 'ID task aktif yang akan dibatalkan: ' RMF_TASK_ID
+test -n "$RMF_TEST_PLACE"
+DEVI_REQUEST_ID="devi_manual_$(date +%s%N)"
+DEVI_API_MESSAGE="$(python3 - "$DEVI_REQUEST_ID" "$RMF_TEST_PLACE" <<'PY'
+import json
+import sys
+import time
+
+payload = {
+    'type': 'robot_task_request',
+    'fleet': 'Devi',
+    'robot': 'devi',
+    'request': {
+        'category': 'patrol',
+        'description': {'places': [sys.argv[2]], 'rounds': 1},
+        'unix_millis_earliest_start_time': time.time_ns() // 1_000_000,
+    },
+}
+print(json.dumps({'request_id': sys.argv[1], 'json_msg': json.dumps(payload)}))
+PY
+)"
+printf '%s\n' "$DEVI_API_MESSAGE"
+timeout --signal=INT --kill-after=3s 40s ros2 topic pub --once \
+  --qos-durability transient_local --qos-reliability reliable \
+  /task_api_requests rmf_task_msgs/msg/ApiRequest "$DEVI_API_MESSAGE"
+```
+
+Di L5 cari respons dengan `request_id` yang sama dengan `DEVI_REQUEST_ID`.
+Periksa JSON respons, `success`, dan ID task/booking. Exit `0` dari publisher
+hanya berarti pesan dikirim; belum berarti request diterima atau task selesai.
+Jika respons tidak diketahui/timeout, periksa status sebelum mengulang agar
+tidak membuat task ganda. Jangan memakai request tanpa target robot untuk
+uji awal; dispatcher dapat memilih fleet lain yang sedang tersedia.
+
+### 7.3 Pembatalan untuk Husky maupun Devi
+
+Gunakan **ID task/booking dari respons**, bukan `DEVI_REQUEST_ID`.
+CLI cancel fisik mengirim pembatalan berdasarkan ID task dan dapat dipakai
+untuk kedua fleet dari L2:
+
+```bash
+read -r -p 'ID task/booking yang akan dibatalkan: ' RMF_TASK_ID
 test -n "$RMF_TASK_ID"
 timeout --signal=INT --kill-after=3s 40s ros2 run brin_husky_hardware send_task \
   --cancel "$RMF_TASK_ID" --timeout 30
 ```
 
-Jika ID kosong, jangan lanjut. Tunggu status pembatalan dan pastikan robot
-benar-benar berhenti. Bila gerak tidak aman atau cancel tidak efektif, gunakan
-E-stop fisik, bukan pengulangan CLI. Catat jeda berhenti dan hasil action.
+Periksa respons cancel, status RMF dan penghentian fisik robot yang benar.
+Uji pembatalan saat bergerak dilakukan terpisah dengan operator setempat.
+Simpan pose awal/akhir, ID task, hasil Nav2 dan waktu berhenti masing-masing
+robot. Penerimaan traffic dua robot dilakukan setelah kedua uji individu lulus.
 
-## 7. Tahap G (opsional) — uji RMF Web setelah CLI lulus
+## 8. Menghentikan sesi
 
-Panduan versi runtime: [WEB.md](src/brin_husky_distributed/WEB.md).
-Backend/dashboard belum diuji end-to-end pada robot. Gunakan LAN pengujian
-terpercaya; jangan membuka API ke internet atau menonaktifkan firewall.
+1. Hentikan pengiriman task, selesaikan/batalkan task aktif dan pastikan
+   **kedua robot** diam bersama operatornya.
+2. Hentikan adapter **H4 dan D3** terlebih dahulu. Konfirmasi goal Nav2 tidak
+   masih berjalan; jangan menutup core untuk mencoba menghentikan motor.
+3. Hentikan Nav2/sensor yang memang dimulai untuk sesi ini, bila diperlukan.
+   Pertahankan service/driver platform yang dikelola di luar sesi.
+4. Hentikan dashboard/API bila dipakai, kemudian **core L1 paling akhir**.
+   RViz/visualizer dalam launch core ikut berhenti.
 
-Tahap ini mengganti sesi CLI, bukan menambah proses pada sesi lama. Sebelum
-beralih ke Web, selesaikan/batalkan task, pastikan robot diam, hentikan adapter
-Husky di H4, lalu Ctrl-C core lama di L1. Jangan membuat core kedua. Urutan
-start yang benar adalah **L3 API → L1 core pengganti → H4 adapter pengganti →
-L4 dashboard**.
-Di L3 yang sudah memakai environment bagian 2, set:
+## 9. Web opsional setelah penerimaan CLI
+
+[Panduan Web](src/brin_husky_distributed/WEB.md) memuat runtime yang sudah
+dipasang. Web dua robot belum diuji end-to-end. Selesaikan/batalkan task,
+pastikan kedua robot diam, hentikan **kedua adapter**, lalu core lama sebelum
+beralih sesi. Urutannya: **L3 API → L1 core pengganti → H4 dan D3 adapter
+pengganti → L4 dashboard**. Profil tetap `gedungWS_0`.
+
+L3, setelah environment bagian 2 disiapkan:
 
 ```bash
-export BRIN_LAPTOP_IP=192.168.0.218
-export RMF_WEB_ROOT=/mnt/UbuntuData/rmf-web
-```
-
-L3 — API, dibiarkan berjalan:
-
-```bash
+export BRIN_LAPTOP_IP=192.168.0.218 RMF_WEB_ROOT=/mnt/UbuntuData/rmf-web
 bash tools/integration.bash laptop web \
   web_root:="$RMF_WEB_ROOT" runtime_dir:="$PWD/laptop/log/rmf_web_real" \
   api_host:="$BRIN_LAPTOP_IP" public_url:="http://$BRIN_LAPTOP_IP:8000"
 ```
 
-L1 — core pengganti, memakai IP laptop (bukan Husky/localhost):
+L1 — satu core pengganti:
 
 ```bash
+cd /mnt/UbuntuData/rmf-integration
 export BRIN_LAPTOP_IP=192.168.0.218
-bash tools/integration.bash laptop core traffic_profile:=banyak_simpangan \
+bash tools/integration.bash laptop core traffic_profile:=gedungWS_0 \
   server_uri:="ws://$BRIN_LAPTOP_IP:8000/_internal" rviz:=true
 ```
 
-Minta operator menjalankan adapter pengganti dengan URI yang sama menurut
-README Husky; preflight tetap berlaku. L4 — dashboard runtime yang sudah ada:
+Pada H4 dan D3, ulangi perintah adapter bagian 6 dengan menambahkan argumen
+`server_uri:=ws://192.168.0.218:8000/_internal` pada **keduanya**. Preflight dan
+penerimaan fisik tetap berlaku. L4 memakai runtime dashboard yang sudah ada:
 
 ```bash
 export BRIN_LAPTOP_IP=192.168.0.218 RMF_WEB_ROOT=/mnt/UbuntuData/rmf-web
@@ -396,45 +424,25 @@ cd "$RMF_WEB_ROOT"
 pnpm --filter rmf-dashboard run start:react
 ```
 
-Jangan gunakan `pnpm start` yang dapat memulai backend tambahan. Runtime harus
-sesuai commit pinned di WEB.md; jangan upgrade dependensi saat uji fisik.
-Buka `http://localhost:3000`; docs API `http://192.168.0.218:8000/docs`.
-Pilih **lantai L1** → HuskyA200 → husky_0 → Patrol → satu putaran ke tujuan
-aman. Label L1 pada dashboard adalah nama lantai, bukan terminal laptop L1.
-Adapter hanya mendukung Patrol untuk tahap ini. Dengan `rviz:=true`, schedule
-visualizer juga menjalankan trajectory server pada port bawaan 8006 di laptop.
-Jika visualisasi dinonaktifkan, server ini tidak dimulai oleh core. Masalah
-overlay trajectory bukan otomatis bukti fleet adapter terputus. Verifikasi
-task benar-benar selesai di lapangan.
+Buka `http://localhost:3000`. Pilih lantai `L1`, lalu pasangan fleet/robot
+yang benar: `HuskyA200/husky_0` atau `Devi/devi`. Gunakan Patrol satu putaran
+ke tujuan yang sudah diterima. UI dan telemetry Web Devi masih perlu
+diverifikasi di lapangan; keberhasilan CLI tidak membuktikan Web sudah lulus.
 
-## 8. Penghentian dan penanganan kegagalan
+## 10. Jika tahap tidak lulus
 
-1. Hentikan pengiriman task. Batalkan task aktif bila aman, tunggu robot diam.
-2. Operator Husky menghentikan adapter terlebih dahulu. Jangan menganggap
-   menutup terminal menjamin gerak berhenti; konfirmasi fisik tetap wajib.
-3. Operator menghentikan launch Nav2/sensor yang dimulai khusus sesi uji jika
-   diperlukan. Jangan menghentikan Clearpath, UM7, SSH atau jaringan.
-4. Ctrl-C dashboard/API, lalu core laptop; RViz dan visualizer yang berada
-   dalam launch core ikut dihentikan. Jika memakai launch visualisasi
-   terpisah, hentikan terminal itu juga. Pastikan proses uji berakhir.
-5. Jika robot tidak aman kapan pun, gunakan E-stop lebih dahulu. Jangan
-   melepaskannya sebelum task/goal aktif dan sumber perintah ditinjau.
-
-| Gejala | Tindakan aman |
+| Gejala | Pemeriksaan berikutnya |
 | --- | --- |
-| Node tak terlihat | Periksa environment terminal/domain 0, URI Wi-Fi dan IP; jangan ubah service platform |
-| SSH timeout | Tidak berarti ROS berhenti; minta pemeriksaan lokal Husky, jangan restart Wi-Fi saat uji |
-| Native check gagal | Pertahankan satu core, periksa DDS dan exit code; jangan anggap node list cukup |
-| Fleet kosong/robot belum terdaftar | Tinjau preflight, Nav2 dan TF pada Husky; jangan buat pose/fleet palsu |
-| Lane/fleet marker kosong | Periksa publisher `/nav_graphs` dan isi `/fleet_states`; adapter harus aktif sesuai tahap E |
-| Opsi `rviz` tidak dikenal | Periksa prefix paket; jalankan helper repository agar workspace lama tidak mengalahkan overlay integrasi |
-| Peta/scan belum terlihat di RViz | Periksa H1/H2 dan TF navigasi yang sudah dipakai; jangan menambah bridge atau TF statik tebakan |
-| Request ditolak/timeout | Simpan respons, cek waypoint dan status sebelum retry |
-| Gerak menyimpang/scan tidak cocok | E-stop, hentikan tahap gerak; jangan ubah parameter sensor/TF secara coba-coba |
+| Core ganda | Identifikasi sesi pemiliknya; pertahankan tepat satu core |
+| Digest berbeda | Cocokkan source/aset `gedungWS_0`; jangan memaksa preflight |
+| Devi `nav2_ready: true`, tetapi `accepted: false` | Baca `errors`; kalibrasi/commissioning atau RMF core bisa belum siap |
+| Native schedule gagal / `Invalid ... ScheduleQuerySpacetime` | Pertahankan Cyclone pada core/native RMF; gateway Nav2 Devi tetap Fast DDS |
+| Hanya satu fleet di `/fleet_states` | Periksa preflight dan log adapter robot yang belum terdaftar |
+| Sensor Devi tidak terlihat di laptop | Periksa dari D0 domain `73`; sensor tidak direlay ke domain `0` |
+| Request timeout atau ditolak | Simpan respons, periksa target, waypoint, antrean dan ID task sebelum retry |
+| Scan/peta atau gerak tidak sesuai | Hentikan tahap gerak bersama operator; jangan menebak TF atau mengganti parameter robot |
 
-## 9. Catatan penerimaan
-
-Simpan tanggal, commit kedua mesin, profil/digest, hasil DDS/native/preflight,
-nama tujuan, ID task, respons, hasil Nav2, pose awal/akhir, durasi berhenti,
-hasil cancel dan hasil Web. Tandai setiap tahap **LULUS / GAGAL / BELUM DIUJI**.
-Jangan menyamakan lulus komunikasi dengan lulus operasi fisik.
+Rincian konfigurasi yang dipertahankan: [profil gedungWS](../docs/GEDUNGWS_0_2026-10-30.md),
+[footprint Husky](../docs/FOOTPRINT_INFLATION_2026-11-02.md),
+[kecepatan Husky](../docs/SPEED_UPDATE_2026-10-29.md),
+dan [hasil setup Devi](../devi/SETUP_RESULT_2026-11-02.md).
