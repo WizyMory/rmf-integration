@@ -19,7 +19,12 @@ Husky harus memilih `traffic_profile:=gedungWS_0` dan map Nav2
 `gedungWS_0_rmf.yaml` pada sesi yang sama. Lihat
 [catatan profil gedungWS](../docs/GEDUNGWS_0_2026-10-30.md).
 Digest profil `gedungWS_0` yang terpasang di kedua perangkat:
-`5b0808476a773374169e0384d700d7a82275e001d64e1f229e666ca46f02b20e`.
+`ff44d7a33b01732e6c277b523c40ae5c7ef6c011dab83b259e5db44daef9f221`.
+
+Konfigurasi uji 2 November 2026: radius footprint RMF `0.55 m`, footprint
+Nav2 `x=±0.45, y=±0.30 m`, dan inflation radius local/global `0.35 m`.
+Source serta instalasi kedua perangkat sudah diselaraskan; gunakan launch
+baru untuk memuat nilai ini. Lihat [laporan footprint dan inflation](../docs/FOOTPRINT_INFLATION_2026-11-02.md).
 
 Kecepatan diperbarui pada 29 Oktober 2026: target linear **0.5 m/s** dan
 angular **0.5 rad/s**, pada Nav2 simulasi laptop dan konfigurasi robot Husky.

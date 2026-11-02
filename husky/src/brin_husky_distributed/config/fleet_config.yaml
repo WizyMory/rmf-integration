@@ -4,7 +4,7 @@ map_name: L1
 robots:
   husky_0: {charger: husky_0}
 profile:
-  footprint: 0.70
+  footprint: 0.55
   vicinity: 0.80
 limits:
   linear: [0.5, 0.30]

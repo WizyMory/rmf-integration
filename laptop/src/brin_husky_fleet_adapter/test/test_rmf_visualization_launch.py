@@ -49,7 +49,7 @@ def test_rmf_visualizers_follow_launch_argument(enabled, monkeypatch, tmp_path):
     assert nodes['schedule_visualizer_node'].output[0].text == 'log'
     assert evaluate_parameters(
         context, nodes['fleetstates_visualizer_node']._Node__parameters
-    )[0]['HuskyA200_radius'] == pytest.approx(0.70)
+    )[0]['HuskyA200_radius'] == pytest.approx(0.55)
 
 
 @pytest.mark.parametrize('profile', ['brin.rviz', 'brin_light.rviz', 'brin_debug.rviz'])

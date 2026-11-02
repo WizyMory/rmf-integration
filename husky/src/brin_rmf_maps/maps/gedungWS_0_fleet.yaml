@@ -4,7 +4,7 @@ robots:
   husky_0:
     charger: ws_p0
 profile:
-  footprint: 0.7
+  footprint: 0.55
   vicinity: 0.8
 limits:
   linear:

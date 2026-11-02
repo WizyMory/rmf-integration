@@ -10,7 +10,7 @@ robots:
   husky_6: {charger: lab_bengkel2}
 profile:
   # Encloses the Nav2 1.10 x 0.76 m conservative collision rectangle.
-  footprint: 0.70
+  footprint: 0.55
   vicinity: 0.80
 limits:
   linear: [0.5, 0.3]

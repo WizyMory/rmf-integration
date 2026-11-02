@@ -5,8 +5,8 @@ authority:
   traffic_editor_doors: traversable_when_open
 fleet_graph_index: 1
 clearance:
-  # The Nav2 footprint itself is 1.10 x 0.76 m. footprint_padding from the
-  # Nav2 configuration is added independently by the generator.
+  # The generator reads the footprint and footprint_padding from the
+  # selected Nav2 configuration; no robot dimensions are duplicated here.
   additional_margin_m: 0.0
   wall_thickness_m: 0.05
 known_areas:
