@@ -1,0 +1,26 @@
+fleet_name: Devi
+map_name: L1
+robots:
+  devi: {charger: ws_p0}
+# Conservative bounding circle of the EXISTING placeholder Nav2 footprint.
+# Physical dimensions must be checked before commissioning.
+profile: {footprint: 0.79, vicinity: 1.0}
+# Copied from Devi DWB / velocity_smoother, not Husky.
+limits: {linear: [0.5, 1.0], angular: [0.8, 2.0]}
+reversible: false
+update_frequency: 5.0
+# Planning estimates only. Battery drain and automatic charging disabled.
+initial_battery_soc: 0.95
+account_for_battery_drain: false
+battery_system: {voltage: 24.0, capacity: 20.0, charging_current: 5.0}
+mechanical_system: {mass: 60.0, moment_of_inertia: 2.5, friction_coefficient: 0.2}
+ambient_power: 20.0
+tool_power: 0.0
+recharge_threshold: 0.2
+recharge_soc: 0.95
+finishing_request: nothing
+max_merge_waypoint_distance: 0.2
+max_merge_lane_distance: 1.0
+tf_max_age: 2.0
+retry_delay: 5.0
+max_goal_failures: 5

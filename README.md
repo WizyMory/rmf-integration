@@ -1,7 +1,14 @@
 # Open-RMF → Nav2 untuk satu Husky A200 fisik
 
-Repository ini berisi dua **snapshot**, bukan workspace yang otomatis
-terpasang di laptop atau robot. Jalur fisik menggunakan paket
+Integrasi robot Devi ditambahkan sebagai target terpisah di [`devi/`](devi/README.md),
+dengan workspace robot `/home/devi/rmf-integration` dan underlay Nav2
+`/home/devi/devi_ws`. Adapter Devi mempertahankan domain Nav2 `73` dan
+berkomunikasi dengan RMF domain `0`. Setup, pemeriksaan tanpa gerak, dan
+kalibrasi peta yang masih diperlukan dijelaskan dalam panduan Devi.
+Konfigurasi Husky dan laptop yang dijelaskan berikut tetap dipertahankan.
+
+Repository ini berisi dua **snapshot** Husky/laptop serta overlay Devi.
+Snapshot tidak otomatis terpasang di laptop atau robot. Jalur fisik Husky menggunakan paket
 `brin_husky_distributed` pada kedua snapshot.
 
 ```mermaid

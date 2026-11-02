@@ -1,0 +1,17 @@
+{
+  "host": "devi@192.168.0.237",
+  "source": "/home/devi/devi_ws/src",
+  "captured": "2026-11-02",
+  "files": {
+    "devi_bringup/config/twist_mux.yaml": "e118c63df5877b9034d387c3e5aed848b15fdcdae2b6bc52c53a49685dfbb0ea",
+    "devi_bringup/launch/bringup.launch.py": "98db8359c0e8aa2f81870a6875ac3af56cd9fbc53cc47b7d095a147c8bf0276f",
+    "devi_description/urdf/devi.urdf.xacro": "36e243f8265ccff58aa247aa0bc6d21ce526388ccb431336cdc834cbde43f47c",
+    "devi_localization/config/amcl.yaml": "d827fa1be2ee7458d940719ae57947458779bda72fb39eee26b7e4166e82b83d",
+    "devi_localization/config/ekf_local.yaml": "c5b43b3c9901c1d39ae344944b3bdda2f76e3aa5e7aa0f229a0d0166a5ae7170",
+    "devi_localization/launch/amcl.launch.py": "7693350331d81f07c856a73bd9b68a0caf378a381efbff973042924363d0601f",
+    "devi_navigation/config/nav2_indoor.yaml": "321eb60c2fdc12e93318eb9da7fa56fef588c1865993110a314755c75a9cd890",
+    "devi_navigation/launch/navigation.launch.py": "ea1fe3c70fcf0fd1447e30a3daf415db2c934dfe54bec5b37010c33d5ce1199f",
+    "devi_navigation/maps/workshop_l_1.pgm": "e8243c0ed5106b734468c146a7555a10a6e6cbb0ba674532758f378d00bbfcf8",
+    "devi_navigation/maps/workshop_l_1.yaml": "20ee36b64d2e91c4998b18584109a536470cffd0bb63cb5c763a25ac1c6bda65"
+  }
+}

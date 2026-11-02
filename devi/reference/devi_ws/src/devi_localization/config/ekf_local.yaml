@@ -1,0 +1,47 @@
+ekf_local:
+  ros__parameters:
+    frequency: 50.0
+    # Okt 2026: true. Robot darat -> estimasi 2D (x, y, yaw) saja. Dengan false,
+    # roll/pitch/z dari IMU ikut masuk TF odom -> base_link dan scan 2D jadi
+    # terdistorsi saat mapping (slam_toolbox memakai TF ini).
+    two_d_mode: true
+    publish_tf: true
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: odom
+
+    # Juli 2026, diperbaiki: sebelumnya /wheel/odometry (polos), diubah ke
+    # skema namespace 'devi' -- WAJIB tetap sinkron dengan odom_topic di
+    # devi_roboteq_driver/config/roboteq_params.yaml kalau salah satunya
+    # diubah lagi.
+    odom0: /devi/wheel/odometry
+    # Okt 2026: hanya KECEPATAN dari roda (vx, vy, vyaw); vy = 0 untuk robot
+    # diferensial dan sengaja difusikan sebagai batasan. Sebelumnya x, y, yaw
+    # absolut juga difusikan -- bersama yaw absolut IMU, dua sumber yaw absolut
+    # yang tidak sepakat membuat heading EKF tarik-menarik.
+    odom0_config: [false, false, false,
+                   false, false, false,
+                   true,  true,  false,
+                   false, false, true,
+                   false, false, false]
+    odom0_differential: false
+
+    # Juli 2026, diperbaiki: sebelumnya /xsens/imu/data (topic yang TIDAK
+    # PERNAH ADA -- bug lama, node Xsens tidak pernah publish ke situ).
+    # /devi/xsens/imu/data adalah hasil remap di
+    # devi_sensor/launch/xsens.launch.py, WAJIB tetap sinkron dengan
+    # nilai remap di sana kalau salah satunya diubah.
+    imu0: /devi/xsens/imu/data
+    # Okt 2026: hanya yaw RATE (gyro z). Sebelumnya roll/pitch/YAW absolut +
+    # akselerasi linear: yaw absolut Xsens bergantung magnetometer (melenceng
+    # di dalam gedung), akselerasi terlalu noisy untuk diintegrasikan.
+    # Syarat: sumbu z IMU harus benar di URDF (xsens_link) -- putar robot ke
+    # kiri, angular_velocity.z di /devi/xsens/imu/data harus POSITIF.
+    imu0_config: [false, false, false,
+                  false, false, false,
+                  false, false, false,
+                  false, false, true,
+                  false, false, false]
+    imu0_differential: false
+    imu0_remove_gravitational_acceleration: true

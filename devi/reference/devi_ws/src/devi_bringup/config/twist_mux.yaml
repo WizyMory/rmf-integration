@@ -1,0 +1,27 @@
+twist_mux:
+  ros__parameters:
+    topics:
+      joy:
+        topic: /devi/cmd_vel_joy
+        timeout: 0.5
+        priority: 100   # override manual selalu menang selama joystick aktif
+      key:
+        topic: /devi/cmd_vel_key
+        timeout: 0.5
+        priority: 90    # manual juga, tapi di bawah joy -- kalau dua-duanya
+                         # aktif bersamaan (jarang, biasanya cuma salah satu
+                         # dipakai), joystick yang menang
+      nav:
+        topic: /devi/cmd_vel_nav
+        timeout: 0.5
+        priority: 10
+    # locks:
+    #   estop:
+    #     topic: /devi/safety/estop_bool   # M1 (Juli 2026): diisi oleh estop_bool_bridge_node
+    #                                  # (devi_safety), yang republish SafetyStatus.estop_active
+    #                                  # dari /devi/safety/status sebagai std_msgs/Bool murni. Juli 2026:
+    #                                  # diubah dari /safety/estop_bool (polos) ke skema namespace
+    #                                  # 'devi' -- WAJIB tetap sinkron dengan output_topic
+    #                                  # estop_bool_bridge_node di devi_bringup/launch/safety.launch.py.
+    #     timeout: 0.5
+    #     priority: 255

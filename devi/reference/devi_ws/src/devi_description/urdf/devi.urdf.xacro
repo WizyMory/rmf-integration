@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<robot name="devi" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Kerangka TF tree awal - offset (xyz/rpy) di bawah masih placeholder,
+       ukur posisi aktual tiap sensor di chassis sebelum dipakai untuk
+       localization/perception yang serius. -->
+
+  <link name="base_link"/>
+
+  <joint name="base_to_ouster" type="fixed">
+    <parent link="base_link"/>
+    <child link="ouster_link"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+  </joint>
+  <link name="ouster_link"/>
+
+  <joint name="base_to_xsens" type="fixed">
+    <parent link="base_link"/>
+    <child link="xsens_link"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+  </joint>
+  <link name="xsens_link"/>
+
+  <joint name="base_to_realsense" type="fixed">
+    <parent link="base_link"/>
+    <child link="realsense_link"/>
+    <origin xyz="0.3 0 0.4" rpy="0 0 0"/>
+  </joint>
+  <link name="realsense_link"/>
+
+  <joint name="base_to_esp_cam" type="fixed">
+    <parent link="base_link"/>
+    <child link="esp_cam_link"/>
+    <origin xyz="0.2 0 0.3" rpy="0 0 0"/>
+  </joint>
+  <link name="esp_cam_link"/>
+
+  <joint name="base_to_gnss_antenna" type="fixed">
+    <parent link="base_link"/>
+    <child link="gnss_antenna_link"/>
+    <origin xyz="0 0 0.6" rpy="0 0 0"/>
+  </joint>
+  <link name="gnss_antenna_link"/>
+
+  <!-- Ditambahkan Juli 2026 bersamaan dengan sensors.launch.py yang
+       memasukkan Hokuyo dan BNO055: offset masih placeholder sama
+       seperti frame lain di file ini, ukur posisi fisik sebenarnya. -->
+  <joint name="base_to_hokuyo" type="fixed">
+    <parent link="base_link"/>
+    <child link="hokuyo_link"/>
+    <origin xyz="0.2 0 0.15" rpy="0 0 0"/>
+  </joint>
+  <link name="hokuyo_link"/>
+
+  <!-- RPLIDAR C1. Posisi diukur 30 Okt 2026 (x 0.32, z 0.22 dari base_link).
+       Arah 0 derajat BELUM dicek: di RViz, benda di depan robot harus muncul
+       di +x base_link; kalau terbalik, ubah yaw jadi 3.14159. -->
+  <joint name="base_to_rplidar" type="fixed">
+    <parent link="base_link"/>
+    <child link="rplidar_link"/>
+    <origin xyz="0.32 0 0.22" rpy="0 0 3.14159"/>
+  </joint>
+  <link name="rplidar_link"/>
+
+  <joint name="base_to_bno055" type="fixed">
+    <parent link="base_link"/>
+    <child link="bno055_link"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+  </joint>
+  <link name="bno055_link"/>
+
+  <joint name="base_to_wheel_left" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_left_link"/>
+    <origin xyz="0 0.21 0" rpy="0 0 0"/>  <!-- wheel base 0.42 m (30 Okt 2026) -->
+  </joint>
+  <link name="wheel_left_link"/>
+
+  <joint name="base_to_wheel_right" type="fixed">
+    <parent link="base_link"/>
+    <child link="wheel_right_link"/>
+    <origin xyz="0 -0.21 0" rpy="0 0 0"/>  <!-- wheel base 0.42 m (30 Okt 2026) -->
+  </joint>
+  <link name="wheel_right_link"/>
+
+</robot>

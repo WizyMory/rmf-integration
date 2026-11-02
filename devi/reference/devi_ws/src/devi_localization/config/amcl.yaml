@@ -1,0 +1,72 @@
+# Lokalisasi di peta tersimpan (indoor): map_server + AMCL (Nav2 humble).
+# Dipakai launch/amcl.launch.py. Basis: nav2_bringup/params/nav2_params.yaml
+# (humble); perubahan ditandai DEVI:, sisanya nilai bawaan Nav2.
+#
+# Node jalan di root namespace (/map_server, /amcl), jadi key tanpa '/**' cocok.
+
+map_server:
+  ros__parameters:
+    use_sim_time: false
+    # Diisi launch argument 'map' di amcl.launch.py
+    # (bawaan: share/devi_navigation/maps/workshop_l_1.yaml).
+    yaml_filename: ""
+
+amcl:
+  ros__parameters:
+    use_sim_time: false
+    base_frame_id: "base_link"                    # DEVI: bawaan base_footprint; URDF DEVI tidak punya base_footprint
+    odom_frame_id: "odom"                         # dari ekf_local
+    global_frame_id: "map"
+    scan_topic: /devi/rplidar/scan_filtered       # DEVI: scan RPLIDAR C1 tanpa badan robot
+    robot_model_type: "nav2_amcl::DifferentialMotionModel"
+    tf_broadcast: true                            # AMCL publish map -> odom
+    transform_tolerance: 1.0
+
+    # Pose awal. true (30 Okt 2026): AMCL langsung mulai di initial_pose di
+    # bawah saat aktif. (0, 0, 0) = posisi dan arah robot saat mapping dimulai,
+    # jadi robot harus dinyalakan di titik itu menghadap arah yang sama. Kalau
+    # tidak, koreksi dengan "2D Pose Estimate" di RViz (/initialpose).
+    # false: tunggu 2D Pose Estimate, sebelum itu map -> odom belum ada.
+    set_initial_pose: true
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
+
+    # Laser
+    laser_model_type: "likelihood_field"
+    laser_max_range: 12.0                         # DEVI: jangkauan C1 (bawaan 100.0)
+    laser_min_range: -1.0                         # -1 = pakai range_min dari scan
+    max_beams: 60
+    laser_likelihood_max_dist: 2.0
+    sigma_hit: 0.2
+    z_hit: 0.5
+    z_rand: 0.5
+    z_max: 0.05
+    z_short: 0.05
+    lambda_short: 0.1
+    do_beamskip: false
+    beam_skip_distance: 0.5
+    beam_skip_error_threshold: 0.9
+    beam_skip_threshold: 0.3
+
+    # Odometry (noise model). Bawaan Nav2; odometry roda sudah dikalibrasi.
+    alpha1: 0.2
+    alpha2: 0.2
+    alpha3: 0.2
+    alpha4: 0.2
+    alpha5: 0.2
+
+    # Filter partikel. Update hanya setelah robot bergerak update_min_d (m)
+    # atau berputar update_min_a (rad).
+    min_particles: 500
+    max_particles: 2000
+    pf_err: 0.05
+    pf_z: 0.99
+    resample_interval: 1
+    update_min_d: 0.25
+    update_min_a: 0.2
+    recovery_alpha_fast: 0.0
+    recovery_alpha_slow: 0.0
+    save_pose_rate: 0.5

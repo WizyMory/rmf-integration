@@ -1,0 +1,48 @@
+fleet_name: HuskyA200
+map_name: L1
+robots:
+  husky_0:
+    charger: ws_p0
+profile:
+  footprint: 0.55
+  vicinity: 0.8
+limits:
+  linear:
+  - 0.5
+  - 0.3
+  angular:
+  - 0.5
+  - 0.5
+reversible: false
+update_frequency: 5.0
+initial_battery_soc: 0.95
+account_for_battery_drain: false
+battery_system:
+  voltage: 24.0
+  capacity: 20.0
+  charging_current: 5.0
+mechanical_system:
+  mass: 60.0
+  moment_of_inertia: 2.5
+  friction_coefficient: 0.2
+ambient_power: 20.0
+tool_power: 0.0
+recharge_threshold: 0.2
+recharge_soc: 0.95
+finishing_request: nothing
+max_merge_waypoint_distance: 0.2
+max_merge_lane_distance: 1.0
+tf_max_age: 2.0
+retry_delay: 5.0
+max_goal_failures: 5
+return_tolerance: 0.75
+escape_step_distance: 0.2
+escape_backup_speed: 0.05
+escape_max_steps: 3
+escape_turn_radius: 0.7
+escape_sensor_settle: 1.5
+escape_after_step_settle: 0.5
+escape_sensor_timeout: 5.0
+escape_costmap_max_age: 2.0
+escape_service_timeout: 5.0
+escape_hold_duration: 20.0

@@ -1,0 +1,26 @@
+# Existing Devi processes stay in ROS domain 73. Native RMF uses domain 0.
+robot_name: devi
+fleet_name: Devi
+robot_domain_id: 73
+rmf_domain_id: 0
+map_frame: map
+base_frame: base_link
+map_topic: /map
+scan_topic: /devi/rplidar/scan_filtered
+odom_topic: /odometry/filtered
+amcl_topic: /amcl_pose
+navigate_action: /navigate_to_pose
+nav2_map: /home/devi/devi_ws/src/devi_navigation/maps/workshop_l_1.yaml
+traffic_profile: gedungWS_0
+max_data_age: 2.0
+max_graph_distance: 1.0
+# RMF pose = R(yaw) * Nav2 pose + [x, y]. No TF is published.
+# Different maps/origins were observed; identity is NOT an accepted calibration.
+map_alignment:
+  confirmed: false
+  x: null
+  y: null
+  yaw: null
+commissioning:
+  footprint_confirmed: false
+  operation_accepted: false

@@ -1,7 +1,7 @@
 # Open-RMF and Husky Integration
 
 This repository contains source-code snapshots
-from two different ROS 2 computers.
+and integration overlays from three different ROS 2 computers.
 
 ## Systems
 
@@ -15,6 +15,14 @@ from two different ROS 2 computers.
    Original: /home/husky/rmf_ws/src
    Robot SSH: husky@192.168.0.120
    Purpose: Nav2, sensors, and hardware.
+
+3. devi/src
+   Integration overlay for the physical Devi robot.
+   Robot workspace: /home/devi/rmf-integration
+   Existing Nav2 underlay: /home/devi/devi_ws
+   Robot SSH: devi@192.168.0.237
+   Preserve Devi Nav2 domain 73; native RMF uses domain 0.
+   devi/reference contains read-only audited underlay snapshots.
 
 ## Rules
 
