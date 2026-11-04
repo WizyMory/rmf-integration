@@ -243,26 +243,6 @@ levels:
       - 14
       - 8
     lanes:
-    - - 114
-      - 115
-      - bidirectional:
-        - 4
-        - true
-        demo_mock_floor_name:
-        - 1
-        - ''
-        demo_mock_lift_name:
-        - 1
-        - ''
-        graph_idx:
-        - 2
-        - 0
-        orientation:
-        - 1
-        - ''
-        speed_limit:
-        - 3
-        - 0
     - - 115
       - 116
       - bidirectional:
@@ -503,27 +483,7 @@ levels:
         speed_limit:
         - 3
         - 0
-    - - 120
-      - 127
-      - bidirectional:
-        - 4
-        - true
-        demo_mock_floor_name:
-        - 1
-        - ''
-        demo_mock_lift_name:
-        - 1
-        - ''
-        graph_idx:
-        - 2
-        - 0
-        orientation:
-        - 1
-        - ''
-        speed_limit:
-        - 3
-        - 0
-    - - 127
+    - - 129
       - 128
       - bidirectional:
         - 4
@@ -543,7 +503,7 @@ levels:
         speed_limit:
         - 3
         - 0
-    - - 127
+    - - 129
       - 130
       - bidirectional:
         - 4
@@ -563,27 +523,7 @@ levels:
         speed_limit:
         - 3
         - 0
-    - - 130
-      - 129
-      - bidirectional:
-        - 4
-        - true
-        demo_mock_floor_name:
-        - 1
-        - ''
-        demo_mock_lift_name:
-        - 1
-        - ''
-        graph_idx:
-        - 2
-        - 0
-        orientation:
-        - 1
-        - ''
-        speed_limit:
-        - 3
-        - 0
-    - - 130
+    - - 129
       - 131
       - bidirectional:
         - 4
@@ -603,8 +543,68 @@ levels:
         speed_limit:
         - 3
         - 0
-    - - 130
+    - - 120
       - 132
+      - bidirectional:
+        - 4
+        - true
+        demo_mock_floor_name:
+        - 1
+        - ''
+        demo_mock_lift_name:
+        - 1
+        - ''
+        graph_idx:
+        - 2
+        - 0
+        orientation:
+        - 1
+        - ''
+        speed_limit:
+        - 3
+        - 0
+    - - 132
+      - 127
+      - bidirectional:
+        - 4
+        - true
+        demo_mock_floor_name:
+        - 1
+        - ''
+        demo_mock_lift_name:
+        - 1
+        - ''
+        graph_idx:
+        - 2
+        - 0
+        orientation:
+        - 1
+        - ''
+        speed_limit:
+        - 3
+        - 0
+    - - 132
+      - 129
+      - bidirectional:
+        - 4
+        - true
+        demo_mock_floor_name:
+        - 1
+        - ''
+        demo_mock_lift_name:
+        - 1
+        - ''
+        graph_idx:
+        - 2
+        - 0
+        orientation:
+        - 1
+        - ''
+        speed_limit:
+        - 3
+        - 0
+    - - 115
+      - 114
       - bidirectional:
         - 4
         - true
@@ -1223,16 +1223,6 @@ levels:
         is_parking_spot:
         - 4
         - true
-    - - 649.365
-      - 386.682
-      - 0
-      - ''
-      - is_parking_spot:
-        - 4
-        - false
-        is_passthrough_point:
-        - 4
-        - true
     - - 722.057
       - 365.832
       - 0
@@ -1292,6 +1282,10 @@ levels:
         pickup_dispenser:
         - 1
         - pu_dpn_ws1
+    - - 624.002
+      - 391.798
+      - 0
+      - ''
     walls:
     - - 0
       - 1

@@ -5,11 +5,9 @@ levels:
     - - 0
       - 1
       - speed_limit: 0
-        undock_name: utara
     - - 1
       - 0
-      - dock_name: utara
-        speed_limit: 0
+      - speed_limit: 0
     - - 1
       - 2
       - speed_limit: 0
@@ -28,17 +26,23 @@ levels:
     - - 4
       - 3
       - speed_limit: 0
-    - - 4
+    - - 1
       - 5
       - speed_limit: 0
     - - 5
+      - 1
+      - speed_limit: 0
+    - - 6
       - 4
       - speed_limit: 0
-    - - 2
+    - - 4
       - 6
       - speed_limit: 0
     - - 6
-      - 2
+      - 7
+      - speed_limit: 0
+    - - 7
+      - 6
       - speed_limit: 0
     - - 7
       - 5
@@ -46,17 +50,11 @@ levels:
     - - 5
       - 7
       - speed_limit: 0
-    - - 7
+    - - 6
       - 8
-      - speed_limit: 0
-    - - 8
-      - 7
       - speed_limit: 0
     - - 8
       - 6
-      - speed_limit: 0
-    - - 6
-      - 8
       - speed_limit: 0
     - - 7
       - 9
@@ -64,69 +62,63 @@ levels:
     - - 9
       - 7
       - speed_limit: 0
-    - - 8
+    - - 3
       - 10
       - speed_limit: 0
     - - 10
-      - 8
+      - 3
       - speed_limit: 0
-    - - 4
+    - - 2
       - 11
       - speed_limit: 0
     - - 11
-      - 4
+      - 2
       - speed_limit: 0
-    - - 3
+    - - 12
+      - 13
+      - speed_limit: 0
+    - - 13
       - 12
       - speed_limit: 0
     - - 12
-      - 3
-      - speed_limit: 0
-    - - 6
-      - 13
-      - speed_limit: 0
-    - - 13
-      - 6
-      - speed_limit: 0
-    - - 13
       - 14
       - speed_limit: 0
     - - 14
-      - 13
+      - 12
       - speed_limit: 0
-    - - 13
+    - - 12
       - 15
       - speed_limit: 0
     - - 15
-      - 13
+      - 12
       - speed_limit: 0
-    - - 15
+    - - 5
       - 16
       - speed_limit: 0
     - - 16
-      - 15
+      - 5
       - speed_limit: 0
-    - - 15
+    - - 16
       - 17
       - speed_limit: 0
     - - 17
-      - 15
+      - 16
       - speed_limit: 0
-    - - 15
+    - - 16
+      - 12
+      - speed_limit: 0
+    - - 12
+      - 16
+      - speed_limit: 0
+    - - 0
       - 18
-      - speed_limit: 0
-    - - 18
-      - 15
-      - speed_limit: 0
-    vertices:
-    - - 1.7381000000000002
-      - -27.2952
       - dock_name: utara
-        dropoff_ingestor: do_utara_WS
-        is_charger: true
-        is_holding_point: true
-        is_parking_spot: true
-        name: utara_WS
+        speed_limit: 0
+    - - 18
+      - 0
+      - speed_limit: 0
+        undock_name: utara
+    vertices:
     - - 10.337200000000001
       - -25.0535
       - is_passthrough_point: true
@@ -188,18 +180,6 @@ levels:
         is_holding_point: true
         is_parking_spot: true
         name: ws_p2
-    - - 32.468250000000005
-      - -19.334100000000003
-      - is_parking_spot: false
-        is_passthrough_point: true
-        name: ''
-    - - 36.102850000000004
-      - -18.2916
-      - dropoff_ingestor: do_selatan_WS
-        is_charger: true
-        is_holding_point: true
-        is_parking_spot: true
-        name: selatan_WS
     - - 31.041250000000005
       - -14.60905
       - is_passthrough_point: true
@@ -221,3 +201,21 @@ levels:
         is_parking_spot: true
         name: dpn_ws1
         pickup_dispenser: pu_dpn_ws1
+    - - 31.2001
+      - -19.5899
+      - name: ''
+    - - 36.102850000000004
+      - -18.2916
+      - dropoff_ingestor: do_selatan_WS
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: selatan_WS
+    - - 1.7381000000000002
+      - -27.2952
+      - dock_name: utara
+        dropoff_ingestor: do_utara_WS
+        is_charger: true
+        is_holding_point: true
+        is_parking_spot: true
+        name: utara_WS

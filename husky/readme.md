@@ -27,7 +27,7 @@ Pakai `gedungWS_0_rmf.yaml`, bukan `gedungWS_0.yaml` asli. Jalankan core
 map benar dan initial pose diperiksa, jalankan preflight tanpa dispatch;
 adapter hanya dijalankan jika preflight diterima.
 Digest profil `gedungWS_0` yang terpasang di kedua perangkat:
-`ff44d7a33b01732e6c277b523c40ae5c7ef6c011dab83b259e5db44daef9f221`.
+`a5c392a4a4446542b69b08d0bb44d8824e8ee081c955f7bc1cee3b795e4294be`.
 
 Konfigurasi uji 2 November 2026: radius footprint RMF `0.55 m`, footprint
 Nav2 `x=±0.45, y=±0.30 m`, dan inflation radius local/global `0.35 m`.

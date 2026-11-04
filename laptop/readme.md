@@ -114,7 +114,7 @@ jangan menjalankan langkah 3 untuk membuat duplikat.
 Digest `gedungWS_0` yang harus sama pada laptop, Husky dan Devi:
 
 ```text
-ff44d7a33b01732e6c277b523c40ae5c7ef6c011dab83b259e5db44daef9f221
+a5c392a4a4446542b69b08d0bb44d8824e8ee081c955f7bc1cee3b795e4294be
 ```
 
 Bringup baru Devi memuat map canonical yang sama dengan RMF dan Husky,
