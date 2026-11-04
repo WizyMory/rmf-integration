@@ -1,354 +1,404 @@
-# Devi — urutan menjalankan Nav2 dan adapter ke core RMF bersama Husky
+# Devi — bringup gedungWS_0 dan registrasi ke core RMF laptop
 
-Workspace integrasi: **`/home/devi/rmf-integration`**.
-Underlay Nav2/driver: **`/home/devi/devi_ws`**.
-Robot: `devi@192.168.0.237`, hostname `devi-nuc`, ROS 2 Humble.
-Panduan pusat: [README laptop](../laptop/readme.md).
+Workspace integrasi: **`/home/devi/rmf-integration`**. Underlay driver/Nav2:
+**`/home/devi/devi_ws`**. SSH: `devi@192.168.0.237`, ROS 2 Humble.
+Panduan dua robot: [README laptop](../laptop/readme.md).
 
-Laptop menjalankan **satu core RMF untuk dua fleet**: `HuskyA200/husky_0`
-dan `Devi/devi`. Devi menjalankan satu adapter onboard dan menggunakan
-Nav2 yang sudah bekerja. Lantai bersama `L1`, profil RMF **`gedungWS_0`**.
-Adapter Devi saat ini hanya mendukung profil itu; tidak ada argumen
-`traffic_profile` pada `tools/devi.bash`.
+Bringup integrasi menjalankan driver/sensor dari launch Devi yang sudah ada,
+AMCL, Nav2, penghubung peta/initial pose, relay visualisasi read-only, dan
+supervisor satu fleet adapter.
+Profil bersama **`gedungWS_0`**, lantai **`L1`**, fleet **`Devi`**, robot **`devi`**.
+Laptop tetap menjalankan satu core RMF untuk Devi dan Husky.
 
-**Status saat panduan ditulis:** build, pembacaan sensor/TF, koneksi schedule,
-dan service action Nav2 tanpa goal sudah diuji. Kalibrasi peta dan penerimaan
-fisik belum selesai, sehingga konfigurasi bawaan masih menolak dispatch.
-Ikuti langkah 1–5 untuk pemeriksaan sekarang. Preflight pada langkah 7 dapat
-dipakai untuk melihat alasan penolakan. Aktivasi langkah 8 baru dilanjutkan
-setelah syarat langkah 6 selesai dan preflight diterima.
+Operator mengonfirmasi pada 3 November 2026: footprint **radius 0,55 m**
+(diameter 1,10 m), serta uji Nav2, cancel, kendali manual dan E-stop berhasil.
+Mulai 4 November 2026, AMCL memakai **auto initial pose** pada peta
+`gedungWS_0`: frame `map`, **x=19.423, y=-28.2408, z=0, yaw=1.83415 rad**,
+sesuai koordinat parkir yang diberikan operator. Robot perlu berada di lokasi
+dan arah parkir tersebut ketika bringup dimulai. Koreksi manual melalui
+2D Pose Estimate tetap tersedia jika posisi awal berbeda.
 
-## 1. Kenali terminal dan domain
+## 1. Cara kerja
 
-| Terminal | Isi | Domain/middleware |
-| --- | --- | --- |
-| **L1 di laptop** | Satu core, tetap hidup sepanjang sesi | `0`, Cyclone DDS |
-| **D0 di Devi** | Perintah ROS manual untuk memeriksa Nav2 dan sensor | `73`, Fast DDS |
-| **D1 di Devi** | Bringup/Nav2 yang sudah bekerja, hanya jika belum berjalan | `73`, Fast DDS |
-| **D2 di Devi** | Build, profil, inspect, link-check dan preflight | Helper menyiapkan RMF `0`/Cyclone dan worker Nav2 `73`/Fast DDS |
-| **D3 di Devi** | Satu adapter, tetap hidup saat operasi | Sama seperti D2 |
-| **L2 di laptop** | Verifikasi dua fleet, task dan cancel | `0`, Cyclone DDS |
+| Proses | Domain / middleware |
+| --- | --- |
+| Core RMF laptop dan adapter Devi | `0` / Cyclone DDS |
+| Driver, sensor, AMCL dan Nav2 Devi | `73` / Fast DDS |
+| Penghubung lokal di Devi | Proses terpisah, komunikasi melalui Pipe privat |
 
-Urutan: **L1 core → D0 periksa proses → D1 bila perlu → D0 verifikasi Nav2
-→ D2 inspect/link-check → kalibrasi dan penerimaan → D2 preflight → D3
-adapter → L2 verifikasi registrasi → task dari laptop**.
-Husky mempunyai Nav2 dan adapter sendiri; jangan menjalankan core di Devi.
+Nav2 tetap memakai domain `73`. Bridge meneruskan peta aktual `/map`
+ke **`/devi/map`** pada domain `0`, serta initial pose manual dari
+**`/devi/initialpose`** pada domain `0` ke `/initialpose` pada domain `73`.
+Bridge ini tidak mengirim goal navigasi atau kecepatan dan tidak menerbitkan TF.
 
-```mermaid
-flowchart LR
-  Core[Core laptop Cyclone domain 0] <--> Adapter[Adapter Devi Cyclone domain 0]
-  Adapter <-->|Pipe lokal privat| Worker[Gateway Fast DDS domain 73]
-  Worker --> Nav2[Nav2 Devi yang sudah berjalan]
-  Nav2 --> Smoother[Velocity smoother]
-  Smoother --> Mux[Twist mux Devi]
-  TF[TF map ke base_link asli] --> Worker
-```
+Proses RMF memakai [cyclonedds_rmf.xml](src/brin_devi_fleet_adapter/config/cyclonedds_rmf.xml):
+interface `wlo1`, ParticipantIndex `auto`, peer laptop `192.168.0.218` dan
+Husky `192.168.0.120`. Profil laptop juga mencantumkan peer Devi
+`192.168.0.237`. Ini menyediakan discovery unicast setelah reboot.
+Helper memasang `CYCLONEDDS_URI` hanya bagi proses Cyclone domain `0`;
+Nav2 domain `73` tetap Fast DDS. Penerapan perubahan DDS ini disetujui
+operator pada sesi pemulihan initial pose 3 November 2026.
 
-RMF dan Nav2 dipisahkan menjadi dua proses agar masing-masing memakai
-middleware yang sudah diuji. Konversi koordinat dilakukan di adapter;
-tidak ada relay TF atau perubahan domain Nav2. Perintah helper di D2/D3
-tidak mengubah environment shell D0, `.bashrc`, service atau jaringan.
+Urutan setelah service terpasang:
 
-## 2. Persiapan D0 dan D2
+1. Devi menyala → satu bringup hardware/Nav2 berjalan; AMCL menerapkan pose parkir otomatis.
+2. Laptop menjalankan core `gedungWS_0` dan RViz.
+3. Operator memeriksa lokalisasi Devi pada peta; 2D Pose Estimate tidak diperlukan bila pose awal sesuai.
+4. Supervisor mengulang preflight sampai lokalisasi, lifecycle Nav2, profil
+   dan core siap, lalu menjalankan satu adapter.
+5. `/fleet_states` memuat `Devi/devi`; RViz menampilkan marker posisi Devi.
 
-Di D2, periksa source dan file underlay yang diaudit:
+Core boleh dinyalakan sesudah Devi; auto pose AMCL tidak menunggu core.
+Menunggu core atau lokalisasi tidak mematikan Nav2. Registrasi tidak memerintahkan robot berjalan; tugas berasal
+dari RMF. Kehadiran marker sebelum lokalisasi benar tidak dijanjikan.
+
+## 2. Build sekali setelah pembaruan kode
+
+Di terminal Devi:
 
 ```bash
 cd /home/devi/rmf-integration
-git status --short
-git rev-parse HEAD
 python3 devi/verify_underlay.py
-```
-
-Pada setup awal, verifier harus memuat `files_checked: 10` dan
-`all_original_files_unchanged: true`. Jika underlay kemudian diubah melalui
-pekerjaan yang disetujui, tinjau perbedaannya dan perbarui bukti audit;
-jangan menyalin snapshot `devi/reference` kembali ke `devi_ws`.
-Bandingkan versi integrasi dengan laptop dan Husky.
-
-Runtime berikut sudah dipasang operator saat setup 2 November 2026:
-`ros-humble-rmf-fleet-adapter-python`, `ros-humble-rmf-fleet-msgs`,
-`ros-humble-rmf-task-msgs`, dan `ros-humble-rmw-cyclonedds-cpp`.
-Bila source integrasi belum dibangun atau kode paket berubah, jalankan di D2:
-
-```bash
-cd /home/devi/rmf-integration
 bash tools/devi.bash build
 bash tools/devi.bash profile
 ```
 
-Build harus berhasil untuk `brin_devi_fleet_adapter`. Artefak berada di
-`devi/build`, `devi/install`, `devi/log`. Perubahan README saja tidak memerlukan
-build ulang. Jangan membangun ulang `devi_ws` untuk menjalankan adapter ini.
+Verifier diharapkan menunjukkan `files_checked: 10` dan
+`all_original_files_unchanged: true`. Jangan menyalin arsip
+`devi/reference` kembali ke underlay. Paket runtime RMF dan Cyclone DDS
+telah dipasang operator pada setup sebelumnya.
 
-Untuk **D0 dan D1**, gunakan terminal baru dengan environment Nav2 berikut.
-Untuk LAN biasa yang telah diaudit, discovery server di-unset hanya pada
-terminal ini; jika memakai server khusus, tinjau dahulu.
+## 3. Pemasangan startup otomatis — sekali saja
 
-```bash
-source /opt/ros/humble/setup.bash
-source /home/devi/devi_ws/install/local_setup.bash
-export ROS_DOMAIN_ID=73 ROS_LOCALHOST_ONLY=0 RMW_IMPLEMENTATION=rmw_fastrtps_cpp
-unset ROS_DISCOVERY_SERVER
-cd /home/devi/devi_ws
-```
+Setup lama mempunyai `devi_robot.service` dengan paket `devi_config` yang
+tidak ditemukan, sementara desktop menjalankan `devi_autostart.sh` sendiri.
+Installer berikut memasang override service dan menonaktifkan **hanya**
+entry desktop lama tersebut agar stack tidak berjalan ganda. Source dan
+konfigurasi asli `devi_ws`, script desktop lama, serta service platform lain
+tetap tersedia. Backup dibuat di `devi/log/service_backup_<waktu>`.
 
-Jangan memakai environment domain `0` laptop untuk menjalankan bringup Devi.
-Di D2/D3 cukup gunakan helper dari root repository; biarkan middleware
-RMF bawaan Cyclone, tanpa override `DEVI_RMF_RMW` untuk sesi operasional.
-
-## 3. D0/D1 — gunakan Nav2 yang sudah berjalan
-
-Di D0 setelah environment bagian 2 disiapkan, lihat proses yang tersedia:
+Setelah build berhasil, jalankan di terminal robot; password sudo dimasukkan
+langsung di terminal tersebut:
 
 ```bash
-timeout 8s ros2 node list --no-daemon --spin-time 3
-ros2 pkg prefix devi_navigation
+cd /home/devi/rmf-integration
+sudo bash devi/systemd/install.bash
 ```
 
-Jika bringup, AMCL, map server dan Nav2 yang benar sudah aktif, **gunakan
-proses itu dan lewati perintah start D1**. D1 dapat berupa terminal bringup
-yang sudah ada; jangan menambah driver, EKF, map server atau Nav2 kedua.
-
-Hanya jika bringup belum berjalan dan operator menyetujui aktivasi, gunakan
-terminal D1 dengan environment bagian 2:
+Installer memasang dan mengaktifkan service untuk boot, tetapi **belum
+menjalankannya**. Hentikan bringup lama dengan **Ctrl-C di terminal
+“DEVI bringup”**, tunggu driver/Nav2 lama berhenti, lalu:
 
 ```bash
-DEVI_NAV_MAP="$(ros2 pkg prefix devi_navigation)/share/devi_navigation/maps/workshop_l_1.yaml"
-test -f "$DEVI_NAV_MAP"
-ros2 launch devi_bringup bringup.launch.py \
-  localization:=amcl navigation:=true map:="$DEVI_NAV_MAP" rviz:=true
+sudo systemctl start devi_robot.service
+systemctl status devi_robot.service --no-pager
+journalctl -u devi_robot.service -n 100 --no-pager
 ```
 
-Biarkan D1 hidup. Perintah memakai peta Devi yang sudah diaudit,
-`workshop_l_1.yaml`. Bringup pada snapshot mencakup sensor, lokalisasi dan
-Nav2; include actuation/safety/mission tidak diaktifkan di file tersebut.
-Driver motor dan kesiapan keselamatan tetap mengikuti prosedur hardware
-Devi yang sudah bekerja. Jangan mengaktifkan include itu lewat panduan ini.
-
-Jika sesi dijalankan tanpa layar, `rviz:=false` dapat dipakai dan observasi
-dilakukan lewat RViz Devi yang sudah disiapkan operator pada domain `73`.
-Gunakan **Fixed Frame `map`**, scan `/devi/rplidar/scan_filtered`, dan
-`2D Pose Estimate` menuju `/initialpose` bila initial pose perlu diperbaiki.
-RViz Husky di laptop mengirim initial pose ke Husky, bukan ke Devi.
-
-## 4. D0 — pastikan Nav2 benar sebelum memeriksa RMF
-
-Dengan D1/bringup lama tetap hidup, jalankan di D0:
+Untuk melihat hanya boot saat ini tanpa log shutdown boot sebelumnya:
 
 ```bash
-timeout 8s ros2 lifecycle get /bt_navigator
-timeout 8s ros2 lifecycle get /controller_server
-timeout 8s ros2 lifecycle get /planner_server
-timeout 8s ros2 param get /bt_navigator use_sim_time
-timeout 8s ros2 param get /map_server yaml_filename
-timeout 8s ros2 action list -t
+journalctl -b -u devi_robot.service -n 100 --no-pager -l
 ```
 
-Lifecycle harus `active [3]`, `use_sim_time` harus `False`, map server harus
-memakai `workshop_l_1.yaml`, dan action harus memuat
-`/navigate_to_pose [nav2_msgs/action/NavigateToPose]`. Amati scan, peta dan
-pose di RViz Devi; pose awal AMCL tidak otomatis membuktikan posisi fisik benar.
+Skrip tunggu memakai alias **`/dev/Roboteq`** sesuai parameter driver dan
+udev yang sudah bekerja, serta `/dev/rplidar`. Alias lama `/dev/tty-ROBOTEQ`
+tidak digunakan driver; warning untuk nama itu tidak berarti motor controller
+terputus. Konfirmasi koneksi memakai log driver, bukan status service saja.
 
-Interface yang dipakai adapter:
+Pada boot berikutnya service berjalan otomatis tanpa login desktop.
+Jangan menjalankan `devi_autostart.sh`, bringup asli, atau adapter manual
+bersamaan dengan service ini. Service baru belum terbukti aktif hanya karena
+file installer tersedia; periksa `active (running)` dan log prosesnya.
 
-| Data/perintah | Interface Nav2 asli pada domain `73` |
+Service juga memakai koneksi Web otomatis dari
+[bringup.yaml](src/brin_devi_fleet_adapter/config/bringup.yaml):
+
+```yaml
+server_uri: ws://192.168.0.218:8000/_internal
+```
+
+Saat Devi menyala, Nav2 dan auto pose berjalan, supervisor menunggu core
+RMF, lalu adapter terhubung ke Web API laptop. Client WebSocket mencoba
+koneksi ulang bila API belum tersedia atau koneksinya terputus. Laptop
+tetap perlu menjalankan API, core RMF dan dashboard menurut bagian 9
+[README laptop](../laptop/readme.md). Tidak perlu lagi memulai bringup Web
+manual di Devi untuk operasi harian.
+
+Untuk beralih sekali dari sesi Web foreground yang lama, parkirkan robot
+di lokasi auto pose, hentikan terminal bringup manual dengan **Ctrl-C** dan
+tunggu seluruh prosesnya berhenti. Kemudian di terminal Devi:
+
+```bash
+sudo systemctl enable --now devi_robot.service
+systemctl status devi_robot.service --no-pager -l
+journalctl -b -u devi_robot.service -n 100 --no-pager -l
+```
+
+Cari log `Registered devi in Devi` dan
+`BroadcastClient successfully connected` dengan URI laptop. Koneksi Web
+dapat diperiksa di `http://192.168.0.218:8000/fleets/Devi/state`.
+Jika IP laptop berubah, perbarui `server_uri` pada konfigurasi dan restart
+service setelah robot diam di titik parkir.
+
+Untuk menonaktifkan koneksi Web pada startup, isi `server_uri: ""` pada
+konfigurasi dan restart service. Nav2/preflight tetap berjalan seperti biasa.
+
+Untuk diagnosis foreground **hanya ketika service dan bringup lama berhenti**:
+
+```bash
+cd /home/devi/rmf-integration
+bash tools/devi.bash bringup rviz:=false
+```
+
+Perintah ini menjalankan stack yang sama. `rviz:=true` membuka RViz lokal
+Devi pada domain `73`; tool initial pose lokal memakai `/initialpose`.
+Alamat Web bawaan diambil dari `bringup.yaml`; argumen `server_uri:=ws://...`
+dapat dipakai untuk mengganti alamat pada satu sesi foreground.
+
+Keyboard teleop lama memakai `pynput`/X11. Saat boot tanpa desktop, node itu
+keluar karena tidak ada `DISPLAY`; driver, joystick dan twist mux tetap
+berjalan. Jika perlu kendali keyboard, buka terminal **di desktop Devi**
+setelah login dan jalankan node aslinya dengan environment D0 bagian 5:
+
+```bash
+ros2 run devi_teleop teleop_key_node --ros-args \
+  -r __node:=teleop_key_node -r /key_vel:=/devi/cmd_vel_key
+```
+
+Jangan menjalankan keyboard kedua jika sudah ada. Prosedur kendali manual
+dan E-stop tetap mengikuti penerimaan operator; node keyboard desktop ini
+tidak diperlukan untuk start Nav2 atau registrasi RMF.
+
+## 4. Laptop: core dan pemeriksaan pose otomatis
+
+Build overlay laptop setelah pembaruan kode ini, kemudian mulai tepat satu
+core. Jika core profil yang sama sudah aktif, gunakan core itu.
+
+```bash
+cd /mnt/UbuntuData/rmf-integration
+bash tools/integration.bash laptop build
+bash tools/integration.bash laptop core traffic_profile:=gedungWS_0 rviz:=true
+```
+
+Preset bawaan `gedungWS_0` adalah `devi_rmf.rviz`. Fixed Frame **`map`**,
+display **Shared gedungWS_0 map from Devi** memakai `/devi/map`.
+AMCL memakai pose parkir otomatis saat aktif. Periksa bahwa lokasi dan arah
+robot pada peta sesuai posisi fisik dan scan. Jika perlu koreksi, gunakan
+**2D Pose Estimate**, klik lokasi fisik dan tarik arah hadapnya. Pada preset
+ini tool tersebut mengirim ke **`/devi/initialpose`**. Pose manual ini hanya
+mengoreksi sesi yang berjalan; startup berikutnya kembali memakai pose parkir.
+
+Untuk menginisialisasi **Husky**, ubah **Tool Properties → 2D Pose Estimate
+→ Topic → Value** menjadi `/a200_1060/initialpose`, atau gunakan preset
+`husky_rmf.rviz`. Kembalikan ke `/devi/initialpose` sebelum klik untuk Devi.
+Tool **2D Nav Goal** lama adalah milik Husky; gunakan task RMF untuk Devi.
+
+Devi tampil sebagai marker fleet (nama, posisi dan arah), radius **0,55 m**.
+Preset mempunyai grup **Devi sensors and Nav2** dan **Husky sensors and Nav2**.
+Grup Devi menampilkan model robot, filtered laser, kedua costmap, footprint,
+pose/covariance AMCL, partikel dan jalur Nav2. Raw laser, received plan dan
+jejak odometri tersedia sebagai display opsional yang dapat dicentang.
+
+Relay visualisasi hanya berlangganan data domain `73`, kemudian meneruskannya
+ke domain `0` pada `/devi/viz/*`. Frame pengamatan mendapat awalan `devi/`,
+misalnya `devi/odom`, `devi/base_link`, `devi/rplidar_link`; frame `map`
+tetap dipakai bersama. Koordinat, isi sensor dan timestamp asli dipertahankan.
+TF/sensor yang dipakai controller di domain `73` tidak diubah.
+
+| Tampilan | Topic laptop domain 0 |
 | --- | --- |
-| Peta / pose | `/map`, `/amcl_pose` |
-| Scan | `/devi/rplidar/scan_filtered` |
-| Odometri | `/odometry/filtered` |
-| TF lokalisasi | `map → odom → base_link` pada `/tf` dan `/tf_static` |
-| Navigasi | `/navigate_to_pose` |
-| Jalur kecepatan | `/devi/cmd_vel_nav_raw` → smoother → `/devi/cmd_vel_nav` → twist mux |
+| Semua fleet terdaftar | `/fleet_markers` dari `/fleet_states` |
+| Laser filtered / raw | `/devi/viz/scan`, `/devi/viz/scan_raw` |
+| Global / local costmap | `/devi/viz/global_costmap/costmap`, `/devi/viz/local_costmap/costmap` |
+| Footprint | `/devi/viz/global_costmap/footprint`, `/devi/viz/local_costmap/footprint` |
+| Pose / partikel AMCL | `/devi/viz/amcl_pose`, `/devi/viz/particle_cloud` |
+| Plan global / local / smoothed | `/devi/viz/plan`, `/devi/viz/local_plan`, `/devi/viz/plan_smoothed` |
+| Odometri / model robot | `/devi/viz/odometry`, `/devi/viz/robot_description` |
+| TF khusus RViz, kedua robot | `/rmf_visualization/tf`, `/rmf_visualization/tf_static` |
 
-Jika tidak sesuai, selesaikan pemeriksaan Nav2 melalui prosedur robot.
-Jangan memindahkan Nav2 ke domain `0` atau mengganti TF/peta untuk sekadar
-membuat pemeriksaan RMF terlihat lulus.
+Map `/devi/map` tetap diteruskan oleh bridge initial pose yang sudah ada.
+Costmap Nav2 Devi mengirim snapshot penuh; relay memakai snapshot tersebut.
+Jalur plan baru muncul setelah Nav2 menerbitkan plan untuk navigasi, bukan
+setiap kali initial pose diberikan. Marker fleet baru muncul setelah adapter
+benar-benar mendaftarkan robot; scan/costmap dapat tampil lebih dahulu.
 
-## 5. D2 — periksa koneksi ke satu core laptop tanpa gerak
+Jika hanya ingin membuka ulang RViz dengan core versi baru tetap aktif,
+tutup RViz lama lalu jalankan **di laptop**:
 
-Minta operator laptop menjalankan **langkah 3 README laptop** terlebih dahulu:
-satu core `traffic_profile:=gedungWS_0`, Cyclone DDS/domain `0`, waktu nyata.
-Jangan menyalin perintah start core ke Devi. Jika core untuk Husky sudah
-aktif pada profil yang sama, gunakan core tersebut.
+```bash
+cd /mnt/UbuntuData/rmf-integration
+bash tools/integration.bash laptop view
+```
 
-Dengan L1 dan Nav2 tetap hidup, di D2:
+Perintah `view` memakai visualizer dan node TF yang sudah dimulai core;
+tidak memulai core, adapter, Nav2 atau node visualizer kedua.
+
+## 5. Pemeriksaan dan bukti registrasi
+
+Di Devi, sementara service dan core hidup:
 
 ```bash
 cd /home/devi/rmf-integration
-bash tools/devi.bash profile
 bash tools/devi.bash inspect
-bash tools/devi.bash link-check
-```
-
-Digest profil yang harus sama dengan laptop/Husky:
-
-```text
-ff44d7a33b01732e6c277b523c40ae5c7ef6c011dab83b259e5db44daef9f221
-```
-
-Hasil `inspect` yang siap pada sisi Nav2: `nav2_ready: true`,
-`nav2_errors: []`, lima lifecycle aktif (`3`), pose terbaca, dan
-`received_profile_digest` cocok. Exit `0` pada mode inspect hanya memeriksa
-kesiapan Nav2. Baca `accepted` dan `errors` untuk kesiapan integrasi penuh.
-Geometri `/map` diperiksa, tetapi belum seluruh piksel peta aktif.
-
-Hasil `link-check` harus exit `0` dan memuat:
-
-```json
-{
-  "native_adapter_connected_to_schedule": true,
-  "nav2_action_available": true,
-  "nav2_action_service_responded_to_unknown_goal": true,
-  "nav2_context_domain": 73,
-  "rmf_observer_context_domain": 0,
-  "nav2_rmw": "rmw_fastrtps_cpp",
-  "rmf_rmw": "rmw_cyclonedds_cpp",
-  "robot_registered": false,
-  "goals_sent": 0
-}
-```
-
-Request service memakai UUID goal yang tidak ada, bukan mengirim goal atau
-cancel. Ketiga pemeriksaan ini selesai sendiri dan tidak mendaftarkan fleet.
-Hasil koneksi yang lulus belum memberi izin mengaktifkan adapter fisik.
-
-## 6. Syarat sebelum dispatch — kalibrasi dan penerimaan fisik
-
-Konfigurasi [devi.yaml](src/brin_devi_fleet_adapter/config/devi.yaml) masih
-memuat transformasi `null`, `map_alignment.confirmed: false`,
-`commissioning.footprint_confirmed: false`, dan
-`commissioning.operation_accepted: false`. Inilah titik berhenti konfigurasi
-setup saat ini. Jangan mengisi transformasi nol atau mengubah flag menjadi
-`true` tanpa hasil pengukuran/penerimaan.
-
-Peta Nav2 Devi `workshop_l_1` mempunyai origin `[-4.59, -18.5, 0]`, sedangkan
-peta RMF `gedungWS_0_rmf` origin `[0, -33.65, 0]`; gambarnya juga berbeda.
-Selisih origin saja tidak membuktikan hubungan koordinat. Langkah yang harus
-diselesaikan operator sebelum melanjutkan:
-
-1. Ukur pasangan koordinat untuk beberapa titik fisik yang sama pada peta
-   Devi dan graph RMF, sedikitnya tiga titik yang tersebar dan tidak segaris.
-   Tentukan translasi x/y dan rotasi yaw, lalu periksa residual pada titik lain.
-2. Tinjau hasil kalibrasi sebelum mengisi `map_alignment.x`, `.y`, `.yaw`
-   dalam meter/radian dan mengonfirmasi kalibrasi di `devi.yaml`.
-3. Ukur footprint fisik. Polygon Nav2 lama masih bertanda placeholder;
-   radius RMF `0.79 m` hanya melingkupi placeholder tersebut. Tinjau perubahan
-   yang diperlukan pada konfigurasi robot secara terpisah sebelum konfirmasi
-   `footprint_confirmed`; jangan menyalin geometri Husky.
-4. Dengan adapter berhenti, operator menerima uji Nav2 pendek, pembatalan,
-   kendali manual dan penghentian fisik. Setelah diterima dan dicatat,
-   `operation_accepted` dapat dikonfirmasi melalui perubahan yang ditinjau.
-5. Periksa task lama/tertunda pada core sebelum registrasi adapter.
-
-Rumus adapter adalah `pose_RMF = R(yaw) × pose_Nav2 + [x, y]`; goal memakai
-transformasi kebalikannya. Konversi ini tidak menerbitkan atau mengubah TF.
-Kesamaan digest bundle RMF belum memverifikasi kalibrasi tersebut.
-
-## 7. D2 — preflight tanpa dispatch
-
-Dengan core L1 dan Nav2 aktif, jalankan di D2:
-
-```bash
-cd /home/devi/rmf-integration
 bash tools/devi.bash preflight
+journalctl -u devi_robot.service -n 150 --no-pager
 ```
 
-Syarat lanjut adalah JSON **`accepted: true`, `errors: []`**. Perintah
-selesai sendiri; Nav2 dan core tetap berjalan. Exit code `ros2 launch`
-sendiri bukan bukti lulus. Dengan konfigurasi setup sekarang, hasil yang
-diharapkan masih `accepted: false` dan error kalibrasi belum dikonfirmasi.
-Kembali ke langkah 6 bila itu terjadi; jangan melewati pemeriksaan.
+Pada beberapa detik awal, AMCL menunggu map, scan dan odometri. Sesudah
+lokalisasi otomatis dan core siap, hasil yang diperlukan:
+**`nav2_ready: true`, `accepted: true`, `errors: []`**, lalu log
+**`Registered devi in Devi`**. Pose harus dekat graph RMF; pemberian pose
+jauh dari graph tidak memaksa registrasi. Baca JSON preflight; exit launch
+sendiri tidak membuktikan penerimaan. Jangan memulai adapter kedua.
+Field `robot_registered: false` pada JSON preflight menunjukkan pemeriksaan
+itu tidak mendaftarkan robot. Bukti registrasi berasal dari log adapter dan
+`/fleet_states`, bukan field tersebut.
 
-## 8. D3 — satu adapter Devi, lalu verifikasi dari laptop
-
-Hanya setelah langkah 6 diterima dan langkah 7 lulus, buka D3:
-
-```bash
-cd /home/devi/rmf-integration
-BRIN_ENABLE_DISPATCH=1 bash tools/devi.bash adapter
-```
-
-Biarkan D3 hidup. Helper mengulangi preflight dan baru memulai adapter bila
-diterima. Tidak ada Nav2, driver, map server atau core baru yang dimulai.
-Log registrasi yang diharapkan adalah `Registered devi in Devi`.
-
-Minta operator laptop memeriksa di **L2 dengan environment domain `0`**:
+Di terminal ROS laptop yang environment domain `0`-nya sudah disiapkan
+menurut README laptop:
 
 ```bash
 timeout 20s ros2 topic echo /fleet_states rmf_fleet_msgs/msg/FleetState
 timeout 8s ros2 param get /brin_devi_fleet_adapter use_sim_time
 ```
 
-Harus ada fleet `Devi` berisi robot `devi`, level `L1`, pose RMF yang masuk
-akal, task awal kosong, dan waktu simulasi `False`. Untuk sesi dua robot,
-stream yang sama juga harus memuat fleet `HuskyA200` dengan `husky_0`.
-Pesan kedua fleet terpisah; `--once` dapat hanya mengambil salah satunya.
-Exit `124` monitor setelah 20 detik adalah akhir pengamatan.
+Cari `name: Devi`, robot `devi`, lantai `L1`, pose sesuai dan waktu `False`.
+Husky muncul dalam pesan fleet `HuskyA200` yang terpisah. `--once` bisa hanya
+mengambil salah satunya; exit `124` monitor berarti durasi pengamatan habis.
 
-D0 memakai domain Nav2 `73`, sehingga bukan terminal untuk mencari
-`/fleet_states` RMF domain `0`. RViz/sensor Devi tetap diperiksa lewat D0/D1.
-Kedua adapter menunggu task RMF aktif; tinjau juga antrean lama dan pastikan
-kedua robot diam sebelum mengirim task pertama.
-
-### Task dan cancel
-
-Task dikirim dari **L2 laptop**, mengikuti bagian 7.2 README laptop:
-request bertarget `fleet: Devi`, `robot: devi`, kategori Patrol satu putaran,
-ke waypoint `gedungWS_0` yang disetujui. Siapkan pengamatan respons di L5.
-CLI lama `brin_husky_hardware send_task` tidak menerima `--robot devi`;
-jangan menambahkan argumen yang tidak tersedia atau memakai dispatch tanpa
-target robot. CLI cancel dari laptop mendukung ID task kedua fleet.
-
-Catat ID task/booking, bukan request ID. Amati perpindahan fisik, feedback,
-hasil Nav2 dan status RMF. Uji cancel dilakukan terpisah dengan operator;
-respons API atau task ID kosong belum membuktikan robot sudah berhenti.
-Uji Husky dan Devi secara individu dahulu sebelum penerimaan traffic bersama.
-
-Jika berpindah ke Web, ikuti bagian 9 README laptop. Setelah kedua robot
-diam dan adapter lama berhenti, D3 menggunakan perintah berikut pada sesi
-core/API pengganti yang telah siap:
+Untuk pemeriksaan Nav2 asli di terminal **D0**:
 
 ```bash
-cd /home/devi/rmf-integration
-BRIN_ENABLE_DISPATCH=1 bash tools/devi.bash adapter \
-  server_uri:=ws://192.168.0.218:8000/_internal
+source /opt/ros/humble/setup.bash
+source /home/devi/devi_ws/install/local_setup.bash
+export ROS_DOMAIN_ID=73 ROS_LOCALHOST_ONLY=0 RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+ros2 param get /map_server yaml_filename
+ros2 param get /amcl set_initial_pose
+ros2 param get /amcl always_reset_initial_pose
+ros2 param get /amcl initial_pose.x
+ros2 param get /amcl initial_pose.y
+ros2 param get /amcl initial_pose.yaw
+ros2 param get /local_costmap/local_costmap robot_radius
+ros2 param get /global_costmap/global_costmap robot_radius
+ros2 lifecycle get /bt_navigator
 ```
 
-Preflight tetap berlaku. Web/telemetry Devi belum diuji end-to-end.
+Map harus berakhir `maps/gedungWS_0_rmf.yaml`, set initial pose **True**,
+reset initial pose **True**, pose `[19.423, -28.2408, 1.83415]`, kedua
+radius **0.55**, navigator `active [3]`.
+Pemeriksaan parameter ini tidak mengirim goal.
 
-## 9. Urutan berhenti
+## 6. Konfigurasi yang dipakai
 
-1. Hentikan request baru dari laptop. Selesaikan/batalkan task yang benar
-   dan konfirmasi Devi serta Husky diam bersama operator masing-masing.
-2. Hentikan D3 adapter Devi dan H4 adapter Husky sebelum core. Pastikan
-   goal Nav2 tidak tetap berjalan; Ctrl-C/putus DDS bukan E-stop.
-3. Hentikan D1 hanya jika bringup itu memang dimulai untuk sesi ini dan
-   operator menghendakinya. Pertahankan service/driver platform lain.
-4. Operator laptop menghentikan dashboard/API bila ada, lalu core L1 terakhir.
+[bringup.yaml](src/brin_devi_fleet_adapter/config/bringup.yaml) mencatat radius
+dan penerimaan operator. Setiap start, wrapper membaca parameter AMCL/Nav2
+asli lalu menghasilkan file di **`devi/log/bringup_runtime/`**:
 
-## 10. Jika pemeriksaan gagal
-
-| Gejala | Langkah berikutnya |
+| File | Isi |
 | --- | --- |
-| Nav2 tidak ditemukan | Periksa D0 memakai Fast DDS/domain `73` dan bringup D1 |
-| `nav2_ready: false` | Baca `nav2_errors`; periksa scan, odometri, AMCL, TF, lifecycle dan map |
-| Native schedule gagal / digest kosong | Pastikan satu core laptop `gedungWS_0` hidup dengan Cyclone/domain `0` |
-| `Invalid ... ScheduleQuerySpacetime` | Gunakan pemisahan middleware bawaan helper; jangan menghubungkan native Fast DDS ke core Cyclone |
-| `accepted: false` terkait alignment/commissioning | Selesaikan pengukuran dan penerimaan langkah 6 |
-| `/fleet_states` tidak terlihat dari D0 | Periksa dari laptop L2 domain `0`, bukan domain Nav2 `73` |
-| Fleet ada tetapi marker Devi belum ada | Verifikasi pose melalui `/fleet_states`; preset RViz laptop memakai sensor/TF Husky |
-| Map/scan atau gerak tidak sesuai | Hentikan tahap gerak bersama operator; jangan menebak transformasi atau mengubah sensor/safety |
+| `amcl.yaml` | Peta bersama, waktu nyata, initial pose parkir otomatis setiap start |
+| `nav2.yaml` | Parameter Devi asli dengan kedua costmap memakai radius 0,55 m |
+| `integration.yaml` | Map bersama, transformasi identitas, penerimaan operator |
+| `fleet.yaml` | Fleet Devi dengan radius RMF 0,55 m |
 
-Rincian implementasi: lifecycle command berasal dari snapshot Husky commit
-`a7cb39b1bc0fdb8a4c19007c36c3241d4239eb2a`, kemudian dipisah ke paket
-`brin_devi_fleet_adapter` dengan gateway lokal dan konversi koordinat.
-Goal memakai behavior tree bawaan Nav2 Devi. Responsive wait dan recovery
-mundur otomatis adapter dinonaktifkan; stop nol melewati smoother dan twist
-mux yang sudah ada. Nilai baterai/mekanis fleet masih perkiraan; battery
-drain dan perjalanan charger otomatis dinonaktifkan. `ws_p0` bukan bukti
-docking fisik, dan baterai Roboteq belum menjadi telemetry RMF.
+Canonical map `gedungWS_0_rmf.yaml` memakai origin `[0, -33.65, 0]` dan
+resolusi `0.05`, sama dengan bundle RMF/Husky. Karena gambar dan koordinat
+map yang dipakai sama, transformasi Nav2↔RMF adalah identitas. Initial pose
+tetap harus menunjukkan lokasi fisik robot dengan benar. Ini berbeda dari
+file `gedungWS_0.yaml` dengan origin SLAM asli.
 
-[Hasil setup](SETUP_RESULT_2026-11-02.md) mencatat bukti dan batas pengujian.
-`reference/devi_ws/src` adalah arsip baca saja, bukan source yang dibangun
-atau otomatis dideploy ke underlay.
+Digest profil bersama:
+
+```text
+ff44d7a33b01732e6c277b523c40ae5c7ef6c011dab83b259e5db44daef9f221
+```
+
+Helper `inspect`, `preflight` dan adapter manual memilih file runtime di
+atas bila tersedia. File dasar `config/devi.yaml` dan `fleet_config.yaml`
+tetap menyimpan konfigurasi setup lama `workshop_l_1` yang dispatch-nya
+terkunci. Keduanya bukan konfigurasi operasional bringup baru.
+
+## 7. Task dari laptop
+
+Setelah registrasi dan lokalisasi diverifikasi, buka console di laptop:
+
+```bash
+bash tools/integration.bash laptop task
+```
+
+Atau pilih tujuan/robot langsung:
+
+```bash
+bash tools/integration.bash laptop task --list-waypoints
+bash tools/integration.bash laptop task --robot devi --places ws_p1 --dry-run
+bash tools/integration.bash laptop task --robot devi --places ws_p1
+bash tools/integration.bash laptop task --bid --places ws_p1
+```
+
+`ws_p1` adalah contoh tujuan. `--dry-run` tidak mengirim task; perintah tanpa
+flag itu dapat menggerakkan robot. Bidding membiarkan RMF memilih robot
+yang memenuhi syarat, termasuk Husky. Respons, ID booking dan cancel ada di
+bagian 7 [README laptop](../laptop/readme.md). CLI lama
+`brin_husky_hardware send_task` hanya untuk Husky.
+
+## 8. Berhenti dan pemulihan
+
+Selesaikan/batalkan task dan konfirmasi robot diam sebelum menghentikan
+stack. Untuk menghentikan seluruh bringup Devi:
+
+```bash
+sudo systemctl stop devi_robot.service
+```
+
+Start berikutnya memakai kembali pose parkir yang dikonfigurasi. Perintah `stop` tidak
+menonaktifkan startup boot; `disable` dipakai bila memang ingin membatalkannya.
+Menghentikan core/SSH bukan E-stop. Hentikan core laptop terakhir setelah
+operasi robot dihentikan.
+
+Untuk kembali ke startup lama, hentikan service, pindahkan override
+`/etc/systemd/system/devi_robot.service.d/rmf-integration.conf` ke backup,
+jalankan `sudo systemctl daemon-reload`, dan pulihkan entry desktop dari
+backup installer. Jangan menjalankan desktop lama dan service baru bersamaan.
+Source underlay tidak perlu dipulihkan karena tidak ditimpa.
+
+| Gejala | Periksa |
+| --- | --- |
+| Map tidak muncul di laptop | Service, node `devi_initial_pose_bridge`, `/devi/map` domain `0` |
+| Menunggu AMCL/TF | Parameter `set_initial_pose`, `initial_pose.*`, map/scan/odom; koreksi manual bila lokasi fisik berbeda |
+| Husky menerima initial pose, Devi tidak | Periksa topic tool RViz yang sedang dipilih; target Devi harus `/devi/initialpose`, target Husky `/a200_1060/initialpose` |
+| Digest kosong padahal core laptop aktif | Periksa kedua sisi memuat profil DDS unicast; restart proses yang belum memuat perubahan, lalu uji koneksi dua arah |
+| `accepted: false` | JSON `errors`, core tunggal, digest, lifecycle, kedekatan graph |
+| Radius/map lama | Service/launch lama masih berjalan atau wrapper baru belum aktif |
+| Fleet ada, marker belum ada | Display `/fleet_markers`, visualizer, Fixed Frame `map` dan lantai `L1` |
+| Laser/costmap ada, tetapi tidak tergambar | Grup Devi aktif; TF `/rmf_visualization/tf*`, frame `devi/*` dan Fixed Frame `map` |
+| Preflight lulus, adapter terus mencoba | Cari error launch pada journal; supervisor terbaru menghilangkan argumen `server_uri` bila kosong |
+| Service `devi_config` gagal | Override baru belum dipasang/reload oleh installer |
+
+`ros2 topic list` hanya membuktikan endpoint terdaftar, bukan bahwa pesan
+AMCL sudah diterima. Preflight exit `2` menyatakan syarat belum terpenuhi.
+Jika AMCL dan map→base_link belum tersedia, beberapa lifecycle Nav2 masih
+menunggu lokalisasi. Untuk koreksi manual dari laptop, klik untuk Devi hanya setelah topic
+tool diperiksa; penggantian target ke Husky dalam sesi RViz tetap berlaku
+sampai operator menggantinya kembali.
+
+Untuk kembali ke mode manual, ubah `localization: manual_initial_pose` pada
+[bringup.yaml](src/brin_devi_fleet_adapter/config/bringup.yaml), lalu restart
+service setelah robot diam. Wrapper akan membuat `set_initial_pose: false`
+dan menghapus pose awal dari parameter AMCL runtime. Nilai auto pose tersimpan
+di source dan dapat dipakai lagi dengan `localization: automatic_initial_pose`.
+
+Nilai baterai/mekanis fleet masih perkiraan; battery drain dan perjalanan
+charger otomatis dinonaktifkan. Responsive wait dan recovery mundur adapter
+tetap dinonaktifkan. Web/telemetry dan traffic fisik bersama belum diuji
+end-to-end. [Hasil setup awal](SETUP_RESULT_2026-11-02.md) adalah catatan
+historis sebelum perubahan bringup ini.
+
+[Pemulihan initial pose dan DDS](INITIAL_POSE_RECOVERY_2026-11-03.md)
+mencatat penerimaan pose AMCL, preflight lulus, registrasi Devi, dan kedua
+fleet yang teramati di laptop setelah profil DDS permanen diterapkan.
+
+[Auto pose 4 November](AUTO_POSE_RESULT_2026-11-04.md) mencatat implementasi
+pose parkir otomatis yang menggantikan kebutuhan initial pose manual Devi.
+[Web otomatis saat boot](WEB_BOOT_RESULT_2026-11-04.md) mencatat alamat API
+bawaan, hasil pengujian, dan aktivasi service untuk koneksi Web permanen.

@@ -4,6 +4,7 @@ import json
 import math
 from pathlib import Path
 import time
+import sys
 
 import yaml
 import rclpy
@@ -25,8 +26,8 @@ from .profiles import load_settings, resolve_profile
 
 
 class Inspection(Node):
-    def __init__(self, settings):
-        super().__init__('devi_preflight')
+    def __init__(self, settings, node_name='devi_preflight'):
+        super().__init__(node_name)
         self.settings = settings
         self.messages = {}
         self.subscriptions_keep = []
@@ -155,7 +156,8 @@ def main(args=None):
     parser.add_argument('--config', required=True)
     parser.add_argument('--timeout', type=float, default=12.)
     parser.add_argument('--inspect', action='store_true')
-    parsed = parser.parse_args(args)
+    argv = sys.argv if args is None else [sys.argv[0], *args]
+    parsed = parser.parse_args(rclpy.utilities.remove_ros_args(argv)[1:])
     if not 1 <= parsed.timeout <= 60:
         parser.error('timeout must be between 1 and 60 seconds')
     settings = load_settings(parsed.config)

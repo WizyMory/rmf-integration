@@ -32,25 +32,28 @@ def setup(context):
                           'profile_digest': profile['digest']}], output='screen'),
     ]
     if LaunchConfiguration('rviz').perform(context) == 'true':
+        chosen_config = LaunchConfiguration('rviz_config').perform(context)
+        if not chosen_config:
+            filename = 'devi_rmf.rviz' if profile['name'] == 'gedungWS_0' else 'husky_rmf.rviz'
+            chosen_config = str(Path(get_package_share_directory('brin_husky_distributed'))/'rviz'/filename)
         visualization = (Path(get_package_share_directory('brin_husky_distributed')) /
                          'launch/visualization.launch.py')
         actions.append(IncludeLaunchDescription(
             PythonLaunchDescriptionSource(str(visualization)),
             launch_arguments={
-                'rviz_config': LaunchConfiguration('rviz_config'),
+                'rviz_config': chosen_config,
             }.items()))
     return actions
 
 
 def generate_launch_description():
-    rviz_config = (Path(get_package_share_directory('brin_husky_distributed')) /
-                   'rviz/husky_rmf.rviz')
     return LaunchDescription([
         DeclareLaunchArgument('traffic_profile', default_value='banyak_simpangan'),
         DeclareLaunchArgument('server_uri', default_value='',
                               description='Optional local RMF Web internal WebSocket URI'),
         DeclareLaunchArgument('rviz', default_value='false', choices=['true', 'false'],
-                              description='Open physical Husky RViz with RMF marker layers'),
-        DeclareLaunchArgument('rviz_config', default_value=str(rviz_config)),
+                              description='Open RMF RViz; gedungWS_0 defaults to Devi manual pose tools'),
+        DeclareLaunchArgument('rviz_config', default_value='',
+                              description='Optional explicit RViz preset, otherwise selected by traffic profile'),
         OpaqueFunction(function=setup),
     ])

@@ -20,5 +20,8 @@ setup(
         'preflight = brin_devi_fleet_adapter.preflight:main',
         'profile_info = brin_devi_fleet_adapter.profiles:main',
         'link_check = brin_devi_fleet_adapter.link_check:main',
+        'initial_pose_bridge = brin_devi_fleet_adapter.initial_pose_bridge:main',
+        'adapter_supervisor = brin_devi_fleet_adapter.supervisor:main',
+        'visualization_bridge = brin_devi_fleet_adapter.visualization_bridge:main',
     ]},
 )

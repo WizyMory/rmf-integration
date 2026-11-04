@@ -1,0 +1,17 @@
+# Operator confirmation, 2026-11-03: radius 0.55 m; Nav2/cancel/manual/E-stop tested.
+traffic_profile: gedungWS_0
+# Native RMF Web telemetry; use an empty string to disable Web at startup.
+server_uri: ws://192.168.0.218:8000/_internal
+footprint_radius: 0.55
+commissioning:
+  footprint_confirmed: true
+  operation_accepted: true
+# Operator-provided startup parking pose on gedungWS_0, 2026-11-04.
+# RViz quaternion: (0, 0, 0.793828, 0.608143); yaw is in radians.
+localization: automatic_initial_pose
+initial_pose:
+  frame_id: map
+  x: 19.423
+  y: -28.2408
+  z: 0.0
+  yaw: 1.83415

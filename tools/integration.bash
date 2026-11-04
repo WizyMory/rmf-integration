@@ -4,10 +4,11 @@ set -eo pipefail
 
 usage() {
   printf '%s\n' \
-    'Usage: bash tools/integration.bash laptop|husky build|profile|waypoint|core|preflight|adapter|web [arguments]' \
+    'Usage: bash tools/integration.bash laptop|husky build|profile|waypoint|core|view|task|preflight|adapter|web [arguments]' \
     'build: builds only the four integration packages for the selected computer.' \
     'profile/waypoint require traffic_profile:=NAME; waypoint chooses a named waypoint.' \
-    'core/web: laptop only. preflight/adapter: Husky only; Nav2/sensors must already run.' \
+    'core/task/web: laptop only. preflight/adapter: Husky only; Nav2/sensors must already run.' \
+    'task: --robot devi|husky_0 --places NAME, --bid --places NAME, or interactive with no arguments.' \
     'adapter additionally requires BRIN_ENABLE_DISPATCH=1 and operator acceptance.' \
     'Optional: BRIN_RMF_UNDERLAY=/absolute/path/to/local_setup.bash' \
     'Default: Cyclone DDS with the target-specific repository Wi-Fi profile.' \
@@ -23,7 +24,7 @@ target=$1
 operation=$2
 shift 2
 case "$target:$operation" in
-  laptop:build|husky:build|laptop:profile|husky:profile|laptop:waypoint|husky:waypoint|laptop:core|laptop:web|husky:preflight) ;;
+  laptop:build|husky:build|laptop:profile|husky:profile|laptop:waypoint|husky:waypoint|laptop:core|laptop:view|laptop:task|laptop:web|husky:preflight) ;;
   husky:adapter)
     if [[ ${BRIN_ENABLE_DISPATCH:-0} != 1 ]]; then
       printf '%s\n' 'Refusing dispatch. Complete physical acceptance first; then explicitly set BRIN_ENABLE_DISPATCH=1.' >&2
@@ -118,6 +119,7 @@ printf 'Integration target=%s operation=%s domain=%s RMW=%s real_time=true\n' \
 python3 -c 'import rmf_adapter, rmf_fleet_msgs, rmf_task_msgs; print("RMF runtime import OK")' > "$message_stream"
 
 case "$operation" in
+  view) exec ros2 launch brin_husky_distributed visualization.launch.py start_visualizers:=false start_tf:=false "$@" ;;
   build)
     export COLCON_EXTENSION_BLOCKLIST="${COLCON_EXTENSION_BLOCKLIST:+$COLCON_EXTENSION_BLOCKLIST:}colcon_core.shell.ros_domain_id"
     cd -- "$workspace"
@@ -132,6 +134,7 @@ case "$operation" in
     cd -- "$workspace/log"
     exec ros2 launch brin_husky_distributed laptop.launch.py "$@" ;;
   web) exec ros2 launch brin_husky_distributed web.launch.py "$@" ;;
+  task) exec "$integration_prefix/lib/brin_husky_distributed/task_client" "$@" ;;
   preflight|adapter)
     dispatch=false
     [[ $operation == adapter ]] && dispatch=true

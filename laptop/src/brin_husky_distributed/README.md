@@ -1,5 +1,29 @@
 # Husky fisik: RMF pusat di laptop, Nav2 dan fleet adapter di robot
 
+Preset `devi_rmf.rviz` kini memuat grup sensor/Nav2 kedua robot: laser,
+costmap, footprint, model, AMCL dan plan Devi lewat `/devi/viz/*`.
+TF pengamatan digabung di `/rmf_visualization/tf*`; frame Devi berawalan
+`devi/` dan frame `map` dipakai bersama. TF controller asli tetap sama.
+`bash tools/integration.bash laptop view` membuka ulang RViz dengan core
+versi baru yang sudah aktif, tanpa memulai core/visualizer kedua.
+
+Node perintah laptop kini mendukung kedua fleet `HuskyA200/husky_0` dan
+`Devi/devi`. Dari root repository, jalankan
+`bash tools/integration.bash laptop task` untuk menu robot/waypoint, atau
+`bash tools/integration.bash laptop task --bid --places ws_p1` untuk bidding
+dispatcher RMF. Gunakan `--robot devi --places ws_p1 --dry-run` pada operasi
+`task` untuk preview tanpa kirim. [Panduan laptop](../../../laptop/readme.md)
+memuat build, pemilihan profil, syarat registrasi, dan sintaks lengkap.
+
+Untuk profil `gedungWS_0`, RViz core kini memakai preset `devi_rmf.rviz`:
+map `/devi/map`, initial pose `/devi/initialpose`, serta marker kedua fleet.
+Tool initial pose dapat dipindahkan ke `/a200_1060/initialpose` untuk Husky.
+[Bringup Devi](../../../devi/README.md) menjalankan Nav2 dan supervisor
+adapter saat boot, memakai auto initial pose parkir lalu menunggu core laptop. Radius Devi
+adalah 0,55 m; startup dan konfigurasi runtime Husky tidak berubah.
+Bringup Devi juga memuat default Web API `ws://192.168.0.218:8000/_internal`
+dari konfigurasi startup dan mencoba koneksi ulang ketika API tersedia.
+
 Paket ini mengadaptasi `brin_husky_distributed` dari arsip operator
 `rmf_ws_husky.tar.xz` menjadi jalur dua-komputer tanpa mengubah launch atau
 isi file simulasi. Untuk Husky fisik `a200_1060`, nama RMF-nya `husky_0`.

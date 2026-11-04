@@ -26,5 +26,7 @@ setup(
     entry_points={'console_scripts': [
         'profile_announcer = brin_husky_distributed.announcer:main',
         'profile_info = brin_husky_distributed.profile_info:main',
+        'task_client = brin_husky_distributed.task_client:main',
+        'visualization_tf = brin_husky_distributed.visualization_tf:main',
     ]},
 )

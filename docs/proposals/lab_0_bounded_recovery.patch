@@ -1,0 +1,96 @@
+--- a/laptop/src/brin_husky_hardware/brin_husky_hardware/adapter.py
++++ b/laptop/src/brin_husky_hardware/brin_husky_hardware/adapter.py
+@@ -13,11 +13,9 @@
+ 
+ 
+ class HardwareCommand(Nav2Command):
+-    def __init__(self, node, name, adapter, config):
+-        super().__init__(node, name, adapter, config)
+-        # Nav2 opens a behavior-tree path on the robot computer. An empty path
+-        # selects its installed default rather than a path on the RMF server.
+-        self.behavior_tree = ''
++    # Inherit the bounded tree resolved by Nav2Command on this computer.
++    # Each RMF goal must terminate on planner/controller failure so RMF owns
++    # retries; Nav2's default Spin/Wait/BackUp recovery must not run underneath.
+ 
+     def follow_new_path(self, waypoints, next_arrival_estimator, path_finished_callback):
+         # Registration may enqueue an idle path before responsive wait is disabled.
+--- a/laptop/src/brin_husky_hardware/test/test_idle_startup.py
++++ b/laptop/src/brin_husky_hardware/test/test_idle_startup.py
+@@ -2,6 +2,7 @@
+ import importlib.util
+ from pathlib import Path
+ from types import SimpleNamespace
++import xml.etree.ElementTree as ET
+ 
+ import pytest
+ from brin_husky_hardware.adapter import HardwareCommand, HardwareFleetNode
+@@ -89,3 +90,20 @@
+     physical.observe_task('patrol-1')
+     physical.tick()
+     assert physical.update.replans == 1 and len(physical.client.requests) == 1
++
++
++def test_physical_goals_use_bounded_tree_without_motion_recovery(physical):
++    assert physical.behavior_tree
++    assert Path(physical.behavior_tree).name == 'rmf_bounded_navigation.xml'
++    tree = (ROOT / 'brin_husky_fleet_adapter/config' /
++            Path(physical.behavior_tree).name)
++    xml = ET.parse(tree).getroot()
++    assert xml.find('.//ComputePathToPose') is not None
++    assert xml.find('.//FollowPath') is not None
++    for recovery in ('Spin', 'BackUp', 'Wait', 'RecoveryNode'):
++        assert xml.find('.//' + recovery) is None
++    physical.observe_task('patrol-1')
++    physical.follow_new_path([helpers.waypoint()], lambda *args: None, lambda: None)
++    physical.tick()
++    assert len(physical.client.requests) == 1
++    assert physical.client.requests[0][0].behavior_tree == physical.behavior_tree
+--- a/husky/src/brin_husky_hardware/brin_husky_hardware/adapter.py
++++ b/husky/src/brin_husky_hardware/brin_husky_hardware/adapter.py
+@@ -13,11 +13,9 @@
+ 
+ 
+ class HardwareCommand(Nav2Command):
+-    def __init__(self, node, name, adapter, config):
+-        super().__init__(node, name, adapter, config)
+-        # Nav2 opens a behavior-tree path on the robot computer. An empty path
+-        # selects its installed default rather than a path on the RMF server.
+-        self.behavior_tree = ''
++    # Inherit the bounded tree resolved by Nav2Command on this computer.
++    # Each RMF goal must terminate on planner/controller failure so RMF owns
++    # retries; Nav2's default Spin/Wait/BackUp recovery must not run underneath.
+ 
+     def follow_new_path(self, waypoints, next_arrival_estimator, path_finished_callback):
+         # Registration may enqueue an idle path before responsive wait is disabled.
+--- a/husky/src/brin_husky_hardware/test/test_idle_startup.py
++++ b/husky/src/brin_husky_hardware/test/test_idle_startup.py
+@@ -2,6 +2,7 @@
+ import importlib.util
+ from pathlib import Path
+ from types import SimpleNamespace
++import xml.etree.ElementTree as ET
+ 
+ import pytest
+ from brin_husky_hardware.adapter import HardwareCommand, HardwareFleetNode
+@@ -89,3 +90,20 @@
+     physical.observe_task('patrol-1')
+     physical.tick()
+     assert physical.update.replans == 1 and len(physical.client.requests) == 1
++
++
++def test_physical_goals_use_bounded_tree_without_motion_recovery(physical):
++    assert physical.behavior_tree
++    assert Path(physical.behavior_tree).name == 'rmf_bounded_navigation.xml'
++    tree = (ROOT / 'brin_husky_fleet_adapter/config' /
++            Path(physical.behavior_tree).name)
++    xml = ET.parse(tree).getroot()
++    assert xml.find('.//ComputePathToPose') is not None
++    assert xml.find('.//FollowPath') is not None
++    for recovery in ('Spin', 'BackUp', 'Wait', 'RecoveryNode'):
++        assert xml.find('.//' + recovery) is None
++    physical.observe_task('patrol-1')
++    physical.follow_new_path([helpers.waypoint()], lambda *args: None, lambda: None)
++    physical.tick()
++    assert len(physical.client.requests) == 1
++    assert physical.client.requests[0][0].behavior_tree == physical.behavior_tree

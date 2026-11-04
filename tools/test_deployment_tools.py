@@ -33,23 +33,24 @@ def test_help_without_ros():
     assert run_tool('integration.bash', '--help').returncode == 0
 
 
-@pytest.mark.parametrize('target,interface,peer', [
-    ('laptop', 'wlp9s0', '192.168.0.120'),
-    ('husky', 'wlp2s0', '192.168.0.218'),
+@pytest.mark.parametrize('path,interface,peers', [
+    ('laptop/src/brin_husky_distributed/config/cyclonedds_lan.xml', 'wlp9s0', {'192.168.0.120', '192.168.0.237'}),
+    ('husky/src/brin_husky_distributed/config/cyclonedds_lan.xml', 'wlp2s0', {'192.168.0.218'}),
+    ('devi/src/brin_devi_fleet_adapter/config/cyclonedds_rmf.xml', 'wlo1', {'192.168.0.218', '192.168.0.120'}),
 ])
-def test_lan_profiles_select_only_the_target_wifi(target, interface, peer):
-    profile = ET.parse(ROOT / target / 'src/brin_husky_distributed/config/cyclonedds_lan.xml')
+def test_lan_profiles_select_only_the_target_wifi(path, interface, peers):
+    profile = ET.parse(ROOT / path)
     interfaces = profile.findall('./Domain/General/Interfaces/NetworkInterface')
     assert len(interfaces) == 1
     assert interfaces[0].attrib == {'name': interface}
-    assert profile.find('./Domain/Discovery/Peers/Peer').attrib == {'Address': peer}
+    assert {item.attrib['Address'] for item in profile.findall('./Domain/Discovery/Peers/Peer')} == peers
     assert profile.findtext('./Domain/General/AllowMulticast') == 'spdp'
     assert profile.findtext('./Domain/Discovery/ParticipantIndex') == 'auto'
 
 
 @pytest.mark.parametrize('arguments', [
     ('husky', 'core'), ('laptop', 'preflight'), ('laptop', 'adapter'),
-    ('husky', 'web'), ('bad', 'build'), ('laptop', 'build', '--merge-install'),
+    ('husky', 'web'), ('husky', 'task'), ('bad', 'build'), ('laptop', 'build', '--merge-install'),
     ('husky', 'profile', 'start_nav2:=true'),
 ])
 def test_reject_wrong_roles_and_build_flags(arguments):

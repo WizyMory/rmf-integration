@@ -41,6 +41,8 @@ def context(profile='banyak_simpangan', dispatch='false', start_nav2='false'):
         'server_uri': '',
         'rviz': 'false',
         'rviz_config': str(ROOT / 'brin_husky_distributed/rviz/husky_rmf.rviz'),
+        'start_visualizers': 'true',
+        'start_tf': 'true',
     })
     return result
 
@@ -89,23 +91,41 @@ def test_rviz_option_keeps_one_core_and_adds_only_observation(monkeypatch):
     nodes = opaque.execute(ctx)
     assert {node.node_package for node in nodes} == {
         'rviz2', 'rmf_visualization_navgraphs',
-        'rmf_visualization_fleet_states', 'rmf_visualization_schedule'}
+        'rmf_visualization_fleet_states', 'rmf_visualization_schedule', 'brin_husky_distributed'}
     fleet = yaml.safe_load((ROOT / 'brin_husky_distributed/config/fleet_config.yaml').read_text())
     for node in nodes:
         params = evaluate_parameters(ctx, node._Node__parameters)[0]
         assert params['use_sim_time'] is False
-        if node.node_package != 'rviz2':
+        if node.node_package not in ('rviz2', 'brin_husky_distributed'):
             assert params['initial_map_name'] == fleet['map_name']
         if node.node_package == 'rmf_visualization_fleet_states':
             assert params[fleet['fleet_name'] + '_radius'] == fleet['profile']['footprint']
+            assert params['Devi_radius'] == 0.55
         if node.node_package == 'rviz2':
             assert node.condition.evaluate(ctx)
             ctx.launch_configurations['rviz'] = 'false'
             assert not node.condition.evaluate(ctx)
             remaps = {tuple(s.text for s in source): tuple(s.text for s in target)
                       for source, target in node._Node__remappings}
-            assert remaps[('/tf',)] == ('/a200_1060/nav/tf',)
-            assert remaps[('/tf_static',)] == ('/a200_1060/tf_static',)
+            assert remaps[('/tf',)] == ('/rmf_visualization/tf',)
+            assert remaps[('/tf_static',)] == ('/rmf_visualization/tf_static',)
+
+
+def test_gedung_default_rviz_accepts_manual_pose_for_devi_and_keeps_custom_presets(monkeypatch):
+    module = load('laptop', monkeypatch)
+    ctx = context('gedungWS_0')
+    ctx.launch_configurations.update(rviz='true', rviz_config='')
+    include = module.setup(ctx)[-1]
+    arguments = dict(include.launch_arguments)
+    assert arguments['rviz_config'].endswith('/rviz/devi_rmf.rviz')
+    manager = yaml.safe_load(Path(arguments['rviz_config']).read_text())['Visualization Manager']
+    pose_tools = [tool for tool in manager['Tools'] if tool['Class'].endswith('/SetInitialPose')]
+    assert [tool['Topic']['Value'] for tool in pose_tools] == ['/devi/initialpose']
+    displays = {display['Name']: display for display in manager['Displays']}
+    assert displays['Shared gedungWS_0 map from Devi']['Topic']['Value'] == '/devi/map'
+    assert displays['RMF fleet positions']['Topic']['Value'] == '/fleet_markers'
+    ctx.launch_configurations['rviz_config'] = '/custom/operator.rviz'
+    assert dict(module.setup(ctx)[-1].launch_arguments)['rviz_config'] == '/custom/operator.rviz'
 
 
 def test_physical_rviz_loads_latched_graph_and_live_fleet_markers():

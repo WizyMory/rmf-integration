@@ -1,11 +1,13 @@
 """Private local pipe between RMF/Cyclone and the existing Nav2/Fast DDS.
 
-Only the Nav2 child initializes Fast DDS. No TCP listener, ROS topic bridge,
-TF publisher, or changes to existing Nav2 processes are involved.
+Only the Nav2 child initializes Fast DDS. The optional map/manual-pose relay
+is separate from motion commands. No TCP listener or TF publisher is created.
 """
 from concurrent.futures import Future
 import multiprocessing
 import os
+import signal
+import threading
 import time
 from types import SimpleNamespace
 
@@ -65,17 +67,19 @@ class StopProxy:
 
 
 class Nav2Gateway:
-    def __init__(self, settings, allow_commands=False):
+    def __init__(self, settings, allow_commands=False, allow_initial_pose=False, relay_map=False):
         context = multiprocessing.get_context('spawn')
         self.connection, child = context.Pipe()
         self.process = context.Process(target=nav2_worker,
-            args=(child, settings, allow_commands), name='devi_nav2_gateway')
+            args=(child, settings, allow_commands, allow_initial_pose, relay_map), name='devi_nav2_gateway')
         self.process.start()
         child.close()
         self.allow_commands = allow_commands
+        self.allow_initial_pose = allow_initial_pose
         self.pending, self.goals = {}, {}
         self.sequence = 0
         self.state, self.received_at = {}, 0.
+        self.map_message = None
         self.closed = False
 
     @property
@@ -89,6 +93,8 @@ class Nav2Gateway:
         return future, self.sequence
 
     def send(self, message):
+        if message['op'] == 'initial_pose' and not getattr(self, 'allow_initial_pose', False):
+            raise RuntimeError('Manual initial pose is not enabled on this gateway')
         if message['op'] in ('goal', 'cancel', 'stop') and not self.allow_commands:
             raise RuntimeError('Read-only Devi diagnostic cannot command Nav2')
         self.connection.send(message)
@@ -107,6 +113,8 @@ class Nav2Gateway:
                 kind, request_id = message['kind'], message.get('id')
                 if kind == 'state':
                     self.state, self.received_at = message['state'], message['observed_at']
+                elif kind == 'map':
+                    self.map_message = message['value']
                 elif kind == 'feedback':
                     handle = self.goals.get(request_id)
                     if handle and handle.feedback:
@@ -139,30 +147,46 @@ class Nav2Gateway:
         if self.closed:
             return
         self.closed = True
+        # systemd and ros2 launch can both send SIGINT to this process group.
+        # Keep a second signal from interrupting the bounded child cleanup.
+        main_thread = threading.current_thread() is threading.main_thread()
+        previous = signal.signal(signal.SIGINT, signal.SIG_IGN) if main_thread else None
         try:
-            self.connection.send({'op': 'close'})
-        except (BrokenPipeError, OSError):
-            pass
-        self.process.join(timeout=4.)
-        if self.process.is_alive():
-            self.process.terminate()
-            self.process.join(timeout=2.)
-        self.connection.close()
+            try:
+                self.connection.send({'op': 'close'})
+            except (BrokenPipeError, OSError):
+                pass
+            self.process.join(timeout=4.)
+            if self.process.is_alive():
+                self.process.terminate()
+                self.process.join(timeout=2.)
+        finally:
+            self.connection.close()
+            if main_thread:
+                signal.signal(signal.SIGINT, previous)
 
 
-def nav2_worker(connection, settings, allow_commands):
+def nav2_worker(connection, settings, allow_commands, allow_initial_pose=False, relay_map=False):
     # A fresh spawned interpreter is required: RMW is selected per process.
+    # The parent owns shutdown through the pipe. Keep this ROS context alive
+    # during group SIGINT so owned goals can still be cancelled in finally.
+    # SIGTERM remains available for the parent's bounded terminate fallback.
+    signal.signal(signal.SIGINT, signal.SIG_IGN)
     os.environ['RMW_IMPLEMENTATION'] = 'rmw_fastrtps_cpp'
     os.environ['ROS_DOMAIN_ID'] = '73'
     import uuid
     import rclpy
-    from geometry_msgs.msg import Twist
+    from geometry_msgs.msg import Twist, PoseWithCovarianceStamped
     from nav2_msgs.action import NavigateToPose
+    from rclpy.signals import SignalHandlerOptions
     from .preflight import Inspection
-    rclpy.init(args=[], domain_id=73)
-    node = Inspection(settings)
+    rclpy.init(args=[], domain_id=73, signal_handler_options=SignalHandlerOptions.NO)
+    node = Inspection(settings, node_name='devi_nav2_observer_' + str(os.getpid()))
     result_client = node.create_client(NavigateToPose.Impl.GetResultService,
                                       '/navigate_to_pose/_action/get_result')
+    initial_pose_publisher = (node.create_publisher(PoseWithCovarianceStamped, '/initialpose', 10)
+                              if allow_initial_pose else None)
+    last_map = None
     goals = {}
     closing, moved_goal = False, False
     zero_publisher, zero_until = None, 0.
@@ -219,6 +243,9 @@ def nav2_worker(connection, settings, allow_commands):
             if now >= next_state:
                 send({'kind': 'state', 'state': node.report(), 'observed_at': now})
                 next_state = now + 0.2
+            if relay_map and 'map' in node.messages and node.messages['map'] is not last_map:
+                last_map = node.messages['map']
+                send({'kind': 'map', 'value': last_map})
             for _ in range(100):
                 if not connection.poll():
                     break
@@ -227,6 +254,16 @@ def nav2_worker(connection, settings, allow_commands):
                 if operation == 'close':
                     closing = True
                     break
+                if operation == 'initial_pose':
+                    if initial_pose_publisher is None:
+                        continue
+                    from .initial_pose_bridge import validate_initial_pose
+                    try:
+                        validate_initial_pose(message['pose'])
+                        initial_pose_publisher.publish(message['pose'])
+                    except ValueError as exc:
+                        node.get_logger().error(str(exc))
+                    continue
                 if operation in ('goal', 'cancel', 'stop') and not allow_commands:
                     send({'kind': 'error', 'id': request_id, 'error': 'Read-only Nav2 gateway'})
                 elif operation == 'query_result':

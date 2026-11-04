@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Native RMF domain 0 only. Existing Nav2/Fast DDS domain 73 is unchanged. -->
+<CycloneDDS>
+  <Domain>
+    <General>
+      <Interfaces><NetworkInterface name="wlo1"/></Interfaces>
+      <AllowMulticast>spdp</AllowMulticast>
+    </General>
+    <Discovery>
+      <ParticipantIndex>auto</ParticipantIndex>
+      <MaxAutoParticipantIndex>40</MaxAutoParticipantIndex>
+      <Peers><Peer Address="192.168.0.218"/><Peer Address="192.168.0.120"/></Peers>
+    </Discovery>
+  </Domain>
+</CycloneDDS>

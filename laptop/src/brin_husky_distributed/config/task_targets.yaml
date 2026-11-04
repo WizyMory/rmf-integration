@@ -1,0 +1,4 @@
+# Laptop command inventory only. Robot fleet/hardware configurations stay separate.
+robots:
+  husky_0: HuskyA200
+  devi: Devi

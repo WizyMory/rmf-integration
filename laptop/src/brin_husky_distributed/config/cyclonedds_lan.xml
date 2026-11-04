@@ -9,7 +9,7 @@
     <Discovery>
       <ParticipantIndex>auto</ParticipantIndex>
       <MaxAutoParticipantIndex>40</MaxAutoParticipantIndex>
-      <Peers><Peer Address="192.168.0.120"/></Peers>
+      <Peers><Peer Address="192.168.0.120"/><Peer Address="192.168.0.237"/></Peers>
     </Discovery>
   </Domain>
 </CycloneDDS>
