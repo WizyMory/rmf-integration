@@ -14,6 +14,8 @@ from std_msgs.msg import Bool
 from tf2_msgs.msg import TFMessage
 import yaml
 
+from .sensor_source import NativeSensorSource
+
 
 def prefixed_frame(frame, robot_name, map_frame='map'):
     frame = frame.lstrip('/')
@@ -54,6 +56,7 @@ class PhysicalTfBridge(Node):
     def __init__(self):
         super().__init__('brin_physical_tf_bridge')
         self.declare_parameter('config_file', '')
+        self.declare_parameter('sensor_source_rmw', '')
         config = yaml.safe_load(Path(self.get_parameter('config_file').value).read_text())
         valid_sources(config)
         self.robot_name = config['robot_name']
@@ -97,12 +100,23 @@ class PhysicalTfBridge(Node):
                 static_source_qos))
         self._physical_subscriptions.append(self.create_subscription(
             LaserScan, config['scan_topic'], self.on_scan, qos_profile_sensor_data))
-        self._physical_subscriptions.append(self.create_subscription(
-            Odometry, config['odom_topic'], self.on_odom, qos_profile_sensor_data))
-        self._physical_subscriptions.append(self.create_subscription(
-            Imu, config['imu_topic'], self.on_imu, qos_profile_sensor_data))
-        self.get_logger().info(
-            f'{self.robot_name}: mirroring {len(self._physical_subscriptions)} physical topics')
+        self.native_sensors = None
+        sensor_rmw = self.get_parameter('sensor_source_rmw').value
+        if sensor_rmw:
+            native_topics = {'imu': config['imu_topic'], 'odom': config['odom_topic']}
+            if len(config['tf_static_topics']) == 1:
+                self.native_static_topic = config['tf_static_topics'][0]
+                native_topics['static_tf'] = self.native_static_topic
+            self.native_sensors = NativeSensorSource(native_topics, sensor_rmw)
+            self.sensor_timer = self.create_timer(0.01, self.poll_native_sensors)
+            self.get_logger().info(f'Physical IMU/odometry reader RMW={sensor_rmw}')
+        else:
+            self._physical_subscriptions.append(self.create_subscription(
+                Odometry, config['odom_topic'], self.on_odom, qos_profile_sensor_data))
+            self._physical_subscriptions.append(self.create_subscription(
+                Imu, config['imu_topic'], self.on_imu, qos_profile_sensor_data))
+        sources = len(self._physical_subscriptions) + 2 * int(self.native_sensors is not None)
+        self.get_logger().info(f'{self.robot_name}: mirroring {sources} physical topics')
 
     def accepted_transforms(self, message, source):
         accepted = TFMessage()
@@ -154,6 +168,25 @@ class PhysicalTfBridge(Node):
         output.header.frame_id = prefixed_frame(
             message.header.frame_id, self.robot_name, self.map_frame)
         self.imu_pub.publish(output)
+
+    def poll_native_sensors(self):
+        try:
+            samples = self.native_sensors.poll()
+            for message in samples.get('static_tf', []):
+                self.on_static(message, self.native_static_topic)
+            if 'imu' in samples:
+                self.on_imu(samples['imu'])
+            if 'odom' in samples:
+                self.on_odom(samples['odom'])
+        except Exception as exc:
+            self.get_logger().error(f'Native sensor reader failed: {exc}')
+            self.sensor_timer.cancel()
+            self.native_sensors.close()
+
+    def destroy_node(self):
+        if getattr(self, 'native_sensors', None) is not None:
+            self.native_sensors.close()
+        return super().destroy_node()
 
 
 def main(args=None):

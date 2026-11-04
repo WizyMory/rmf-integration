@@ -134,6 +134,9 @@ def test_robot_requires_laptop_and_defers_adapter_until_preflight(monkeypatch):
         ctx = context(name, 'true')
         handler, bridge, preflight = module.setup(ctx)
         assert bridge.node_package == preflight.node_package == 'brin_husky_hardware'
+        bridge_params = evaluate_parameters(ctx, bridge._Node__parameters)[0]
+        assert bridge_params['use_sim_time'] is False
+        assert bridge_params['sensor_source_rmw'] == 'rmw_fastrtps_cpp'
         assert isinstance(handler.event_handler.handle(
             SimpleNamespace(returncode=1), ctx)[0], EmitEvent)
         started = handler.event_handler.handle(SimpleNamespace(returncode=0), ctx)

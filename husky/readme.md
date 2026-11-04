@@ -248,6 +248,17 @@ bukan hanya nama topic tersedia.
 Jika data/platform hilang, hentikan uji dan diagnosis; jangan restart service
 Clearpath, UM7 atau controller tanpa tinjauan terpisah.
 
+Perbaikan 4 November 2026: bridge integrasi membaca IMU dan odometri native
+Clearpath melalui worker Fast DDS terpisah, lalu meneruskan pesan asli ke
+topic berprefix `husky_0` melalui Cyclone DDS. Worker juga menerima TF statis
+asli dari topic fisik yang sama agar subtree IMU tidak hilang saat discovery
+lintas DDS. Timestamp dan covariance tetap dari sensor. Cari log
+`Physical IMU/odometry reader RMW=rmw_fastrtps_cpp`.
+Pemeriksaan kesegaran data dan TF pada preflight tetap berlaku. Adapter juga
+menginisialisasi context C++ sebelum Python dan menyediakan discovery
+schedule 15 detik per percobaan, maksimal enam percobaan. Rincian:
+[diagnosis sensor dan schedule](../docs/HUSKY_SENSOR_SCHEDULE_2026-11-04.md).
+
 Jika scan sudah memiliki satu publisher yang mengirim data, **jangan**
 menjalankan driver lagi. Jika belum ada publisher dan operator menyetujui,
 jalankan satu driver yang sudah terbukti bekerja, di H1 dan biarkan hidup:

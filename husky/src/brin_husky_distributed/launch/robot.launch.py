@@ -42,7 +42,8 @@ def setup(context):
                               'use_sim_time': 'false',
                               'start_hokuyo': value('start_hokuyo')}.items()))
     bridge = Node(package='brin_husky_hardware', executable='tf_bridge',
-                  parameters=[{'use_sim_time': False, 'config_file': str(config_path)}],
+                  parameters=[{'use_sim_time': False, 'config_file': str(config_path),
+                               'sensor_source_rmw': 'rmw_fastrtps_cpp'}],
                   output='screen')
     preflight = Node(
         package='brin_husky_hardware', executable='preflight',

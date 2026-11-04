@@ -95,7 +95,8 @@ def test_static_tf_burst_preserves_both_publishers(monkeypatch, children):
     monkeypatch.setattr(bridge_module.Node, '__init__', lambda self, *a, **kw: None)
     monkeypatch.setattr(bridge_module.Node, 'declare_parameter', lambda *a: None)
     monkeypatch.setattr(bridge_module.Node, 'get_parameter',
-                        lambda *a: SimpleNamespace(value=str(config)))
+                        lambda self, name: SimpleNamespace(
+                            value=str(config) if name == 'config_file' else ''))
     monkeypatch.setattr(bridge_module.Node, 'create_publisher', publisher)
     monkeypatch.setattr(bridge_module.Node, 'create_subscription', subscription)
     monkeypatch.setattr(bridge_module.Node, 'get_logger',

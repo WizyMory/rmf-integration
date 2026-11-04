@@ -67,16 +67,18 @@ class HardwareFleetNode(FleetNode):
             traits.Limits(*c['limits']['angular']), profile)
         self.traits.differential.reversible = c['reversible']
         self.graph = graph.parse_graph(self.get_parameter('nav_graph').value, self.traits)
-        for attempt in range(60):
+        # Wi-Fi discovery and the schedule query handshake can exceed one
+        # second. Keep each client alive long enough to complete the handshake.
+        for attempt in range(6):
             self.adapter = rmf.Adapter.make(
                 c['fleet_name'] + '_hardware_adapter',
-                wait_time=timedelta(seconds=1))
+                wait_time=timedelta(seconds=15))
             if self.adapter is not None:
                 break
-            self.get_logger().warning(f'Waiting for RMF schedule ({attempt + 1}/60)')
+            self.get_logger().warning(f'Waiting for RMF schedule ({attempt + 1}/6; 15s per attempt)')
             rclpy.spin_once(self, timeout_sec=0.1)
         if self.adapter is None:
-            raise RuntimeError('RMF traffic schedule unavailable after 60 attempts')
+            raise RuntimeError('RMF traffic schedule unavailable after 6 attempts (15s each)')
         self.adapter.start()
         self.fleet = add_fleet(
             self.adapter, c['fleet_name'], self.traits, self.graph,
@@ -110,8 +112,8 @@ class HardwareFleetNode(FleetNode):
 
 
 def main(args=None):
-    rclpy.init(args=args)
     rmf.init_rclcpp()
+    rclpy.init(args=args)
     node = HardwareFleetNode()
     try:
         node.start()
