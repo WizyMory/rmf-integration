@@ -4,7 +4,7 @@ from types import SimpleNamespace
 
 import pytest
 from rclpy.serialization import serialize_message
-from sensor_msgs.msg import Imu
+from sensor_msgs.msg import Imu, BatteryState
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import TransformStamped
 from tf2_msgs.msg import TFMessage
@@ -98,6 +98,16 @@ def test_dead_native_reader_does_not_supply_a_sample(reader):
     process.returncode = 1
     with pytest.raises(RuntimeError, match='exited: 1'):
         source.poll()
+
+
+def test_native_bms_preserves_soc_and_voltage_without_a_fake_timestamp(reader):
+    source, fd, _, _, _ = reader
+    source.topics['battery'] = '/a200_1060/platform/bms/state'
+    battery = BatteryState(voltage=23.87, percentage=0.197, present=True)
+    os.write(fd, wire(battery, 'battery'))
+    received = source.poll()['battery']
+    assert serialize_message(received) == serialize_message(battery)
+    assert source.poll() == {}
 
 
 def test_native_static_reader_preserves_all_latched_writer_batches(reader):

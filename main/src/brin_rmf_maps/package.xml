@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>brin_rmf_maps</name>
+  <version>0.1.0</version>
+  <description>Server installation of the authoritative laptop RMF map assets.</description>
+  <maintainer email="maintainer@example.com">BRIN integration maintainers</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <exec_depend>rmf_building_map_tools</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-pil</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

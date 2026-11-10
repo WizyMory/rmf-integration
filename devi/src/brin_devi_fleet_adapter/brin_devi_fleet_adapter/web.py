@@ -39,6 +39,14 @@ def configured_server_uri(share):
     return validate_server_uri(settings.get('server_uri', ''))
 
 
+def integration_server_uri(integration_config, requested_uri):
+    """Use the prepared endpoint even when a running launcher cached an old URI."""
+    settings = yaml.safe_load(Path(integration_config).read_text())
+    if not isinstance(settings, dict):
+        raise ValueError('Devi integration config must be a mapping')
+    return validate_server_uri(settings.get('web_server_uri', requested_uri))
+
+
 def add_fleet(adapter, fleet_name, traits, graph, server_uri=''):
     if server_uri == '':
         # Retain the original call, including its native default of None.

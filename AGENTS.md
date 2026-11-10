@@ -23,6 +23,22 @@ and integration overlays from three different ROS 2 computers.
    Robot SSH: devi@192.168.0.237
    Preserve Devi Nav2 domain 73; native RMF uses domain 0.
    devi/reference contains read-only audited underlay snapshots.
+   Web telemetry uses ws://192.168.0.141:8000/_internal on komputer-utama.
+   Prepared integration.web_server_uri takes priority over a cached launch URI.
+
+4. main/
+   RMF core role on komputer-utama, hostname rfm-pc.
+   SSH: rslab@192.168.0.141 (alias komputer-utama).
+   Workspace: /home/rslab/rmf-integration.
+   Ubuntu 22.04 / ROS 2 Humble; native RMF domain 0, real time.
+   tools/main.bash builds shared laptop integration source into main/install.
+   main/src/brin_rmf_maps installs the laptop map assets without Gazebo.
+   Primary core is the user service brin-rmf-core.service.
+   Boot bringup: brin-rmf.target starts core, Web API and production dashboard.
+   GNOME autostart main/desktop-start.bash opens RViz and a Chrome Guest window.
+   Web: http://192.168.0.141:3000; API: http://192.168.0.141:8000.
+   Desktop autologin rslab is configured by the operator.
+   Use laptop for CLI/RViz; stop the main core before running a laptop core.
 
 ## Rules
 

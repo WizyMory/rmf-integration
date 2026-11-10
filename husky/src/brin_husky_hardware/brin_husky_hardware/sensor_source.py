@@ -10,13 +10,13 @@ from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.qos import DurabilityPolicy, QoSProfile, ReliabilityPolicy, qos_profile_sensor_data
 from rclpy.serialization import deserialize_message, serialize_message
-from sensor_msgs.msg import Imu
+from sensor_msgs.msg import Imu, BatteryState
 from nav_msgs.msg import Odometry
 from tf2_msgs.msg import TFMessage
 
 
 PREFIX = b'BRIN_SENSOR:'
-TYPES = {'imu': Imu, 'odom': Odometry, 'static_tf': TFMessage}
+TYPES = {'imu': Imu, 'odom': Odometry, 'static_tf': TFMessage, 'battery': BatteryState}
 
 
 class NativeSensorSource:

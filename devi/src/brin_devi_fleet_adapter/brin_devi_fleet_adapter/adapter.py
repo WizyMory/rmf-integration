@@ -1,17 +1,20 @@
 """Onboard Devi adapter: native RMF domain 0, existing Nav2 domain 73."""
 import os
+import json
 import time
 
 import rclpy
 import rmf_adapter as rmf
 from geometry_msgs.msg import Twist
 from nav2_msgs.action import NavigateToPose
+from std_msgs.msg import String
 
 from .common import FleetNode
 from .command import Nav2Command
 from .gateway import Nav2Gateway, ActionProxy, LifecycleProxy, StopProxy
 from .geometry import MapAlignment, require_commissioning
 from .profiles import load_settings
+from .battery import BatteryTelemetry, voltage_soc
 
 
 class DeviCommand(Nav2Command):
@@ -51,6 +54,16 @@ class DeviFleetNode(FleetNode):
         if list(self.get_parameter('robots').value) != ['devi']:
             raise ValueError('Only physical devi is supported')
         self.gateway = Nav2Gateway(self.settings, allow_commands=True)
+        self.battery = BatteryTelemetry(self.config['fleet_name'], 'devi',
+            self.settings.get('battery_topic', '/devi/roboteq/battery/measured'), estimated=True)
+        self.battery_pub = self.create_publisher(String, '/brin/battery_states', 10)
+        self.battery_timer = self.create_timer(1., self.publish_battery)
+
+    def publish_battery(self):
+        self.battery_pub.publish(String(data=json.dumps(self.battery.snapshot(), allow_nan=False)))
+
+    def battery_soc(self, name):
+        return self.battery.snapshot()['soc']
 
     def nav2_action_client(self, action, _topic):
         return ActionProxy(self.gateway, supported=action is NavigateToPose)
@@ -79,6 +92,13 @@ class DeviFleetNode(FleetNode):
 
     def tick(self):
         self.gateway.poll()
+        state = self.gateway.state
+        observed_at = state.get('battery_observed_at')
+        if observed_at is not None and observed_at != self.battery.observed_at:
+            voltage = state.get('battery_voltage')
+            soc = voltage_soc(voltage, self.settings.get('battery_empty_voltage', 15.),
+                              self.settings.get('battery_full_voltage', 25.)) if voltage is not None else None
+            self.battery.observe(voltage, soc, observed_at)
         super().tick()
 
 

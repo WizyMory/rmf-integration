@@ -1,5 +1,17 @@
 # Open-RMF → Nav2 untuk satu Husky A200 fisik
 
+Core utama kini dipindahkan ke **komputer-utama `192.168.0.141`**,
+workspace `/home/rslab/rmf-integration`, dengan layanan
+`brin-rmf-core.service`. Laptop dipakai untuk CLI dan RViz. Mulai dari
+[panduan komputer utama](main/README.md); gunakan tepat satu core bersama
+untuk Husky dan Devi. Perintah core laptop pada dokumentasi lama digunakan
+untuk pemulihan setelah layanan core utama dihentikan.
+
+Bringup otomatis komputer utama kini menjalankan core, Web API/dashboard,
+lalu membuka RViz dan Chrome setelah autologin desktop `rslab`.
+Dashboard: **http://192.168.0.141:3000**. Lihat
+[panduan boot](main/BOOT_BRINGUP_2026-11-09.md).
+
 Integrasi robot Devi ditambahkan sebagai target terpisah di [`devi/`](devi/README.md),
 dengan workspace robot `/home/devi/rmf-integration` dan underlay Nav2
 `/home/devi/devi_ws`. Adapter Devi mempertahankan domain Nav2 `73` dan
@@ -13,8 +25,8 @@ Snapshot tidak otomatis terpasang di laptop atau robot. Jalur fisik Husky menggu
 
 ```mermaid
 flowchart LR
-  CLI[Terminal laptop] --> RMF[RMF core di laptop]
-  Browser[Browser laptop] --> API[RMF Web API di laptop]
+  CLI[Terminal laptop atau komputer utama] --> RMF[RMF core di komputer-utama]
+  Browser[Browser laptop atau komputer utama] --> API[RMF Web API di komputer-utama]
   API -->|task API via ROS 2| RMF
   RMF <-->|task, schedule, fleet state via DDS| Adapter[Fleet adapter di Husky]
   Adapter <-->|NavigateToPose dan hasil action| Nav2[Nav2 di Husky]
@@ -23,7 +35,7 @@ flowchart LR
 ```
 
 Identitas fisik snapshot: `/a200_1060`, nama RMF `husky_0`, fleet `HuskyA200`,
-dan lantai `L1`. Semua proses fisik memakai waktu nyata. Laptop menjalankan
+dan lantai `L1`. Semua proses fisik memakai waktu nyata. Komputer utama menjalankan
 satu schedule, dispatcher, building map server, dan pengumum profil. Robot
 mempertahankan driver, sensor, lokalisasi, Nav2, bridge fisik yang sudah ada,
 preflight, dan satu adapter onboard.
@@ -34,6 +46,9 @@ Untuk uji operasional di perangkat yang sudah dideploy, baca
 [README operator Husky](husky/readme.md). Keduanya memisahkan uji komunikasi
 tanpa gerak dari aktivasi hardware, preflight dan task fisik.
 Untuk browser gunakan [panduan Web fisik](laptop/src/brin_husky_distributed/WEB.md).
+Dashboard utama kini menampilkan baterai setiap robot dan form Patrol langsung,
+dengan bidding otomatis atau pilihan robot manual:
+[update Web dan baterai 10 November](main/WEB_UPDATE_2026-11-10.md).
 Panduan Nav2/sensor robot ada pada [husky_nav2](husky/src/husky_nav2/README.md).
 
 Untuk alur GitHub dan deployment per komputer, gunakan

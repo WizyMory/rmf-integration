@@ -20,7 +20,7 @@ def setup(context):
     prepared = prepare_startup(
         share, get_package_share_directory('devi_localization'),
         get_package_share_directory('devi_navigation'), value('runtime_dir'),
-        value('integration_config'), value('fleet_config'))
+        value('integration_config'), value('fleet_config'), server_uri=server_uri)
     underlay = Path(get_package_share_directory('devi_bringup'))/'launch/bringup.launch.py'
     return [
         GroupAction(scoped=True, actions=[

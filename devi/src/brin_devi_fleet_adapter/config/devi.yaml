@@ -9,6 +9,9 @@ map_topic: /map
 scan_topic: /devi/rplidar/scan_filtered
 odom_topic: /odometry/filtered
 amcl_topic: /amcl_pose
+battery_topic: /devi/roboteq/battery/measured
+battery_empty_voltage: 15.0
+battery_full_voltage: 25.0
 navigate_action: /navigate_to_pose
 nav2_map: /home/devi/devi_ws/src/devi_navigation/maps/workshop_l_1.yaml
 traffic_profile: gedungWS_0

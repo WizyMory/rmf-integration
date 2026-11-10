@@ -1085,10 +1085,7 @@ levels:
       - 545.904
       - 0
       - utara_WS
-      - dock_name:
-        - 1
-        - utara
-        dropoff_ingestor:
+      - dropoff_ingestor:
         - 1
         - do_utara_WS
         is_charger:

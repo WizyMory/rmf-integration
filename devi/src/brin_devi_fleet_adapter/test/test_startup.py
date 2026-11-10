@@ -146,11 +146,37 @@ def test_nav2_scope_is_domain_73_and_does_not_change_native_rmf_environment(tmp_
     assert waiting.node_executable == 'adapter_supervisor'
     arguments = [perform_substitutions(context, part) for part in waiting.cmd[1:]]
     assert arguments[arguments.index('--server-uri')+1] == 'ws://192.168.0.250:8000/_internal'
+    runtime = load_settings(tmp_path/'integration.yaml')
+    assert runtime['web_server_uri'] == 'ws://192.168.0.250:8000/_internal'
     assert visualization.node_executable == 'visualization_bridge'
     assert evaluate_parameters(context, bridge._Node__parameters)[0]['use_sim_time'] is False
     declaration, = [action for action in module.generate_launch_description().entities
         if isinstance(action, DeclareLaunchArgument) and action.name == 'server_uri']
-    assert perform_substitutions(context, declaration.default_value) == 'ws://192.168.0.218:8000/_internal'
+    assert perform_substitutions(context, declaration.default_value) == 'ws://192.168.0.141:8000/_internal'
+
+
+def test_adapter_retry_uses_prepared_endpoint_without_restarting_nav2(tmp_path, monkeypatch):
+    from brin_devi_fleet_adapter.profiles import resolve_profile
+    paths = prepared(tmp_path)
+    path = Path(paths['integration'])
+    settings = load_settings(path)
+    settings['web_server_uri'] = 'ws://192.168.0.141:8000/_internal'
+    path.write_text(yaml.safe_dump(settings))
+    specification = importlib.util.spec_from_file_location('devi_web_retry', PACKAGE/'launch/robot.launch.py')
+    module = importlib.util.module_from_spec(specification)
+    specification.loader.exec_module(module)
+    monkeypatch.setattr(module, 'get_package_share_directory', lambda name: str(PACKAGE))
+    monkeypatch.setattr(module, 'resolve_profile', lambda: resolve_profile(PACKAGE))
+    context = LaunchContext()
+    context.launch_configurations.update(integration_config=str(path), fleet_config=paths['fleet'],
+        server_uri='ws://192.168.0.218:8000/_internal', preflight_timeout='12', enable_dispatch='true')
+    handler, preflight = module.setup(context)
+    assert preflight.node_executable == 'preflight'
+    adapter, = handler.event_handler.handle(SimpleNamespace(returncode=0), context)
+    params = evaluate_parameters(context, adapter._Node__parameters)[0]
+    assert params['server_uri'] == 'ws://192.168.0.141:8000/_internal'
+    assert params['use_sim_time'] is False
+    assert len(module.setup(context)) == 2  # This launch includes no sensor or Nav2 bringup.
 
 
 @pytest.mark.parametrize('server_uri', ['', 'ws://192.168.0.218:8000/_internal'])

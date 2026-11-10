@@ -5,10 +5,11 @@ from pathlib import Path
 import yaml
 
 from .profiles import load_settings, resolve_profile
+from .web import validate_server_uri
 
 
 def prepare_startup(share, localization_share, navigation_share, output_dir,
-                    integration_config=None, fleet_config=None):
+                    integration_config=None, fleet_config=None, *, server_uri=None):
     share = Path(share)
     profile = resolve_profile(share)
     settings = load_settings(integration_config or share/'config/devi.yaml')
@@ -38,6 +39,8 @@ def prepare_startup(share, localization_share, navigation_share, output_dir,
         raise ValueError('A positive physical footprint radius is required')
     fleet['profile']['footprint'] = float(radius)
     settings = deepcopy(settings)
+    if server_uri is not None:
+        settings['web_server_uri'] = validate_server_uri(server_uri)
     settings['nav2_map'] = profile['map_yaml']
     # This exact map/image/origin is the canonical RMF bundle, so conversion
     # is identity. Localization uses the configured startup pose or manual correction.

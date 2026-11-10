@@ -18,7 +18,8 @@ Panels:
   - Class: rviz_common/Transformation
     Name: Transformation
   - Class: rviz_common/Tool Properties
-    Expanded: ~
+    Expanded:
+      - /2D Pose Estimate1
     Name: Tool Properties
     Splitter Ratio: 0.5
 Visualization Manager:
@@ -49,7 +50,9 @@ Visualization Manager:
       Enabled: true
       Name: RMF lanes and waypoints
       Namespaces:
-        {}
+        Devi/labels/L1: true
+        Devi/lanes/L1: true
+        Devi/waypoints/L1: true
       Topic:
         Depth: 10
         Durability Policy: Transient Local
@@ -61,7 +64,9 @@ Visualization Manager:
       Enabled: true
       Name: RMF fleet positions
       Namespaces:
-        {}
+        body: true
+        name: true
+        nose: true
       Topic:
         Depth: 10
         Durability Policy: Volatile
@@ -73,7 +78,8 @@ Visualization Manager:
       Enabled: true
       Name: RMF scheduled traffic
       Namespaces:
-        {}
+        participant 1: true
+        participant location 1: true
       Topic:
         Depth: 10
         Durability Policy: Volatile
@@ -86,19 +92,151 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_footprint:
+          Value: true
         base_link:
           Value: true
-        front_left_wheel:
+        bracket_0_link:
           Value: true
-        front_right_wheel:
+        bracket_0_mount:
+          Value: true
+        camera_0_bottom_screw_frame:
+          Value: true
+        camera_0_link:
+          Value: true
+        default_mount:
+          Value: true
+        devi/base_link:
+          Value: true
+        devi/bno055_link:
+          Value: true
+        devi/esp_cam_link:
+          Value: true
+        devi/gnss_antenna_link:
+          Value: true
+        devi/hokuyo_link:
+          Value: true
+        devi/odom:
+          Value: true
+        devi/ouster_link:
+          Value: true
+        devi/realsense_link:
+          Value: true
+        devi/rplidar_link:
+          Value: true
+        devi/wheel_left_link:
+          Value: true
+        devi/wheel_right_link:
+          Value: true
+        devi/xsens_link:
+          Value: true
+        front_bumper_base_link:
+          Value: true
+        front_bumper_link:
+          Value: true
+        front_bumper_mount:
+          Value: true
+        imu_0_base_link:
+          Value: true
+        imu_0_link:
+          Value: true
+        inertial_link:
           Value: true
         laser_frame:
           Value: true
+        lidar3d_0_laser:
+          Value: true
+        lidar3d_0_link:
+          Value: true
+        map:
+          Value: true
         odom:
           Value: true
-        rear_left_wheel:
+        rear_bumper_base_link:
           Value: true
-        rear_right_wheel:
+        rear_bumper_link:
+          Value: true
+        rear_bumper_mount:
+          Value: true
+        top_chassis_link:
+          Value: true
+        top_plate_adjust_link:
+          Value: true
+        top_plate_link:
+          Value: true
+        top_plate_mount_a1:
+          Value: true
+        top_plate_mount_a2:
+          Value: true
+        top_plate_mount_a3:
+          Value: true
+        top_plate_mount_a4:
+          Value: true
+        top_plate_mount_a5:
+          Value: true
+        top_plate_mount_a6:
+          Value: true
+        top_plate_mount_a7:
+          Value: true
+        top_plate_mount_a8:
+          Value: true
+        top_plate_mount_b1:
+          Value: true
+        top_plate_mount_b2:
+          Value: true
+        top_plate_mount_b7:
+          Value: true
+        top_plate_mount_b8:
+          Value: true
+        top_plate_mount_c1:
+          Value: true
+        top_plate_mount_c2:
+          Value: true
+        top_plate_mount_c7:
+          Value: true
+        top_plate_mount_c8:
+          Value: true
+        top_plate_mount_d1:
+          Value: true
+        top_plate_mount_d2:
+          Value: true
+        top_plate_mount_d7:
+          Value: true
+        top_plate_mount_d8:
+          Value: true
+        top_plate_mount_e1:
+          Value: true
+        top_plate_mount_e2:
+          Value: true
+        top_plate_mount_e7:
+          Value: true
+        top_plate_mount_e8:
+          Value: true
+        top_plate_mount_f1:
+          Value: true
+        top_plate_mount_f2:
+          Value: true
+        top_plate_mount_f7:
+          Value: true
+        top_plate_mount_f8:
+          Value: true
+        top_plate_mount_g1:
+          Value: true
+        top_plate_mount_g2:
+          Value: true
+        top_plate_mount_g3:
+          Value: true
+        top_plate_mount_g4:
+          Value: true
+        top_plate_mount_g5:
+          Value: true
+        top_plate_mount_g6:
+          Value: true
+        top_plate_mount_g7:
+          Value: true
+        top_plate_mount_g8:
+          Value: true
+        user_bay_cover_link:
           Value: true
       Marker Scale: 0.30000001192092896
       Name: Robot TF (Husky and Devi)
@@ -106,7 +244,134 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        {}
+        map:
+          devi/odom:
+            devi/base_link:
+              devi/bno055_link:
+                {}
+              devi/esp_cam_link:
+                {}
+              devi/gnss_antenna_link:
+                {}
+              devi/hokuyo_link:
+                {}
+              devi/ouster_link:
+                {}
+              devi/realsense_link:
+                {}
+              devi/rplidar_link:
+                {}
+              devi/wheel_left_link:
+                {}
+              devi/wheel_right_link:
+                {}
+              devi/xsens_link:
+                {}
+          odom:
+            base_link:
+              base_footprint:
+                {}
+              default_mount:
+                top_plate_adjust_link:
+                  top_plate_link:
+                    top_plate_mount_a1:
+                      {}
+                    top_plate_mount_a2:
+                      {}
+                    top_plate_mount_a3:
+                      {}
+                    top_plate_mount_a4:
+                      {}
+                    top_plate_mount_a5:
+                      {}
+                    top_plate_mount_a6:
+                      {}
+                    top_plate_mount_a7:
+                      {}
+                    top_plate_mount_a8:
+                      {}
+                    top_plate_mount_b1:
+                      {}
+                    top_plate_mount_b2:
+                      {}
+                    top_plate_mount_b7:
+                      {}
+                    top_plate_mount_b8:
+                      {}
+                    top_plate_mount_c1:
+                      {}
+                    top_plate_mount_c2:
+                      {}
+                    top_plate_mount_c7:
+                      {}
+                    top_plate_mount_c8:
+                      {}
+                    top_plate_mount_d1:
+                      bracket_0_link:
+                        bracket_0_mount:
+                          camera_0_bottom_screw_frame:
+                            camera_0_link:
+                              {}
+                          lidar3d_0_link:
+                            lidar3d_0_laser:
+                              {}
+                    top_plate_mount_d2:
+                      {}
+                    top_plate_mount_d7:
+                      {}
+                    top_plate_mount_d8:
+                      {}
+                    top_plate_mount_e1:
+                      {}
+                    top_plate_mount_e2:
+                      {}
+                    top_plate_mount_e7:
+                      {}
+                    top_plate_mount_e8:
+                      {}
+                    top_plate_mount_f1:
+                      {}
+                    top_plate_mount_f2:
+                      {}
+                    top_plate_mount_f7:
+                      {}
+                    top_plate_mount_f8:
+                      {}
+                    top_plate_mount_g1:
+                      {}
+                    top_plate_mount_g2:
+                      {}
+                    top_plate_mount_g3:
+                      {}
+                    top_plate_mount_g4:
+                      {}
+                    top_plate_mount_g5:
+                      {}
+                    top_plate_mount_g6:
+                      {}
+                    top_plate_mount_g7:
+                      {}
+                    top_plate_mount_g8:
+                      {}
+                    user_bay_cover_link:
+                      {}
+              front_bumper_mount:
+                front_bumper_base_link:
+                  front_bumper_link:
+                    {}
+              imu_0_base_link:
+                imu_0_link:
+                  {}
+              inertial_link:
+                {}
+              laser_frame:
+                {}
+              rear_bumper_mount:
+                rear_bumper_base_link:
+                  rear_bumper_link:
+                    {}
+              top_chassis_link:
+                {}
       Update Interval: 0
       Value: true
     - Class: rviz_common/Group
@@ -124,11 +389,56 @@ Visualization Manager:
             Value: /devi/viz/robot_description
           Enabled: true
           Links:
-            All Links Enabled: true
+            All Links Enabled:
+              {}
             Expand Joint Details: false
             Expand Link Details: false
             Expand Tree: false
-            Link Tree Style: ""
+            Link Tree Style: Links in Alphabetic Order
+            base_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            bno055_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            esp_cam_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            gnss_antenna_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            hokuyo_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            ouster_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            realsense_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            rplidar_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            wheel_left_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            wheel_right_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
+            xsens_link:
+              Alpha: 1
+              Show Axes: false
+              Show Trail: false
           Mass Properties:
             Inertia: false
             Mass: false
@@ -209,7 +519,7 @@ Visualization Manager:
           Class: rviz_default_plugins/Map
           Color Scheme: costmap
           Draw Behind: false
-          Enabled: true
+          Enabled: false
           Name: Devi global costmap
           Topic:
             Depth: 5
@@ -225,7 +535,7 @@ Visualization Manager:
             Reliability Policy: Reliable
             Value: /devi/viz/global_costmap/costmap_updates
           Use Timestamp: false
-          Value: true
+          Value: false
         - Alpha: 0.5
           Class: rviz_default_plugins/Map
           Color Scheme: costmap
@@ -592,7 +902,7 @@ Visualization Manager:
           Class: rviz_default_plugins/Map
           Color Scheme: costmap
           Draw Behind: false
-          Enabled: true
+          Enabled: false
           Name: Husky global costmap
           Topic:
             Depth: 5
@@ -608,7 +918,7 @@ Visualization Manager:
             Reliability Policy: Reliable
             Value: /a200_1060/global_costmap/costmap_updates
           Use Timestamp: false
-          Value: true
+          Value: false
         - Alpha: 0.699999988079071
           Class: rviz_default_plugins/Map
           Color Scheme: costmap
@@ -653,7 +963,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /devi/initialpose
+        Value: /a200_1060/initialpose
   Transformation:
     Current:
       Class: rviz_default_plugins/TF
@@ -670,11 +980,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 15.187861442565918
+      Scale: 39.935184478759766
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz_default_plugins)
-      X: 24.11943817138672
-      Y: -30.40535545349121
+      X: 24.768911361694336
+      Y: -26.721479415893555
     Saved: ~
 Window Geometry:
   Displays:

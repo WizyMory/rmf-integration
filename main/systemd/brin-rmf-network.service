@@ -1,0 +1,9 @@
+[Unit]
+Description=Wait for the RMF main computer LAN address
+
+[Service]
+Type=oneshot
+EnvironmentFile=%h/rmf-integration/main/config/bringup.env
+ExecStart=/usr/bin/python3 %h/rmf-integration/main/wait_ready.py network
+TimeoutStartSec=100
+RemainAfterExit=yes

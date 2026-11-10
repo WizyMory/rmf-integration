@@ -1,5 +1,14 @@
 # Laptop — satu core Open-RMF untuk Husky dan Devi
 
+**Setelah migrasi 9 November 2026, core utama berjalan pada komputer-utama
+`192.168.0.141`.** Gunakan [panduan komputer utama](../main/README.md) untuk
+layanan core dan `bash tools/integration.bash laptop view` untuk RViz laptop.
+Langkah startup core laptop pada dokumen ini digunakan saat pemulihan,
+setelah layanan `brin-rmf-core.service` pada komputer utama dihentikan.
+Untuk RViz/CLI setelah migrasi, gunakan profil observasi
+`main/config/cyclonedds_laptop.xml` melalui `BRIN_RMF_CYCLONEDDS_URI`,
+sesuai panduan komputer utama. Profil ini mencantumkan peer core `.141`.
+
 Jalankan perintah laptop dari `/mnt/UbuntuData/rmf-integration`.
 Panduan robot: [Husky](../husky/readme.md) dan [Devi](../devi/README.md).
 Urutan di bawah memakai **satu profil `gedungWS_0`, satu core, dan dua fleet**.

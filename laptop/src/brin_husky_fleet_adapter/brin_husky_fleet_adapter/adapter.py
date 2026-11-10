@@ -101,6 +101,10 @@ class FleetNode(Node):
         target = self.graph.get_waypoint(waypoint).location
         return math.hypot(float(target[0])-pose[0], float(target[1])-pose[1])
 
+    def battery_soc(self, name):
+        # Simulation retains its configured charge. Physical subclasses override.
+        return self.config['initial_battery_soc']
+
     def pose_in_frame(self, name, frame):
         transform = self.tf.lookup_transform(frame, name+'/base_link', Time())
         age = (self.get_clock().now()-Time.from_msg(transform.header.stamp)).nanoseconds/1e9
@@ -168,14 +172,18 @@ class FleetNode(Node):
                     else:
                         command.update.update_lost_position(c['map_name'], pose,
                             c['max_merge_waypoint_distance'], c['max_merge_lane_distance'])
-                command.update.update_battery_soc(c['initial_battery_soc'])
+                soc = self.battery_soc(name)
+                if soc is not None:
+                    command.update.update_battery_soc(soc)
             command.tick()
 
     def registered(self, name, update):
         command = self.commands[name]
         command.update = update
         update.set_charger_waypoint(self.graph.find_waypoint(self.config['robots'][name]['charger']).index)
-        update.update_battery_soc(self.config['initial_battery_soc'])
+        soc = self.battery_soc(name)
+        if soc is not None:
+            update.update_battery_soc(soc)
         self.get_logger().info(f'Registered {name} in {self.config["fleet_name"]}')
 
 

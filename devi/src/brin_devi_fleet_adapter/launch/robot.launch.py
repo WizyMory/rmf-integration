@@ -10,6 +10,7 @@ from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 from brin_devi_fleet_adapter.profiles import resolve_profile
+from brin_devi_fleet_adapter.web import integration_server_uri
 
 
 def setup(context):
@@ -17,6 +18,7 @@ def setup(context):
     share = Path(get_package_share_directory('brin_devi_fleet_adapter'))
     profile = resolve_profile()
     config = value('integration_config')
+    server_uri = integration_server_uri(config, value('server_uri'))
     preflight = Node(
         package='brin_devi_fleet_adapter', executable='preflight',
         arguments=['--config', config, '--timeout', value('preflight_timeout')],
@@ -27,7 +29,7 @@ def setup(context):
         parameters=[{'use_sim_time': False, 'integration_config': config,
                      'fleet_config': value('fleet_config'),
                      'nav_graph': profile['graph'], 'robots': ['devi'],
-                     'server_uri': value('server_uri')}],
+                     'server_uri': server_uri}],
         remappings=[
             ('/devi/navigate_to_pose', '/navigate_to_pose'),
             ('/devi/backup', '/backup'),

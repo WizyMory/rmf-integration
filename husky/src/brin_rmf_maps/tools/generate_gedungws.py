@@ -14,6 +14,24 @@ import yaml
 from generate_nav2_occupancy import oriented_sweep, classify
 
 
+def navigation_only_docks(floor):
+    """Remove unsupported dock actions from the derived physical profile only.
+
+    RMF turns a lane's dock_name into an ENTRY event. Neither physical fleet
+    implements docking, so leaving it would stop navigation before the final
+    lane. Keep the editor input, coordinates, charger and task metadata intact.
+    """
+    removed = set()
+    properties = [v[4] for v in floor['vertices'] if len(v) > 4]
+    properties.extend(lane[2] for lane in floor['lanes'])
+    for options in properties:
+        for key in ('dock_name', 'undock_name'):
+            value = options.pop(key, None)
+            if value is not None:
+                removed.add(value[1])
+    return sorted(removed)
+
+
 def generate(package, nav2_config):
     package = Path(package).resolve()
     maps = package/'maps'
@@ -30,6 +48,7 @@ def generate(package, nav2_config):
     derived = copy.deepcopy(original)
     floor = derived['levels'].pop(level_name)
     derived['levels']['L1'] = floor
+    removed_docks = navigation_only_docks(floor)
     # Infer a measurement from existing vertices and the supplied SLAM scale.
     a, b = floor['vertices'][:2]
     distance = math.dist(a[:2], b[:2])*resolution
@@ -80,7 +99,8 @@ def generate(package, nav2_config):
               'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
               'vertices': len(nav['vertices']), 'directed_lanes': len(nav['lanes']),
               'named_waypoints': sorted(named), 'blocked_footprint_sweeps': blocked,
-              'occupancy_pixels_changed': 0, 'motion_tested': False}
+              'occupancy_pixels_changed': 0, 'motion_tested': False,
+              'navigation_only_docks': removed_docks}
     (maps/'gedungWS_0_report.json').write_text(json.dumps(report, indent=2)+'\n')
     print(json.dumps(report, indent=2))
 

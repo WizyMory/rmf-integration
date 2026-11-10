@@ -115,14 +115,14 @@ Service juga memakai koneksi Web otomatis dari
 [bringup.yaml](src/brin_devi_fleet_adapter/config/bringup.yaml):
 
 ```yaml
-server_uri: ws://192.168.0.218:8000/_internal
+server_uri: ws://192.168.0.141:8000/_internal
 ```
 
 Saat Devi menyala, Nav2 dan auto pose berjalan, supervisor menunggu core
-RMF, lalu adapter terhubung ke Web API laptop. Client WebSocket mencoba
-koneksi ulang bila API belum tersedia atau koneksinya terputus. Laptop
-tetap perlu menjalankan API, core RMF dan dashboard menurut bagian 9
-[README laptop](../laptop/readme.md). Tidak perlu lagi memulai bringup Web
+RMF, lalu adapter terhubung ke Web API komputer utama. Client WebSocket mencoba
+koneksi ulang bila API belum tersedia atau koneksinya terputus. Komputer utama
+menjalankan API, core dan dashboard melalui
+[bringup otomatis](../main/BOOT_BRINGUP_2026-11-09.md). Tidak perlu lagi memulai bringup Web
 manual di Devi untuk operasi harian.
 
 Untuk beralih sekali dari sesi Web foreground yang lama, parkirkan robot
@@ -136,10 +136,15 @@ journalctl -b -u devi_robot.service -n 100 --no-pager -l
 ```
 
 Cari log `Registered devi in Devi` dan
-`BroadcastClient successfully connected` dengan URI laptop. Koneksi Web
-dapat diperiksa di `http://192.168.0.218:8000/fleets/Devi/state`.
-Jika IP laptop berubah, perbarui `server_uri` pada konfigurasi dan restart
-service setelah robot diam di titik parkir.
+`BroadcastClient successfully connected` dengan URI komputer utama. Koneksi Web
+dapat diperiksa di `http://192.168.0.141:8000/fleets/Devi/state`.
+Pilihan endpoint saat bringup disimpan pula sebagai `web_server_uri` pada
+`devi/log/bringup_runtime/integration.yaml`. Nilai yang disiapkan ini dipakai
+saat adapter dicoba ulang, termasuk ketika supervisor masih menyimpan argumen
+dari sesi sebelum migrasi. Tanpa field itu, argumen `server_uri` tetap berlaku.
+Perubahan endpoint dapat diterapkan melalui restart adapter terkontrol saat
+robot idle dan task selesai; Nav2/sensor tidak perlu direstart. Hasil migrasi
+dan bukti pemeriksaan: [laporan data Web](../main/WEB_DATA_RESULT_2026-11-09.md).
 
 Untuk menonaktifkan koneksi Web pada startup, isi `server_uri: ""` pada
 konfigurasi dan restart service. Nav2/preflight tetap berjalan seperti biasa.
@@ -388,7 +393,12 @@ service setelah robot diam. Wrapper akan membuat `set_initial_pose: false`
 dan menghapus pose awal dari parameter AMCL runtime. Nilai auto pose tersimpan
 di source dan dapat dipakai lagi dengan `localization: automatic_initial_pose`.
 
-Nilai baterai/mekanis fleet masih perkiraan; battery drain dan perjalanan
+Persentase baterai kini dihitung dari `/devi/roboteq/battery/measured`
+(`std_msgs/Float32`, domain 73), dengan 15 V = 0% dan 25 V = 100% sesuai
+kalibrasi operator. Persentase dibatasi 0–100%; voltase asli tetap ditampilkan.
+Data melewati gateway lokal ke RMF domain 0. Nilai yang lebih tua dari
+10 detik ditandai tidak tersedia pada Web; tidak diganti nilai tetap 95%.
+Nilai mekanis fleet masih perkiraan; battery drain dan perjalanan
 charger otomatis dinonaktifkan. Responsive wait dan recovery mundur adapter
 tetap dinonaktifkan. Web/telemetry dan traffic fisik bersama belum diuji
 end-to-end. [Hasil setup awal](SETUP_RESULT_2026-11-02.md) adalah catatan

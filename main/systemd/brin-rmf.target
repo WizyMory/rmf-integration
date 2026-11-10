@@ -1,0 +1,7 @@
+[Unit]
+Description=BRIN RMF main computer bringup
+Wants=brin-rmf-core.service brin-rmf-web-api.service brin-rmf-dashboard.service
+After=brin-rmf-core.service brin-rmf-web-api.service brin-rmf-dashboard.service
+
+[Install]
+WantedBy=default.target

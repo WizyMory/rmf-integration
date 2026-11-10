@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Laptop observation/CLI processes after the core moved to komputer-utama. -->
+<CycloneDDS>
+  <Domain>
+    <General>
+      <Interfaces><NetworkInterface name="wlp9s0"/></Interfaces>
+      <AllowMulticast>spdp</AllowMulticast>
+    </General>
+    <Discovery>
+      <ParticipantIndex>auto</ParticipantIndex>
+      <MaxAutoParticipantIndex>40</MaxAutoParticipantIndex>
+      <Peers>
+        <Peer Address="192.168.0.141"/>
+        <Peer Address="192.168.0.120"/>
+        <Peer Address="192.168.0.237"/>
+      </Peers>
+    </Discovery>
+  </Domain>
+</CycloneDDS>

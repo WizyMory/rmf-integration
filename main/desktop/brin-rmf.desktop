@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=BRIN RMF Bringup
+Comment=Open RMF RViz and dashboard after the desktop session is ready
+Exec=/usr/bin/bash /home/rslab/rmf-integration/main/desktop-start.bash
+Terminal=false
+X-GNOME-Autostart-enabled=true

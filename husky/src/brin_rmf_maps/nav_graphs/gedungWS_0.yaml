@@ -112,12 +112,10 @@ levels:
       - speed_limit: 0
     - - 0
       - 18
-      - dock_name: utara
-        speed_limit: 0
+      - speed_limit: 0
     - - 18
       - 0
       - speed_limit: 0
-        undock_name: utara
     vertices:
     - - 10.337200000000001
       - -25.0535
@@ -213,8 +211,7 @@ levels:
         name: selatan_WS
     - - 1.7381000000000002
       - -27.2952
-      - dock_name: utara
-        dropoff_ingestor: do_utara_WS
+      - dropoff_ingestor: do_utara_WS
         is_charger: true
         is_holding_point: true
         is_parking_spot: true

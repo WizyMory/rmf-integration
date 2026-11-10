@@ -35,7 +35,7 @@ def test_help_without_ros():
 
 @pytest.mark.parametrize('path,interface,peers', [
     ('laptop/src/brin_husky_distributed/config/cyclonedds_lan.xml', 'wlp9s0', {'192.168.0.120', '192.168.0.237'}),
-    ('husky/src/brin_husky_distributed/config/cyclonedds_lan.xml', 'wlp2s0', {'192.168.0.218'}),
+    ('husky/src/brin_husky_distributed/config/cyclonedds_lan.xml', 'wlp2s0', {'192.168.0.218', '192.168.0.141'}),
     ('devi/src/brin_devi_fleet_adapter/config/cyclonedds_rmf.xml', 'wlo1', {'192.168.0.218', '192.168.0.120'}),
 ])
 def test_lan_profiles_select_only_the_target_wifi(path, interface, peers):

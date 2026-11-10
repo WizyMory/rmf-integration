@@ -2,7 +2,8 @@
 from unittest.mock import Mock
 from pathlib import Path
 import pytest
-from brin_devi_fleet_adapter.web import add_fleet, configured_server_uri, validate_server_uri
+from brin_devi_fleet_adapter.web import (
+    add_fleet, configured_server_uri, integration_server_uri, validate_server_uri)
 
 
 @pytest.mark.parametrize('uri', ['', 'ws://localhost:8000/_internal'])
@@ -33,10 +34,32 @@ def test_robot_web_endpoint_rejects_invalid_or_local_addresses(uri):
 
 def test_boot_endpoint_is_read_from_config_and_can_be_disabled(tmp_path):
     package = Path(__file__).resolve().parents[1]
-    assert configured_server_uri(package) == 'ws://192.168.0.218:8000/_internal'
+    assert configured_server_uri(package) == 'ws://192.168.0.141:8000/_internal'
     (tmp_path/'config').mkdir()
     path = tmp_path/'config/bringup.yaml'
     path.write_text('server_uri: ""\n')
     assert configured_server_uri(tmp_path) == ''
     path.write_text('traffic_profile: gedungWS_0\n')
     assert configured_server_uri(tmp_path) == ''
+
+
+@pytest.mark.parametrize('endpoint', ['', 'ws://192.168.0.141:8000/_internal'])
+def test_prepared_endpoint_overrides_a_running_launchers_old_address(tmp_path, endpoint):
+    import yaml
+    path = tmp_path/'integration.yaml'
+    path.write_text(yaml.safe_dump({'web_server_uri': endpoint}))
+    assert integration_server_uri(path, 'ws://192.168.0.218:8000/_internal') == endpoint
+
+
+def test_legacy_integration_without_prepared_endpoint_keeps_explicit_uri(tmp_path):
+    path = tmp_path/'integration.yaml'
+    path.write_text('robot_name: devi\n')
+    assert integration_server_uri(path, 'ws://192.168.0.250:8000/_internal') == (
+        'ws://192.168.0.250:8000/_internal')
+
+
+def test_invalid_prepared_endpoint_is_rejected_before_adapter_start(tmp_path):
+    path = tmp_path/'integration.yaml'
+    path.write_text('web_server_uri: ws://localhost:8000/_internal\n')
+    with pytest.raises(ValueError):
+        integration_server_uri(path, 'ws://192.168.0.141:8000/_internal')

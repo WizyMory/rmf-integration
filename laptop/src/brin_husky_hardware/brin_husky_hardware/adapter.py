@@ -1,15 +1,19 @@
 """Use the proven RMF command lifecycle with a physical Nav2 server."""
 from datetime import timedelta
+import json
 import time
 
 from lifecycle_msgs.srv import GetState
 import rclpy
 import rmf_adapter as rmf
+from std_msgs.msg import String
 from rmf_adapter import battery, geometry, graph, vehicletraits as traits
 
 from brin_husky_fleet_adapter.adapter import FleetNode
 from brin_husky_fleet_adapter.command import Nav2Command
 from brin_husky_fleet_adapter.web import add_fleet
+from brin_husky_fleet_adapter.battery import BatteryTelemetry
+from .sensor_source import NativeSensorSource
 
 
 class HardwareCommand(Nav2Command):
@@ -46,6 +50,34 @@ class HardwareCommand(Nav2Command):
 
 
 class HardwareFleetNode(FleetNode):
+    def __init__(self):
+        super().__init__()
+        self.battery = BatteryTelemetry(self.config['fleet_name'], 'husky_0',
+                                       '/a200_1060/platform/bms/state')
+        self.battery_pub = self.create_publisher(String, '/brin/battery_states', 10)
+        self.battery_source = NativeSensorSource(
+            {'battery': self.battery.source}, 'rmw_fastrtps_cpp')
+        self.battery_timer = self.create_timer(1., self.poll_battery)
+
+    def poll_battery(self):
+        try:
+            message = self.battery_source.poll().get('battery')
+            if message is not None:
+                self.battery.observe(message.voltage if message.present else None,
+                                     message.percentage if message.present else None)
+        except Exception as exc:
+            self.get_logger().error(f'Battery reader unavailable: {exc}')
+            self.battery_source.close()
+        self.battery_pub.publish(String(data=json.dumps(self.battery.snapshot(), allow_nan=False)))
+
+    def battery_soc(self, name):
+        return self.battery.snapshot()['soc']
+
+    def destroy_node(self):
+        if getattr(self, 'battery_source', None) is not None:
+            self.battery_source.close()
+        return super().destroy_node()
+
     def registered(self, name, update):
         update.enable_responsive_wait(False)
         super().registered(name, update)

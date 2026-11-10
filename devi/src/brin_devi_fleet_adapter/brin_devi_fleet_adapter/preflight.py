@@ -17,7 +17,7 @@ from lifecycle_msgs.srv import GetState
 from nav2_msgs.action import NavigateToPose
 from nav_msgs.msg import OccupancyGrid, Odometry
 from sensor_msgs.msg import LaserScan
-from std_msgs.msg import String
+from std_msgs.msg import String, Float32
 from tf2_ros import Buffer, TransformListener, TransformException
 
 from .domains import RmfObserver
@@ -31,6 +31,11 @@ class Inspection(Node):
         self.settings = settings
         self.messages = {}
         self.subscriptions_keep = []
+        self.battery_voltage = None
+        self.battery_observed_at = None
+        self.subscriptions_keep.append(self.create_subscription(
+            Float32, settings.get('battery_topic', '/devi/roboteq/battery/measured'),
+            self.observe_battery, qos_profile_sensor_data))
         durable = QoSProfile(depth=1, durability=DurabilityPolicy.TRANSIENT_LOCAL)
         for key, msgtype, qos in (
                 ('map', OccupancyGrid, durable), ('scan', LaserScan, qos_profile_sensor_data),
@@ -48,6 +53,11 @@ class Inspection(Node):
             self.lifecycle[name] = {
                 'client': self.create_client(GetState, '/' + name + '/get_state'),
                 'future': None, 'sent_at': 0., 'observed': None}
+
+    def observe_battery(self, message):
+        self.battery_voltage = (float(message.data)
+                                if math.isfinite(message.data) and message.data > 0 else None)
+        self.battery_observed_at = time.monotonic()
 
     def poll(self):
         rclpy.spin_once(self, timeout_sec=0.05)
@@ -113,7 +123,9 @@ class Inspection(Node):
             actual = [info.resolution, info.origin.position.x, info.origin.position.y, yaw]
             if any(abs(a-b) > 1e-5 for a, b in zip(expected, actual)):
                 errors.append('Active /map geometry differs from original Devi map')
-        return {'nav2_ready': not errors, 'nav2_pose': pose, 'lifecycle': states,
+        return {'battery_voltage': self.battery_voltage,
+                'battery_observed_at': self.battery_observed_at,
+                'nav2_ready': not errors, 'nav2_pose': pose, 'lifecycle': states,
                 'nav2_errors': errors, 'robot_domain_id': 73,
                 'nav2_action_available': self.action.server_is_ready()}
 

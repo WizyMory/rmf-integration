@@ -31,5 +31,8 @@
   ],
   "blocked_footprint_sweeps": [],
   "occupancy_pixels_changed": 0,
-  "motion_tested": false
+  "motion_tested": false,
+  "navigation_only_docks": [
+    "utara"
+  ]
 }

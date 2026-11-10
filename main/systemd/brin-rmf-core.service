@@ -1,0 +1,21 @@
+[Unit]
+Description=BRIN main Open-RMF core (gedungWS_0, ROS domain 0)
+Requires=brin-rmf-network.service
+Wants=brin-rmf-web-api.service
+After=brin-rmf-network.service brin-rmf-web-api.service
+PartOf=brin-rmf.target
+StartLimitIntervalSec=60
+StartLimitBurst=3
+
+[Service]
+Type=simple
+WorkingDirectory=%h/rmf-integration
+ExecStart=/usr/bin/bash %h/rmf-integration/tools/main.bash core traffic_profile:=gedungWS_0 rviz:=false server_uri:=ws://192.168.0.141:8000/_internal
+Restart=always
+RestartPreventExitStatus=2
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

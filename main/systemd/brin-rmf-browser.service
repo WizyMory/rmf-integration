@@ -1,0 +1,15 @@
+[Unit]
+Description=BRIN RMF dashboard browser on the local desktop
+Wants=brin-rmf-web-api.service brin-rmf-dashboard.service
+After=graphical-session.target brin-rmf-web-api.service brin-rmf-dashboard.service
+PartOf=graphical-session.target brin-rmf.target
+StartLimitIntervalSec=120
+StartLimitBurst=5
+
+[Service]
+Type=simple
+WorkingDirectory=%h/rmf-integration
+ExecStart=/usr/bin/bash %h/rmf-integration/main/bringup.bash browser
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
