@@ -1,0 +1,18 @@
+[Unit]
+Description=Husky Hokuyo, Nav2 parking pose and gated Open-RMF adapter
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/husky/rmf-integration
+Environment=BRIN_ENABLE_DISPATCH=1
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/bin/bash /home/husky/rmf-integration/tools/husky_bringup.bash run
+Restart=on-failure
+RestartSec=15
+KillSignal=SIGINT
+KillMode=control-group
+TimeoutStopSec=35
+
+[Install]
+WantedBy=default.target

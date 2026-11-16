@@ -29,6 +29,18 @@ def setup(context):
         raise ValueError('Only /a200_1060/nav/tf is supported by this Husky Nav2 stack')
     fleet_config = profile.get('fleet_config', local_share / 'config/fleet_config.yaml')
     fleet = yaml.safe_load(fleet_config.read_text())
+    startup_override = LaunchConfiguration('startup_fleet_config', default='').perform(context)
+    if startup_override:
+        candidate = yaml.safe_load(Path(startup_override).read_text())
+        comparison = dict(candidate)
+        distance = comparison.pop('max_merge_lane_distance', None)
+        baseline = dict(fleet)
+        baseline.pop('max_merge_lane_distance', None)
+        if (comparison != baseline or isinstance(distance, bool)
+                or not isinstance(distance, (int, float)) or not 1.0 <= distance <= 1.25):
+            raise ValueError('Startup fleet override may only set the approved 1.00..1.25 m lane merge distance')
+        fleet_config = Path(startup_override)
+        fleet = candidate
     if fleet['map_name'] != 'L1' or list(fleet['robots']) != ['husky_0']:
         raise ValueError('Physical fleet must contain only husky_0 on L1')
 
@@ -93,6 +105,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument('traffic_profile', default_value='banyak_simpangan'),
         DeclareLaunchArgument('hardware_config', default_value=str(config)),
+        DeclareLaunchArgument('startup_fleet_config', default_value=''),
         DeclareLaunchArgument('start_nav2', default_value='false',
                               choices=['true', 'false']),
         DeclareLaunchArgument('start_hokuyo', default_value='false',

@@ -4,6 +4,27 @@ Lokasi robot: `/home/husky/rmf-integration/husky/readme.md`.
 Jalankan perintah integrasi dari `/home/husky/rmf-integration`.
 Panduan pasangan: [README laptop](../laptop/readme.md).
 
+## Auto bringup saat boot — 16 November 2026
+
+Service `brin-husky-bringup.service` kini menjalankan Hokuyo → Nav2 dengan
+pose awal `(25.885, -27.303, -2.877 rad)` → preflight → adapter `HuskyA200`.
+Map `gedungWS_0`; core dan Web memakai komputer-utama `192.168.0.141`.
+Service enabled dengan linger; sudah diuji startup langsung sampai robot
+terdaftar. Batas kedekatan graph 1.25 m hanya untuk runtime startup telah
+disetujui operator. Pose ini mengasumsikan robot dinyalakan di titik parkir
+yang sama. Hentikan service sebelum menjalankan urutan manual di bawah.
+
+```bash
+systemctl --user status brin-husky-bringup.service
+journalctl --user -u brin-husky-bringup.service -f
+systemctl --user stop brin-husky-bringup.service
+systemctl --user start brin-husky-bringup.service
+```
+
+Konfigurasi ada di `husky/src/brin_husky_autostart/config/bringup.yaml`.
+Lihat [panduan auto bringup](../docs/HUSKY_AUTO_BRINGUP_2026-11-16.md) untuk
+update pose, build, penonaktifan service, dan hasil verifikasi.
+
 Untuk uji profil `gedungWS_0`, laptop memilih
 `traffic_profile:=gedungWS_0`; Husky memakai nilai yang sama pada preflight
 dan adapter. Map Nav2 yang dipakai adalah

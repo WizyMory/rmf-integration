@@ -1,0 +1,15 @@
+# Operator-provided parking pose on gedungWS_0. Yaw is in radians.
+traffic_profile: gedungWS_0
+server_uri: ws://192.168.0.141:8000/_internal
+# Operator approved 2026-11-16: parking pose is 1.08 m from the nearest lane.
+startup_graph_distance: 1.25
+initial_pose:
+  frame_id: map
+  x: 25.885
+  y: -27.303
+  z: 0.0
+  yaw: -2.877
+scan_timeout: 120.0
+navigation_timeout: 180.0
+preflight_timeout: 35.0
+retry_delay: 10.0

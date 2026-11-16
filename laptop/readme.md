@@ -11,6 +11,12 @@ sesuai panduan komputer utama. Profil ini mencantumkan peer core `.141`.
 
 Jalankan perintah laptop dari `/mnt/UbuntuData/rmf-integration`.
 Panduan robot: [Husky](../husky/readme.md) dan [Devi](../devi/README.md).
+
+Husky kini memiliki [auto bringup saat boot](../docs/HUSKY_AUTO_BRINGUP_2026-11-16.md):
+Hokuyo, Nav2, pose parkir `(25.885, -27.303, -2.877 rad)` dan adapter dengan
+preflight. Core/Web tetap pada komputer-utama `192.168.0.141`; laptop dipakai
+untuk CLI/RViz.
+
 Urutan di bawah memakai **satu profil `gedungWS_0`, satu core, dan dua fleet**.
 
 | Komputer | Proses | Identitas dan domain |
