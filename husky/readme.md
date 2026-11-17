@@ -4,6 +4,13 @@ Lokasi robot: `/home/husky/rmf-integration/husky/readme.md`.
 Jalankan perintah integrasi dari `/home/husky/rmf-integration`.
 Panduan pasangan: [README laptop](../laptop/readme.md).
 
+Footprint fisik diperbarui 17 November 2026: Open-RMF radius **0.65 m**,
+Nav2 local/global **x=±0.55, y=±0.40 m**. Source, runtime auto bringup dan
+parameter live sudah diverifikasi setelah restart yang disetujui operator.
+Inflation tetap **0.35 m**; Nav2 memperingatkan nilainya di bawah inscribed
+radius footprint termasuk padding **0.42 m**. Lihat
+[laporan pembaruan footprint](../docs/HUSKY_FOOTPRINT_2026-11-17.md).
+
 ## Auto bringup saat boot — 16 November 2026
 
 Service `brin-husky-bringup.service` kini menjalankan Hokuyo → Nav2 dengan

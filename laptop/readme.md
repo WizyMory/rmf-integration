@@ -12,6 +12,10 @@ sesuai panduan komputer utama. Profil ini mencantumkan peer core `.141`.
 Jalankan perintah laptop dari `/mnt/UbuntuData/rmf-integration`.
 Panduan robot: [Husky](../husky/readme.md) dan [Devi](../devi/README.md).
 
+Footprint Husky diperbarui 17 November 2026 menjadi radius RMF **0.65 m**
+dan polygon Nav2 fisik **x=±0.55, y=±0.40 m**; ukuran Devi dan Nav2 simulasi
+laptop tetap. Lihat [rincian deployment dan digest baru](../docs/HUSKY_FOOTPRINT_2026-11-17.md).
+
 Husky kini memiliki [auto bringup saat boot](../docs/HUSKY_AUTO_BRINGUP_2026-11-16.md):
 Hokuyo, Nav2, pose parkir `(25.885, -27.303, -2.877 rad)` dan adapter dengan
 preflight. Core/Web tetap pada komputer-utama `192.168.0.141`; laptop dipakai
