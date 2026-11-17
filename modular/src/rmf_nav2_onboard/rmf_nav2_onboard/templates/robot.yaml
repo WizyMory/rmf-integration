@@ -1,0 +1,75 @@
+# Fill null fields from an audit of the REAL robot. See modular/README.md.
+version: 1
+robot:
+  name: __ROBOT__
+  fleet: __FLEET__  # Unique fleet per onboard adapter process in this release.
+rmf:
+  domain_id: 0
+  localhost_only: false
+  rmw: rmw_cyclonedds_cpp
+  cyclonedds_uri: ''
+  fastdds_profiles_file: ''
+  discovery_server: ''
+  web_uri: ''  # e.g. ws://CORE_LAN_IP:8000/_internal; optional telemetry.
+  nav_graph: assets/nav_graph.yaml
+  building_map: assets/site.building.yaml
+  level: L1
+  home_waypoint: null  # Existing named vertex with is_charger: true (required by RMF).
+  profile_topic: /brin_hardware/profile_digest
+  expected_profile_digest: null  # Read from existing core, or own core's site digest.
+nav2:
+  domain_id: 0
+  localhost_only: false
+  rmw: rmw_fastrtps_cpp
+  cyclonedds_uri: ''
+  fastdds_profiles_file: ''
+  discovery_server: ''
+  navigate_action: __NS__/navigate_to_pose
+  bt_navigator_node: __NS__/bt_navigator
+  map_topic: __NS__/map
+  scan_topic: __NS__/scan
+  odom_topic: __NS__/odometry/filtered
+  tf_topic: /tf
+  tf_static_topic: /tf_static
+  map_frame: map
+  base_frame: base_link
+  map_yaml: assets/map.yaml
+  lifecycle_nodes:
+    - __NS__/amcl
+    - __NS__/map_server
+    - __NS__/controller_server
+    - __NS__/planner_server
+    - __NS__/bt_navigator
+  max_data_age: 2.0
+  max_graph_distance: 1.0
+  update_hz: 5.0
+  action_timeout: 15.0  # Acknowledgement only; not maximum journey duration.
+  planner_id: GridBased
+  controller_id: FollowPath
+  final_orientation_only: false
+  transit_xy_tolerance: null  # Same as the robot's normal XY goal checker.
+  transit_params_confirmed: false
+geometry:
+  footprint_radius: null  # Conservative circle containing the actual footprint.
+  vicinity_radius: null
+motion:
+  linear_speed: null  # metres/second; not above commissioned Nav2 limits.
+  linear_acceleration: null  # metres/second^2
+  angular_speed: null  # radians/second
+  angular_acceleration: null  # radians/second^2
+  reversible: false
+alignment:
+  # RMF XY = R(yaw) * Nav2 XY + [x, y]. Identity still needs physical review.
+  x: 0.0
+  y: 0.0
+  yaw: 0.0
+battery:
+  mode: none  # none | battery_state (sensor_msgs/BatteryState) | voltage (Float32)
+  topic: ''
+  empty_voltage: null
+  full_voltage: null
+commissioning:
+  alignment_confirmed: false
+  footprint_confirmed: false
+  nav2_motion_tested: false
+  operation_accepted: false

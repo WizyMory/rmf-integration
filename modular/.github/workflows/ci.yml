@@ -1,0 +1,45 @@
+name: Modular RMF Nav2 validation
+on: [push, pull_request]
+
+jobs:
+  offline:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m pip install PyYAML pytest
+      - name: Offline validation and state-machine tests
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+        run: |
+          if [ -d modular/src ]; then cd modular; fi
+          PYTHONPATH=src/rmf_nav2_onboard python3 -m pytest -q src/rmf_nav2_onboard/test
+          bash -n tools/robot.bash
+
+  humble:
+    runs-on: ubuntu-22.04
+    container: ros:humble-ros-base
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install test dependencies in the CI container
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            python3-pytest python3-yaml python3-colcon-common-extensions \
+            ros-humble-rmf-fleet-adapter-python ros-humble-rmf-fleet-msgs \
+            ros-humble-rmf-task-msgs ros-humble-rmf-traffic-ros2 \
+            ros-humble-nav2-msgs ros-humble-tf2-ros ros-humble-rmw-fastrtps-cpp
+      - name: Build and test with isolated mock Nav2 / native RMF schedule
+        env:
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: '1'
+          RMF_NAV2_TEST_ROS: '1'
+          ROS_LOCALHOST_ONLY: '1'
+          ROS_DOMAIN_ID: '222'
+          RMW_IMPLEMENTATION: rmw_fastrtps_cpp
+        run: |
+          if [ -d modular/src ]; then cd modular; fi
+          source /opt/ros/humble/setup.bash
+          bash tools/robot.bash build
+          PYTHONPATH=src/rmf_nav2_onboard python3 -m pytest -q src/rmf_nav2_onboard/test

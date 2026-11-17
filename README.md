@@ -61,6 +61,12 @@ operasi/dispatch robot.
 
 ## Build snapshot terpisah
 
+Untuk menambahkan robot baru tanpa menyalin asumsi khusus Husky/Devi, gunakan
+[modul onboarding mandiri](modular/README.md). Folder `modular/` berisi paket
+`rmf_nav2_onboard`, template profil per robot, CLI, preflight, gateway lintas
+domain/RMW, panduan pemasangan dan ekspor source untuk repository terpisah.
+Modul ini tidak otomatis mengganti adapter atau deployment robot yang sudah ada.
+
 Jangan membangun kedua `src` dalam satu pencarian colcon: nama paketnya sama.
 Dari root repository, setelah overlay Humble/Clearpath/RMF di-source:
 
