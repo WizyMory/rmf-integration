@@ -1,5 +1,9 @@
 # Footprint Husky — 17 November 2026
 
+Catatan historis: nilai di bawah sudah digantikan pada hari yang sama oleh
+RMF 0.60 m, Nav2 x=±0.50/y=±0.35 m dan inflation 0.40 m. Lihat
+[pembaruan terbaru dan diagnosis killed](HUSKY_FOOTPRINT_060_KILLED_2026-11-17.md).
+
 Permintaan operator diterapkan pada konfigurasi fisik Husky:
 
 | Pengaturan | Nilai |
